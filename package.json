@@ -1,0 +1,26 @@
+{
+  "name": "team-rogue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoncross/team-rogue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoncross/team-rogue/issues"
+  },
+  "homepage": "https://github.com/leoncross/team-rogue#readme",
+  "devDependencies": {
+    "karma": "^3.1.4",
+    "karma-coverage": "^1.1.2",
+    "karma-jasmine": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4"
+  }
+}
