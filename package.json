@@ -10,7 +10,7 @@
     "coveralls": "^3.0.2"
   },
   "scripts": {
-    "test": "istanbul cover --include-all-sources jasmine"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
