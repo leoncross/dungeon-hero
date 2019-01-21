@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js"
+    "test": "karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leoncross/team-rogue.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -17,8 +18,12 @@
   },
   "homepage": "https://github.com/leoncross/team-rogue#readme",
   "devDependencies": {
-    "babel-plugin-istanbul": "^5.1.0",
-    "coveralls": "^3.0.2"
+    "coveralls": "^3.0.2",
+    "karma": "^3.1.4",
+    "karma-coverage": "^1.1.2",
+    "karma-coveralls": "^2.1.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4"
   },
   "dependencies": {}
 }
