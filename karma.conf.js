@@ -14,7 +14,7 @@ module.exports = function (config) {
             'karma-phantomjs-launcher',
             'karma-coverage'
         ],
-        reporters: ['progress', 'coverage', 'coveralls'],
+        reporters: ['progress', 'coverage'],
         port: 9878,
         colors: true,
         logLevel: config.LOG_DEBUG,

@@ -24,5 +24,6 @@
     "karma-coveralls": "^2.1.0",
     "karma-jasmine": "^2.0.1",
     "karma-phantomjs-launcher": "^1.0.4"
-  }
+  },
+  "dependencies": {}
 }
