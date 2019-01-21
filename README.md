@@ -16,5 +16,12 @@ npm install -g jasmine
 jasmine init
 
 
-
+to get coverage
+```
 istanbul cover --include-all-sources jasmine
+```
+
+- to push??
+```
+istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+```

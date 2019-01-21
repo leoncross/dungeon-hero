@@ -7,11 +7,12 @@
     "jasmine": "^3.3.1"
   },
   "devDependencies": {
-    "coveralls": "^3.0.2"
+    "coveralls": "^3.0.2",
+    "istanbul": "^0.4.5"
   },
   "scripts": {
     "test": "jasmine"
-  },
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leoncross/team-rogue.git"
