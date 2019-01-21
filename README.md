@@ -14,3 +14,7 @@ npm init
 npm install
 npm install -g jasmine
 jasmine init
+
+
+
+istanbul cover --include-all-sources jasmine
