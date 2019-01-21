@@ -1,0 +1,24 @@
+{
+  "name": "team-rogue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoncross/team-rogue.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoncross/team-rogue/issues"
+  },
+  "homepage": "https://github.com/leoncross/team-rogue#readme",
+  "devDependencies": {
+    "babel-plugin-istanbul": "^5.1.0",
+    "coveralls": "^3.0.2"
+  },
+  "dependencies": {}
+}
