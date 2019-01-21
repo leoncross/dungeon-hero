@@ -20,10 +20,9 @@ module.exports = function (config) {
         logLevel: config.LOG_DEBUG,
         autowatch: true,
         browsers: ['PhantomJS'],
-        singleRun: false,
+        singleRun: true,
         concurrency: Infinity,
         coverageReporter: {
-            type: 'lcov', // lcov or lcovonly are required for generating lcov.info files
             includeAllSources: true,
             dir: 'coverage/',
             reporters: [
