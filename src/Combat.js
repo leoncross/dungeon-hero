@@ -1,4 +1,4 @@
-var Dice = require('../src/Dice')
+'use strict';
 function Combat (dice = new Dice()) {
   this.dice = dice
 };
