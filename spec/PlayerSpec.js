@@ -15,6 +15,11 @@ describe('Player', function () {
     expect(player.hero['weaponName']).toEqual('Throwing Axe');
   });
 
+  it('can change his armor', function () {
+    player.changeArmor('Full Plate');
+    expect(player.hero['armorName']).toEqual('Full Plate');
+  });
+
 
 
 
