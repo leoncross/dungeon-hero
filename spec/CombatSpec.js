@@ -1,5 +1,6 @@
 describe('Combat',function(){
-  beforeEach(() => {
+
+  beforeEach(function() {
     function DiceStub() {}
     DiceStub.prototype = {
       rollDice() {},
@@ -8,10 +9,13 @@ describe('Combat',function(){
     var Combat = require('../src/Combat');
     dice = new DiceStub
     combat = new Combat(dice)
+
+    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+
   });
 
-  var hero =   {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
-  var monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+
 
   describe("#attackSetup", function() {
     it("returns player and monster", function() {
@@ -34,7 +38,7 @@ describe('Combat',function(){
       expect(combat.playerAttack()).toEqual(8)
       expect(combat.monster["health"]).toEqual(92)
     });
-    it("success - player misses dice roll, no health lost", function() {
+    it("miss - player misses dice roll, no health lost", function() {
       spyOn(dice, "rollDice").and.returnValue(1);
       combat.attackSetup([hero, monster])
       expect(combat.playerAttack()).toEqual("miss")
@@ -49,7 +53,7 @@ describe('Combat',function(){
       expect(combat.monsterAttack()).toEqual(9)
       expect(combat.hero["health"]).toEqual(91)
     });
-    it("success - monster misses dice roll, no health lost", function() {
+    it("miss - monster misses dice roll, no health lost", function() {
       spyOn(dice, "rollDice").and.returnValue(3);
       combat.attackSetup([hero, monster])
       expect(combat.monsterAttack()).toEqual("miss")

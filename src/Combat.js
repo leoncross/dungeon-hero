@@ -1,41 +1,40 @@
-var Dice = require('../src/Dice');
-function Combat (dice = new Dice) {
+var Dice = require('../src/Dice')
+function Combat (dice = new Dice()) {
   this.dice = dice
 };
 
 Combat.prototype.attackSetup = function (attackers) {
   this.hero = attackers[0]
   this.monster = attackers[1]
-  this.attackSquence()
   return attackers
 }
 
-Combat.prototype.attackSquence = function () {
+Combat.prototype.attackSequence = function () {
   this.playerAttack()
   this.monsterAttack()
 }
 
 Combat.prototype.playerAttack = function () {
-  roll = this.diceRoll()
-  minRoll = this.monster["armor"] + this.monster["dexterity"]
+  let roll = this.diceRoll()
+  let minRoll = this.monster['armor'] + this.monster['dexterity']
   if (roll > minRoll) {
-    damage = this.hero["strength"] + this.weaponDamage(this.hero)
-    this.monster["health"] -= damage
+    let damage = this.hero['strength'] + this.weaponDamage(this.hero)
+    this.monster['health'] -= damage
     return damage
   } else {
-    return "miss"
+    return 'miss'
   }
 }
 
 Combat.prototype.monsterAttack = function () {
-  roll = this.diceRoll()
-  minRoll = this.hero["armor"] + this.hero["dexterity"]
+  let roll = this.diceRoll()
+  let minRoll = this.hero['armor'] + this.hero['dexterity']
   if (roll > minRoll) {
-    damage = this.monster["strength"] + this.weaponDamage(this.hero)
-    this.hero["health"] -= damage
+    let damage = this.monster['strength'] + this.weaponDamage(this.hero)
+    this.hero['health'] -= damage
     return damage
   } else {
-    return "miss"
+    return 'miss'
   }
 }
 
@@ -44,7 +43,7 @@ Combat.prototype.diceRoll = function () {
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
-  result = this.dice.rollBetween(attacker["weaponMin"], attacker["weaponMax"])
+  let result = this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
   return result
 }
 
