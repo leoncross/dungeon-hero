@@ -1,29 +1,26 @@
 {
   "name": "team-rogue",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)",
   "main": "index.js",
+  "dependencies": {
+    "jasmine": "^3.3.1"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "istanbul": "^0.4.5"
+  },
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leoncross/team-rogue.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/leoncross/team-rogue/issues"
   },
-  "homepage": "https://github.com/leoncross/team-rogue#readme",
-  "devDependencies": {
-    "coveralls": "^3.0.2",
-    "karma": "^3.1.4",
-    "karma-coverage": "^1.1.2",
-    "karma-coveralls": "^2.1.0",
-    "karma-jasmine": "^2.0.1",
-    "karma-phantomjs-launcher": "^1.0.4"
-  },
-  "dependencies": {}
+  "homepage": "https://github.com/leoncross/team-rogue#readme"
 }
