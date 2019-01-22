@@ -1,0 +1,16 @@
+body {
+  background-color: black;
+  color: grey;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.main {
+  width: 904px;
+  height: 584px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url(./../images/dh-ui-main.png);
+}

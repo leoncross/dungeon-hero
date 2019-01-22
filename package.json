@@ -16,11 +16,11 @@
     "jasmine": "^3.3.1"
   },
   "scripts": {
-   "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-   "coverage": "istanbul cover --include-all-sources jasmine",
-   "lint": "npx eslint src;exit 0",
-   "lintfix": "npx eslint src --fix;exit 0",
-   "jasmine": "jasmine"
+    "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coverage": "istanbul cover --include-all-sources jasmine",
+    "lint": "npx eslint src;exit 0",
+    "lintfix": "npx eslint src --fix;exit 0",
+    "jasmine": "jasmine"
   },
   "repository": {
     "type": "git",
