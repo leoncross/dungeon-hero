@@ -22,4 +22,4 @@ Monster.prototype.receiveDamage = function (monster, damage) {
   monster['health'] -= damage
 };
 
-module.exports = Monster;
+module.exports = Monster

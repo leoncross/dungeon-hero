@@ -1,21 +1,21 @@
 
-function Player() {
+function Player () {
   this.hero = {
-               name: 'Player',
-               health: 100,
-               armor: 10,
-               armorName: 'Plate',
-               weaponName: 'Dagger',
-               weaponMin: 5,
-               weaponMax: 20,
-               strength: 10,
-               dexterity: 10
+              name: 'Player',
+              health: 100,
+              armor: 10,
+              armorName: 'Plate',
+              weaponName: 'Dagger',
+              weaponMin: 5,
+              weaponMax: 20,
+              strength: 10,
+              dexterity: 10
               }
 };
 
 Player.prototype.hero = function () {
-  return this.hero;
-}
+  return this.hero
+};
 
 Player.prototype.changeName = function (name) {
   this.hero['name'] = name
@@ -33,8 +33,4 @@ Player.prototype.receiveDamage = function (damage) {
   this.hero['health'] -= damage
 };
 
-
-
-
-
-module.exports = Player;
+module.exports = Player
