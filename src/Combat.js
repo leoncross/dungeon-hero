@@ -11,13 +11,6 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSquence = function () {
-  while (true)
-    if (this.hero["health"] <= 0) {
-      break
-    }
-    if (this.monster["health"] <= 0) {
-      break
-    }    
   this.playerAttack()
   this.monsterAttack()
 }
