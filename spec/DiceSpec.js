@@ -19,8 +19,13 @@ describe('Dice', function(){
   });
 
   it('return a number between two given values', function(){
-    spyOn(Math, 'random').and.returnValue(5)
+    spyOn(Math, 'random').and.returnValue(5);
     spyOn(dice, 'rollBetween').and.returnValue(5);
     expect(dice.rollBetween(4,8)).toBe(5);
+  });
+
+  it('return a number between two given values', function(){
+    dice.rollBetween(4,8);
+    expect(dice._arrayOfNumbers).toEqual([ 4, 5, 6, 7, 8 ]);
   });
 });

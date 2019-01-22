@@ -1,5 +1,6 @@
 'use strict';
 function Dice(){
+  this._arrayOfNumbers = [];
 }
 
 Dice.prototype.rollDice = function () {
@@ -7,10 +8,11 @@ Dice.prototype.rollDice = function () {
 }
 
 Dice.prototype.rollBetween = function (min, max) {
-  var arrayOfNumbers = []
+  this._arrayOfNumbers = [];
   for(min; min<=max; min++){
-    arrayOfNumbers.push(min);
+    this._arrayOfNumbers.push(min);
   }
-  return arrayOfNumbers[Math.floor((Math.random() * arrayOfNumbers.length))]
+  return this._arrayOfNumbers[Math.floor((Math.random() * this._arrayOfNumbers.length))];
 };
+
 module.exports = Dice;
