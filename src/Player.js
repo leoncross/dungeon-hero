@@ -29,6 +29,12 @@ Player.prototype.changeArmor = function (armorName) {
   this.hero['armorName'] = armorName
 };
 
+Player.prototype.receiveDamage = function (damage) {
+  this.hero['health'] -= damage
+};
+
+
+
 
 
 module.exports = Player;
