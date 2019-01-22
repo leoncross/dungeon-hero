@@ -6,8 +6,10 @@ function Combat (dice = new Dice()) {
 };
 
 Combat.prototype.attackSetup = function (attackers) {
+  // loop here until winner
   this.hero = attackers[0]
   this.monster = attackers[1]
+  // this.attackSquence()
   return attackers
 }
 

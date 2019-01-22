@@ -25,3 +25,9 @@ istanbul cover --include-all-sources jasmine
 ```
 istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 ```
+
+
+
+
+missing:
+from combat, updater the player class with new player stats(health)
