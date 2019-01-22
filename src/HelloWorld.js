@@ -4,4 +4,4 @@ HelloWorld.prototype.hello = function () {
   return 'Hello World!'
 }
 
-module.exports = HelloWorld
+module.exports = HelloWorld;
