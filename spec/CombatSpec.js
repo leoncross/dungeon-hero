@@ -13,9 +13,6 @@ describe('Combat',function(){
   var hero =   {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
   var monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
 
-  // var hurtHero =   {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
-  // var hurtMonster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
-
   describe("#attackSetup", function() {
     it("returns player and monster", function() {
       expect(combat.attackSetup([hero, monster])).toEqual([hero, monster])
@@ -44,7 +41,6 @@ describe('Combat',function(){
       expect(combat.monster["health"]).toEqual(100)
     });
   });
-
   describe("#monsterAttack", function() {
     it("success - player loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
