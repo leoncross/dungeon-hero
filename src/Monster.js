@@ -19,10 +19,7 @@ Monster.prototype.selectMonster = function (monster) {
 
 Monster.prototype.receiveDamage = function (monster, damage) {
   monster['health'] -= damage
-<<<<<<< HEAD
   return monster['health']
-=======
->>>>>>> f8c28391481ff34ae948b7bd7a8d4a452b12ed4c
 }
 
 module.exports = Monster
