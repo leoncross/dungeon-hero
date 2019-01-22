@@ -17,23 +17,43 @@ body {
   background-repeat: no-repeat;
 }
 
+.rule-break {
+  height: 5px;
+  width: 205px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-image: url(./../images/console.png);
+
+}
+
 .console {
   margin-top: 100px;
   margin-left: 40px;
-  padding: 10px;
-  height: 428px;
-  width: 258px;
+  padding: 15px;
+  height: 418px;
+  width: 248px;
   background-image: url(./../images/console.png);
   background-repeat: no-repeat;
   float: left;
-  font-size: 20px;
+  font-size: 18px;
 }
 
-.column-2 {
-  margin-top: 102px;
-  height: 500px;
-  width: 265px;
+.alignleft {
+	float: left;
+  color: orange;
+}
 
+.alignright {
+	float: right;
+}
+
+.character-sheet {
+  margin-top: 102px;
+  height: 428px;
+  width: 205px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 24px;
   float: left;
 }
 
