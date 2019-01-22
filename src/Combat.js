@@ -10,7 +10,7 @@ Combat.prototype.attackSetup = function (attackers) {
   this.hero = attackers[0]
   this.monster = attackers[1]
   // this.attackSquence()
-  return attackers
+  return this.hero
 }
 
 Combat.prototype.attackSequence = function () {
