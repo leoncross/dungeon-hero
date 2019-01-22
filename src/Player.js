@@ -19,6 +19,10 @@ Player.prototype.changeName = function (name) {
   this.hero['name'] = name
 };
 
+Player.prototype.changeWeapon = function (weaponName) {
+  this.hero['weaponName'] = weaponName
+};
+
 
 
 module.exports = Player;

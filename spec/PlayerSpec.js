@@ -3,15 +3,19 @@
 describe('Player', function () {
   var Player = require('../src/Player');
 
-  beforeEach(function () {
-
-  });
+  var player = new Player();
 
   it('can change his name', function () {
-    var player = new Player();
     player.changeName('Aragorn');
     expect(player.hero['name']).toEqual('Aragorn');
   });
+
+  it('can change his weapon', function () {
+    player.changeWeapon('Throwing Axe');
+    expect(player.hero['weaponName']).toEqual('Throwing Axe');
+  });
+
+
 
 
 });
