@@ -13,4 +13,44 @@ body {
   margin-left: auto;
   margin-right: auto;
   background-image: url(./../images/dh-ui-main.png);
+  background-repeat: no-repeat;
+}
+
+.column-1 {
+  margin-top: 100px;
+  margin-left: 40px;
+  padding: 10px;
+  height: 428px;
+  width: 258px;
+  background-image: url(./../images/console.png);
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.column-2 {
+  margin-top: 102px;
+  height: 500px;
+  width: 265px;
+
+  float: left;
+}
+
+.column-3 {
+  margin-top: 102px;
+
+  padding: 10px;
+  height: 295px;
+  width: 258px;
+  background-image: url(./../images/portrait.png);
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.monster-name {
+  margin-top: 10px;
+  height: 32px;
+  width: 278px;
+  background-image: url(./../images/portrait-name.png);
+  background-repeat: no-repeat;
+  float: left;
 }

@@ -1,3 +1,5 @@
+'use strict'
+// comment var Dice = require('../src/Dice') to use console
 var Dice = require('../src/Dice')
 function Combat (dice = new Dice()) {
   this.dice = dice
