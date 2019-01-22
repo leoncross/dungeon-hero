@@ -1,6 +1,7 @@
 body {
   background-color: black;
-  color: grey;
+  color: white;
+  font-family: 'VT323', monospace;
 }
 
 .container {
@@ -16,7 +17,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.column-1 {
+.console {
   margin-top: 100px;
   margin-left: 40px;
   padding: 10px;
@@ -25,6 +26,7 @@ body {
   background-image: url(./../images/console.png);
   background-repeat: no-repeat;
   float: left;
+  font-size: 20px;
 }
 
 .column-2 {
@@ -35,12 +37,11 @@ body {
   float: left;
 }
 
-.column-3 {
+.portrait {
   margin-top: 102px;
-
-  padding: 10px;
-  height: 295px;
-  width: 258px;
+  text-align: center;
+  height: 315px;
+  width: 278px;
   background-image: url(./../images/portrait.png);
   background-repeat: no-repeat;
   float: left;
@@ -48,8 +49,11 @@ body {
 
 .monster-name {
   margin-top: 10px;
-  height: 32px;
-  width: 278px;
+  padding: 5px;
+  height: 22px;
+  width: 268px;
+  text-align: center;
+  font-size: 22px;
   background-image: url(./../images/portrait-name.png);
   background-repeat: no-repeat;
   float: left;
