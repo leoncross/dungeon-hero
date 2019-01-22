@@ -1,4 +1,3 @@
-'use strict';
 describe('Combat',function(){
 
   beforeEach(function() {
