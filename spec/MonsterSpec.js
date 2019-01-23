@@ -6,14 +6,8 @@ describe('Monster', function () {
 
   beforeEach(function() {
     monster = new Monster();
-    zombie = {
-              name: 'zombie',
-              health: 100,
-              armor: 6,
-              strength: 7,
-              dexterity: 5
-              }
-    });
+    zombie = { name: 'zombie', health: 100, armor: 0, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 }
+  });
 
 
   it('selects a monster', function () {

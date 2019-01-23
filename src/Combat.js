@@ -6,16 +6,20 @@ function Combat (dice = new Dice()) {
 };
 
 Combat.prototype.attackSetup = function (attackers) {
-  // loop here until winner
   this.hero = attackers[0]
   this.monster = attackers[1]
-  // this.attackSquence()
   return attackers
 }
 
 Combat.prototype.attackSequence = function () {
-  this.playerAttack()
-  this.monsterAttack()
+  if (this.healthChecker() === true) {
+    let result = []
+    result.push(this.playerAttack())
+    result.push(this.monsterAttack())
+    return result
+  } else {
+    return "you have died"
+  }
 }
 
 Combat.prototype.playerAttack = function () {
@@ -34,11 +38,19 @@ Combat.prototype.monsterAttack = function () {
   let roll = this.diceRoll()
   let minRoll = this.hero['armor'] + this.hero['dexterity']
   if (roll > minRoll) {
-    let damage = this.monster['strength'] + this.weaponDamage(this.hero)
+    let damage = this.monster['strength'] + this.weaponDamage(this.monster)
     this.hero['health'] -= damage
     return damage
   } else {
     return 'miss'
+  }
+}
+
+Combat.prototype.healthChecker = function () {
+  if (this.hero['health'] > 0) {
+    return true
+  } else {
+    return false
   }
 }
 

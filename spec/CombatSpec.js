@@ -12,6 +12,7 @@ describe('Combat',function(){
 
     hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
     monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
 
   });
 
@@ -30,6 +31,21 @@ describe('Combat',function(){
       expect(combat.monster).toEqual(monster)
     });
   });
+
+  describe("#attackSquence", function() {
+    it("runs through monster and player attacks if player healthy", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, monster])
+      expect(combat.attackSequence()).toEqual([8, 9])
+    })
+    it("player is dead, fails to make further attacks", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([leonDeadPlayer, monster])
+      expect(combat.attackSequence()).toEqual('you have died')
+    })
+  })
   describe("#playerAttack", function() {
     it("success - monster loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
@@ -71,6 +87,16 @@ describe('Combat',function(){
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, monster])
       expect(combat.weaponDamage(hero)).toEqual(5)
+    });
+  });
+  describe("#healthChecker", function() {
+    it("returns true for player being full health", function() {
+      combat.attackSetup([hero, monster])
+      expect(combat.healthChecker()).toEqual(true)
+    });
+    it("returns false for player being dead", function() {
+      combat.attackSetup([leonDeadPlayer, monster])
+      expect(combat.healthChecker()).toEqual(false)
     });
   });
 });
