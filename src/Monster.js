@@ -14,7 +14,7 @@ Monster.prototype.returnMonster = function (monster) {
 }
 
 Monster.prototype.receiveDamage = function (monster, damage) {
-  returnMonster = this.returnMonster(monster)
+  let returnMonster = this.returnMonster(monster)
   returnMonster['health'] -= damage
   return returnMonster['health']
 }
