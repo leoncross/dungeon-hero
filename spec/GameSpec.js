@@ -1,6 +1,13 @@
 describe('Game', function(){
 
   var Game = require('../src/Game');
+  var player
+  var monster
+  var combat
+  var dice
+  var room
+  var game
+
 
   beforeEach(function() {
 
@@ -24,11 +31,18 @@ describe('Game', function(){
     RoomStub.prototype = {
     };
 
-    var player = PlayerStub()
-    var monster = MonstersStub()
-    var combat = CombatStub()
-    var dice = DiceStub()
-    var game = new Game()
+    player = PlayerStub()
+    monster = MonstersStub()
+    combat = CombatStub()
+    dice = DiceStub()
+    room = RoomStub()
+    game = new Game()
 
+  });
+
+  describe('initialize', function(){
+    it('the object to exist', function(){
+      expect(game).toBeDefined();
+    });
   });
 });
