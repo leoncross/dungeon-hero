@@ -1,7 +1,6 @@
 'use strict'
-// comment var Dice = require('../src/Dice') to use console
-var Dice = require('../src/Dice')
-function Combat (dice = new Dice()) {
+
+function Combat (dice) {
   this.dice = dice
 };
 
@@ -12,7 +11,7 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSequence = function () {
-  if (this.healthChecker() === true) {
+  if (this.healthChecker()) {
     let result = []
     result.push(this.heroAttack())
     result.push(this.monsterAttack())
@@ -59,8 +58,7 @@ Combat.prototype.diceRoll = function () {
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
-  let result = this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
-  return result
+  return this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
 }
 
 module.exports = Combat
