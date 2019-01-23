@@ -5,6 +5,13 @@
     <title>Dungeon Hero</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./static/stylesheets/game.css">
+    <script src="./src/Combat.js"></script>
+    <script src="./src/Dice.js"></script>
+    <script src="./src/Rooms.js"></script>
+    <script src="./src/Monster.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="./src/interface.js"></script>
   </head>
   <body>
     <div class="container">
@@ -27,30 +34,38 @@
         </div>
         <div class="character-sheet">
           <span class='alignleft'>NAME:</span>
-          <span class='alignright'>ARAGORN</span>
+          <span id='playerName' class='alignright'></span>
           <div style="clear: both;"></div>
-          <div class="rule-break">
-
-          </div>
+          <div class="rule-break"></div>
           <span class='alignleft'>HEALTH:</span>
-          <span class='alignright'>0</span>
+          <span id='playerHealth' class='alignright'></span>
           <div style="clear: both;"></div>
           <span class='alignleft'>ARMOUR:</span>
-          <span class='alignright'>16</span>
+          <span id='playerArmour' class='alignright'></span>
           <div style="clear: both;"></div>
           <span class='alignleft'>STRENGTH:</span>
-          <span class='alignright'>3</span>
+          <span id='playerStrength' class='alignright'></span>
           <div style="clear: both;"></div>
           <span class='alignleft'>DEXTERITY:</span>
-          <span class='alignright'>5</span>
+          <span id='playerDexterity' class='alignright'></span>
           <div style="clear: both;"></div>
         </div>
         <div class="portrait">
           <img src="./static/images/zombie.png" alt="zombie">
         </div>
-        <div class="monster-name">
+        <div id='monsterName' class="monster-name">
           RAVENOUS ZOMBIE
         </div>
+        <div class="monster-stats">
+          <span class='alignleft'>HEALTH:</span>
+          <span id='monsterHealth' class='alignright'></span>
+          <div style="clear: both;"></div>
+          <span class='alignleft'>ARMOUR:</span>
+          <span id='monsterArmour' class='alignright'></span>
+        </div>
+      </div>
+      <div class="attack">
+        <input id="playerAttack" type="image" src="./static/images/attack.png" />
       </div>
     </div>
   </body>

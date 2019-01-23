@@ -16,8 +16,10 @@ Combat.prototype.attackSequence = function () {
     result.push(this.heroAttack())
     result.push(this.monsterAttack())
     return result
-  } else {
+  } else if (this.hero['health'] <= 0) {
     return 'you have died'
+  } else if (this.monster['health'] <= 0) {
+    return 'the monster has died'
   }
 }
 
@@ -46,12 +48,8 @@ Combat.prototype.monsterAttack = function () {
 }
 
 Combat.prototype.healthChecker = function () {
-  if (this.hero['health'] > 0) {
-    return true
-  } else {
-    return false
+  return ((this.hero['health'] > 0 && this.monster['health'] > 0) ? true : false);
   }
-}
 
 Combat.prototype.diceRoll = function () {
   return this.dice.rollDice()
