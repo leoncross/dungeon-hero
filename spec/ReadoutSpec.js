@@ -21,14 +21,14 @@ describe('Readout', function () {
       readout.clearReadout()
       readout.addReadout('test message')
       readout.addReadout('test message')
-      expect(readout.readoutArray).toEqual(['test message\n', 'test message\n'])
+      expect(readout.readoutArray).toEqual(['test message<br>', 'test message<br>'])
     });
   });
   describe('#printReadout', function () {
     it('prints to readout', function () {
       readout.clearReadout()
       readout.addReadout('test message')
-      expect(readout.printReadout()).toEqual(['test message\n'])
+      expect(readout.printReadout()).toEqual(['test message<br>'])
     });
   });
 });
