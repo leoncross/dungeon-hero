@@ -12,7 +12,7 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSequence = function () {
-  if (this.healthChecker() === true) {
+  if (this.healthChecker()) {
     let result = []
     result.push(this.heroAttack())
     result.push(this.monsterAttack())
