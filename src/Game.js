@@ -2,12 +2,12 @@ function Game () {
 }
 
 Game.prototype.initialize = function (playerName) {
-  console.log(playerName)
-  let Player
-  let Monster
-  let Dice
-  let Combat
-  let Rooms
+  // let Player
+  // let Monster
+  // let Dice
+  // let Combat
+  // let Rooms
+  // let Readout
   this.player = new Player()
   this.player.changeName(playerName)
   this.hero = this.player.returnHero()
@@ -17,10 +17,10 @@ Game.prototype.initialize = function (playerName) {
   this.readout = new Readout()
   this.combat = new Combat(this.dice, this.readout)
   this.room = new Rooms(this.player, this.monster, this.combat, this.readout)
-  this.startGame()
+  this.play()
 }
 
-Game.prototype.startGame = function () {
+Game.prototype.play = function () {
   this.room.roomSelect()
 }
 

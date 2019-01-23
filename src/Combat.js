@@ -18,8 +18,10 @@ Combat.prototype.attackSequence = function () {
     result.push(this.monsterAttack())
     return result
   } else if (this.hero['health'] <= 0) {
+    this.readout.addReadout('<span style="color: red;">You have died</span>')
     return 'you have died'
   } else if (this.monster['health'] <= 0) {
+    this.readout.addReadout('<span style="color: green;">You have won!</span>')
     return 'the monster has died'
   }
 }
