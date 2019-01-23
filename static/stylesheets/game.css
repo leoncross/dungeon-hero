@@ -1,6 +1,7 @@
 body {
   background-color: black;
-  color: grey;
+  color: white;
+  font-family: 'VT323', monospace;
 }
 
 .container {
@@ -16,31 +17,51 @@ body {
   background-repeat: no-repeat;
 }
 
-.column-1 {
+.rule-break {
+  height: 5px;
+  width: 205px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-image: url(./../images/console.png);
+
+}
+
+.console {
   margin-top: 100px;
   margin-left: 40px;
-  padding: 10px;
-  height: 428px;
-  width: 258px;
+  padding: 15px;
+  height: 418px;
+  width: 248px;
   background-image: url(./../images/console.png);
   background-repeat: no-repeat;
   float: left;
+  font-size: 18px;
 }
 
-.column-2 {
-  margin-top: 102px;
-  height: 500px;
-  width: 265px;
+.alignleft {
+	float: left;
+  color: orange;
+}
 
+.alignright {
+	float: right;
+}
+
+.character-sheet {
+  margin-top: 102px;
+  height: 428px;
+  width: 205px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 24px;
   float: left;
 }
 
-.column-3 {
+.portrait {
   margin-top: 102px;
-
-  padding: 10px;
-  height: 295px;
-  width: 258px;
+  text-align: center;
+  height: 315px;
+  width: 278px;
   background-image: url(./../images/portrait.png);
   background-repeat: no-repeat;
   float: left;
@@ -48,8 +69,11 @@ body {
 
 .monster-name {
   margin-top: 10px;
-  height: 32px;
-  width: 278px;
+  padding: 5px;
+  height: 22px;
+  width: 268px;
+  text-align: center;
+  font-size: 22px;
   background-image: url(./../images/portrait-name.png);
   background-repeat: no-repeat;
   float: left;
