@@ -10,7 +10,7 @@ Combat.prototype.attackSetup = function (attackers) {
   this.hero = attackers[0]
   this.monster = attackers[1]
   // this.attackSquence()
-  return this.hero
+  return attackers
 }
 
 Combat.prototype.attackSequence = function () {
@@ -34,11 +34,19 @@ Combat.prototype.monsterAttack = function () {
   let roll = this.diceRoll()
   let minRoll = this.hero['armor'] + this.hero['dexterity']
   if (roll > minRoll) {
-    let damage = this.monster['strength'] + this.weaponDamage(this.hero)
+    let damage = this.monster['strength'] + this.weaponDamage(this.monster)
     this.hero['health'] -= damage
     return damage
   } else {
     return 'miss'
+  }
+}
+
+Combat.prototype.healthChecker = function () {
+  if (this.hero['health'] > 0) {
+    return true
+  } else {
+    return false
   }
 }
 

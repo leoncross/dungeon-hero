@@ -12,6 +12,7 @@ describe('Combat',function(){
 
     hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
     monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
 
   });
 
@@ -71,6 +72,16 @@ describe('Combat',function(){
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, monster])
       expect(combat.weaponDamage(hero)).toEqual(5)
+    });
+  });
+  describe("#healthChecker", function() {
+    it("returns true for player being full health", function() {
+      combat.attackSetup([hero, monster])
+      expect(combat.healthChecker()).toEqual(true)
+    });
+    it("returns false for player being dead", function() {
+      combat.attackSetup([leonDeadPlayer, monster])
+      expect(combat.healthChecker()).toEqual(false)
     });
   });
 });
