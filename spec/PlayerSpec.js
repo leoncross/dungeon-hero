@@ -20,6 +20,11 @@ describe('Player', function () {
     expect(player.hero['armorName']).toEqual('Full Plate');
   });
 
+  it('can receive a damage', function () {
+    player.receiveDamage(20);
+    expect(player.hero['health']).toEqual(80);
+  });
+
 
 
 
