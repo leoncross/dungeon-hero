@@ -17,10 +17,10 @@ Game.prototype.initialize = function (playerName) {
   this.readout = new Readout()
   this.combat = new Combat(this.dice, this.readout)
   this.room = new Rooms(this.player, this.monster, this.combat, this.readout)
-  this.startGame()
+  this.play()
 }
 
-Game.prototype.startGame = function () {
+Game.prototype.play = function () {
   this.room.roomSelect()
 }
 
