@@ -14,6 +14,9 @@ $(document).ready(function () {
 
   $('#monsterHealth').text(game.monster.returnMonster('zombie').health)
 
+  $('#monsterArmor').text(game.monster.returnMonster('zombie').armor)
+
+
   $('#output').html(game.readout.printReadout())
 
   $('#playerAttack').click(function () {
@@ -29,6 +32,9 @@ $(document).ready(function () {
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
 
     $('#monsterHealth').text(game.monster.returnMonster('zombie').health)
+
+    $('#monsterArmor').text(game.monster.returnMonster('zombie').armor)
+
 
     $('#output').html(game.readout.printReadout())
   })

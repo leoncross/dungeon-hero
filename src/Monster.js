@@ -1,7 +1,7 @@
 
 function Monster () {
   this.monsters = [
-    { name: 'zombie', health: 30, armor: 0, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 }
+    { name: 'zombie', health: 30, armor: 1, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 }
   ]
 };
 
