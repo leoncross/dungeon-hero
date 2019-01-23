@@ -31,6 +31,21 @@ describe('Combat',function(){
       expect(combat.monster).toEqual(monster)
     });
   });
+
+  describe("#attackSquence", function() {
+    it("runs through monster and player attacks if player healthy", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, monster])
+      expect(combat.attackSequence()).toEqual([8, 9])
+    })
+    it("player is dead, fails to make further attacks", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([leonDeadPlayer, monster])
+      expect(combat.attackSequence()).toEqual('you have died')
+    })
+  })
   describe("#playerAttack", function() {
     it("success - monster loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
