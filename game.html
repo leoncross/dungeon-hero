@@ -5,6 +5,13 @@
     <title>Dungeon Hero</title>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./static/stylesheets/game.css">
+    <script src="./src/Combat.js"></script>
+    <script src="./src/Dice.js"></script>
+    <script src="./src/Rooms.js"></script>
+    <script src="./src/Monster.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="./src/interface.js"></script>
   </head>
   <body>
     <div class="container">
@@ -49,6 +56,16 @@
         <div id='monsterName' class="monster-name">
           RAVENOUS ZOMBIE
         </div>
+        <div class="monster-stats">
+          <span class='alignleft'>HEALTH:</span>
+          <span id='monsterHealth' class='alignright'></span>
+          <div style="clear: both;"></div>
+          <span class='alignleft'>ARMOUR:</span>
+          <span id='monsterArmour' class='alignright'></span>
+        </div>
+      </div>
+      <div class="attack">
+        <input id="playerAttack" type="image" src="./static/images/attack.png" />
       </div>
     </div>
   </body>
