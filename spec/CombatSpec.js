@@ -1,14 +1,22 @@
 describe('Combat',function(){
 
   beforeEach(function() {
+    
     function DiceStub() {}
     DiceStub.prototype = {
       rollDice() {},
       rollBetween() {}
     };
+
+    function ReadoutStub() {}
+    ReadoutStub.prototype = {
+      addReadout() {}
+    };
+
     var Combat = require('../src/Combat');
+    readout = new ReadoutStub
     dice = new DiceStub
-    combat = new Combat(dice)
+    combat = new Combat(dice, readout)
 
     hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
     monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
@@ -62,6 +70,7 @@ describe('Combat',function(){
     it("success - monster loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(readout, "addReadout").and.returnValue('nothing');
       combat.attackSetup([hero, monster])
       expect(combat.heroAttack()).toEqual(8)
       expect(combat.monster["health"]).toEqual(92)

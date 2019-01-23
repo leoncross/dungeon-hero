@@ -10,6 +10,8 @@ describe('Game', function() {
   var Player = require('../../src/Player');
   var Monster = require('../../src/Monster');
   var Rooms = require('../../src/Rooms');
+  var Readout = require('../../src/Readout');
+
 
   beforeEach(function() {
     function DiceStub() {}
@@ -23,8 +25,9 @@ describe('Game', function() {
     monster = new Monster();
     zombie = monster.returnMonster('zombie');
     dice = new DiceStub
-    combat = new Combat(dice)
-    room = new Rooms(player,monster,combat);
+    readout = new Readout
+    combat = new Combat(dice, readout)
+    room = new Rooms(player, monster, combat, readout);
 
   });
 

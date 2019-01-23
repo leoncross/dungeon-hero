@@ -27,7 +27,8 @@ body {
 
 }
 
-.console {
+.readout {
+  text-align: left;
   margin-top: 100px;
   margin-left: 40px;
   padding: 15px;
