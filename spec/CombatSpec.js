@@ -37,6 +37,12 @@ describe('Combat',function(){
       combat.attackSetup([hero, monster])
       expect(combat.attackSequence()).toEqual([8, 9])
     })
+    it("both players miss", function() {
+      spyOn(dice, "rollDice").and.returnValue(1);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, monster])
+      expect(combat.attackSequence()).toEqual(['miss', 'miss'])
+    })
     it("player is dead, fails to make further attacks", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
@@ -74,6 +80,16 @@ describe('Combat',function(){
       expect(combat.hero["health"]).toEqual(100)
     });
   });
+  describe("#healthChecker", function() {
+    it("returns true for player being full health", function() {
+      combat.attackSetup([hero, monster])
+      expect(combat.healthChecker()).toEqual(true)
+    });
+    it("returns false for player being dead", function() {
+      combat.attackSetup([leonDeadPlayer, monster])
+      expect(combat.healthChecker()).toEqual(false)
+    });
+  });
   describe("#diceRoll", function() {
     it("returns a dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(9);
@@ -85,16 +101,6 @@ describe('Combat',function(){
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, monster])
       expect(combat.weaponDamage(hero)).toEqual(5)
-    });
-  });
-  describe("#healthChecker", function() {
-    it("returns true for player being full health", function() {
-      combat.attackSetup([hero, monster])
-      expect(combat.healthChecker()).toEqual(true)
-    });
-    it("returns false for player being dead", function() {
-      combat.attackSetup([leonDeadPlayer, monster])
-      expect(combat.healthChecker()).toEqual(false)
     });
   });
 });
