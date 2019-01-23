@@ -6,26 +6,31 @@ describe('Monster', function () {
 
   beforeEach(function() {
     monster = new Monster();
-    zombie = {
-              name: 'zombie',
-              health: 100,
-              armor: 6,
-              strength: 7,
-              dexterity: 5
-              }
+    this.monsters = [
+      { name: 'zombie', health: 30, armor: 0, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 },
+    ]
+
+  });
+
+  describe('#returnMonster', function () {
+    it('selects a monster', function () {
+      expect(monster.returnMonster('zombie')).toEqual({ name: 'zombie', health: 30, armor: 0, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 })
     });
-
-
-  it('selects a monster', function () {
-    expect(monster.selectMonster('zombie')).toEqual(zombie)
   });
-
-  it('monster can receive a damage', function () {
-    monster.selectMonster('zombie')
-    monster.receiveDamage(zombie, 20)
-    expect(zombie['health']).toEqual(80);
+  describe('#recieveDamage', function () {
+    it('monster can receive a damage', function () {
+      monster.returnMonster('zombie')
+      monster.receiveDamage('zombie', 8)
+      var zombie = monster.returnMonster('zombie')
+      expect(zombie['health']).toEqual(22);
+    });
   });
-
-
-
+  describe('#returnAttribute', function () {
+    it('returns various attributes', function () {
+      var zombie = monster.returnMonster('zombie')
+      expect(monster.returnAttribute(zombie, 'health')).toEqual(30);
+      expect(monster.returnAttribute(zombie, 'armor')).toEqual(0);
+      expect(monster.returnAttribute(zombie, 'strength')).toEqual(3);
+    });
+  });
 });

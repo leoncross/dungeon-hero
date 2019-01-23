@@ -3,18 +3,22 @@ function Player () {
   this.hero = {
     name: 'Player',
     health: 100,
-    armor: 10,
+    armor: 1,
     armorName: 'Plate',
     weaponName: 'Dagger',
     weaponMin: 5,
-    weaponMax: 20,
-    strength: 10,
-    dexterity: 10
+    weaponMax: 8,
+    strength: 2,
+    dexterity: 1
   }
 };
 
-Player.prototype.hero = function () {
+Player.prototype.returnHero = function () {
   return this.hero
+}
+
+Player.prototype.returnAttribute = function (type) {
+  return this.hero[type]
 }
 
 Player.prototype.changeName = function (name) {

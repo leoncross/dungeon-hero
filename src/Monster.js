@@ -1,15 +1,11 @@
 
 function Monster () {
-  this.monsters = [{
-    name: 'zombie',
-    health: 100,
-    armor: 6,
-    strength: 7,
-    dexterity: 5
-  }]
+  this.monsters = [
+    { name: 'zombie', health: 30, armor: 0, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 }
+  ]
 };
 
-Monster.prototype.selectMonster = function (monster) {
+Monster.prototype.returnMonster = function (monster) {
   for (var i = 0; i < this.monsters.length; i++) {
     if (this.monsters[i]['name'] === monster) {
       return this.monsters[i]
@@ -18,8 +14,14 @@ Monster.prototype.selectMonster = function (monster) {
 }
 
 Monster.prototype.receiveDamage = function (monster, damage) {
-  monster['health'] -= damage
-  return monster['health']
+  let returnMonster = this.returnMonster(monster)
+  returnMonster['health'] -= damage
+  return returnMonster['health']
+}
+
+Monster.prototype.returnAttribute = function (monster, type) {
+  this.returnMonster(monster)
+  return monster[type]
 }
 
 module.exports = Monster
