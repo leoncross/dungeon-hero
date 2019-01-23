@@ -17,6 +17,10 @@ Player.prototype.returnHero = function () {
   return this.hero
 }
 
+Player.prototype.returnAttribute = function (type) {
+  return this.hero[type]
+}
+
 Player.prototype.changeName = function (name) {
   this.hero['name'] = name
 }

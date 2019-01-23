@@ -1,5 +1,5 @@
 
-function Game () {
+function Game (playerName) {
 
 };
 
