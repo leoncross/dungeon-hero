@@ -5,11 +5,11 @@ function Readout () {
 Readout.prototype.addReadout = function (message) {
   let messageFormatted = message + '<br>'
   this.readoutArray.push(messageFormatted)
-};
+}
 
 Readout.prototype.printReadout = function () {
   return this.readoutArray
-};
+}
 
 Readout.prototype.clearReadout = function () {
   this.readoutArray = []
