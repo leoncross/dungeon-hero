@@ -1,17 +1,15 @@
-$(document).ready(function(){
+$(document).ready(function () {
+  $('#playerName').text(player.returnAttribute('name'))
 
-  $('#playerName').text(player.returnAttribute('name'));
+  $('#playerHealth').text(player.returnAttribute('health'))
 
-  $('#playerHealth').text(player.returnAttribute('health'));
+  $('#playerArmour').text(player.returnAttribute('armour'))
 
-  $('#playerArmour').text(player.returnAttribute('armour'));
+  $('#playerStrength').text(player.returnAttribute('strength'))
 
-  $('#playerStrength').text(player.returnAttribute('strength'));
+  $('#playerDexterity').text(player.returnAttribute('dexterity'))
 
-  $('#playerDexterity').text(player.returnAttribute('dexterity'));
-
-  $('#playerAttack').click(function(){
-    combat.attackSequence();
+  $('#playerAttack').click(function () {
+    combat.attackSequence()
   })
-
 })
