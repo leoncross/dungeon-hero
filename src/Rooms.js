@@ -6,10 +6,13 @@ function Rooms (player, monsters, combat) {
 
 Rooms.prototype.roomSelect = function () {
   this.zombieRoom()
-  if (this.healthChecker()) {
+  let zombie = this.monsters.returnMonster('zombie')
+  if (zombie['health'] <= 0 && this.healthChecker()) {
     return this.escapeRoom()
-  } else {
+  } else if (zombie['health'] > 0 && !this.healthChecker()){
     return this.loseGame()
+  } else {
+    return this.zombieRoom()
   }
 }
 

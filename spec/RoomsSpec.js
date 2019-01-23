@@ -5,12 +5,6 @@ describe('Rooms',function(){
   var monsters
   var combat
   var player
-  var leonPlayer
-  var lucaMonster
-  var lucaAlmostDeadMonster
-  var leonHurtPlayer
-  var leonDeadPlayer
-
 
   beforeEach(function() {
     function PlayerStub() {}
