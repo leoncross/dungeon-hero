@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   $('#monsterHealth').text(game.monster.returnMonster('zombie').health);
 
-  $('#console').text(game.console.printConsole());
+  $('#output').text(game.readout.printReadout());
 
 
   $('#playerAttack').click(function(){
