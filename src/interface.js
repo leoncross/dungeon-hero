@@ -1,17 +1,36 @@
+game = new Game()
+game.initialize('ARAGORN')
+
 $(document).ready(function(){
 
-  $('#playerName').text(player.returnAttribute('name'));
+  $('#playerName').text(game.player.returnAttribute('name'));
 
-  $('#playerHealth').text(player.returnAttribute('health'));
+  $('#playerHealth').text(game.player.returnAttribute('health'));
 
-  $('#playerArmour').text(player.returnAttribute('armour'));
+  $('#playerArmour').text(game.player.returnAttribute('armor'));
 
-  $('#playerStrength').text(player.returnAttribute('strength'));
+  $('#playerStrength').text(game.player.returnAttribute('strength'));
 
-  $('#playerDexterity').text(player.returnAttribute('dexterity'));
+  $('#playerDexterity').text(game.player.returnAttribute('dexterity'));
+
+  $('#monsterHealth').text(game.monster.returnMonster('zombie').health);
+
+  $('#console').text(game.console.printConsole());
+
 
   $('#playerAttack').click(function(){
-    combat.attackSequence();
+    game.combat.attackSequence();
+    $('#playerName').text(game.player.returnAttribute('name'));
+
+    $('#playerHealth').text(game.player.returnAttribute('health'));
+
+    $('#playerArmour').text(game.player.returnAttribute('armor'));
+
+    $('#playerStrength').text(game.player.returnAttribute('strength'));
+
+    $('#playerDexterity').text(game.player.returnAttribute('dexterity'));
+
+    $('#monsterHealth').text(game.monster.returnMonster('zombie').health);
   })
 
 })
