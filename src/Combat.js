@@ -53,7 +53,7 @@ Combat.prototype.monsterAttack = function () {
 }
 
 Combat.prototype.healthChecker = function () {
-  return (!!((this.hero['health'] > 0 && this.monster['health'] > 0)))
+  return ((this.hero['health'] > 0 && this.monster['health'] > 0))
 }
 
 Combat.prototype.diceRoll = function () {

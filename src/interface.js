@@ -1,37 +1,35 @@
 game = new Game()
 game.initialize('ARAGORN')
 
-$(document).ready(function(){
+$(document).ready(function () {
+  $('#playerName').text(game.player.returnAttribute('name'))
 
-  $('#playerName').text(game.player.returnAttribute('name'));
+  $('#playerHealth').text(game.player.returnAttribute('health'))
 
-  $('#playerHealth').text(game.player.returnAttribute('health'));
+  $('#playerArmour').text(game.player.returnAttribute('armor'))
 
-  $('#playerArmour').text(game.player.returnAttribute('armor'));
+  $('#playerStrength').text(game.player.returnAttribute('strength'))
 
-  $('#playerStrength').text(game.player.returnAttribute('strength'));
+  $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
 
-  $('#playerDexterity').text(game.player.returnAttribute('dexterity'));
+  $('#monsterHealth').text(game.monster.returnMonster('zombie').health)
 
-  $('#monsterHealth').text(game.monster.returnMonster('zombie').health);
+  $('#output').html(game.readout.printReadout())
 
-  $('#output').html(game.readout.printReadout());
+  $('#playerAttack').click(function () {
+    game.combat.attackSequence()
+    $('#playerName').text(game.player.returnAttribute('name'))
 
+    $('#playerHealth').text(game.player.returnAttribute('health'))
 
-  $('#playerAttack').click(function(){
-    game.combat.attackSequence();
-    $('#playerName').text(game.player.returnAttribute('name'));
+    $('#playerArmour').text(game.player.returnAttribute('armor'))
 
-    $('#playerHealth').text(game.player.returnAttribute('health'));
+    $('#playerStrength').text(game.player.returnAttribute('strength'))
 
-    $('#playerArmour').text(game.player.returnAttribute('armor'));
+    $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
 
-    $('#playerStrength').text(game.player.returnAttribute('strength'));
+    $('#monsterHealth').text(game.monster.returnMonster('zombie').health)
 
-    $('#playerDexterity').text(game.player.returnAttribute('dexterity'));
-
-    $('#monsterHealth').text(game.monster.returnMonster('zombie').health);
-
-    $('#output').html(game.readout.printReadout());
+    $('#output').html(game.readout.printReadout())
   })
 })
