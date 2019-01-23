@@ -1,8 +1,7 @@
-function Rooms (monsters, player, combat) {
-  this.monsters = monsters
-  this.player = player
-  this.combat = combat
-  this.hero = {}
+function Rooms (player, monsters, combat) {
+  this.player = player // class
+  this.monsters = monsters // class
+  this.combat = combat // class
 }
 
 Rooms.prototype.roomSelect = function () {
@@ -15,10 +14,9 @@ Rooms.prototype.roomSelect = function () {
 }
 
 Rooms.prototype.zombieRoom = function () {
-  let player = this.player.returnPlayer()
-  let monster = this.monsters.returnMonster('zombie')
-  this.hero = this.combat.attackSetup([player, monster])
-  return this.hero
+  let hero = this.player.returnHero()
+  let zombie = this.monsters.returnMonster('zombie')
+  return this.combat.attackSetup([hero, zombie])
 }
 
 Rooms.prototype.loseGame = function () {
@@ -30,8 +28,8 @@ Rooms.prototype.escapeRoom = function () {
 }
 
 Rooms.prototype.healthChecker = function () {
-  this.hero = this.player.returnPlayer()
-  if (this.hero['health'] > 0) {
+  let hero = this.player.returnHero()
+  if (hero['health'] > 0) {
     return true
   } else {
     return false

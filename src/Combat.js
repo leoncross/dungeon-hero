@@ -14,15 +14,15 @@ Combat.prototype.attackSetup = function (attackers) {
 Combat.prototype.attackSequence = function () {
   if (this.healthChecker() === true) {
     let result = []
-    result.push(this.playerAttack())
+    result.push(this.heroAttack())
     result.push(this.monsterAttack())
     return result
   } else {
-    return "you have died"
+    return 'you have died'
   }
 }
 
-Combat.prototype.playerAttack = function () {
+Combat.prototype.heroAttack = function () {
   let roll = this.diceRoll()
   let minRoll = this.monster['armor'] + this.monster['dexterity']
   if (roll > minRoll) {

@@ -13,7 +13,7 @@ function Player () {
   }
 };
 
-Player.prototype.hero = function () {
+Player.prototype.returnHero = function () {
   return this.hero
 }
 

@@ -7,23 +7,25 @@ describe('Rooms',function(){
   var player
 
   beforeEach(function() {
+    function PlayerStub() {}
+    PlayerStub.prototype = {
+      returnHero() {}
+    };
+
     function MonstersStub() {}
     MonstersStub.prototype = {
       returnMonster() {}
     };
-    function PlayerStub() {}
-    PlayerStub.prototype = {
-      returnPlayer() {}
-    };
+
     function CombatStub() {}
     CombatStub.prototype = {
       attackSetup() {}
     };
+    player = new PlayerStub()
     monsters = new MonstersStub()
     combat = new CombatStub()
-    player = new PlayerStub()
 
-    room = new Rooms(monsters, player, combat)
+    room = new Rooms(player, monsters, combat)
 
     leonPlayer = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
     lucaMonster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
@@ -34,7 +36,7 @@ describe('Rooms',function(){
 
   describe("#roomSelect", function() {
     it("wins game after beating zombie room", function() {
-      spyOn(player, "returnPlayer").and.returnValue(leonPlayer);
+      spyOn(player, "returnHero").and.returnValue(leonPlayer);
       spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
       spyOn(combat, "attackSetup").and.returnValue(leonHurtPlayer);
       room.roomSelect()
@@ -43,7 +45,7 @@ describe('Rooms',function(){
       expect(room.escapeRoom()).toEqual('you have won!')
     });
     it("loses game after zombie loss", function() {
-      spyOn(player, "returnPlayer").and.returnValue(leonDeadPlayer);
+      spyOn(player, "returnHero").and.returnValue(leonDeadPlayer);
       spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
       spyOn(combat, "attackSetup").and.returnValue(leonDeadPlayer);
       room.roomSelect()
@@ -55,7 +57,7 @@ describe('Rooms',function(){
 
   describe("#zombieRoom", function() {
     it("returns player after Zombie Room", function() {
-      spyOn(player, "returnPlayer").and.returnValue(leonPlayer);
+      spyOn(player, "returnHero").and.returnValue(leonPlayer);
       spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
       spyOn(combat, "attackSetup").and.returnValue(leonHurtPlayer);
       room.zombieRoom()
@@ -65,11 +67,11 @@ describe('Rooms',function(){
 
   describe("#healthChecker", function() {
     it("returns true for player being full health", function() {
-      spyOn(player, "returnPlayer").and.returnValue(leonPlayer);
+      spyOn(player, "returnHero").and.returnValue(leonPlayer);
       expect(room.healthChecker()).toEqual(true)
     });
     it("returns false for player being dead", function() {
-      spyOn(player, "returnPlayer").and.returnValue(leonDeadPlayer);
+      spyOn(player, "returnHero").and.returnValue(leonDeadPlayer);
       expect(room.healthChecker()).toEqual(false)
     });
   });

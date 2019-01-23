@@ -16,8 +16,6 @@ describe('Combat',function(){
 
   });
 
-
-
   describe("#attackSetup", function() {
     it("returns player and monster", function() {
       expect(combat.attackSetup([hero, monster])).toEqual([hero, monster])
@@ -46,18 +44,18 @@ describe('Combat',function(){
       expect(combat.attackSequence()).toEqual('you have died')
     })
   })
-  describe("#playerAttack", function() {
+  describe("#heroAttack", function() {
     it("success - monster loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, monster])
-      expect(combat.playerAttack()).toEqual(8)
+      expect(combat.heroAttack()).toEqual(8)
       expect(combat.monster["health"]).toEqual(92)
     });
     it("miss - player misses dice roll, no health lost", function() {
       spyOn(dice, "rollDice").and.returnValue(1);
       combat.attackSetup([hero, monster])
-      expect(combat.playerAttack()).toEqual("miss")
+      expect(combat.heroAttack()).toEqual("miss")
       expect(combat.monster["health"]).toEqual(100)
     });
   });
