@@ -14,8 +14,14 @@ Monster.prototype.returnMonster = function (monster) {
 }
 
 Monster.prototype.receiveDamage = function (monster, damage) {
-  monster['health'] -= damage
-  return monster['health']
+  returnMonster = this.returnMonster(monster)
+  returnMonster['health'] -= damage
+  return returnMonster['health']
+}
+
+Monster.prototype.returnAttribute = function (monster, type) {
+  this.returnMonster(monster)
+  return monster[type]
 }
 
 module.exports = Monster
