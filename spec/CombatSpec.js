@@ -21,6 +21,7 @@ describe('Combat',function(){
     hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
     monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
     leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
 
   });
 
@@ -57,7 +58,14 @@ describe('Combat',function(){
       combat.attackSetup([leonDeadPlayer, monster])
       expect(combat.attackSequence()).toEqual('you have died')
     })
+    it("monster is dead, fails to make further attacks", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, deadMonster])
+      expect(combat.attackSequence()).toEqual('the monster has died')
+    })
   })
+
   describe("#heroAttack", function() {
     it("success - monster loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
@@ -74,6 +82,7 @@ describe('Combat',function(){
       expect(combat.monster["health"]).toEqual(100)
     });
   });
+
   describe("#monsterAttack", function() {
     it("success - player loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
@@ -89,6 +98,7 @@ describe('Combat',function(){
       expect(combat.hero["health"]).toEqual(100)
     });
   });
+
   describe("#healthChecker", function() {
     it("returns true for player being full health", function() {
       combat.attackSetup([hero, monster])
@@ -99,12 +109,14 @@ describe('Combat',function(){
       expect(combat.healthChecker()).toEqual(false)
     });
   });
+
   describe("#diceRoll", function() {
     it("returns a dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(9);
       expect(combat.diceRoll()).toEqual(9)
     });
   });
+
   describe("#weaponDamage", function() {
     it("returns a number between the weaponDamage", function() {
       spyOn(dice, "rollBetween").and.returnValue(5);

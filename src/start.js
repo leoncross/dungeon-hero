@@ -7,5 +7,4 @@ $(document).ready(function(){
     game.initialize(playerName)
     $( "#startGame" ).submit();
   });
-
 })

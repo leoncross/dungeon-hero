@@ -33,7 +33,5 @@ $(document).ready(function(){
     $('#monsterHealth').text(game.monster.returnMonster('zombie').health);
 
     $('#output').html(game.readout.printReadout());
-
   })
-
 })
