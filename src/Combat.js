@@ -58,8 +58,7 @@ Combat.prototype.diceRoll = function () {
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
-  let result = this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
-  return result
+  return this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
 }
 
 module.exports = Combat

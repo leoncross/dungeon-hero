@@ -4,7 +4,7 @@ function Dice () {
 }
 
 Dice.prototype.rollDice = function () {
-  return this.rollBetween(1, 20)
+  return Math.floor((Math.random() * 20) + 1)
 }
 
 Dice.prototype.rollBetween = function (min, max) {
