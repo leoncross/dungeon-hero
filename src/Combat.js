@@ -1,7 +1,8 @@
 'use strict'
 
-function Combat (dice) {
+function Combat (dice, readout) {
   this.dice = dice
+  this.readout = readout
 };
 
 Combat.prototype.attackSetup = function (attackers) {
@@ -27,8 +28,10 @@ Combat.prototype.heroAttack = function () {
   if (roll > minRoll) {
     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
     this.monster['health'] -= damage
+    this.readout.addReadout('<span style="color: green;">You</span> attack for ' + damage + ' damage')
     return damage
   } else {
+    this.readout.addReadout('<span style="color: green;">You</span> attack misses')
     return 'miss'
   }
 }
@@ -39,8 +42,10 @@ Combat.prototype.monsterAttack = function () {
   if (roll > minRoll) {
     let damage = this.monster['strength'] + this.weaponDamage(this.monster)
     this.hero['health'] -= damage
+    this.readout.addReadout(`<span style="color: red;">${this.monster['name']}</span> attacks you for ` + damage + ' damage')
     return damage
   } else {
+    this.readout.addReadout(`<span style="color: red;">${this.monster['name']}</span> attack misses`)
     return 'miss'
   }
 }

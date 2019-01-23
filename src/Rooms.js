@@ -1,7 +1,8 @@
-function Rooms (player, monsters, combat) {
+function Rooms (player, monsters, combat, readout) {
   this.player = player // class
   this.monsters = monsters // class
   this.combat = combat // class
+  this.readout = readout // class
 }
 
 Rooms.prototype.roomSelect = function () {
