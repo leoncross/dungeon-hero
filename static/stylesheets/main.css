@@ -1,4 +1,17 @@
 body {
   background-color: black;
-  color: grey;
+  color: white;
+  font-family: 'VT323', monospace;
+}
+
+.header {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.enter {
+  font-size: 30px;
+  text-align: center;
 }
