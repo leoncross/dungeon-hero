@@ -15,8 +15,11 @@ describe('Player', function () {
     it('change weapon', function () {
       var player = new Player();
       expect(player.hero['weaponName']).toEqual('Dagger');
-      player.changeWeapon('Throwing Axe');
+      player.changeWeapon('Throwing Axe', 10, 15);
       expect(player.hero['weaponName']).toEqual('Throwing Axe');
+      expect(player.hero['weaponMin']).toEqual(10);
+      expect(player.hero['weaponMax']).toEqual(15);
+
     });
   });
 
@@ -24,12 +27,13 @@ describe('Player', function () {
     it('change armor', function () {
       var player = new Player();
       expect(player.hero['armorName']).toEqual('Plate');
-      player.changeArmor('Full Plate');
+      player.changeArmor(5, 'Full Plate');
       expect(player.hero['armorName']).toEqual('Full Plate');
+      expect(player.hero['armor']).toEqual(5);
     });
   });
 
-  describe('#changeWeapon', function() {
+  describe('#recieveDamage', function() {
     it('receive a damage', function () {
       var player = new Player();
       expect(player.hero['health']).toEqual(100);
