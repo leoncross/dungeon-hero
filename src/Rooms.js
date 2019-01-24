@@ -25,8 +25,13 @@ Rooms.prototype.zombieRoom = function () {
 
 Rooms.prototype.monsterRoom = function (difficulty) {
   let hero = this.player.returnHero()
-  let enemy = this.monsters.randomizeMonster(difficulty)
-  return this.combat.attackSetup([hero, enemy])
+  this.enemy = this.monsters.randomizeMonster(difficulty)
+  this.monsterInRoom()
+  return this.combat.attackSetup([hero, this.enemy])
+}
+
+Rooms.prototype.monsterInRoom = function () {
+  return this.enemy
 }
 
 Rooms.prototype.loseGame = function () {
@@ -37,6 +42,7 @@ Rooms.prototype.escapeRoom = function () {
   return 'you have won!'
 }
 
+// to be deleted
 Rooms.prototype.healthChecker = function () {
   let hero = this.player.returnHero()
   return hero['health'] > 0
