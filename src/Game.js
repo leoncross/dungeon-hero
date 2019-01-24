@@ -21,7 +21,9 @@ Game.prototype.initialize = function (playerName) {
 }
 
 Game.prototype.play = function () {
-  this.room.roomSelect()
+  // while (this.hero['health'] > 0) {
+    this.room.roomSelect()
+  // }
 }
 
 module.exports = Game

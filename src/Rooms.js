@@ -21,6 +21,8 @@ Rooms.prototype.zombieRoom = function () {
   let hero = this.player.returnHero()
   let zombie = this.monsters.returnMonster('zombie')
   return this.combat.attackSetup([hero, zombie])
+  // pause for attack sequence
+  // select new room
 }
 
 Rooms.prototype.loseGame = function () {
