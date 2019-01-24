@@ -9,7 +9,8 @@ function Player () {
     weaponMin: 5,
     weaponMax: 8,
     strength: 2,
-    dexterity: 1
+    dexterity: 1,
+    healthPotions: 2
   }
 };
 

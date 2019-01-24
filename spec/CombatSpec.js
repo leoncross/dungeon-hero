@@ -30,9 +30,10 @@ describe('Combat',function(){
     dice = new DiceStub
     combat = new Combat(player, dice, readout)
 
-    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
-    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2}
+    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
 
   });
@@ -118,13 +119,26 @@ describe('Combat',function(){
     });
   });
 
-  describe("#heroInsaneAttack", function() {
-    it("success - monster loses health with dice roll", function() {
+  describe("#healthPotion", function() {
+    it("it restores 25 hp", function() {
+      combat.attackSetup([leonHurtPlayer, monster])
+      expect(leonHurtPlayer['health']).toBeLessThan(48)
+      combat.healthPotion()
+      expect(leonHurtPlayer['health']).toBeGreaterThan(47)
+      // expect(leonHurtPlayer['health']).toBe(72)
+    });
+
+    it("sit restores up to 100hp", function() {
       combat.attackSetup([hero, monster])
-      hero['health'] = 55
-      combat.potion()
-      expect(hero['health']).toBeGreaterThan(55)
-      expect(hero['health']).toBe(80)
+      hero['health'] = 80
+      combat.healthPotion()
+      expect(hero['health']).toBeLessThan(101)
+    });
+
+    it("reduces the amount of healthPotions", function() {
+      combat.attackSetup([hero, monster])
+      combat.healthPotion()
+      expect(hero['healthPotions']).toBeLessThan(2)
     });
   });
 

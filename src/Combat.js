@@ -56,8 +56,13 @@ Combat.prototype.heroInsaneAttack = function () {
 }
 
 
-Combat.prototype.potion = function () {
-  this.hero['health'] += 25
+Combat.prototype.healthPotion = function () {
+  if(this.hero['health'] + 25 >= 100){
+    this.hero['health'] = 100
+  } else {
+    this.hero['health'] += 25
+  }
+  this.hero['healthPotions']--
   return this.hero['health']
 }
 
