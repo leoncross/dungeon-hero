@@ -9,8 +9,8 @@ $(document).ready(function () {
   $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
   $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
   $('#armourType').text(game.player.returnAttribute('armorName'))
-  $('#monsterHealth').text(game.monster.returnMonster('zombie').health)
-  $('#monsterArmor').text(game.monster.returnMonster('zombie').armor)
+  $('#monsterHealth').text(game.monster.returnMonster('Zombie').health)
+  $('#monsterArmor').text(game.monster.returnMonster('Zombie').armor)
   $('#output').html(game.readout.printReadout())
 
   $('#playerAttack').click(function () {
@@ -22,8 +22,8 @@ $(document).ready(function () {
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
     $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
     $('#armourType').text(game.player.returnAttribute('armorName'))
-    $('#monsterHealth').text(game.monster.returnMonster('zombie').health)
-    $('#monsterArmor').text(game.monster.returnMonster('zombie').armor)
+    $('#monsterHealth').text(game.monster.returnMonster('Zombie').health)
+    $('#monsterArmor').text(game.monster.returnMonster('Zombie').armor)
     $('#output').html(game.readout.printReadout())
   })
 })
