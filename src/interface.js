@@ -10,6 +10,21 @@ $(document).ready(function () {
     updateInterface();
   })
 
+  $('#insaneAttack').click(function () {
+    game.combat.attackSequence()
+    updateInterface();
+  })
+
+  $('#parryAttack').click(function () {
+    game.combat.attackSequence()
+    updateInterface();
+  })
+
+  $('#healthPotion').click(function () {
+    game.combat.attackSequence()
+    updateInterface();
+  })
+
 })
 
 function updateInterface() {
