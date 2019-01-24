@@ -61,10 +61,11 @@ body {
 
 .player-portrait {
   margin-top: 16px;
-  height: 220px;
+  padding-top: 6px;
+  height: 214px;
   width: 208px;
   background-image: url(./../images/player-portrait.png);
-  /* background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
 
 .portrait {
