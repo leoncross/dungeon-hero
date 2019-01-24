@@ -14,7 +14,8 @@ describe('Rooms',function(){
 
     function MonstersStub() {}
     MonstersStub.prototype = {
-      returnMonster() {}
+      returnMonster() {},
+      randomizeMonster() {}
     };
 
     function CombatStub() {}
@@ -63,11 +64,20 @@ describe('Rooms',function(){
     it("returns player after Zombie Room", function() {
       spyOn(player, "returnHero").and.returnValue(leonPlayer);
       spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
-      spyOn(combat, "attackSetup").and.returnValue(leonHurtPlayer);
+      spyOn(combat, "attackSetup").and.returnValue(leonPlayer);
       room.zombieRoom()
-      expect(room.zombieRoom()).toEqual(leonHurtPlayer)
+      expect(room.zombieRoom()).toEqual(leonPlayer)
     });
   });
+
+  describe('#monsterRoom', function() {
+    it('it returns an easy monster (zombie)', function() {
+      spyOn(player, "returnHero").and.returnValue(leonPlayer);
+      spyOn(monsters, "randomizeMonster").and.returnValue(lucaMonster);
+      spyOn(combat, "attackSetup").and.returnValue(leonPlayer);
+      expect(room.monsterRoom('easy')).toEqual(leonPlayer)
+    })
+  })
 
   describe("#healthChecker", function() {
     it("returns true for player being full health", function() {
