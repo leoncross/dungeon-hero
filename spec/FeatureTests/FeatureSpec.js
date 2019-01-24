@@ -1,3 +1,4 @@
+/* eslint-disable */
 
 describe('Game', function() {
   var player
@@ -34,14 +35,14 @@ describe('Game', function() {
   describe('Player', function() {
     it('expect player to be created', function() {
       expect(player).toBeDefined();
-    });
+    })
     it('expect hero to be created', function() {
       expect(hero).toBeDefined();
-    });
+    })
     it('return the hero', function() {
-      expect(player.returnHero()).toEqual(hero);
-    });
-  });
+      expect(player.returnHero()).toEqual(hero)
+    })
+  })
 
   describe('Monster', function() {
     it('expect monster to be created', function() {

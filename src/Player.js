@@ -30,11 +30,15 @@ Player.prototype.changeName = function (name) {
   this.hero['name'] = name
 }
 
-Player.prototype.changeWeapon = function (weaponName) {
+Player.prototype.changeWeapon = function (weaponName, weaponMin, weaponMax) {
   this.hero['weaponName'] = weaponName
+  this.hero['weaponMin'] = weaponMin
+  this.hero['weaponMax'] = weaponMax
+
 }
 
-Player.prototype.changeArmor = function (armorName) {
+Player.prototype.changeArmor = function (armor, armorName) {
+  this.hero['armor'] = armor
   this.hero['armorName'] = armorName
 }
 
