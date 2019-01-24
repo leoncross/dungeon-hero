@@ -14,14 +14,14 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSequence = function () {
-  if (this.enemy['health'] < 0) return
+  if (this.enemy['health'] < 1) return
   if (this.player.status()) this.heroAttack()
   if (this.enemy['health'] > 0) this.monsterAttack()
   if (this.player.status() === false) {
     this.readout.playerLoses()
     return 'you have died'
   }
-  if (this.enemy['health'] <= 0) {
+  if (this.enemy['health'] < 1) {
     this.readout.playerWins()
     return 'the monster has died'
   }
@@ -33,6 +33,7 @@ Combat.prototype.heroAttack = function () {
   if (roll > minRoll) {
     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
     this.enemy['health'] -= damage
+    if (this.enemy['health'] < 1) this.enemy['health'] = 0
     this.readout.playerDamage(damage)
     return damage
   } else {
@@ -95,7 +96,7 @@ Combat.prototype.monsterAttack = function () {
     let damage = this.enemy['strength'] + this.weaponDamage(this.enemy)
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
-    return damage
+     return damage
   } else {
     this.readout.monsterMisses(this.enemy['name'])
     return 'miss'
