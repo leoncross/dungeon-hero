@@ -23,10 +23,10 @@ describe('Game', function() {
     player = new Player();
     hero = player.returnHero();
     monster = new Monster();
-    zombie = monster.returnMonster('zombie');
+    enemy = monster.returnMonster('Zombie');
     dice = new DiceStub
     readout = new Readout
-    combat = new Combat(player, dice, readout)
+    combat = new Combat(player, monster, dice, readout)
     room = new Rooms(player, monster, combat, readout);
 
   });
@@ -48,10 +48,10 @@ describe('Game', function() {
       expect(monster).toBeDefined();
     });
     it('expect zombie to be created', function() {
-      expect(zombie).toBeDefined();
+      expect(enemy).toBeDefined();
     });
     it('return the monster', function() {
-      expect(monster.returnMonster('zombie')).toEqual(zombie);
+      expect(monster.returnMonster('Zombie')).toEqual(enemy);
     });
   });
 
@@ -68,61 +68,33 @@ describe('Game', function() {
     it('combat sequence - hero receive damage', function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
-      combat.attackSetup([hero, zombie]);
+      combat.attackSetup([hero, enemy]);
       combat.attackSequence();
       expect(hero['health']).toBe(92)
     });
     it('combat sequence - zombie receive damage', function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
-      combat.attackSetup([hero, zombie]);
+      combat.attackSetup([hero, enemy]);
       combat.attackSequence();
-      expect(zombie['health']).toBe(23)
+      expect(enemy['health']).toBe(23)
     });
     it('combat sequence - zombie is killed', function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(8);
-      combat.attackSetup([hero, zombie]);
+      combat.attackSetup([hero, enemy]);
       combat.attackSequence();
       combat.attackSequence();
       combat.attackSequence();
-      expect(zombie['health']).toBe(0)
+      expect(enemy['health']).toBe(0)
     });
     it('combat sequence - hero is killed', function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(7);
       hero['health'] = 10
-      combat.attackSetup([hero, zombie]);
+      combat.attackSetup([hero, enemy]);
       combat.attackSequence();
       expect(hero['health']).toBe(0)
     });
   });
-
-  describe('Rooms', function() {
-    it('expect room to be created', function() {
-      expect(room).toBeDefined();
-    });
-    it('combat sequence - zombie is killed', function() {
-      spyOn(dice, "rollDice").and.returnValue(15);
-      spyOn(dice, "rollBetween").and.returnValue(8);
-      combat.attackSetup([hero, zombie]);
-      combat.attackSequence();
-      combat.attackSequence();
-      combat.attackSequence();
-      expect(room.escapeRoom()).toEqual('you have won!')
-    });
-    it('combat sequence - hero is killed', function() {
-      spyOn(dice, "rollDice").and.returnValue(15);
-      spyOn(dice, "rollBetween").and.returnValue(7);
-      hero['health'] = 10
-      combat.attackSetup([hero, zombie]);
-      combat.attackSequence();
-      expect(room.roomSelect()).toEqual('you have lost')
-    });
-  });
-
-
-
-
-
 });

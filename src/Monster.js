@@ -11,15 +11,14 @@ function Monster () {
   ]
 };
 
-
 Monster.prototype.randomizeMonster = function (difficulty) {
-  randMonster = []
+  var randMonster = []
   for (var i = 0; i < this.monsters.length; i++) {
     if (this.monsters[i]['difficulty'] === difficulty) {
       randMonster.push(this.monsters[i])
     }
   }
-  return randMonster[Math.floor(Math.random()*randMonster.length)];
+  return randMonster[Math.floor(Math.random() * randMonster.length)]
 }
 
 Monster.prototype.returnMonster = function (name) {
