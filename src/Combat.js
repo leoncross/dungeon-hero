@@ -13,15 +13,15 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSequence = function () {
-  if (this.monster['health'] < 0) return 'you have won'
+  if (this.monster['health'] < 0) return
   if (this.player.status()) this.heroAttack()
-  if (this.monster['health'] >= 1) this.monsterAttack()
+  if (this.monster['health'] > 0) this.monsterAttack()
   if (this.player.status() === false) {
-    this.readout.addReadout('<span style="color: red;">You have died</span>')
+    this.readout.playerLoses()
     return 'you have died'
   }
   if (this.monster['health'] <= 0) {
-    this.readout.addReadout('<span style="color: green;">You have won!</span>')
+    this.readout.playerWins()
     return 'the monster has died'
   }
 }

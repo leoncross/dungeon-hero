@@ -8,7 +8,7 @@ Readout.prototype.addReadout = function (message) {
 }
 
 Readout.prototype.monsterDamage = function (monster, damage) {
-  this.addReadout('<span style="color: red;">' + monster + '</span> attacks you for'  + damage + 'damage')
+  this.addReadout('<span style="color: red;">' + monster + '</span> attacks you for ' + damage + ' damage')
 }
 
 Readout.prototype.monsterMisses = function (monster) {
@@ -21,6 +21,14 @@ Readout.prototype.playerDamage = function (damage) {
 
 Readout.prototype.playerMisses = function () {
   this.addReadout('<span style="color: green;">Your</span> attack misses')
+}
+
+Readout.prototype.playerWins = function () {
+  this.addReadout('<span style="color: green;">You have won!</span>')
+}
+
+Readout.prototype.playerLoses = function () {
+  this.addReadout('<span style="color: red;">You have died</span>')
 }
 
 Readout.prototype.printReadout = function () {

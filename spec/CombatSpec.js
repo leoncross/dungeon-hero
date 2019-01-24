@@ -19,7 +19,9 @@ describe('Combat',function(){
       monsterDamage() {},
       monsterMisses() {},
       playerDamage() {},
-      playerMisses() {}
+      playerMisses() {},
+      playerWins() {},
+      playerLoses() {}
     };
 
     var Combat = require('../src/Combat');
@@ -65,7 +67,6 @@ describe('Combat',function(){
       combat.attackSetup([hero, monster])
       expect(combat.heroAttack()).toEqual('miss')
       expect(combat.monsterAttack()).toEqual('miss')
-
     })
     it("player is dead, fails to make further attacks", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
