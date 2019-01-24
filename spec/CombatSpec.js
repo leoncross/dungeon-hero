@@ -119,12 +119,38 @@ describe('Combat',function(){
     });
   });
 
+  describe("#heroBlock", function() {
+    // it("success - monster loses health with dice roll", function() {
+    //   spyOn(dice, "rollDice").and.returnValue(15);
+    //   spyOn(dice, "rollBetween").and.returnValue(5);
+    //   spyOn(readout, "addReadout").and.returnValue('nothing');
+    //   combat.attackSetup([hero, monster])
+    //   expect(combat.heroInsaneAttack()).toEqual(12)
+    //   expect(combat.monster["health"]).toEqual(88)
+    // });
+    // it("miss - player misses dice roll, no health lost", function() {
+    //   spyOn(dice, "rollDice").and.returnValue(12);
+    //   combat.attackSetup([hero, monster])
+    //   expect(combat.heroInsaneAttack()).toEqual("miss")
+    //   expect(combat.monster["health"]).toEqual(100)
+    // });
+  });
+
   describe("#healthPotion", function() {
     it("it restores 25 hp", function() {
       combat.attackSetup([leonHurtPlayer, monster])
       expect(leonHurtPlayer['health']).toBeLessThan(48)
       combat.healthPotion()
       expect(leonHurtPlayer['health']).toBeGreaterThan(47)
+      // expect(leonHurtPlayer['health']).toBe(72)
+    });
+    it("it restores 25 hp", function() {
+      combat.attackSetup([leonHurtPlayer, monster])
+      expect(leonHurtPlayer['health']).toBeLessThan(48)
+      combat.healthPotion()
+      combat.healthPotion()
+      combat.healthPotion()
+      expect(combat.healthPotion()).toEqual('ooooopsieeee:)')
       // expect(leonHurtPlayer['health']).toBe(72)
     });
 

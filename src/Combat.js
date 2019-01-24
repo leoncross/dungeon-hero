@@ -55,15 +55,34 @@ Combat.prototype.heroInsaneAttack = function () {
   }
 }
 
+// Combat.prototype.heroBlock = function () {
+//   let roll = this.dice.rollDice() - 5
+//   let minRoll = this.monster['armor'] + this.monster['dexterity']
+//   if (roll > minRoll) {
+//     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
+//     damage += damage/2
+//     this.monster['health'] -= damage
+//     this.readout.playerDamage(damage)
+//     return damage
+//   } else {
+//     this.readout.playerMisses()
+//     return 'miss'
+//   }
+// }
+
 
 Combat.prototype.healthPotion = function () {
-  if(this.hero['health'] + 25 >= 100){
-    this.hero['health'] = 100
+  if(this.hero['healthPotions']>0){
+    if(this.hero['health'] + 25 >= 100){
+      this.hero['health'] = 100
+    } else {
+      this.hero['health'] += 25
+    }
+    this.hero['healthPotions']--
+    return this.hero['health']
   } else {
-    this.hero['health'] += 25
+    return 'you ran out of potions:)'
   }
-  this.hero['healthPotions']--
-  return this.hero['health']
 }
 
 Combat.prototype.monsterAttack = function () {
