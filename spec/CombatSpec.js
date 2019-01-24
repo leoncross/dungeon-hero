@@ -101,6 +101,33 @@ describe('Combat',function(){
     });
   });
 
+  describe("#heroInsaneAttack", function() {
+    it("success - monster loses health with dice roll", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(readout, "addReadout").and.returnValue('nothing');
+      combat.attackSetup([hero, monster])
+      expect(combat.heroInsaneAttack()).toEqual(12)
+      expect(combat.monster["health"]).toEqual(88)
+    });
+    it("miss - player misses dice roll, no health lost", function() {
+      spyOn(dice, "rollDice").and.returnValue(12);
+      combat.attackSetup([hero, monster])
+      expect(combat.heroInsaneAttack()).toEqual("miss")
+      expect(combat.monster["health"]).toEqual(100)
+    });
+  });
+
+  describe("#heroInsaneAttack", function() {
+    it("success - monster loses health with dice roll", function() {
+      combat.attackSetup([hero, monster])
+      hero['health'] = 55
+      combat.potion()
+      expect(hero['health']).toBeGreaterThan(55)
+      expect(hero['health']).toBe(80)
+    });
+  });
+
   describe("#monsterAttack", function() {
     it("success - player loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);

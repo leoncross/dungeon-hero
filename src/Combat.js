@@ -40,10 +40,31 @@ Combat.prototype.heroAttack = function () {
   }
 }
 
-Combat.prototype.monsterAttack = function () {
-  let roll = this.dice.rollDice()
-  let minRoll = this.hero['armor'] + this.hero['dexterity']
+Combat.prototype.heroInsaneAttack = function () {
+  let roll = this.dice.rollDice() - 5
+  let minRoll = this.monster['armor'] + this.monster['dexterity']
   if (roll > minRoll) {
+    let damage = this.hero['strength'] + this.weaponDamage(this.hero)
+    damage += damage/2
+    this.monster['health'] -= damage
+    this.readout.playerDamage(damage)
+    return damage
+  } else {
+    this.readout.playerMisses()
+    return 'miss'
+  }
+}
+
+
+Combat.prototype.potion = function () {
+  this.hero['health'] += 25
+  return this.hero['health']
+}
+
+Combat.prototype.monsterAttack = function () {
+  let decreasedRoll = this.dice.rollDice()
+  let minRoll = this.hero['armor'] + this.hero['dexterity']
+  if (decreasedRoll > minRoll) {
     let damage = this.monster['strength'] + this.weaponDamage(this.monster)
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.monster['name'], damage)
