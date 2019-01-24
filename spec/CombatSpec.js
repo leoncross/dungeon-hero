@@ -35,9 +35,10 @@ describe('Combat',function(){
     dice = new DiceStub
     combat = new Combat(player, monster, dice, readout)
 
-    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
-    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2}
+    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
 
   });
@@ -103,6 +104,81 @@ describe('Combat',function(){
       combat.attackSetup([hero, monster])
       expect(combat.heroAttack()).toEqual("miss")
       expect(combat.enemy["health"]).toEqual(100)
+    });
+  });
+
+  describe("#heroInsaneAttack", function() {
+    it("success - monster loses health with dice roll", function() {
+      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(readout, "addReadout").and.returnValue('nothing');
+      combat.attackSetup([hero, monster])
+      expect(combat.heroInsaneAttack()).toEqual(12)
+      expect(combat.enemy["health"]).toEqual(88)
+    });
+    it("miss - player misses dice roll, no health lost", function() {
+      spyOn(dice, "rollDice").and.returnValue(12);
+      combat.attackSetup([hero, monster])
+      expect(combat.heroInsaneAttack()).toEqual("miss")
+      expect(combat.enemy["health"]).toEqual(100)
+    });
+  });
+
+  describe("#heroBlock", function() {
+    // it("success - monster loses health with dice roll", function() {
+    //   spyOn(dice, "rollDice").and.returnValue(15);
+    //   spyOn(dice, "rollBetween").and.returnValue(5);
+    //   spyOn(readout, "addReadout").and.returnValue('nothing');
+    //   combat.attackSetup([hero, monster])
+    //   expect(combat.heroInsaneAttack()).toEqual(12)
+    //   expect(combat.monster["health"]).toEqual(88)
+    // });
+    // it("miss - player misses dice roll, no health lost", function() {
+    //   spyOn(dice, "rollDice").and.returnValue(12);
+    //   combat.attackSetup([hero, monster])
+    //   expect(combat.heroInsaneAttack()).toEqual("miss")
+    //   expect(combat.monster["health"]).toEqual(100)
+    // });
+  });
+
+  describe("#healthPotion", function() {
+    it("it restores 25 hp", function() {
+      combat.attackSetup([leonHurtPlayer, monster])
+      expect(leonHurtPlayer['health']).toBeLessThan(48)
+      combat.healthPotion()
+      expect(leonHurtPlayer['health']).toBeGreaterThan(47)
+    });
+    it("it restores 25 hp", function() {
+      combat.attackSetup([leonHurtPlayer, monster])
+      expect(leonHurtPlayer['health']).toBe(47)
+      combat.healthPotion()
+      combat.healthPotion()
+      combat.healthPotion()
+      expect(combat.healthPotion()).toEqual('you ran out of potions')
+      expect(leonHurtPlayer['health']).toBe(97)
+    });
+
+    it("sit restores up to 100hp", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, monster])
+      combat.monsterAttack()
+      combat.monsterAttack()
+      combat.monsterAttack()
+      combat.monsterAttack()
+      combat.monsterAttack()
+      expect(combat.hero['health']).toBe(55)
+      combat.healthPotion()
+      expect(combat.hero['health']).toBe(80)
+    });
+
+    it("reduces the amount of healthPotions", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, monster])
+      combat.monsterAttack()
+      combat.healthPotion()
+      expect(combat.hero['healthPotions']).toBeLessThan(2)
     });
   });
 

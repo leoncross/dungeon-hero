@@ -2,9 +2,14 @@ describe('Player', function () {
 
   var Player = require('../src/Player');
 
+  var player;
+
+  beforeEach(function () {
+    player = new Player();
+  });
+
   describe('#changeName', function() {
     it('change hero name', function () {
-      var player = new Player();
       expect(player.hero['name']).toEqual('Player');
       player.changeName('Aragorn');
       expect(player.hero['name']).toEqual('Aragorn');
@@ -13,7 +18,6 @@ describe('Player', function () {
 
   describe('#changeWeapon', function() {
     it('change weapon', function () {
-      var player = new Player();
       expect(player.hero['weaponName']).toEqual('Dagger');
       player.changeWeapon('Throwing Axe', 10, 15);
       expect(player.hero['weaponName']).toEqual('Throwing Axe');
@@ -25,7 +29,6 @@ describe('Player', function () {
 
   describe('#changeWeapon', function() {
     it('change armor', function () {
-      var player = new Player();
       expect(player.hero['armorName']).toEqual('Plate');
       player.changeArmor(5, 'Full Plate');
       expect(player.hero['armorName']).toEqual('Full Plate');
@@ -35,7 +38,6 @@ describe('Player', function () {
 
   describe('#recieveDamage', function() {
     it('receive a damage', function () {
-      var player = new Player();
       expect(player.hero['health']).toEqual(100);
       player.receiveDamage(20);
       expect(player.hero['health']).toEqual(80);
@@ -43,7 +45,6 @@ describe('Player', function () {
   });
 
   describe('#returnAttribute', function() {
-    var player = new Player();
     it('returns requested attribute', function() {
       expect(player.returnAttribute('armor')).toEqual(1)
     });
@@ -51,12 +52,11 @@ describe('Player', function () {
 
   describe('#healthCheck', function() {
     it('returns boolean true if alive', function() {
-      var player = new Player();
       expect(player.status()).toEqual(true)
     })
     it('returns boolean true if alive', function() {
-      var player = new Player();
-      player.receiveDamage(100)
+      player.receiveDamage(110)
+      expect(player.hero['health']).toBeLessThan(0);
       expect(player.status()).toEqual(false)
     })
   })
