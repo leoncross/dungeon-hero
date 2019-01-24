@@ -43,11 +43,11 @@ Combat.prototype.heroAttack = function () {
 
 Combat.prototype.heroInsaneAttack = function () {
   let roll = this.dice.rollDice() - 5
-  let minRoll = this.monster['armor'] + this.monster['dexterity']
+  let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll) {
     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
     damage += damage/2
-    this.monster['health'] -= damage
+    this.enemy['health'] -= damage
     this.readout.playerDamage(damage)
     return damage
   } else {
@@ -73,21 +73,23 @@ Combat.prototype.heroInsaneAttack = function () {
 
 
 Combat.prototype.healthPotion = function () {
+  if(this.hero['health'] === 100) return
   if(this.hero['healthPotions']>0){
     if(this.hero['health'] + 25 >= 100){
       this.hero['health'] = 100
+      this.hero['healthPotions'] -= 1
     } else {
       this.hero['health'] += 25
+      this.hero['healthPotions'] -= 1
     }
-    this.hero['healthPotions']--
     return this.hero['health']
   } else {
-    return 'you ran out of potions:)'
+    return 'you ran out of potions'
   }
 }
 
 Combat.prototype.monsterAttack = function () {
-  let decreasedRoll = this.dice.rollDice()
+  let roll = this.dice.rollDice()
   let minRoll = this.hero['armor'] + this.hero['dexterity']
   if (roll > minRoll) {
     let damage = this.enemy['strength'] + this.weaponDamage(this.enemy)
