@@ -7,7 +7,7 @@ function Rooms (player, monsters, combat, readout) {
 
 Rooms.prototype.roomSelect = function () {
   this.zombieRoom()
-  let zombie = this.monsters.returnMonster('zombie')
+  let zombie = this.monsters.returnMonster('Zombie')
   if (zombie['health'] <= 0 && this.healthChecker()) {
     return this.escapeRoom()
   } else if (zombie['health'] > 0 && !this.healthChecker()) {
@@ -19,7 +19,7 @@ Rooms.prototype.roomSelect = function () {
 
 Rooms.prototype.zombieRoom = function () {
   let hero = this.player.returnHero()
-  let zombie = this.monsters.returnMonster('zombie')
+  let zombie = this.monsters.returnMonster('Zombie')
   return this.combat.attackSetup([hero, zombie])
   // pause for attack sequence
   // select new room

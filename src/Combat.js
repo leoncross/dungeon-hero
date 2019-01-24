@@ -5,7 +5,6 @@ function Combat (player, monster, dice, readout) {
   this.monster = monster
   this.dice = dice
   this.readout = readout
-  this.enemy = ''
 };
 
 Combat.prototype.attackSetup = function (attackers) {
@@ -46,7 +45,7 @@ Combat.prototype.monsterAttack = function () {
   let roll = this.dice.rollDice()
   let minRoll = this.hero['armor'] + this.hero['dexterity']
   if (roll > minRoll) {
-    let damage = this.enemy['strength'] + this.weaponDamage(this.monster)
+    let damage = this.enemy['strength'] + this.weaponDamage(this.enemy)
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
     return damage
