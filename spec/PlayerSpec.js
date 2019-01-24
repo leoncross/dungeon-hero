@@ -41,7 +41,19 @@ describe('Player', function () {
   describe('#returnAttribute', function() {
     var player = new Player();
     it('returns requested attribute', function() {
-      expect(player.returnAttribute('health')).toEqual(100)
+      expect(player.returnAttribute('armor')).toEqual(1)
     });
   });
+
+  describe('#healthCheck', function() {
+    it('returns boolean true if alive', function() {
+      var player = new Player();
+      expect(player.status()).toEqual(true)
+    })
+    it('returns boolean true if alive', function() {
+      var player = new Player();
+      player.receiveDamage(100)
+      expect(player.status()).toEqual(false)
+    })
+  })
 });

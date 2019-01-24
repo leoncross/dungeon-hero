@@ -26,7 +26,7 @@ describe('Game', function() {
     zombie = monster.returnMonster('zombie');
     dice = new DiceStub
     readout = new Readout
-    combat = new Combat(dice, readout)
+    combat = new Combat(player, dice, readout)
     room = new Rooms(player, monster, combat, readout);
 
   });

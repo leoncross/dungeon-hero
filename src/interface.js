@@ -1,4 +1,4 @@
-game = new Game()
+let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {

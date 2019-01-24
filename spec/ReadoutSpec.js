@@ -31,4 +31,46 @@ describe('Readout', function () {
       expect(readout.printReadout()).toEqual(['test message<br>'])
     });
   });
+  describe('#monsterDamage', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterDamage('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attacks you for 5 damage<br>'])
+    });
+  });
+  describe('#monsterMisses', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterMisses('zombie')
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attack misses<br>'])
+    });
+  });
+  describe('#playerDamage', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerDamage(5)
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> attack for 5 damage<br>'])
+    });
+  });
+  describe('#playerMisses', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerMisses()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> attack misses<br>'])
+    });
+  });
+  describe('#playerWins', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerWins()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You have won!</span><br>'])
+    });
+  });
+  describe('#playerLoses', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerLoses()
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">You have died</span><br>'])
+    });
+  });
 });

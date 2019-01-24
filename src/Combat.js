@@ -1,6 +1,7 @@
 'use strict'
 
-function Combat (dice, readout) {
+function Combat (player, dice, readout) {
+  this.player = player
   this.dice = dice
   this.readout = readout
 };
@@ -12,54 +13,45 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSequence = function () {
-  if (this.healthChecker()) {
-    let result = []
-    result.push(this.heroAttack())
-    result.push(this.monsterAttack())
-    return result
-  } else if (this.hero['health'] <= 0) {
-    this.readout.addReadout('<span style="color: red;">You have died</span>')
+  if (this.monster['health'] < 0) return
+  if (this.player.status()) this.heroAttack()
+  if (this.monster['health'] > 0) this.monsterAttack()
+  if (this.player.status() === false) {
+    this.readout.playerLoses()
     return 'you have died'
-  } else if (this.monster['health'] <= 0) {
-    this.readout.addReadout('<span style="color: green;">You have won!</span>')
+  }
+  if (this.monster['health'] <= 0) {
+    this.readout.playerWins()
     return 'the monster has died'
   }
 }
 
 Combat.prototype.heroAttack = function () {
-  let roll = this.diceRoll()
+  let roll = this.dice.rollDice()
   let minRoll = this.monster['armor'] + this.monster['dexterity']
   if (roll > minRoll) {
     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
     this.monster['health'] -= damage
-    this.readout.addReadout('<span style="color: green;">You</span> attack for ' + damage + ' damage')
+    this.readout.playerDamage(damage)
     return damage
   } else {
-    this.readout.addReadout('<span style="color: green;">You</span> attack misses')
+    this.readout.playerMisses()
     return 'miss'
   }
 }
 
 Combat.prototype.monsterAttack = function () {
-  let roll = this.diceRoll()
+  let roll = this.dice.rollDice()
   let minRoll = this.hero['armor'] + this.hero['dexterity']
   if (roll > minRoll) {
     let damage = this.monster['strength'] + this.weaponDamage(this.monster)
     this.hero['health'] -= damage
-    this.readout.addReadout(`<span style="color: red;">${this.monster['name']}</span> attacks you for ` + damage + ' damage')
+    this.readout.monsterDamage(this.monster['name'], damage)
     return damage
   } else {
-    this.readout.addReadout(`<span style="color: red;">${this.monster['name']}</span> attack misses`)
+    this.readout.monsterMisses(this.monster['name'])
     return 'miss'
   }
-}
-
-Combat.prototype.healthChecker = function () {
-  return ((this.hero['health'] > 0 && this.monster['health'] > 0))
-}
-
-Combat.prototype.diceRoll = function () {
-  return this.dice.rollDice()
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
