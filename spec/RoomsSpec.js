@@ -64,9 +64,9 @@ describe('Rooms',function(){
     it("returns player after Zombie Room", function() {
       spyOn(player, "returnHero").and.returnValue(leonPlayer);
       spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
-      spyOn(combat, "attackSetup").and.returnValue(leonPlayer);
+      spyOn(combat, "attackSetup").and.returnValue([leonHurtPlayer, lucaMonster]);
       room.zombieRoom()
-      expect(room.zombieRoom()).toEqual(leonPlayer)
+      expect(room.roomSelect()).toEqual(room.zombieRoom())
     });
   });
 
