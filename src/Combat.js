@@ -21,7 +21,7 @@ Combat.prototype.attackSequence = function () {
     this.readout.playerLoses()
     return 'you have died'
   }
-  if (this.enemy['health'] <= 0) {
+  if (this.enemy['health'] < 1) {
     this.readout.playerWins()
     return 'the monster has died'
   }
