@@ -15,7 +15,7 @@ Game.prototype.initialize = function (playerName) {
   this.zombie = this.monster.returnMonster('zombie')
   this.dice = new Dice()
   this.readout = new Readout()
-  this.combat = new Combat(this.dice, this.readout)
+  this.combat = new Combat(this.player, this.dice, this.readout)
   this.room = new Rooms(this.player, this.monster, this.combat, this.readout)
   this.play()
 }
