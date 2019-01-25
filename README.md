@@ -31,3 +31,8 @@ istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./nod
 
 missing:
 from combat, updater the player class with new player stats(health)
+
+feature ideas:
+- special moves
+- loot table
+- longer fight goes on, more damage they do (i.e., bat swarm)
