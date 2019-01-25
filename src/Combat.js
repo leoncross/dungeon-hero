@@ -12,7 +12,7 @@ Combat.prototype.attackSetup = function (attackers) {
   this.enemy = attackers[1]
   return attackers
 }
-//HERO'S NORMAL ATTACK
+// HERO'S NORMAL ATTACK
 Combat.prototype.heroAttack = function () {
   let roll = this.dice.rollDice()
   let minRoll = this.enemy['armor'] + this.enemy['dexterity']
@@ -41,13 +41,13 @@ Combat.prototype.attackSequence = function () {
   }
 }
 
-//HERO'S STRONG ATTACK
+// HERO'S STRONG ATTACK
 Combat.prototype.heroInsaneAttack = function () {
   let roll = this.dice.rollDice() - 5
   let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll) {
     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
-    damage += Math.floor(damage/2)
+    damage += Math.floor(damage / 2)
     this.enemy['health'] -= damage
     this.readout.playerDamage(damage)
     return damage
@@ -70,26 +70,11 @@ Combat.prototype.insaneAttackSequence = function () {
   }
 }
 
-// Combat.prototype.heroBlock = function () {
-//   let roll = this.dice.rollDice()
-//   let minRoll = this.monster['armor'] + this.monster['dexterity']
-//   if (roll > minRoll) {
-//     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
-//     damage += damage/2
-//     this.monster['health'] -= damage
-//     this.readout.playerDamage(damage)
-//     return damage
-//   } else {
-//     this.readout.playerMisses()
-//     return 'miss'
-//   }
-// }
-
 // PLAYERS RESTORES HIS HEALTH
 Combat.prototype.healthPotion = function () {
-  if(this.hero['health'] === 100) return
-  if(this.hero['healthPotions'] > 0 ){
-    if(this.hero['health'] + 25 >= 100){
+  if (this.hero['health'] === 100) return
+  if (this.hero['healthPotions'] > 0) {
+    if (this.hero['health'] + 25 >= 100) {
       this.hero['health'] = 100
       this.hero['healthPotions'] -= 1
     } else {
@@ -115,14 +100,45 @@ Combat.prototype.healthPotionSequence = function () {
   }
 }
 
-Combat.prototype.monsterAttack = function () {
+// HERO'S BLOCK
+Combat.prototype.heroParryAttack = function () {
   let roll = this.dice.rollDice()
-  let minRoll = this.hero['armor'] + this.hero['dexterity']
+  let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll) {
-    let damage = this.enemy['strength'] + this.weaponDamage(this.enemy)
+    let damage = this.hero['strength'] + this.weaponDamage(this.hero)
+    damage -= parseInt(damage / 2)
+    this.enemy['health'] -= damage
+    if (this.enemy['health'] < 1) this.enemy['health'] = 0
+    this.readout.playerDamage(damage)
+    return damage
+  } else {
+    this.readout.playerMisses()
+    return 'miss'
+  }
+}
+Combat.prototype.parryAttackSequence = function (parry = 12) {
+  if (this.enemy['health'] < 1) return
+  if (this.player.status()) this.heroParryAttack()
+  if (this.enemy['health'] > 0) this.monsterAttack(parry)
+  if (this.player.status() === false) {
+    this.readout.playerLoses()
+    return 'you have died'
+  }
+  if (this.enemy['health'] < 1) {
+    this.readout.playerWins()
+    return 'the monster has died'
+  }
+}
+
+// MONSTER ATTACK
+Combat.prototype.monsterAttack = function (parry = 0) {
+  let roll = this.dice.rollDice()
+  let minRoll = (this.hero['armor'] + this.hero['dexterity'] + parry)
+  if (roll > minRoll) {
+    let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
-     return damage
+    return damage
   } else {
     this.readout.monsterMisses(this.enemy['name'])
     return 'miss'
