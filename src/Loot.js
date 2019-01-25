@@ -13,9 +13,9 @@ function Loot (player) {
       {name: 'leather', type: 'armor', armor: 1, rarity: 1},
       {name: 'chainmail', type: 'armor', armor: 1, rarity: 1},
       {name: 'plate', type: 'armor', armor: 1, rarity: 1},
-      {name: 'health', type: 'potion', rarity: 1},
-      {name: 'dexterity', type: 'potion', rarity: 1},
-      {name: 'strength', type: 'potion', rarity: 1}
+      {name: 'health', type: 'healthPotion', rarity: 1},
+      {name: 'dexterity', type: 'dexterityPotion', rarity: 1},
+      {name: 'strength', type: 'strengthPotion', rarity: 1}
     ]
   this.rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
   this.foundItem = 0
@@ -37,11 +37,7 @@ Loot.prototype.returnFoundItem = function() {
 }
 
 Loot.prototype.equipLoot = function() {
-  return this.player.equipLoot()
+  return this.player.equipLoot(this.foundItem)
 }
-
-
-
-
 
 module.exports = Loot

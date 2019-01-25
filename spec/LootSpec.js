@@ -31,9 +31,9 @@ describe('Loot', function() {
         {name: 'leather', type: 'armor', armor: 1, rarity: 1},
         {name: 'chainmail', type: 'armor', armor: 1, rarity: 1},
         {name: 'plate', type: 'armor', armor: 1, rarity: 1},
-        {name: 'health', type: 'potion', rarity: 1},
-        {name: 'dexterity', type: 'potion', rarity: 1},
-        {name: 'strength', type: 'potion', rarity: 1}
+        {name: 'health', type: 'healthpotion', rarity: 1},
+        {name: 'dexterity', type: 'dexteritypotion', rarity: 1},
+        {name: 'strength', type: 'strengthpotion', rarity: 1}
       ]
   });
 
