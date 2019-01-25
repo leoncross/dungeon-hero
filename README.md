@@ -29,6 +29,30 @@ istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./nod
 
 
 
+// normal attack: 0 modifiers
+
+// insane attack:
+  // player:
+    // -5 to rollDice - ON PLAYER ATTACK SEQUENCE
+    // 50% damage increase - ON PLAYER ATTACK SEQUENCE
+
+// quick attack:
+  // player:
+    // 50% damage decrease - ON PLAYER ATTACK SEQUENCE
+  // monster:
+    // +5 to minimumRoll - ON MONSTER ATTACK SEQUENCE
+
+
+
+// attack sequence always stays the same (you pass it the modifiers)
+// monster attack (accepts modifiers)
+// hero attack (accepts modifiers)
+
+normal attack = combat.attackSequence(0, 1 ,0, 0)
+insane attack = combat.attackSequence(-5, 0.5, 0, 0)
+quick attack = combat.heroAttack(0, 2, 5, 0)
+health potion = combat.attackSequence(0, 1 ,0, 'health')
+
 missing:
 from combat, updater the player class with new player stats(health)
 

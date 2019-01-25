@@ -46,17 +46,44 @@ describe('Readout', function () {
     });
   });
   describe('#playerDamage', function () {
+    it('prints type of damage to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerDamage(5, 'normal')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> attack for 5 damage<br>'])
+    });
+    it('prints type of damage to readout - insane', function () {
+      readout.clearReadout()
+      readout.playerDamage(5, 'insane')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> strong attack for 5 damage<br>'])
+    });
+    it('prints type of damage to readout - quick', function () {
+      readout.clearReadout()
+      readout.playerDamage(5, 'quick')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> quick attack for 5 damage<br>'])
+    });
+  });
+  describe('#playerPotion', function () {
     it('prints to readout', function () {
       readout.clearReadout()
-      readout.playerDamage(5)
-      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> attack for 5 damage<br>'])
+      readout.playerPotion('health')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a health potion and gain 25 health<br>'])
     });
   });
   describe('#playerMisses', function () {
-    it('prints to readout', function () {
+    it('prints to readout - normal', function () {
       readout.clearReadout()
-      readout.playerMisses()
+      readout.playerMisses('normal')
       expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> attack misses<br>'])
+    });
+    it('prints to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerMisses('insane')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> strong attack misses<br>'])
+    });
+    it('prints to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerMisses('quick')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> quick attack misses<br>'])
     });
   });
   describe('#playerWins', function () {

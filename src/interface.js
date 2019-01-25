@@ -5,22 +5,22 @@ $(document).ready(function () {
   updateInterface()
 
   $('#playerAttack').click(function () {
-    game.combat.attackSequence()
+    game.combat.attackSequence(0, 1 ,0, 0, 'normal')
     updateInterface()
   })
 
   $('#insaneAttack').click(function () {
-    game.combat.insaneAttackSequence()
+    game.combat.attackSequence(-5, 0.5, 0, 0, 'insane')
     updateInterface()
   })
 
   $('#parryAttack').click(function () {
-    game.combat.parryAttackSequence()
+    game.combat.attackSequence(0, 2, 5, 0, 'quick')
     updateInterface()
   })
 
   $('#healthPotion').click(function () {
-    game.combat.healthPotionSequence()
+    game.combat.attackSequence(0, 1 ,0, 'health', 'health')
     updateInterface()
   })
 
