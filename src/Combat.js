@@ -47,7 +47,7 @@ Combat.prototype.heroInsaneAttack = function () {
   let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll) {
     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
-    damage += Math.floor(damage/2)
+    damage += parseInt(damage/2)
     this.enemy['health'] -= damage
     this.readout.playerDamage(damage)
     return damage

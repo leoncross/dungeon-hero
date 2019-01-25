@@ -25,7 +25,7 @@ Loot.prototype.lootFinder = function () {
   for (i = 0; i < this.table.length; i++){
     possibleItems.push(this.table[i]['rarity'] === rarity)
   }
-  console.log(possibleItems)
+  // console.log(possibleItems)
 }
 
 
