@@ -1,8 +1,10 @@
 function Readout () {
-  this.readoutArray = ['You wake up in a dark dungeon. Your eyes slowly adjust, and you see a dagger next to you. You think think its a good idea to pick this up.<br>', 'Suddenly, you hear what looks like a zombie running towards you...<br>']
+  // 'You wake up in a dark dungeon. Your eyes slowly adjust, and you see a dagger next to you. You think think its a good idea to pick this up.<br>', 'Suddenly, you hear what looks like a zombie running towards you...<br>'
+  this.readoutArray = []
 }
 
 Readout.prototype.addReadout = function (message) {
+  if (this.readoutArray.length === 20) this.readoutArray.shift()
   let messageFormatted = message + '<br>'
   this.readoutArray.push(messageFormatted)
 }
