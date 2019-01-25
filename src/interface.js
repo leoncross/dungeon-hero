@@ -23,7 +23,7 @@ $(document).ready(function () {
     game.combat.healthPotionSequence()
     updateInterface()
   })
-  
+
 })
 
 function updateInterface () {
@@ -38,11 +38,17 @@ function updateInterface () {
   $('#monsterHealth').text(game.monster.returnMonster('Zombie').health)
   $('#monsterArmor').text(game.monster.returnMonster('Zombie').armor)
   $('#output').html(game.readout.printReadout())
+
   if(game.monster.returnMonster('Zombie').health < 1) {
-    console.log('this is a win')
-    var modal = document.getElementById('myModal')
+    var modal = document.getElementById('winModal')
     modal.style.display = "block"
+    $('#monsterName1').text(game.monster.returnMonster('Zombie').name.toUpperCase())
+    $('#easyRoom').click(function () {
+      game.room.monsterRoom('easy')
+      modal.style.display = "none"
+    })
   }
+
   if(game.player.returnAttribute('health') < 1) {
     console.log('this is a loss')
   }
