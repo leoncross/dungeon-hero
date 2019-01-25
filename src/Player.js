@@ -35,7 +35,6 @@ Player.prototype.changeWeapon = function (weaponName, weaponMin, weaponMax) {
   this.hero['weaponName'] = weaponName
   this.hero['weaponMin'] = weaponMin
   this.hero['weaponMax'] = weaponMax
-
 }
 
 Player.prototype.changeArmor = function (armorName, armor) {
