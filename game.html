@@ -92,11 +92,17 @@
           <img id="healthPotion" src="./static/images/health-potion.png" alt="">
         </div>
       </div>
-      <div id="myModal" class="modal">
+      <div id="winModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
+          <h1>YOU WIN</h1>
+          You killed the <span id='monsterName1'></span>
+          <br>Loot: <span id='roomLoot'>None (bad luck)</span><br><br>
+          Choose next room:<br>
+          <span id='easyRoom'>[EASY]</span>
+          <span id='mediumRoom'>[MEDIUM]</span>
+          <span id='hardRoom'>[HARD]</span>
+          <span id='bossRoom'>[BOSS]</span>
         </div>
       </div>
     </div>
