@@ -10,19 +10,20 @@ $(document).ready(function () {
   })
 
   $('#insaneAttack').click(function () {
-    game.combat.attackSequence()
+    game.combat.insaneAttackSequence()
     updateInterface()
   })
 
   $('#parryAttack').click(function () {
-    game.combat.attackSequence()
+    game.combat.parryAttackSequence()
     updateInterface()
   })
 
   $('#healthPotion').click(function () {
-    game.combat.attackSequence()
+    game.combat.healthPotionSequence()
     updateInterface()
   })
+  
 })
 
 function updateInterface () {
@@ -37,4 +38,13 @@ function updateInterface () {
   $('#monsterHealth').text(game.monster.returnMonster('Zombie').health)
   $('#monsterArmor').text(game.monster.returnMonster('Zombie').armor)
   $('#output').html(game.readout.printReadout())
+  if(game.monster.returnMonster('Zombie').health < 1) {
+    console.log('this is a win')
+    var modal = document.getElementById('myModal')
+    modal.style.display = "block"
+  }
+  if(game.player.returnAttribute('health') < 1) {
+    console.log('this is a loss')
+  }
+
 }
