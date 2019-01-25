@@ -12,6 +12,29 @@ Combat.prototype.attackSetup = function (attackers) {
   this.enemy = attackers[1]
   return attackers
 }
+
+
+// normal attack: 0 modifiers
+
+// insane attack:
+  // player:
+  // -5 to rollDice
+  // 50% damage increase
+
+// parry attack:
+  // player:
+  // 50% damage decrease
+  // monster:
+  // +5 to minimumRoll
+
+  
+// -5 to rollDice, 50% damage increase
+// parry attack: monster+5 to minimumRoll, player: 50% damage decrease
+
+
+
+
+
 // HERO'S NORMAL ATTACK
 Combat.prototype.heroAttack = function () {
   let roll = this.dice.rollDice()

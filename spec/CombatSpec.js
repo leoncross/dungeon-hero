@@ -39,22 +39,22 @@ describe('Combat',function(){
     leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2}
     leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     leonAlmostDeadPlayer = {name: 'leon', health: 1, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
-    monster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+    enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
     almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
     deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
   });
 
   describe("#attackSetup", function() {
     it("returns player and monster", function() {
-      expect(combat.attackSetup([hero, monster])).toEqual([hero, monster])
+      expect(combat.attackSetup([hero, enemy])).toEqual([hero, enemy])
     });
     it("hero is hero", function() {
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.hero).toEqual(hero)
     });
     it("monster is monster", function() {
-      combat.attackSetup([hero, monster])
-      expect(combat.enemy).toEqual(monster)
+      combat.attackSetup([hero, enemy])
+      expect(combat.enemy).toEqual(enemy)
     });
   });
 
@@ -63,7 +63,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroAttack()).toEqual(8)
       expect(combat.monsterAttack()).toEqual(9)
     })
@@ -71,7 +71,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(1);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroAttack()).toEqual('miss')
       expect(combat.monsterAttack()).toEqual('miss')
     })
@@ -79,7 +79,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(false);
-      combat.attackSetup([leonDeadPlayer, monster])
+      combat.attackSetup([leonDeadPlayer, enemy])
       expect(combat.attackSequence()).toEqual('you have died')
     })
     it("monster is dead, fails to make further attacks", function() {
@@ -96,30 +96,52 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(readout, "addReadout").and.returnValue('nothing');
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroAttack()).toEqual(8)
       expect(combat.enemy["health"]).toEqual(92)
     });
     it("miss - player misses dice roll, no health lost", function() {
       spyOn(dice, "rollDice").and.returnValue(1);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroAttack()).toEqual("miss")
       expect(combat.enemy["health"]).toEqual(100)
     });
   });
+
+  describe("#heroAttack", function() {
+    it("normal attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(readout, "addReadout").and.returnValue('nothing');
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack()).toEqual(8)
+      expect(combat.enemy["health"]).toEqual(92)
+    });
+    it("miss - player misses dice roll, no health lost", function() {
+      spyOn(dice, "rollDice").and.returnValue(1);
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack()).toEqual("miss")
+      expect(combat.enemy["health"]).toEqual(100)
+    });
+  });
+
+
+
+
+
 
   describe("#heroInsaneAttack", function() {
     it("success - monster loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(20);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(readout, "addReadout").and.returnValue('nothing');
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroInsaneAttack()).toEqual(12)
       expect(combat.enemy["health"]).toEqual(88)
     });
     it("miss - player misses dice roll, no health lost", function() {
       spyOn(dice, "rollDice").and.returnValue(12);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroInsaneAttack()).toEqual("miss")
       expect(combat.enemy["health"]).toEqual(100)
     });
@@ -128,7 +150,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(false);
-      combat.attackSetup([leonDeadPlayer, monster])
+      combat.attackSetup([leonDeadPlayer, enemy])
       expect(combat.insaneAttackSequence()).toEqual('you have died')
     });
 
@@ -146,7 +168,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(readout, "addReadout").and.returnValue('nothing');
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroParryAttack()).toEqual(4)
       expect(combat.enemy["health"]).toEqual(96)
     });
@@ -154,7 +176,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(1);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.heroParryAttack()).toEqual('miss')
       expect(combat.monsterAttack()).toEqual('miss')
     })
@@ -171,14 +193,14 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(false);
-      combat.attackSetup([leonAlmostDeadPlayer, monster])
+      combat.attackSetup([leonAlmostDeadPlayer, enemy])
       expect(combat.parryAttackSequence()).toEqual('you have died')
     });
     it("both players miss - health doesn't change", function() {
       spyOn(dice, "rollDice").and.returnValue(1);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       combat.parryAttackSequence()
       expect(combat.hero["health"]).toEqual(100)
       expect(combat.enemy["health"]).toEqual(100)
@@ -187,13 +209,13 @@ describe('Combat',function(){
 
   describe("#healthPotion", function() {
     it("it restores 25 hp", function() {
-      combat.attackSetup([leonHurtPlayer, monster])
+      combat.attackSetup([leonHurtPlayer, enemy])
       expect(leonHurtPlayer['health']).toBeLessThan(48)
       combat.healthPotion()
       expect(leonHurtPlayer['health']).toBeGreaterThan(47)
     });
     it("it restores 25 hp", function() {
-      combat.attackSetup([leonHurtPlayer, monster])
+      combat.attackSetup([leonHurtPlayer, enemy])
       expect(leonHurtPlayer['health']).toBe(47)
       combat.healthPotion()
       combat.healthPotion()
@@ -205,7 +227,7 @@ describe('Combat',function(){
     it("sit restores up to 100hp", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       combat.monsterAttack()
       combat.monsterAttack()
       combat.monsterAttack()
@@ -219,7 +241,7 @@ describe('Combat',function(){
     it("reduces the amount of healthPotions", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       combat.monsterAttack()
       combat.healthPotion()
       expect(combat.hero['healthPotions']).toBeLessThan(2)
@@ -229,7 +251,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       combat.monsterAttack()
       combat.monsterAttack()
       combat.monsterAttack()
@@ -243,13 +265,13 @@ describe('Combat',function(){
     it("success - player loses health with dice roll", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.monsterAttack()).toEqual(9)
       expect(combat.hero["health"]).toEqual(91)
     });
     it("miss - monster misses dice roll, no health lost", function() {
       spyOn(dice, "rollDice").and.returnValue(3);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.monsterAttack()).toEqual("miss")
       expect(combat.hero["health"]).toEqual(100)
     });
@@ -258,7 +280,7 @@ describe('Combat',function(){
   describe("#weaponDamage", function() {
     it("returns a number between the weaponDamage", function() {
       spyOn(dice, "rollBetween").and.returnValue(5);
-      combat.attackSetup([hero, monster])
+      combat.attackSetup([hero, enemy])
       expect(combat.weaponDamage(hero)).toEqual(5)
     });
   });

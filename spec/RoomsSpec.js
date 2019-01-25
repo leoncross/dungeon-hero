@@ -85,7 +85,14 @@ describe('Rooms',function(){
       spyOn(monsters, "randomizeMonster").and.returnValue(lucaMonster);
       spyOn(combat, "attackSetup").and.returnValue(leonPlayer);
       room.monsterRoom('easy')
-      expect(room.monsterInRoom()).toEqual(lucaMonster)
+      expect(room.monsterInRoom('name')).toEqual('luca')
+    })
+    it('returns the monster in the room', function() {
+      spyOn(player, "returnHero").and.returnValue(leonPlayer);
+      spyOn(monsters, "randomizeMonster").and.returnValue(lucaMonster);
+      spyOn(combat, "attackSetup").and.returnValue(leonPlayer);
+      room.monsterRoom('easy')
+      expect(room.monsterInRoom('armorName')).toEqual('Leather')
     })
   })
 
