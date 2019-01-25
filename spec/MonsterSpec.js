@@ -1,18 +1,16 @@
 
 describe('Monster', function () {
   var Monster = require('../src/Monster');
+  var sinon = require('sinon');
+
   var monster;
   var zombie;
+  var stub
 
   beforeEach(function() {
 
-    function MathStub() {}
-    MathStub.prototype = {
-      floor() {},
-      random() {}
-    };
+    stub = sinon.stub(Math, 'floor')
 
-    math = new MathStub()
     monster = new Monster();
 
     monsters = [
@@ -24,26 +22,29 @@ describe('Monster', function () {
       { name: 'Shadow Demon', difficulty: 'hard', health: 110, armor: 6, strength: 8, dexterity: 4, weaponMin: 8, weaponMax: 12 },
       { name: 'Dragon', difficulty: 'boss', health: 300, armor: 6, strength: 13, dexterity: 8, weaponMin: 15, weaponMax: 22 }
     ]
+  });
 
+  afterEach(function () {
+      stub.restore()
   });
 
   describe('#returnEasyMonster', function () {
     it('selects a monster', function () {
-      spyOn(monster,'randomizeMonster').and.returnValue({ name: 'Zombie', difficulty: 'easy', health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 })
+      stub.returns(0)
       expect(monster.randomizeMonster('easy')).toEqual({ name: 'Zombie', difficulty: 'easy', health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7 })
     });
   });
 
   describe('#returnMediumMonster', function () {
     it('selects a monster', function () {
-      spyOn(monster,'randomizeMonster').and.returnValue({ name: 'Skeleton', difficulty: 'medium', health: 50, armor: 1, strength: 4, dexterity: 2, weaponMin: 8, weaponMax: 11 })
+      stub.returns(0)
       expect(monster.randomizeMonster('medium')).toEqual({ name: 'Skeleton', difficulty: 'medium', health: 50, armor: 1, strength: 4, dexterity: 2, weaponMin: 8, weaponMax: 11 })
     });
   });
 
   describe('#returnHardMonster', function () {
     it('selects a monster', function () {
-      spyOn(monster,'randomizeMonster').and.returnValue({ name: 'Shadow Demon', difficulty: 'hard', health: 110, armor: 6, strength: 8, dexterity: 4, weaponMin: 8, weaponMax: 12 })
+      stub.returns(1)
       expect(monster.randomizeMonster('hard')).toEqual({ name: 'Shadow Demon', difficulty: 'hard', health: 110, armor: 6, strength: 8, dexterity: 4, weaponMin: 8, weaponMax: 12 })
     });
   });

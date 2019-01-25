@@ -23,14 +23,13 @@ describe('Player', function () {
       expect(player.hero['weaponName']).toEqual('Throwing Axe');
       expect(player.hero['weaponMin']).toEqual(10);
       expect(player.hero['weaponMax']).toEqual(15);
-
     });
   });
 
-  describe('#changeWeapon', function() {
+  describe('#changeArmor', function() {
     it('change armor', function () {
       expect(player.hero['armorName']).toEqual('Plate');
-      player.changeArmor(5, 'Full Plate');
+      player.changeArmor('Full Plate', 5);
       expect(player.hero['armorName']).toEqual('Full Plate');
       expect(player.hero['armor']).toEqual(5);
     });
@@ -58,6 +57,24 @@ describe('Player', function () {
       player.receiveDamage(110)
       expect(player.hero['health']).toBeLessThan(0);
       expect(player.status()).toEqual(false)
+    })
+  })
+
+  describe('#equipLoot', function() {
+    it('equips the item in the sword slot', function() {
+      player.equipLoot({name: 'longsword', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1})
+      expect(player.hero['weaponName']).toEqual('longsword')
+      expect(player.hero['weaponMin']).toEqual(1)
+      expect(player.hero['weaponMax']).toEqual(1)
+    })
+    it('equips the item in the armor slot', function() {
+      player.equipLoot({name: 'leather', type: 'armor', armor: 1, rarity: 1})
+      expect(player.hero['armorName']).toEqual('leather')
+      expect(player.hero['armor']).toEqual(1)
+    })
+    it('equips a health potion', function() {
+      player.equipLoot({name: 'health', type: 'healthPotion', rarity: 1})
+      expect(player.hero['healthPotions']).toEqual(3)
     })
   })
 });

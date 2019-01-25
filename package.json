@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "sinon": "^7.2.3"
+  },
   "devDependencies": {
     "coveralls": "^3.0.2",
     "eslint": "^5.12.1",
