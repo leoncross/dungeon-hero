@@ -24,6 +24,7 @@ Rooms.prototype.zombieRoom = function () {
 }
 
 Rooms.prototype.monsterRoom = function (difficulty) {
+  this.monsters.resetMonsters()
   let hero = this.player.returnHero()
   this.enemy = this.monsters.randomizeMonster(difficulty)
   return this.combat.attackSetup([hero, this.enemy])
