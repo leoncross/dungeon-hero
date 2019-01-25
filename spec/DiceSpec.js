@@ -13,7 +13,7 @@ describe('Dice', function(){
   });
 
   afterEach(function () {
-      stub.restore()
+    stub.restore()
   });
 
   describe('rollBetween', function() {

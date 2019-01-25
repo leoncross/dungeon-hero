@@ -1,4 +1,5 @@
-function Loot () {
+function Loot (player) {
+  this.player = player
   this.table = [
       {name: 'dagger', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1},
       {name: 'sword', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1},
@@ -17,16 +18,29 @@ function Loot () {
       {name: 'strength', type: 'potion', rarity: 1}
     ]
   this.rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
+  this.foundItem = 0
 }
 
 Loot.prototype.lootFinder = function () {
+  this.foundItem = 0
   var rarity = this.rarityCalculator[Math.floor(Math.random() * this.rarityCalculator.length)]
   var possibleItems = []
-  for (i = 0; i < this.table.length; i++){
-    possibleItems.push(this.table[i]['rarity'] === rarity)
+  for (i = 0; i < table.length; i++){
+    if (this.table[i]['rarity'] === rarity) possibleItems.push(table[i])
   }
-  // console.log(possibleItems)
+  if (possibleItems.length === 0) return 0
+  return this.foundItem = possibleItems[Math.floor((Math.random() * possibleItems.length))]
 }
+
+Loot.prototype.returnFoundItem = function() {
+  return this.foundItem
+}
+
+Loot.prototype.equipLoot = function() {
+  return this.player.equipLoot()
+}
+
+
 
 
 
