@@ -2,36 +2,31 @@ let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {
-
-  updateInterface();
+  updateInterface()
 
   $('#playerAttack').click(function () {
     game.combat.attackSequence()
-    updateInterface();
+    updateInterface()
   })
 
   $('#insaneAttack').click(function () {
-    game.combat.attackSequence()
-    updateInterface();
+    game.combat.insaneAttackSequence()
+    updateInterface()
   })
 
   $('#parryAttack').click(function () {
-    game.combat.attackSequence()
-    updateInterface();
+    game.combat.parryAttackSequence()
+    updateInterface()
   })
 
   $('#healthPotion').click(function () {
-    game.combat.attackSequence()
-    updateInterface();
+    game.combat.healthPotionSequence()
+    updateInterface()
   })
-
-  if ($('#monsterHealth').text() === 0) {
-    $('#output').html(game.readout.addReadout('you fuckin win, mf!'))
-  }
-
+  
 })
 
-function updateInterface() {
+function updateInterface () {
   $('#playerName').text(game.player.returnAttribute('name'))
   $('#playerHealth').text(game.player.returnAttribute('health'))
   $('#playerArmour').text(game.player.returnAttribute('armor'))
