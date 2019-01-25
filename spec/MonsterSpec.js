@@ -55,6 +55,12 @@ describe('Monster', function () {
     })
   })
 
+  describe('#resetMonsters', function () {
+    it('resets monsters after one has died', function() {
+      expect(monster.resetMonsters()).toEqual(monsters)
+    })
+  })
+
   describe('#recieveDamage', function () {
     it('monster can receive a damage', function () {
       monster.returnMonster('Zombie')

@@ -27,7 +27,6 @@ Readout.prototype.playerPotion = function (type) {
   if (type === 'health') this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
 }
 
-
 Readout.prototype.playerMisses = function (type) {
   if (type === 'normal') this.addReadout('<span style="color: green;">Your</span> attack misses')
   if (type === 'insane') this.addReadout('<span style="color: green;">Your</span> strong attack misses')

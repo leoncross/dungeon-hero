@@ -15,7 +15,8 @@ describe('Rooms',function(){
     function MonstersStub() {}
     MonstersStub.prototype = {
       returnMonster() {},
-      randomizeMonster() {}
+      randomizeMonster() {},
+      resetMonsters() {}
     };
 
     function CombatStub() {}

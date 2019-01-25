@@ -5,7 +5,7 @@ $(document).ready(function () {
   updateInterface()
 
   $('#playerAttack').click(function () {
-    game.combat.attackSequence(0, 1 ,0, 0, 'normal')
+    game.combat.attackSequence(0, 1, 0, 0, 'normal')
     updateInterface()
   })
 
@@ -20,50 +20,48 @@ $(document).ready(function () {
   })
 
   $('#healthPotion').click(function () {
-    game.combat.attackSequence(0, 1 ,0, 'health', 'health')
+    game.combat.attackSequence(0, 1, 0, 'health', 'health')
     updateInterface()
   })
-
 })
 
 function updateInterface () {
   updateAll()
 
-  if(game.player.returnAttribute('health') < 1) {
+  if (game.player.returnAttribute('health') < 1) {
     var modal = document.getElementById('loseModal')
-    modal.style.display = "block"
+    modal.style.display = 'block'
   }
 
-  if(game.room.monsterInRoom('health') < 1) {
+  if (game.room.monsterInRoom('health') < 1) {
     var modal = document.getElementById('winModal')
-    modal.style.display = "block"
+    modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     $('#easyRoom').click(function () {
       game.room.monsterRoom('easy')
       game.readout.clearReadout()
-      modal.style.display = "none"
+      modal.style.display = 'none'
       updateAll()
     })
     $('#mediumRoom').click(function () {
       game.room.monsterRoom('medium')
       game.readout.clearReadout()
-      modal.style.display = "none"
+      modal.style.display = 'none'
       updateAll()
     })
     $('#hardRoom').click(function () {
       game.room.monsterRoom('hard')
       game.readout.clearReadout()
-      modal.style.display = "none"
+      modal.style.display = 'none'
       updateAll()
     })
     $('#bossRoom').click(function () {
       game.room.monsterRoom('boss')
       game.readout.clearReadout()
-      modal.style.display = "none"
+      modal.style.display = 'none'
       updateAll()
     })
   }
-
 
   function updateAll () {
     $('#playerName').text(game.player.returnAttribute('name'))
@@ -78,5 +76,4 @@ function updateInterface () {
     $('#monsterArmor').text(game.room.monsterInRoom('armor'))
     $('#output').html(game.readout.printReadout())
   }
-
 }
