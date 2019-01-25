@@ -11,17 +11,17 @@ $(document).ready(function () {
   })
 
   $('#insaneAttack').click(function () {
-    game.combat.attackSequence()
+    game.combat.insaneAttackSequence()
     updateInterface();
   })
 
   $('#parryAttack').click(function () {
-    game.combat.attackSequence()
+    game.combat.parryAttackSequence()
     updateInterface();
   })
 
   $('#healthPotion').click(function () {
-    game.combat.attackSequence()
+    game.combat.healthPotionSequence()
     updateInterface();
   })
 

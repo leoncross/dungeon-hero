@@ -140,8 +140,14 @@ describe('Combat',function(){
     })
   });
 
-  describe("#heroBlock", function() {
+  describe("#heroParryAttack", function() {
+    it("monster is dead, fails to make further attacks", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(player, "status").and.returnValue(true);
+      combat.attackSetup([hero, monster])
 
+    });
   });
 
   describe("#healthPotion", function() {

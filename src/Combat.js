@@ -70,20 +70,6 @@ Combat.prototype.insaneAttackSequence = function () {
   }
 }
 
-// Combat.prototype.heroBlock = function () {
-//   let roll = this.dice.rollDice()
-//   let minRoll = this.monster['armor'] + this.monster['dexterity']
-//   if (roll > minRoll) {
-//     let damage = this.hero['strength'] + this.weaponDamage(this.hero)
-//     damage += damage/2
-//     this.monster['health'] -= damage
-//     this.readout.playerDamage(damage)
-//     return damage
-//   } else {
-//     this.readout.playerMisses()
-//     return 'miss'
-//   }
-// }
 
 // PLAYERS RESTORES HIS HEALTH
 Combat.prototype.healthPotion = function () {
@@ -115,11 +101,41 @@ Combat.prototype.healthPotionSequence = function () {
   }
 }
 
-Combat.prototype.monsterAttack = function () {
+//HERO'S BLOCK
+Combat.prototype.heroParryAttack = function () {
   let roll = this.dice.rollDice()
-  let minRoll = this.hero['armor'] + this.hero['dexterity']
+  let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll) {
-    let damage = this.enemy['strength'] + this.weaponDamage(this.enemy)
+    let damage = Math.floor(this.hero['strength'] + this.weaponDamage(this.hero)/2)
+    this.enemy['health'] -= damage
+    if (this.enemy['health'] < 1) this.enemy['health'] = 0
+    this.readout.playerDamage(damage)
+    return damage
+  } else {
+    this.readout.playerMisses()
+    return 'miss'
+  }
+}
+Combat.prototype.parryAttackSequence = function () {
+  if (this.enemy['health'] < 1) return
+  if (this.player.status()) this.heroParryAttack()
+  if (this.enemy['health'] > 0) this.monsterAttack(12)
+  if (this.player.status() === false) {
+    this.readout.playerLoses()
+    return 'you have died'
+  }
+  if (this.enemy['health'] < 1) {
+    this.readout.playerWins()
+    return 'the monster has died'
+  }
+}
+
+// MONSTER ATTACK
+Combat.prototype.monsterAttack = function (parry = 0) {
+  let roll = this.dice.rollDice()
+  let minRoll = (this.hero['armor'] + this.hero['dexterity'] + parry)
+  if (roll > minRoll) {
+    let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
      return damage
