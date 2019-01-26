@@ -27,7 +27,7 @@ istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./nod
 ```
 
 
-
+Trap room - has a 20% chance of occuring (not including when you fight a boss; trap room will never replace a boss fight)
 
 // normal attack: 0 modifiers
 
@@ -41,7 +41,6 @@ istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./nod
     // 50% damage decrease - ON PLAYER ATTACK SEQUENCE
   // monster:
     // +5 to minimumRoll - ON MONSTER ATTACK SEQUENCE
-
 
 
 // attack sequence always stays the same (you pass it the modifiers)
