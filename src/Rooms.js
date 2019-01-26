@@ -24,14 +24,14 @@ Rooms.prototype.zombieRoom = function () {
 }
 
 Rooms.prototype.monsterRoom = function (difficulty) {
+  this.monsters.resetMonsters()
   let hero = this.player.returnHero()
   this.enemy = this.monsters.randomizeMonster(difficulty)
-  this.monsterInRoom()
   return this.combat.attackSetup([hero, this.enemy])
 }
 
-Rooms.prototype.monsterInRoom = function () {
-  return this.enemy
+Rooms.prototype.monsterInRoom = function (attribute) {
+  return this.enemy[attribute]
 }
 
 Rooms.prototype.loseGame = function () {
