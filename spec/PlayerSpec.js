@@ -12,6 +12,7 @@ describe('Player', function () {
       health: 100,
       armor: 1,
       armorName: 'cloth',
+      armorDamageReduction: (10/100),
       weaponName: 'dagger',
       weaponMin: 5,
       weaponMax: 8,
@@ -61,9 +62,10 @@ describe('Player', function () {
   describe('#changeArmor', function() {
     it('change armor', function () {
       expect(player.hero['armorName']).toEqual('cloth');
-      player.changeArmor('full plate', 5);
-      expect(player.hero['armorName']).toEqual('full plate');
+      player.changeArmor('dragon scale', 5, 0.8);
+      expect(player.hero['armorName']).toEqual('dragon scale');
       expect(player.hero['armor']).toEqual(5);
+      expect(player.hero['armorDamageReduction']).toEqual(80/100);
     });
   });
 

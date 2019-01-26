@@ -5,6 +5,7 @@ function Player () {
     health: 100,
     armor: 1,
     armorName: 'cloth',
+    armorDamageReduction: (10/100),
     weaponName: 'dagger',
     weaponMin: 5,
     weaponMax: 8,
@@ -37,9 +38,10 @@ Player.prototype.changeWeapon = function (weaponName, weaponMin, weaponMax) {
   this.hero['weaponMax'] = weaponMax
 }
 
-Player.prototype.changeArmor = function (armorName, armor) {
+Player.prototype.changeArmor = function (armorName, armor, armorDamageReduction) {
   this.hero['armor'] = armor
   this.hero['armorName'] = armorName
+  this.hero['armorDamageReduction'] = armorDamageReduction
 }
 
 Player.prototype.receiveDamage = function (damage) {

@@ -27,10 +27,11 @@ describe('Loot', function() {
         {name: 'hatchet', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1},
         {name: 'mace', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1},
         {name: 'hammer', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1},
-        {name: 'cloth', type: 'armor', armor: 1, rarity: 1},
-        {name: 'leather', type: 'armor', armor: 1, rarity: 1},
-        {name: 'chainmail', type: 'armor', armor: 1, rarity: 1},
-        {name: 'plate', type: 'armor', armor: 1, rarity: 1},
+        {name: 'cloth', type: 'armor', armor: 1, rarity: 1, armorDamageReduction: (10/100) },
+        {name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: (25/10)  },
+        {name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: (40/10)  },
+        {name: 'plate', type: 'armor', armor: 15, rarity: 1, armorDamageReduction: (60/10)  },
+        {name: 'dragon scale', type: 'armor', armor: 20, rarity: 1, armorDamageReduction: (80/100)  },
         {name: 'health', type: 'healthpotion', rarity: 1},
         {name: 'dexterity', type: 'dexteritypotion', rarity: 1},
         {name: 'strength', type: 'strengthpotion', rarity: 1}
@@ -56,7 +57,7 @@ describe('Loot', function() {
     it('returns the most recently found item', function() {
       stub.returns(8)
       loot.lootFinder()
-      expect(loot.returnFoundItem()).toEqual({name: 'cloth', type: 'armor', armor: 1, rarity: 1})
+      expect(loot.returnFoundItem()).toEqual({name: 'cloth', type: 'armor', armor: 1, rarity: 1, armorDamageReduction: (10/100)})
     })
   })
 

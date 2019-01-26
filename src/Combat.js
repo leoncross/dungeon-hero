@@ -45,7 +45,8 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   let roll = this.dice.rollDice()
   let minRoll = (this.hero['dexterity'] + monsterModifierToDice)
   if (roll > minRoll) {
-    let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy) - this.hero['armor'])
+    let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
+    damage -= parseInt(damage * this.hero['armorDamageReduction'])
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
     return damage
