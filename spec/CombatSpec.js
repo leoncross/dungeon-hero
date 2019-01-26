@@ -26,7 +26,7 @@ describe('Combat',function(){
       playerMisses() {},
       playerWins() {},
       playerLoses() {},
-      playerPotion () {}
+      playerPotion() {}
     };
 
     var Combat = require('../src/Combat');

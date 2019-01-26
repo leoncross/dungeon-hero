@@ -32,9 +32,9 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
   let roll = this.dice.rollDice() + playerModifierToDice
   let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll && roll < 19) {
-    this.standardDamage(playerModifierToDamage, playerAttackType);
+    return this.standardDamage(playerModifierToDamage, playerAttackType);
   } else if (roll > minRoll && roll >= 19) {
-    this.criticalHitDamage(playerModifierToDamage, playerAttackType);
+    return this.criticalHitDamage(playerModifierToDamage, playerAttackType);
   } else {
     this.readout.playerMisses(playerAttackType)
     return 'miss'
