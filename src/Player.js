@@ -37,13 +37,19 @@ Player.prototype.changeWeapon = function (weaponName, weaponMin, weaponMax) {
   this.hero['weaponMax'] = weaponMax
 }
 
-Player.prototype.changeArmor = function (armor, armorName) {
+Player.prototype.changeArmor = function (armorName, armor) {
   this.hero['armor'] = armor
   this.hero['armorName'] = armorName
 }
 
 Player.prototype.receiveDamage = function (damage) {
   this.hero['health'] -= damage
+}
+
+Player.prototype.equipLoot = function (item) {
+  if (item['type'] === 'weapon') this.changeWeapon(item['name'], item['weaponMin'], item['weaponMax'])
+  if (item['type'] === 'armor') this.changeArmor(item['name'], item['armor'], item['weaponMax'])
+  if (item['type'] === 'healthPotion') this.hero['healthPotions'] += 1
 }
 
 module.exports = Player

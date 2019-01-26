@@ -68,35 +68,51 @@
 
       <div class="action-bar">
         <div class="icon">
-          <img id="playerAttack" src="./static/images/icon-attack.png" alt="">
+          <input type="image" id="playerAttack" src="./static/images/icon-attack.png">
         </div>
         <div class="icon">
-          <img id="insaneAttack" src="./static/images/insane-attack.png" alt="">
+          <input type="image" id="insaneAttack" src="./static/images/insane-attack.png">
         </div>
         <div class="icon">
-          <img id="parryAttack" src="./static/images/parry-attack.png" alt="">
+          <input type="image" id="parryAttack" src="./static/images/parry-attack.png">
         </div>
         <div class="icon">
-          <img id="healthPotion" src="./static/images/health-potion.png" alt="">
+          <input type="image" id="healthPotion" src="./static/images/health-potion.png">
         </div>
         <div class="icon">
-          <img id="playerAttack" src="./static/images/icon-attack.png" alt="">
+          <input type="image" id="playerAttack" src="./static/images/icon-attack.png">
         </div>
         <div class="icon">
-          <img id="insaneAttack" src="./static/images/insane-attack.png" alt="">
+          <input type="image" id="insaneAttack" src="./static/images/insane-attack.png">
         </div>
         <div class="icon">
-          <img id="parryAttack" src="./static/images/parry-attack.png" alt="">
+          <input type="image" id="parryAttack" src="./static/images/parry-attack.png">
         </div>
         <div class="icon">
-          <img id="healthPotion" src="./static/images/health-potion.png" alt="">
+          <input type="image" id="healthPotion" src="./static/images/health-potion.png">
         </div>
       </div>
-      <div id="myModal" class="modal">
+      <div id="winModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
+          <h1>YOU WIN</h1>
+          You killed the <span id='monsterName1'></span>
+          <br>Loot: <span id='roomLoot'>None (bad luck)</span><br><br>
+          Choose next room:<br>
+          <span id='easyRoom'>[EASY]</span>
+          <span id='mediumRoom'>[MEDIUM]</span>
+          <span id='hardRoom'>[HARD]</span>
+          <span id='bossRoom'>[BOSS]</span>
+        </div>
+      </div>
+      <div id="loseModal" class="modal">
+        <div class="modal-content">
+          <h1>YOU DIED!</h1>
+          <img src="./static/images/stitch-8bit.png" alt="DEATH">
+          <p>TRY AGAIN, LOSER.</p>
+          <a href="game.html">
+            <input type="image" src="./static/images/play-again.png">
+          </a>
         </div>
       </div>
     </div>

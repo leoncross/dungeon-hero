@@ -8,7 +8,8 @@ Game.prototype.initialize = function (playerName) {
   // var Combat
   // var Rooms
   // var Readout
-  this.player = new Player()
+  this.loot = new Loot()
+  this.player = new Player(this.loot)
   this.player.changeName(playerName)
   this.hero = this.player.returnHero()
   this.monster = new Monster()
@@ -21,7 +22,7 @@ Game.prototype.initialize = function (playerName) {
 }
 
 Game.prototype.play = function () {
-  return this.room.roomSelect()
+  return this.room.monsterRoom('easy')
 }
 
 module.exports = Game
