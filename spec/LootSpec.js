@@ -6,7 +6,6 @@ describe('Loot', function() {
   var loot;
   var stub
 
-
   beforeEach(function() {
     function PlayerStub() {}
     PlayerStub.prototype = {
