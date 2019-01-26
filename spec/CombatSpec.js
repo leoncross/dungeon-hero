@@ -115,7 +115,7 @@ describe('Combat',function(){
       expect(combat.hero["health"]).toEqual(0)
     });
     it("hero doesn't get hit if attack kills enemy", function() {
-      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollDice").and.returnValue(18);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([hero, almostDeadMonster])
@@ -124,7 +124,7 @@ describe('Combat',function(){
       expect(combat.hero["health"]).toEqual(100)
     });
     it("enemy does an attack", function() {
-      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollDice").and.returnValue(18);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([hero, enemy])
@@ -132,22 +132,31 @@ describe('Combat',function(){
       expect(combat.enemy["health"]).toEqual(92)
       expect(combat.hero["health"]).toEqual(91)
     });
-    it("player dies", function() {
+    it("player hits with double power when roll dice is above 19", function() {
       spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(player, "status").and.returnValue(true);
+      combat.attackSetup([hero, enemy])
+      combat.attackSequence(0, 1 ,0, 0)
+      expect(combat.enemy["health"]).toEqual(84)
+      expect(combat.hero["health"]).toEqual(91)
+    });
+    it("player dies", function() {
+      spyOn(dice, "rollDice").and.returnValue(18);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(false);
       combat.attackSetup([hero, enemy])
       expect(combat.attackSequence(0, 1 ,0, 0)).toEqual('you have died')
     });
     it("monster dies", function() {
-      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollDice").and.returnValue(18);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([hero, almostDeadMonster])
       expect(combat.attackSequence(0, 1 ,0, 0)).toEqual('the monster has died')
     });
     it("player consumes potion", function() {
-      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollDice").and.returnValue(18);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([leonHurtPlayer, enemy])

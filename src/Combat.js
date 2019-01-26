@@ -31,8 +31,15 @@ Combat.prototype.attackSequence = function (playerModifierToDice, playerModifier
 Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDamage, playerAttackType) {
   let roll = this.dice.rollDice() + playerModifierToDice
   let minRoll = this.enemy['armor'] + this.enemy['dexterity']
-  if (roll > minRoll) {
+  if (roll > minRoll && roll < 19) {
     let damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
+    damage = parseInt(damage)
+    this.enemy['health'] -= damage
+    if (this.enemy['health'] < 1) this.enemy['health'] = 0
+    this.readout.playerDamage(damage, playerAttackType)
+    return damage
+  } else if (roll > minRoll && roll >= 19) {
+    let damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)*2
     damage = parseInt(damage)
     this.enemy['health'] -= damage
     if (this.enemy['health'] < 1) this.enemy['health'] = 0
