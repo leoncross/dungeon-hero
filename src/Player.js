@@ -43,7 +43,11 @@ Player.prototype.changeArmor = function (armorName, armor) {
 }
 
 Player.prototype.receiveDamage = function (damage) {
-  this.hero['health'] -= damage
+  if ((this.hero['health'] - damage) < 1) {
+    this.hero['health'] = 0
+  } else {
+    this.hero['health'] -= damage
+  }
 }
 
 Player.prototype.equipLoot = function (item) {

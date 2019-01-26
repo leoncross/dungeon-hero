@@ -4,7 +4,8 @@ describe('Combat',function(){
 
     function PlayerStub() {}
     PlayerStub.prototype = {
-      status() {}
+      status() {},
+      recieveDamage () {}
     }
 
     function MonsterStub() {}
@@ -189,4 +190,17 @@ describe('Combat',function(){
       expect(combat.weaponDamage(hero)).toEqual(5)
     });
   });
+
+  describe('#trapSequence', function() {
+    it('deals 25 damage to player if fails 50/50 roll', function() {
+      spyOn(dice, 'rollDice').and.returnValue(5)
+      spyOn(player, 'recieveDamage').and.returnValue(75)
+      expect(combat.trapSequence()).toEqual('triggered')
+    })
+    it('deals 0 damage to player if succeeds 50/50 roll', function() {
+      spyOn(dice, 'rollDice').and.returnValue(15)
+      spyOn(player, 'recieveDamage').and.returnValue(100)
+      expect(combat.trapSequence()).toEqual('not triggered')
+    })
+  })
 });
