@@ -86,7 +86,7 @@ Combat.prototype.criticalHitDamage = function (playerModifierToDamage, playerAtt
   damage = parseInt(damage)
   this.enemy['health'] -= damage
   if (this.enemy['health'] < 1) this.enemy['health'] = 0
-  this.readout.playerDamage(damage, playerAttackType)
+  this.readout.playerDamageCritical(damage, playerAttackType)
   return damage
 }
 
