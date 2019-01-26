@@ -70,11 +70,25 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> quick attack for 5 damage<br>'])
     });
   });
-  describe('#playerPotion', function () {
+  describe('#playerHealthPotion', function () {
     it('prints to readout', function () {
       readout.clearReadout()
-      readout.playerPotion('health')
+      readout.playerHealthPotion('health')
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a health potion and gain 25 health<br>'])
+    });
+  });
+  describe('#playerStrengthPotion', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerStrengthPotion('strength')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 2 strength<br>'])
+    });
+  });
+  describe('#playerDexterityPotion', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerDexterityPotion('dexterity')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity<br>'])
     });
   });
   describe('#playerMisses', function () {

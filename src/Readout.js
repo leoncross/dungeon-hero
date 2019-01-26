@@ -23,8 +23,16 @@ Readout.prototype.playerDamage = function (damage, type) {
   if (type === 'quick') this.addReadout('<span style="color: green;">You</span> quick attack for ' + damage + ' damage')
 }
 
-Readout.prototype.playerPotion = function (type) {
+Readout.prototype.playerHealthPotion = function (type) {
   if (type === 'health') this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
+}
+
+Readout.prototype.playerStrengthPotion = function (type) {
+  if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 2 strength')
+}
+
+Readout.prototype.playerDexterityPotion = function (type) {
+  if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity')
 }
 
 Readout.prototype.playerMisses = function (type) {

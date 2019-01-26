@@ -17,7 +17,11 @@ describe('Player', function () {
       weaponMax: 8,
       strength: 2,
       dexterity: 1,
-      healthPotions: 2
+      healthPotions: 2,
+      strengthPotions: 1,
+      dexterityPotions: 1,
+      strengthBuff: 0,
+      dexterityBuff: 0
     }
 
   });

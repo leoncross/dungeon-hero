@@ -10,7 +10,11 @@ function Player () {
     weaponMax: 8,
     strength: 2,
     dexterity: 1,
-    healthPotions: 2
+    healthPotions: 2,
+    strengthPotions: 1,
+    dexterityPotions: 1,
+    strengthBuff: 0,
+    dexterityBuff: 0
   }
 };
 
@@ -50,6 +54,8 @@ Player.prototype.equipLoot = function (item) {
   if (item['type'] === 'weapon') this.changeWeapon(item['name'], item['weaponMin'], item['weaponMax'])
   if (item['type'] === 'armor') this.changeArmor(item['name'], item['armor'], item['weaponMax'])
   if (item['type'] === 'healthPotion') this.hero['healthPotions'] += 1
+  if (item['type'] === 'strengthPotion') this.hero['strengthPotions'] += 1
+  if (item['type'] === 'dexterityPotion') this.hero['dexterityPotions'] += 1
 }
 
 module.exports = Player
