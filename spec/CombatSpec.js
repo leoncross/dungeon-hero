@@ -89,8 +89,8 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(10);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.monsterAttack(0)).toEqual(9)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.monsterAttack(0)).toEqual(4)
+      expect(combat.hero["health"]).toEqual(96)
     });
     it("normal monster attack miss", function() {
       spyOn(dice, "rollDice").and.returnValue(3);
@@ -102,8 +102,8 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.monsterAttack(5)).toEqual(9)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.monsterAttack(5)).toEqual(4)
+      expect(combat.hero["health"]).toEqual(96)
     });
   });
 
@@ -130,7 +130,7 @@ describe('Combat',function(){
       combat.attackSetup([hero, enemy])
       combat.attackSequence(0, 1 ,0, 0)
       expect(combat.enemy["health"]).toEqual(92)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.hero["health"]).toEqual(96)
     });
     it("player hits with double power when roll dice is above 19", function() {
       spyOn(dice, "rollDice").and.returnValue(20);
@@ -139,7 +139,7 @@ describe('Combat',function(){
       combat.attackSetup([hero, enemy])
       combat.attackSequence(0, 1 ,0, 0)
       expect(combat.enemy["health"]).toEqual(84)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.hero["health"]).toEqual(96)
     });
     it("player dies", function() {
       spyOn(dice, "rollDice").and.returnValue(18);
