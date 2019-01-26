@@ -72,7 +72,7 @@ Combat.prototype.healthPotion = function (playerAttackType) {
 }
 
 Combat.prototype.standardDamage = function (playerModifierToDamage, playerAttackType) {
-  let damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
+  let damage = (this.hero['strength'] + this.weaponDamage(this.hero) - this.enemy['armor']) / playerModifierToDamage
   damage = parseInt(damage)
   this.enemy['health'] -= damage
   if (this.enemy['health'] < 1) this.enemy['health'] = 0
@@ -81,7 +81,7 @@ Combat.prototype.standardDamage = function (playerModifierToDamage, playerAttack
 }
 
 Combat.prototype.criticalHitDamage = function (playerModifierToDamage, playerAttackType) {
-  let damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)*2
+  let damage = ((this.hero['strength'] + this.weaponDamage(this.hero) - this.enemy['armor']) / playerModifierToDamage)*2
   damage = parseInt(damage)
   this.enemy['health'] -= damage
   if (this.enemy['health'] < 1) this.enemy['health'] = 0
