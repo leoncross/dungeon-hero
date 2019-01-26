@@ -30,6 +30,7 @@ describe('Combat',function(){
       playerHealthPotion() {},
       playerStrengthPotion() {},
       playerDexterityPotion() {}
+      playerDamageCritical () {}
     };
 
     var Combat = require('../src/Combat');
