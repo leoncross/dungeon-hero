@@ -11,6 +11,8 @@
     <script src="./src/Dice.js"></script>
     <script src="./src/Combat.js"></script>
     <script src="./src/Rooms.js"></script>
+    <script src="./src/Readout.js"></script>
+    <script src="./src/Loot.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
     <script src="./src/interface.js"></script>
@@ -18,22 +20,7 @@
   <body>
     <div class="container">
       <div class="main">
-        <div class="console">
-          Your Turn:<br>
-          You attack with a roll of 17<br>
-          HIT!<br>
-          Your sword strikes the Ravenous Zombie for 22 damage <br><br>
-          Ravenous Zombie attacks:<br>
-          It bites with a roll of 20<br>
-          CRITICAL HIT!
-          You take 38 damage and are stunned for 1 round <br><br>
-          Ravenous Zombie attacks:<br>
-          It bites with a roll of 18 <br>
-          HIT!<br>
-          You take 21 damage <br>
-          YOU DIED! <br>
-          DEATH BY Ravenous Zombie. OUCH!
-        </div>
+        <div id='output' class="readout"></div>
         <div class="character-sheet">
           <span class='alignleft'>NAME:</span>
           <span id='playerName' class='alignright'></span>
@@ -51,23 +38,82 @@
           <span class='alignleft'>DEXTERITY:</span>
           <span id='playerDexterity' class='alignright'></span>
           <div style="clear: both;"></div>
+          <div class="rule-break"></div>
+          <span class='alignleft'>WEAPON:</span>
+          <span id='playerWeapon' class='alignright'></span>
+          <div style="clear: both;"></div>
+          <span class='alignleft'>ARMOUR:</span>
+          <span id='armourType' class='alignright'></span>
+          <div style="clear: both;"></div>
+          <div class="player-portrait">
+            <img src="./static/images/hero.png" alt="hero">
+          </div>
         </div>
         <div class="portrait">
           <img src="./static/images/zombie.png" alt="zombie">
         </div>
-        <div id='monsterName' class="monster-name">
-          RAVENOUS ZOMBIE
+        <div class="monster-name">
+          <span id='monsterName' ></span>
         </div>
         <div class="monster-stats">
           <span class='alignleft'>HEALTH:</span>
           <span id='monsterHealth' class='alignright'></span>
           <div style="clear: both;"></div>
           <span class='alignleft'>ARMOUR:</span>
-          <span id='monsterArmour' class='alignright'></span>
+          <span id='monsterArmor' class='alignright'></span>
+          <div style="clear: both;"></div>
+          <div class="rule-break"></div>
         </div>
       </div>
-      <div class="attack">
-        <input id="playerAttack" type="image" src="./static/images/attack.png" />
+
+      <div class="action-bar">
+        <div class="icon">
+          <input type="image" id="playerAttack" src="./static/images/icon-attack.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="insaneAttack" src="./static/images/insane-attack.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="parryAttack" src="./static/images/parry-attack.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="healthPotion" src="./static/images/health-potion.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="playerAttack" src="./static/images/icon-attack.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="insaneAttack" src="./static/images/insane-attack.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="parryAttack" src="./static/images/parry-attack.png">
+        </div>
+        <div class="icon">
+          <input type="image" id="healthPotion" src="./static/images/health-potion.png">
+        </div>
+      </div>
+      <div id="winModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <h1>YOU WIN</h1>
+          You killed the <span id='monsterName1'></span>
+          <br>Loot: <span id='roomLoot'>None (bad luck)</span><br><br>
+          Choose next room:<br>
+          <span id='easyRoom'>[EASY]</span>
+          <span id='mediumRoom'>[MEDIUM]</span>
+          <span id='hardRoom'>[HARD]</span>
+          <span id='bossRoom'>[BOSS]</span>
+        </div>
+      </div>
+      <div id="loseModal" class="modal">
+        <div class="modal-content">
+          <h1>YOU DIED!</h1>
+          <img src="./static/images/stitch-8bit.png" alt="DEATH">
+          <p>TRY AGAIN, LOSER.</p>
+          <a href="game.html">
+            <input type="image" src="./static/images/play-again.png">
+          </a>
+        </div>
       </div>
     </div>
   </body>

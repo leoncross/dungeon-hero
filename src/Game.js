@@ -2,24 +2,27 @@ function Game () {
 }
 
 Game.prototype.initialize = function (playerName) {
-  console.log(playerName)
-  // let Player
-  // let Monster
-  // let Dice
-  // let Combat
-  // let Rooms
-  this.player = new Player()
+  // var Player
+  // var Monster
+  // var Dice
+  // var Combat
+  // var Rooms
+  // var Readout
+  this.loot = new Loot()
+  this.player = new Player(this.loot)
   this.player.changeName(playerName)
   this.hero = this.player.returnHero()
   this.monster = new Monster()
+  this.zombie = this.monster.returnMonster('Zombie')
   this.dice = new Dice()
-  this.combat = new Combat(this.dice)
-  this.room = new Rooms(this.player, this.monster, this.combat)
-  this.startGame()
+  this.readout = new Readout()
+  this.combat = new Combat(this.player, this.monster, this.dice, this.readout)
+  this.room = new Rooms(this.player, this.monster, this.combat, this.dice)
+  this.play()
 }
 
-Game.prototype.startGame = function () {
-  this.room.roomSelect()
+Game.prototype.play = function () {
+  return this.room.monsterRoom('easy')
 }
 
 module.exports = Game

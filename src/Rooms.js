@@ -1,39 +1,22 @@
-function Rooms (player, monsters, combat) {
+function Rooms (player, monsters, combat, dice) {
   this.player = player // class
   this.monsters = monsters // class
   this.combat = combat // class
+  this.dice = dice
+  this.hero = this.player.returnHero()
 }
 
-Rooms.prototype.roomSelect = function () {
-  this.zombieRoom()
-  if (this.healthChecker() === true) {
-    return this.escapeRoom()
+Rooms.prototype.monsterRoom = function (difficulty, force = false) {
+  if (this.dice.rollDice() <= 2 && force === false) {
+    this.enemy = this.monsters.randomizeMonster('trap')
   } else {
-    return this.loseGame()
+    this.enemy = this.monsters.randomizeMonster(difficulty)
   }
+  return this.combat.attackSetup([this.hero, this.enemy])
 }
 
-Rooms.prototype.zombieRoom = function () {
-  let hero = this.player.returnHero()
-  let zombie = this.monsters.returnMonster('zombie')
-  return this.combat.attackSetup([hero, zombie])
-}
-
-Rooms.prototype.loseGame = function () {
-  return 'you have lost'
-}
-
-Rooms.prototype.escapeRoom = function () {
-  return 'you have won!'
-}
-
-Rooms.prototype.healthChecker = function () {
-  let hero = this.player.returnHero()
-  if (hero['health'] > 0) {
-    return true
-  } else {
-    return false
-  }
+Rooms.prototype.monsterInRoom = function (attribute) {
+  return this.enemy[attribute]
 }
 
 module.exports = Rooms

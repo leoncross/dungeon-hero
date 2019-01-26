@@ -9,81 +9,79 @@ describe('Rooms',function(){
   beforeEach(function() {
     function PlayerStub() {}
     PlayerStub.prototype = {
-      returnHero() {}
+      returnHero() {
+        return {name: 'hero', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+      }
     };
 
     function MonstersStub() {}
     MonstersStub.prototype = {
-      returnMonster() {}
+      returnMonster() {},
+      randomizeMonster() {},
+      resetMonsters() {}
     };
 
     function CombatStub() {}
     CombatStub.prototype = {
       attackSetup() {}
     };
+
+    function DiceStub() {}
+    DiceStub.prototype = {
+      rollDice() {},
+      rollBetween() {}
+    };
+
     player = new PlayerStub()
     monsters = new MonstersStub()
     combat = new CombatStub()
 
-    room = new Rooms(player, monsters, combat)
+    dice = new DiceStub()
 
-    leonPlayer = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
-    lucaMonster = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
-    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
-    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    room = new Rooms(player, monsters, combat, dice)
+
+    healthyMonster = {name: 'monster', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+    almostDeadMonster = {name: 'monster', health: 3, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+    deadMonster = {name: 'monster', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+
+    healthyHero = {name: 'hero', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    hurtHero = {name: 'hero', health: 47, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
+    deadHero = {name: 'hero', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
 
   });
 
-  describe("#roomSelect", function() {
-    it("wins game after beating zombie room", function() {
-      spyOn(player, "returnHero").and.returnValue(leonPlayer);
-      spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
-      spyOn(combat, "attackSetup").and.returnValue(leonHurtPlayer);
-      room.roomSelect()
-      expect(room.zombieRoom()).toEqual(leonHurtPlayer)
-      expect(room.healthChecker()).toEqual(true)
-      expect(room.escapeRoom()).toEqual('you have won!')
-    });
-    it("loses game after zombie loss", function() {
-      spyOn(player, "returnHero").and.returnValue(leonDeadPlayer);
-      spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
-      spyOn(combat, "attackSetup").and.returnValue(leonDeadPlayer);
-      room.roomSelect()
-      expect(room.zombieRoom()).toEqual(leonDeadPlayer)
-      expect(room.healthChecker()).toEqual(false)
-      expect(room.roomSelect()).toEqual('you have lost')
-    });
-  });
-
-  describe("#zombieRoom", function() {
-    it("returns player after Zombie Room", function() {
-      spyOn(player, "returnHero").and.returnValue(leonPlayer);
-      spyOn(monsters, "returnMonster").and.returnValue(lucaMonster);
-      spyOn(combat, "attackSetup").and.returnValue(leonHurtPlayer);
-      room.zombieRoom()
-      expect(room.zombieRoom()).toEqual(leonHurtPlayer)
-    });
-  });
-
-  describe("#healthChecker", function() {
-    it("returns true for player being full health", function() {
-      spyOn(player, "returnHero").and.returnValue(leonPlayer);
-      expect(room.healthChecker()).toEqual(true)
-    });
-    it("returns false for player being dead", function() {
-      spyOn(player, "returnHero").and.returnValue(leonDeadPlayer);
-      expect(room.healthChecker()).toEqual(false)
-    });
-  });
-
-  describe("#escapeRoom", function() {
-    it("Win the game", function() {
-      expect(room.escapeRoom()).toEqual('you have won!')
-    });
-  });
-  describe("#loseGame", function() {
-    it("Lose the game", function() {
-      expect(room.loseGame()).toEqual("you have lost")
-    });
-  });
+  describe('#monsterRoom', function() {
+    it('returns an easy monster (zombie)', function() {
+      spyOn(player, "returnHero").and.returnValue(healthyHero);
+      spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
+      spyOn(combat, "attackSetup").and.returnValue(healthyHero);
+      expect(room.monsterRoom('easy')).toEqual(healthyHero)
+    })
+    it('forces boss fight regardless of roll', function() {
+      spyOn(dice, "rollDice").and.returnValue(1);
+      spyOn(combat, "attackSetup").and.returnValue('boss');
+      expect(room.monsterRoom('boss', true)).toEqual('boss')
+    })
+    it('points to trapRoom if fails dice roll', function() {
+      spyOn(dice, "rollDice").and.returnValue(5);
+      spyOn(combat, "attackSetup").and.returnValue('trap');
+      expect(room.monsterRoom('medium')).toEqual('trap')
+    })
+  })
+  describe('#monsterInRoom', function() {
+    it('returns the name of the monster in the room', function() {
+      spyOn(player, "returnHero").and.returnValue(healthyHero);
+      spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
+      spyOn(combat, "attackSetup").and.returnValue(healthyHero);
+      room.monsterRoom('easy')
+      expect(room.monsterInRoom('name')).toEqual('monster')
+    })
+    it('returns the armorName of the monster in the room', function() {
+      spyOn(player, "returnHero").and.returnValue(healthyHero);
+      spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
+      spyOn(combat, "attackSetup").and.returnValue(healthyHero);
+      room.monsterRoom('easy')
+      expect(room.monsterInRoom('armorName')).toEqual('Leather')
+    })
+  })
 });

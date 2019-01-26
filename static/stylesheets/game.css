@@ -20,14 +20,15 @@ body {
 
 .rule-break {
   height: 5px;
-  width: 205px;
+  /* width: 205px; */
   margin-top: 8px;
   margin-bottom: 8px;
   background-image: url(./../images/console.png);
 
 }
 
-.console {
+.readout {
+  text-align: left;
   margin-top: 100px;
   margin-left: 40px;
   padding: 15px;
@@ -56,6 +57,15 @@ body {
   padding-right: 30px;
   font-size: 24px;
   float: left;
+}
+
+.player-portrait {
+  margin-top: 16px;
+  padding-top: 6px;
+  height: 214px;
+  width: 208px;
+  background-image: url(./../images/player-portrait.png);
+  background-repeat: no-repeat;
 }
 
 .portrait {
@@ -92,4 +102,51 @@ body {
 
 .attack {
   margin-top: 30px;
+}
+
+.action-bar {
+  margin-top: 20px;
+  padding-left: 47px;
+  padding-right: 47px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 446px;
+  height: 60px;
+  background-image: url(./../images/actionbar.png);
+}
+
+.icon {
+  text-align: left;
+  float: left;
+  margin-top: 4px;
+  margin-left: 5.0px;
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: black;
+  margin: 50px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 1000px;
+  height: 660px; /* Could be more or less, depending on screen size */
+  font-size: 30px;
+}
+
+h1 {
+  color: orange;
 }

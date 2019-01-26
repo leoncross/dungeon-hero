@@ -2,21 +2,25 @@
 describe('Dice', function(){
 
   var Dice = require('../src/Dice');
+  var sinon = require('sinon');
+
   var dice;
+  var stub
 
   beforeEach(function() {
+    stub = sinon.stub(Math, 'floor')
     dice = new Dice();
   });
 
-  it('the object to exist', function(){
-    expect(dice).toBeDefined();
+  afterEach(function () {
+    stub.restore()
   });
 
   describe('rollBetween', function() {
     it('return a number between two given values', function(){
-      spyOn(Math, 'random').and.returnValue(5);
-      spyOn(dice, 'rollBetween').and.returnValue(5);
-      expect(dice.rollBetween(4,8)).toBe(5);
+      stub.returns(4)
+      expect(dice.rollBetween(4,8)).toEqual(8);
+      stub.resetBehavior();
     });
 
     it('expect to push into the array', function(){
@@ -27,8 +31,9 @@ describe('Dice', function(){
 
   describe('rollDice', function() {
     it('retuns a random number between 1 and 20', function(){
-      spyOn(dice, 'rollDice').and.returnValue(5);
-      expect(dice.rollDice()).toBe(5);
+      stub.returns(4)
+      expect(dice.rollDice()).toBe(4);
+      stub.resetBehavior();
     });
   });
 });
