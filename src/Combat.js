@@ -30,7 +30,7 @@ Combat.prototype.attackSequence = function (playerModifierToDice, playerModifier
 
 Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDamage, playerAttackType) {
   let roll = this.dice.rollDice() + playerModifierToDice
-  let minRoll = this.enemy['armor'] + this.enemy['dexterity']
+  let minRoll = this.enemy['dexterity']
   if (roll > minRoll && roll < 19) {
     return this.standardDamage(playerModifierToDamage, playerAttackType);
   } else if (roll > minRoll && roll >= 19) {
@@ -43,9 +43,10 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
 
 Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   let roll = this.dice.rollDice()
-  let minRoll = (this.hero['armor'] + this.hero['dexterity'] + monsterModifierToDice)
+  let minRoll = (this.hero['dexterity'] + monsterModifierToDice)
   if (roll > minRoll) {
     let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
+    damage -= parseInt(damage * this.hero['armorDamageReduction'])
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
     return damage
@@ -72,7 +73,7 @@ Combat.prototype.healthPotion = function (playerAttackType) {
 }
 
 Combat.prototype.standardDamage = function (playerModifierToDamage, playerAttackType) {
-  let damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
+  let damage = (this.hero['strength'] + this.weaponDamage(this.hero) - this.enemy['armor']) / playerModifierToDamage
   damage = parseInt(damage)
   this.enemy['health'] -= damage
   if (this.enemy['health'] < 1) this.enemy['health'] = 0
@@ -81,7 +82,7 @@ Combat.prototype.standardDamage = function (playerModifierToDamage, playerAttack
 }
 
 Combat.prototype.criticalHitDamage = function (playerModifierToDamage, playerAttackType) {
-  let damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)*2
+  let damage = ((this.hero['strength'] + this.weaponDamage(this.hero) - this.enemy['armor']) / playerModifierToDamage)*2
   damage = parseInt(damage)
   this.enemy['health'] -= damage
   if (this.enemy['health'] < 1) this.enemy['health'] = 0
