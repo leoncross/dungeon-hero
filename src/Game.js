@@ -22,7 +22,7 @@ Game.prototype.initialize = function (playerName) {
 }
 
 Game.prototype.play = function () {
-  return this.room.roomSelect()
+  return this.room.monsterRoom('easy')
 }
 
 module.exports = Game

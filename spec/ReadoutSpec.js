@@ -7,7 +7,7 @@ describe('Readout', function () {
 
   describe('#opening message', function () {
     it('opening message to player', function () {
-      expect(readout.readoutArray).toEqual(['You wake up in a dark dungeon. Your eyes slowly adjust, and you see a dagger next to you. You think think its a good idea to pick this up.<br>', 'Suddenly, you hear what looks like a zombie running towards you...<br>'])
+      expect(readout.readoutArray).toEqual([])
     });
   });
   describe('#clearReadout', function () {
@@ -30,6 +30,14 @@ describe('Readout', function () {
       readout.addReadout('test message')
       expect(readout.printReadout()).toEqual(['test message<br>'])
     });
+    it('maximum readout of 20', function () {
+      readout.clearReadout()
+      readout.addReadout('test message')
+      readout.readoutArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+      expect(readout.readoutArray.length).toEqual(20)
+      readout.addReadout('test message')
+      expect(readout.readoutArray.length).toEqual(20)
+    });
   });
   describe('#monsterDamage', function () {
     it('prints to readout', function () {
@@ -46,17 +54,44 @@ describe('Readout', function () {
     });
   });
   describe('#playerDamage', function () {
+    it('prints type of damage to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerDamage(5, 'normal')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> attack for 5 damage<br>'])
+    });
+    it('prints type of damage to readout - insane', function () {
+      readout.clearReadout()
+      readout.playerDamage(5, 'insane')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> strong attack for 5 damage<br>'])
+    });
+    it('prints type of damage to readout - quick', function () {
+      readout.clearReadout()
+      readout.playerDamage(5, 'quick')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> quick attack for 5 damage<br>'])
+    });
+  });
+  describe('#playerPotion', function () {
     it('prints to readout', function () {
       readout.clearReadout()
-      readout.playerDamage(5)
-      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> attack for 5 damage<br>'])
+      readout.playerPotion('health')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a health potion and gain 25 health<br>'])
     });
   });
   describe('#playerMisses', function () {
-    it('prints to readout', function () {
+    it('prints to readout - normal', function () {
       readout.clearReadout()
-      readout.playerMisses()
+      readout.playerMisses('normal')
       expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> attack misses<br>'])
+    });
+    it('prints to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerMisses('insane')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> strong attack misses<br>'])
+    });
+    it('prints to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerMisses('quick')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> quick attack misses<br>'])
     });
   });
   describe('#playerWins', function () {

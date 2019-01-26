@@ -6,7 +6,39 @@ describe('Player', function () {
 
   beforeEach(function () {
     player = new Player();
+
+    hero = {
+      name: 'Player',
+      health: 100,
+      armor: 1,
+      armorName: 'Plate',
+      weaponName: 'Dagger',
+      weaponMin: 5,
+      weaponMax: 8,
+      strength: 2,
+      dexterity: 1,
+      healthPotions: 2
+    }
+
   });
+
+  describe('#returnHero', function() {
+    it('returns the hero object', function () {
+      expect(player.returnHero()).toEqual(hero);
+    });
+  });
+
+  describe('#status', function() {
+    it('does a status check against a healthy hero', function () {
+      hero['health'] = 46
+      expect(player.status()).toEqual(true);
+    });
+    it('does a status check against a dead hero', function () {
+      hero['health'] = 0
+      expect(player.status()).toEqual(true);
+    });
+  });
+
 
   describe('#changeName', function() {
     it('change hero name', function () {
