@@ -82,6 +82,13 @@ describe('Combat',function(){
       expect(combat.heroAttack(0, 2)).toEqual(4)
       expect(combat.enemy["health"]).toEqual(96)
     });
+    it("quick player attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(0);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack(0, 2)).toEqual('miss')
+      expect(combat.enemy["health"]).toEqual(100)
+    });
   });
 
 

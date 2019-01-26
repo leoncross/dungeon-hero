@@ -65,18 +65,18 @@ describe('Rooms',function(){
     it('points to trapRoom if fails dice roll', function() {
       spyOn(dice, "rollDice").and.returnValue(5);
       spyOn(combat, "attackSetup").and.returnValue('trap');
-      expect(room.monsterRoom('medium', true)).toEqual('trap')
+      expect(room.monsterRoom('medium')).toEqual('trap')
     })
   })
   describe('#monsterInRoom', function() {
-    it('returns the monster in the room', function() {
+    it('returns the name of the monster in the room', function() {
       spyOn(player, "returnHero").and.returnValue(healthyHero);
       spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
       spyOn(combat, "attackSetup").and.returnValue(healthyHero);
       room.monsterRoom('easy')
       expect(room.monsterInRoom('name')).toEqual('monster')
     })
-    it('returns the monster in the room', function() {
+    it('returns the armorName of the monster in the room', function() {
       spyOn(player, "returnHero").and.returnValue(healthyHero);
       spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
       spyOn(combat, "attackSetup").and.returnValue(healthyHero);

@@ -52,7 +52,7 @@ Player.prototype.receiveDamage = function (damage) {
 
 Player.prototype.equipLoot = function (item) {
   if (item['type'] === 'weapon') this.changeWeapon(item['name'], item['weaponMin'], item['weaponMax'])
-  if (item['type'] === 'armor') this.changeArmor(item['name'], item['armor'], item['weaponMax'])
+  if (item['type'] === 'armor') this.changeArmor(item['name'], item['armor'])
   if (item['type'] === 'healthPotion') this.hero['healthPotions'] += 1
 }
 

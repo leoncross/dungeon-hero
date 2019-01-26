@@ -30,12 +30,12 @@ describe('Player', function () {
 
   describe('#status', function() {
     it('does a status check against a healthy hero', function () {
-      hero['health'] = 46
+      player.hero['health'] = 46
       expect(player.status()).toEqual(true);
     });
     it('does a status check against a dead hero', function () {
-      hero['health'] = 0
-      expect(player.status()).toEqual(true);
+      player.hero['health'] = 0
+      expect(player.status()).toEqual(false);
     });
   });
 
