@@ -93,4 +93,12 @@ Combat.prototype.weaponDamage = function (attacker) {
   return this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
 }
 
+Combat.prototype.trapSequence = function () {
+  if (this.dice.rollDice() <= 10) {
+    this.player.recieveDamage(25)
+    return 'triggered'
+  }
+  return 'not triggered'
+}
+
 module.exports = Combat
