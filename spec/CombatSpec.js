@@ -37,10 +37,10 @@ describe('Combat',function(){
     dice = new DiceStub
     combat = new Combat(player, monster, dice, readout)
 
-    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
-    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2}
-    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
-    leonAlmostDeadPlayer = {name: 'leon', health: 1, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
+    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
+    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2}
+    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
+    leonAlmostDeadPlayer = {name: 'leon', health: 1, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
     almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
     deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
@@ -65,22 +65,22 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 1)).toEqual(8)
-      expect(combat.enemy["health"]).toEqual(92)
+      expect(combat.heroAttack(0, 1)).toEqual(4)
+      expect(combat.enemy["health"]).toEqual(96)
     });
     it("insane player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(3);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(-5, 0.5)).toEqual(12)
-      expect(combat.enemy["health"]).toEqual(88)
+      expect(combat.heroAttack(-5, 0.5)).toEqual(4)
+      expect(combat.enemy["health"]).toEqual(96)
     });
     it("quick player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 2)).toEqual(4)
-      expect(combat.enemy["health"]).toEqual(96)
+      expect(combat.heroAttack(0, 2)).toEqual(2)
+      expect(combat.enemy["health"]).toEqual(98)
     });
     it("quick player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(0);
@@ -97,8 +97,8 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(10);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.monsterAttack(0)).toEqual(9)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.monsterAttack(0)).toEqual(4)
+      expect(combat.hero["health"]).toEqual(96)
     });
     it("normal monster attack miss", function() {
       spyOn(dice, "rollDice").and.returnValue(3);
@@ -110,8 +110,8 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.monsterAttack(5)).toEqual(9)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.monsterAttack(5)).toEqual(4)
+      expect(combat.hero["health"]).toEqual(96)
     });
   });
 
@@ -137,8 +137,8 @@ describe('Combat',function(){
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([hero, enemy])
       combat.attackSequence(0, 1 ,0, 0)
-      expect(combat.enemy["health"]).toEqual(92)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.enemy["health"]).toEqual(96)
+      expect(combat.hero["health"]).toEqual(96)
     });
     it("player hits with double power when roll dice is above 19", function() {
       spyOn(dice, "rollDice").and.returnValue(20);
@@ -146,8 +146,8 @@ describe('Combat',function(){
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([hero, enemy])
       combat.attackSequence(0, 1 ,0, 0)
-      expect(combat.enemy["health"]).toEqual(84)
-      expect(combat.hero["health"]).toEqual(91)
+      expect(combat.enemy["health"]).toEqual(92)
+      expect(combat.hero["health"]).toEqual(96)
     });
     it("player dies", function() {
       spyOn(dice, "rollDice").and.returnValue(18);
