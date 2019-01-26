@@ -32,19 +32,9 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
   let roll = this.dice.rollDice() + playerModifierToDice
   let minRoll = this.enemy['armor'] + this.enemy['dexterity']
   if (roll > minRoll && roll < 19) {
-    let damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
-    damage = parseInt(damage)
-    this.enemy['health'] -= damage
-    if (this.enemy['health'] < 1) this.enemy['health'] = 0
-    this.readout.playerDamage(damage, playerAttackType)
-    return damage
+    this.standardDamage(playerModifierToDamage, playerAttackType);
   } else if (roll > minRoll && roll >= 19) {
-    let damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)*2
-    damage = parseInt(damage)
-    this.enemy['health'] -= damage
-    if (this.enemy['health'] < 1) this.enemy['health'] = 0
-    this.readout.playerDamage(damage, playerAttackType)
-    return damage
+    this.criticalHitDamage(playerModifierToDamage, playerAttackType);
   } else {
     this.readout.playerMisses(playerAttackType)
     return 'miss'
@@ -79,6 +69,24 @@ Combat.prototype.healthPotion = function (playerAttackType) {
   } else {
     return 'you ran out of potions'
   }
+}
+
+Combat.prototype.standardDamage = function (playerModifierToDamage, playerAttackType) {
+  let damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
+  damage = parseInt(damage)
+  this.enemy['health'] -= damage
+  if (this.enemy['health'] < 1) this.enemy['health'] = 0
+  this.readout.playerDamage(damage, playerAttackType)
+  return damage
+}
+
+Combat.prototype.criticalHitDamage = function (playerModifierToDamage, playerAttackType) {
+  let damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)*2
+  damage = parseInt(damage)
+  this.enemy['health'] -= damage
+  if (this.enemy['health'] < 1) this.enemy['health'] = 0
+  this.readout.playerDamage(damage, playerAttackType)
+  return damage
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
