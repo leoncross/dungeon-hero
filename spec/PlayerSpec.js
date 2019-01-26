@@ -31,12 +31,12 @@ describe('Player', function () {
 
   describe('#status', function() {
     it('does a status check against a healthy hero', function () {
-      hero['health'] = 46
+      player.hero['health'] = 46
       expect(player.status()).toEqual(true);
     });
     it('does a status check against a dead hero', function () {
-      hero['health'] = 0
-      expect(player.status()).toEqual(true);
+      player.hero['health'] = 0
+      expect(player.status()).toEqual(false);
     });
   });
 
@@ -75,6 +75,11 @@ describe('Player', function () {
       player.receiveDamage(20);
       expect(player.hero['health']).toEqual(80);
     });
+    it('doesnt go below 0', function () {
+      expect(player.hero['health']).toEqual(100);
+      player.receiveDamage(120);
+      expect(player.hero['health']).toEqual(0);
+    });
   });
 
   describe('#returnAttribute', function() {
@@ -89,7 +94,7 @@ describe('Player', function () {
     })
     it('returns boolean true if alive', function() {
       player.receiveDamage(110)
-      expect(player.hero['health']).toBeLessThan(0);
+      expect(player.hero['health']).toEqual(0);
       expect(player.status()).toEqual(false)
     })
   })

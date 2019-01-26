@@ -20,7 +20,8 @@ describe('Monster', function () {
       { name: 'Goblin', difficulty: 'medium', health: 55, armor: 5, strength: 5, dexterity: 4, weaponMin: 7, weaponMax: 9 },
       { name: 'Gorgon', difficulty: 'hard', health: 90, armor: 6, strength: 4, dexterity: 6, weaponMin: 9, weaponMax: 15 },
       { name: 'Shadow Demon', difficulty: 'hard', health: 110, armor: 6, strength: 8, dexterity: 4, weaponMin: 8, weaponMax: 12 },
-      { name: 'Dragon', difficulty: 'boss', health: 300, armor: 6, strength: 13, dexterity: 8, weaponMin: 15, weaponMax: 22 }
+      { name: 'Dragon', difficulty: 'boss', health: 300, armor: 6, strength: 13, dexterity: 8, weaponMin: 15, weaponMax: 22 },
+      { name: 'Trap', difficulty: 'trap', health: 10, armor: 0, strength: 0, dexterity: 0, weaponMin: 25, weaponMax: 25 }
     ]
   });
 
