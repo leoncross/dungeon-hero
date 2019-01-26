@@ -70,6 +70,23 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> quick attack for 5 damage<br>'])
     });
   });
+  describe('#playerDamageCritical', function () {
+    it('prints type of damage to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerDamageCritical(5, 'normal')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> critical hit on your attack for 5 damage<br>'])
+    });
+    it('prints type of damage to readout - insane', function () {
+      readout.clearReadout()
+      readout.playerDamageCritical(5, 'insane')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> critical hit on your strong attack for 5 damage<br>'])
+    });
+    it('prints type of damage to readout - quick', function () {
+      readout.clearReadout()
+      readout.playerDamageCritical(5, 'quick')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> critical hit on your quick attack for 5 damage<br>'])
+    });
+  });
   describe('#potion', function () {
     it('prints to readout', function () {
       readout.clearReadout()
