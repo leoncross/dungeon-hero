@@ -64,7 +64,7 @@ function updateInterface () {
       updateAll()
     })
     $('#bossRoom').click(function () {
-      game.room.monsterRoom('boss')
+      game.room.monsterRoom('boss', true)
       game.readout.clearReadout()
       modal.style.display = 'none'
       updateAll()
