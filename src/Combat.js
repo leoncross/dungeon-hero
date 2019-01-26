@@ -32,7 +32,7 @@ Combat.prototype.attackSequence = function (playerModifierToDice, playerModifier
 
 Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDamage, playerAttackType) {
   let roll = this.dice.rollDice() + playerModifierToDice
-  let minRoll = this.enemy['armor'] + this.enemy['dexterity']
+  let minRoll = this.enemy['dexterity']
   if (roll > minRoll && roll < 19) {
     return this.standardDamage(playerModifierToDamage, playerAttackType);
   } else if (roll > minRoll && roll >= 19) {
@@ -45,9 +45,10 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
 
 Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   let roll = this.dice.rollDice()
-  let minRoll = (this.hero['armor'] + this.hero['dexterity'] + this.hero['dexterityBuff'] + monsterModifierToDice)
+  let minRoll = (this.hero['dexterity'] + this.hero['dexterityBuff'] + monsterModifierToDice)
   if (roll > minRoll) {
     let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
+    damage -= parseInt(damage * this.hero['armorDamageReduction'])
     this.hero['health'] -= damage
     this.readout.monsterDamage(this.enemy['name'], damage)
     return damage
@@ -119,12 +120,20 @@ Combat.prototype.criticalHitDamage = function (playerModifierToDamage, playerAtt
   damage = parseInt(damage)
   this.enemy['health'] -= damage
   if (this.enemy['health'] < 1) this.enemy['health'] = 0
-  this.readout.playerDamage(damage, playerAttackType)
+  this.readout.playerDamageCritical(damage, playerAttackType)
   return damage
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
   return this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
+}
+
+Combat.prototype.trapSequence = function () {
+  if (this.dice.rollDice() <= 10) {
+    this.player.recieveDamage(25)
+    return 'triggered'
+  }
+  return 'not triggered'
 }
 
 module.exports = Combat

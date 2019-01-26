@@ -23,6 +23,12 @@ Readout.prototype.playerDamage = function (damage, type) {
   if (type === 'quick') this.addReadout('<span style="color: green;">You</span> quick attack for ' + damage + ' damage')
 }
 
+Readout.prototype.playerDamageCritical = function (damage, type) {
+  if (type === 'normal') this.addReadout('<span style="color: green;">You</span> critical hit on your attack for ' + damage + ' damage')
+  if (type === 'insane') this.addReadout('<span style="color: green;">You</span> critical hit on your strong attack for ' + damage + ' damage')
+  if (type === 'quick') this.addReadout('<span style="color: green;">You</span> critical hit on your quick attack for ' + damage + ' damage')
+}
+
 Readout.prototype.playerHealthPotion = function (type) {
   if (type === 'health') this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
 }

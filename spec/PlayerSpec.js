@@ -11,8 +11,9 @@ describe('Player', function () {
       name: 'Player',
       health: 100,
       armor: 1,
-      armorName: 'Plate',
-      weaponName: 'Dagger',
+      armorName: 'cloth',
+      armorDamageReduction: (10/100),
+      weaponName: 'dagger',
       weaponMin: 5,
       weaponMax: 8,
       strength: 2,
@@ -34,12 +35,12 @@ describe('Player', function () {
 
   describe('#status', function() {
     it('does a status check against a healthy hero', function () {
-      hero['health'] = 46
+      player.hero['health'] = 46
       expect(player.status()).toEqual(true);
     });
     it('does a status check against a dead hero', function () {
-      hero['health'] = 0
-      expect(player.status()).toEqual(true);
+      player.hero['health'] = 0
+      expect(player.status()).toEqual(false);
     });
   });
 
@@ -54,9 +55,9 @@ describe('Player', function () {
 
   describe('#changeWeapon', function() {
     it('change weapon', function () {
-      expect(player.hero['weaponName']).toEqual('Dagger');
-      player.changeWeapon('Throwing Axe', 10, 15);
-      expect(player.hero['weaponName']).toEqual('Throwing Axe');
+      expect(player.hero['weaponName']).toEqual('dagger');
+      player.changeWeapon('throwing Axe', 10, 15);
+      expect(player.hero['weaponName']).toEqual('throwing Axe');
       expect(player.hero['weaponMin']).toEqual(10);
       expect(player.hero['weaponMax']).toEqual(15);
     });
@@ -64,10 +65,11 @@ describe('Player', function () {
 
   describe('#changeArmor', function() {
     it('change armor', function () {
-      expect(player.hero['armorName']).toEqual('Plate');
-      player.changeArmor('Full Plate', 5);
-      expect(player.hero['armorName']).toEqual('Full Plate');
+      expect(player.hero['armorName']).toEqual('cloth');
+      player.changeArmor('dragon scale', 5, 0.8);
+      expect(player.hero['armorName']).toEqual('dragon scale');
       expect(player.hero['armor']).toEqual(5);
+      expect(player.hero['armorDamageReduction']).toEqual(80/100);
     });
   });
 
@@ -76,6 +78,11 @@ describe('Player', function () {
       expect(player.hero['health']).toEqual(100);
       player.receiveDamage(20);
       expect(player.hero['health']).toEqual(80);
+    });
+    it('doesnt go below 0', function () {
+      expect(player.hero['health']).toEqual(100);
+      player.receiveDamage(120);
+      expect(player.hero['health']).toEqual(0);
     });
   });
 
@@ -91,7 +98,7 @@ describe('Player', function () {
     })
     it('returns boolean true if alive', function() {
       player.receiveDamage(110)
-      expect(player.hero['health']).toBeLessThan(0);
+      expect(player.hero['health']).toEqual(0);
       expect(player.status()).toEqual(false)
     })
   })
