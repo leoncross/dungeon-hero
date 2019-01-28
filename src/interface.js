@@ -109,5 +109,8 @@ function updateInterface () {
     $('#monsterHealth').text(game.room.monsterInRoom('health'))
     $('#monsterArmor').text(game.room.monsterInRoom('armor'))
     $('#output').html(game.readout.printReadout())
+    $('#healthQuantity').text(game.player.returnAttribute('healthPotions'))
+    $('#dexQuantity').text(game.player.returnAttribute('dexterityPotions'))
+    $('#strQuantity').text(game.player.returnAttribute('strengthPotions'))
   }
 }

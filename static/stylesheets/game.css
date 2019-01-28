@@ -147,7 +147,17 @@ body {
   float: left;
   margin-top: 4px;
   margin-left: 5.0px;
+  position: relative;
+}
 
+.icon-image {
+  position: relative;
+}
+
+.quantity {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
 }
 
 /* The Modal (background) */
