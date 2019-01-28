@@ -18,6 +18,10 @@ Combat.prototype.attackSequence = function (playerModifierToDice, playerModifier
   if (potion === 0) this.heroAttack(playerModifierToDice, playerModifierToDamage, playerAttackType)
   if (potion === 'health') return this.healthPotion(playerAttackType)
   if (this.enemy['health'] > 0) this.monsterAttack(monsterModifierToDice)
+  return this.endOfCombat()
+}
+
+Combat.prototype.endOfCombat = function () {
   if (this.player.status() === false) {
     this.readout.playerLoses()
     return 'you have died'
@@ -32,13 +36,9 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
   let roll = this.dice.rollDice() + playerModifierToDice
   let minRoll = this.enemy['dexterity']
   if (roll > minRoll) {
-    if (roll >= 19) {
-      var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage) * 2
-    } else {
-      var damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
-    }
-    damage = parseInt(damage)
-    this.enemy['health'] -= damage
+    var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
+    if (roll >= 19) damage *= 2
+    this.enemy['health'] -= parseInt(damage)
     if (this.enemy['health'] < 1) this.enemy['health'] = 0
     this.readout.playerDamage(damage, playerAttackType)
     return damage
