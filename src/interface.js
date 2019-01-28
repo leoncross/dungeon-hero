@@ -51,8 +51,7 @@ function updateInterface () {
     blood25.style.display = "block"
   }
 
-  if(health < 1) {
-
+  if (health < 1) {
     var modal = document.getElementById('loseModal')
     modal.style.display = 'block'
   }
@@ -88,7 +87,7 @@ function updateInterface () {
   }
 
   function updateAll () {
-    $("#monsterPortrait").attr("src",game.room.monsterInRoom('image'));
+    $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
     $('#playerName').text(game.player.returnAttribute('name'))
     $('#playerHealth').text(game.player.returnAttribute('health'))
     $('#playerArmour').text(game.player.returnAttribute('armor'))
