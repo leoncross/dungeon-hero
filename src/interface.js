@@ -78,8 +78,14 @@ function updateInterface () {
     $('#playerName').text(game.player.returnAttribute('name'))
     $('#playerHealth').text(game.player.returnAttribute('health'))
     $('#playerArmour').text(game.player.returnAttribute('armor'))
-    $('#playerStrength').text(game.player.returnAttribute('strength'))
-    $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
+    if (game.player.returnAttribute('strengthBuff') > 0) {
+      $(this).css('color', 'green');
+    }
+
+
+
+    $('#playerStrength').text(game.player.returnAttribute('strength') + game.player.returnAttribute('strengthBuff'))
+    $('#playerDexterity').text(game.player.returnAttribute('dexterity') + game.player.returnAttribute('dexterityBuff'))
     $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
     $('#armourType').text(game.player.returnAttribute('armorName'))
     $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())
