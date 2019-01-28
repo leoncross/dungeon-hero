@@ -5,7 +5,7 @@ function Player () {
     health: 100,
     armor: 1,
     armorName: 'cloth',
-    armorDamageReduction: (10/100),
+    armorDamageReduction: (10 / 100),
     weaponName: 'dagger',
     weaponMin: 5,
     weaponMax: 8,
