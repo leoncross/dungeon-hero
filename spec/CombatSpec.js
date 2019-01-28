@@ -66,24 +66,24 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 1)).toEqual(4)
-      expect(combat.enemy["health"]).toEqual(96)
+      expect(combat.heroAttack(0, 1)).toEqual(8)
+      expect(combat.enemy["health"]).toEqual(92)
     });
     it("insane player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(3);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(-5, 0.5)).toEqual(4)
-      expect(combat.enemy["health"]).toEqual(96)
+      expect(combat.heroAttack(-5, 0.5)).toEqual(12)
+      expect(combat.enemy["health"]).toEqual(88)
     });
     it("quick player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 2)).toEqual(2)
-      expect(combat.enemy["health"]).toEqual(98)
+      expect(combat.heroAttack(0, 2)).toEqual(4)
+      expect(combat.enemy["health"]).toEqual(96)
     });
-    it("quick player attack", function() {
+    it("miss", function() {
       spyOn(dice, "rollDice").and.returnValue(0);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
@@ -91,7 +91,6 @@ describe('Combat',function(){
       expect(combat.enemy["health"]).toEqual(100)
     });
   });
-
 
   describe("#monsterAttack", function() {
     it("normal monster attack success", function() {
@@ -138,15 +137,6 @@ describe('Combat',function(){
       spyOn(player, "status").and.returnValue(true);
       combat.attackSetup([hero, enemy])
       combat.attackSequence(0, 1 ,0, 0)
-      expect(combat.enemy["health"]).toEqual(96)
-      expect(combat.hero["health"]).toEqual(96)
-    });
-    it("player hits with double power when roll dice is above 19", function() {
-      spyOn(dice, "rollDice").and.returnValue(20);
-      spyOn(dice, "rollBetween").and.returnValue(5);
-      spyOn(player, "status").and.returnValue(true);
-      combat.attackSetup([hero, enemy])
-      combat.attackSequence(0, 1 ,0, 0)
       expect(combat.enemy["health"]).toEqual(92)
       expect(combat.hero["health"]).toEqual(96)
     });
@@ -173,6 +163,28 @@ describe('Combat',function(){
     });
   })
 
+  describe("#criticaldamage", function() {
+    it("critical normal attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack(0, 1)).toEqual(16)
+      expect(combat.enemy["health"]).toEqual(84)
+    });
+    it("cannot critical on insane attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(3);
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack(-5, 0.5)).toEqual(12)
+      expect(combat.enemy["health"]).toEqual(88)
+    });
+    it("critical quick attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack(0, 2)).toEqual(8)
+    });
+  })
 
   describe("#healthPotion", function() {
     it('restores 25 hp and reduces healh potions by 1', function() {
