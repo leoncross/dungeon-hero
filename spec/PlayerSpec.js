@@ -17,6 +17,7 @@ describe('Player', function () {
       weaponMin: 5,
       weaponMax: 8,
       strength: 2,
+      berserkMode: "off",
       dexterity: 1,
       healthPotions: 2,
       strengthPotions: 2,
@@ -89,6 +90,13 @@ describe('Player', function () {
   describe('#returnAttribute', function() {
     it('returns requested attribute', function() {
       expect(player.returnAttribute('armor')).toEqual(1)
+    });
+  });
+
+  describe('#toggleBerserkMode', function() {
+    it('is togglable by passing an argument', function() {
+      player.toggleBerserkMode('on')
+      expect(player.hero['berserkMode']).toEqual('on')
     });
   });
 

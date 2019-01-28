@@ -17,6 +17,14 @@ Readout.prototype.monsterMisses = function (monster) {
   this.addReadout('<span style="color: red;">' + monster + '</span> attack misses')
 }
 
+Readout.prototype.playerBerserActivated = function (monster) {
+  this.addReadout('<span style="color: green;">You</span> enter Beserk mode!')
+}
+
+Readout.prototype.playerBerserDisactivated = function (monster) {
+  this.addReadout('<span style="color: green;">You</span> leave Beserk mode!')
+}
+
 Readout.prototype.playerDamage = function (damage, type) {
   if (type === 'normal') this.addReadout('<span style="color: green;">You</span> attack for ' + damage + ' damage')
   if (type === 'insane') this.addReadout('<span style="color: green;">You</span> strong attack for ' + damage + ' damage')

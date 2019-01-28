@@ -157,4 +157,19 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">You have died</span><br>'])
     });
   });
+
+  describe('#playerBerserkActiated', function () {
+    it('displays message for berserk mode', function () {
+      readout.clearReadout()
+      readout.playerBerserActivated()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> enter Beserk mode!<br>'])
+    });
+  });
+  describe('#playerBerserDisactivated', function () {
+    it('displays message for berserk mode', function () {
+      readout.clearReadout()
+      readout.playerBerserDisactivated()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> leave Beserk mode!<br>'])
+    });
+  });
 });
