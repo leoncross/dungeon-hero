@@ -30,14 +30,14 @@ describe('Readout', function () {
       readout.addReadout('test message')
       expect(readout.printReadout()).toEqual(['test message<br>'])
     });
-    it('maximum readout of 20', function () {
-      readout.clearReadout()
-      readout.addReadout('test message')
-      readout.readoutArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-      expect(readout.readoutArray.length).toEqual(20)
-      readout.addReadout('test message')
-      expect(readout.readoutArray.length).toEqual(20)
-    });
+    // it('maximum readout of 20', function () {
+    //   readout.clearReadout()
+    //   readout.addReadout('test message')
+    //   readout.readoutArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    //   expect(readout.readoutArray.length).toEqual(20)
+    //   readout.addReadout('test message')
+    //   expect(readout.readoutArray.length).toEqual(20)
+    // });
   });
   describe('#monsterDamage', function () {
     it('prints to readout', function () {
