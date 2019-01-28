@@ -4,20 +4,20 @@ var browser = new Browser();
 
 describe('User visits signup page', function() {
 
-  beforeEach(function() {
-        originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
-    });
-
-    it("takes a long time", function(done) {
-        setTimeout(function() {
-            done();
-        }, 18000);
-    });
-
-    afterEach(function() {
-        jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-    });
+  // beforeEach(function() {
+  //       originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+  //       jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+  //   });
+  //
+  //   it("takes a long time", function(done) {
+  //       setTimeout(function() {
+  //           done();
+  //       }, 18000);
+  //   });
+  //
+  //   afterEach(function() {
+  //       jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+  //   });
 
   it("should have defined headless browser", function(next){
     expect(typeof browser != "undefined").toBe(true);
