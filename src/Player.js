@@ -11,7 +11,8 @@ function Player () {
     weaponMax: 8,
     strength: 2,
     dexterity: 1,
-    healthPotions: 2
+    healthPotions: 2,
+    berserkMode: "off"
   }
 };
 
@@ -50,6 +51,10 @@ Player.prototype.receiveDamage = function (damage) {
   } else {
     this.hero['health'] -= damage
   }
+}
+
+Player.prototype.toggleBerserkMode = function (value) {
+  this.hero['berserkMode'] = value
 }
 
 Player.prototype.equipLoot = function (item) {
