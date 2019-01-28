@@ -29,7 +29,7 @@ function updateInterface () {
   updateAll()
 
   var health = game.player.returnAttribute('health')
-  
+
   var blood75 = document.getElementById('blood75')
   if (health < 76 && health > 50) {
     blood75.style.display = "block"
