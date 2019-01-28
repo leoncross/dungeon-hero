@@ -5,10 +5,10 @@ function Player () {
     health: 100,
     armor: 1,
     armorName: 'cloth',
-    armorDamageReduction: (10 / 100),
+    armorDamageReduction: 0.1,
     weaponName: 'dagger',
-    weaponMin: 100000,
-    weaponMax: 100000,
+    weaponMin: 6,
+    weaponMax: 9,
     strength: 2,
     dexterity: 1,
     berserkMode: 'off',
@@ -63,7 +63,7 @@ Player.prototype.toggleBerserkMode = function (value) {
 
 Player.prototype.equipLoot = function (item) {
   if (item['type'] === 'weapon') this.changeWeapon(item['name'], item['weaponMin'], item['weaponMax'])
-  if (item['type'] === 'armor') this.changeArmor(item['name'], item['armor'])
+  if (item['type'] === 'armor') this.changeArmor(item['name'], item['armor'], item['armorDamageReduction'])
   if (item['type'] === 'healthPotion') this.hero['healthPotions'] += 1
 }
 

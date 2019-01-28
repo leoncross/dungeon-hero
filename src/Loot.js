@@ -1,14 +1,14 @@
 function Loot (player) {
   this.player = player
   this.table = [
-    { name: 'dagger', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
-    { name: 'sword', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
-    { name: 'longsword', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
+    { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 },
+    { name: 'sword', type: 'weapon', weaponMin: 5, weaponMax: 7, rarity: 1 },
+    { name: 'longsword', type: 'weapon', weaponMin: 5, weaponMax: 8, rarity: 1 },
     { name: 'claymore', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
-    { name: 'battle axe', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
-    { name: 'hatchet', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
-    { name: 'mace', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
-    { name: 'hammer', type: 'weapon', weaponMin: 1, weaponMax: 1, rarity: 1 },
+    { name: 'battle axe', type: 'weapon', weaponMin: 9, weaponMax: 15, rarity: 1 },
+    { name: 'hatchet', type: 'weapon', weaponMin: 8, weaponMax: 12, rarity: 1 },
+    { name: 'mace', type: 'weapon', weaponMin: 8, weaponMax: 13, rarity: 1 },
+    { name: 'hammer', type: 'weapon', weaponMin: 11, weaponMax: 12, rarity: 1 },
     { name: 'cloth', type: 'armor', armor: 1, rarity: 1, armorDamageReduction: 0.1 },
     { name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25 },
     { name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4 },

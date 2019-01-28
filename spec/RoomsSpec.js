@@ -75,9 +75,6 @@ describe('Rooms',function(){
       expect(room.nextRoom()).toEqual('easy')
       expect(room.nextRoom()).toEqual('medium')
       expect(room.nextRoom()).toEqual('medium')
-      expect(room.nextRoom()).toEqual('easy')
-      expect(room.nextRoom()).toEqual('hard')
-      expect(room.nextRoom()).toEqual(['boss', true])
     })
   })
 

@@ -4,8 +4,7 @@ function Rooms (player, monsters, combat, dice) {
   this.combat = combat // class
   this.dice = dice
   this.hero = this.player.returnHero()
-  this.roomJourney = [['easy', true], 'easy', 'medium', 'medium', 'easy', 'hard', ['boss', true]]
-
+  this.roomJourney = [['easy', true], 'easy', 'medium', 'medium','medium', 'easy', 'hard', 'hard','hard','hard',['boss', true]]
 }
 
 Rooms.prototype.nextRoom = function() {

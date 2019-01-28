@@ -65,6 +65,7 @@ function updateInterface () {
       game.loot.equipLoot()
     })
     $('#nextRoom').click(function () {
+      console.log('1')
       game.room.nextRoom()
       game.readout.clearReadout()
       modal.style.display = 'none'

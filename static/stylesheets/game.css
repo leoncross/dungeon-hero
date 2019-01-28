@@ -172,7 +172,7 @@ body {
   width: 1000px;
   height: 660px; /* Could be more or less, depending on screen size */
   font-size: 30px;
-  background-image: url(./../images/map.png);
+  /* background-image: url(./../images/map.png); */
   z-index: 1;
 }
 
