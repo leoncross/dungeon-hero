@@ -26,38 +26,38 @@ describe('User visits signup page', function() {
   });
 
 
-  // describe('header', function(){
-  //   it("should visit the site and see the form", function(next) {
-  //     browser.visit(url, function(err) {
-  //       expect(browser.success).toBe(true);
-  //       expect(browser.html("body")).toContain("CHARACTER NAME:");
-  //       next();
-  //     })
-  //   })
-  // })
-  // describe('submits form', function() {
-  //   it("should visit the site and see the form", function(next) {
-  //     browser.visit(url, function(err) {
-  //       expect(browser.success).toBe(true);
-  //       expect(browser.query("form[value='startGame']")).toBeDefined();
-  //       next();
-  //     })
-  //   })
-  //
-  //   it("should be able insert to the players name ", function(next) {
-  //     browser.visit(url, function(err) {
-  //       expect(browser.success).toBe(true);
-  //       expect(browser.query("input[value='playerName']")).toBeDefined();
-  //       next();
-  //     })
-  //   })
-  //
-  //   it("should be able to see the button enter", function(next) {
-  //     browser.visit(url, function(err) {
-  //       expect(browser.success).toBe(true);
-  //       expect(browser.query("input[value='start']")).toBeDefined();
-  //       next();
-  //     })
-  //   });
-  // })
+  describe('header', function(){
+    it("should visit the site and see the form", function(next) {
+      browser.visit(url, function(err) {
+        expect(browser.success).toBe(true);
+        expect(browser.html("body")).toContain("CHARACTER NAME:");
+        next();
+      })
+    })
+  })
+  describe('submits form', function() {
+    it("should visit the site and see the form", function(next) {
+      browser.visit(url, function(err) {
+        expect(browser.success).toBe(true);
+        expect(browser.query("form[value='startGame']")).toBeDefined();
+        next();
+      })
+    })
+
+    it("should be able insert to the players name ", function(next) {
+      browser.visit(url, function(err) {
+        expect(browser.success).toBe(true);
+        expect(browser.query("input[value='playerName']")).toBeDefined();
+        next();
+      })
+    })
+
+    it("should be able to see the button enter", function(next) {
+      browser.visit(url, function(err) {
+        expect(browser.success).toBe(true);
+        expect(browser.query("input[value='start']")).toBeDefined();
+        next();
+      })
+    });
+  })
 })
