@@ -15,7 +15,8 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.3.1"
+    "jasmine": "^3.3.1",
+    "zombie": "^6.1.4"
   },
   "scripts": {
     "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
