@@ -9,6 +9,8 @@ function Combat (player, monster, dice, readout) {
 
 Combat.prototype.attackSetup = function (attackers) {
   this.hero = attackers[0]
+  this.hero['strengthBuff'] = 0
+  this.hero['dexterityBuff'] = 0
   this.enemy = attackers[1]
   return attackers
 }
@@ -17,6 +19,8 @@ Combat.prototype.attackSequence = function (playerModifierToDice, playerModifier
   if (this.enemy['health'] < 1 || this.hero['health'] < 1) return 'dead'
   if (potion === 0) this.heroAttack(playerModifierToDice, playerModifierToDamage, playerAttackType)
   if (potion === 'health') return this.healthPotion(playerAttackType)
+  if (potion === 'strength') return this.strengthPotion(playerAttackType)
+  if (potion === 'dexterity') return this.dexterityPotion(playerAttackType)
   if (this.enemy['health'] > 0) this.monsterAttack(monsterModifierToDice)
   return this.endOfCombat()
 }
@@ -75,11 +79,11 @@ Combat.prototype.healthPotion = function (playerAttackType) {
       this.hero['health'] += 25
       this.hero['healthPotions'] -= 1
     }
-    this.readout.playerPotion(playerAttackType)
+    this.readout.playerHealthPotion(playerAttackType)
     this.heroBerserkMode()
     return 'health potion consumed'
   } else {
-    return 'you ran out of potions'
+    return 'you ran out of health potions'
   }
 }
 
@@ -94,6 +98,27 @@ Combat.prototype.heroBerserkMode = function () {
     this.readout.playerBerserDisactivated()
     return 'disactivated'
   }
+}
+
+Combat.prototype.strengthPotion = function (playerAttackType) {
+ if (this.hero['strengthPotions'] > 0) {
+     this.hero['strengthBuff'] += 5
+     this.hero['strengthPotions'] -= 1
+     this.readout.playerStrengthPotion(playerAttackType)
+     return 'strength potion consumed'
+ } else {
+   return 'you ran out of strength potions'
+ }
+}
+Combat.prototype.dexterityPotion = function (playerAttackType) {
+ if (this.hero['dexterityPotions'] > 0) {
+     this.hero['dexterityBuff'] += 5
+     this.hero['dexterityPotions'] -= 1
+     this.readout.playerDexterityPotion(playerAttackType)
+     return 'dexterity potion consumed'
+ } else {
+   return 'you ran out of dexterity potions'
+ }
 }
 
 Combat.prototype.weaponDamage = function (attacker) {

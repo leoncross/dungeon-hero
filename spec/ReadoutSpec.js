@@ -46,6 +46,33 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attacks you for 5 damage<br>'])
     });
   });
+  describe('#playerHealthPotion', function () {
+   it('prints to readout', function () {
+     readout.clearReadout()
+     readout.playerHealthPotion('health')
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a health potion and gain 25 health<br>'])
+   });
+   it('doesnt print to readout if error', function () {
+     readout.clearReadout()
+     readout.playerPotion('asdf')
+     expect(readout.readoutArray).toEqual([])
+   });
+ });
+ describe('#playerStrengthPotion', function () {
+   it('prints to readout', function () {
+     readout.clearReadout()
+     readout.playerStrengthPotion('strength')
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 2 strength<br>'])
+   });
+ });
+ describe('#playerDexterityPotion', function () {
+   it('prints to readout', function () {
+     readout.clearReadout()
+     readout.playerDexterityPotion('dexterity')
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity<br>'])
+   });
+ });
+
   describe('#monsterMisses', function () {
     it('prints to readout', function () {
       readout.clearReadout()

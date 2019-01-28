@@ -55,6 +55,18 @@ Readout.prototype.playerLoses = function () {
   this.addReadout('<span style="color: red;">You have died</span>')
 }
 
+Readout.prototype.playerHealthPotion = function (type) {
+ if (type === 'health') this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
+}
+
+Readout.prototype.playerStrengthPotion = function (type) {
+ if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 2 strength')
+}
+
+Readout.prototype.playerDexterityPotion = function (type) {
+ if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity')
+}
+
 Readout.prototype.printReadout = function () {
   return this.readoutArray
 }

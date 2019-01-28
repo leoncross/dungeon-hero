@@ -11,8 +11,12 @@ function Player () {
     weaponMax: 8,
     strength: 2,
     dexterity: 1,
+    berserkMode: "off",
     healthPotions: 2,
-    berserkMode: "off"
+    strengthPotions: 2,
+    dexterityPotions: 2,
+    dexterityBuff: 0,
+    strengthBuff: 0
   }
 };
 

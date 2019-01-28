@@ -61,12 +61,38 @@ body {
 }
 
 .player-portrait {
+  position: relative;
   margin-top: 16px;
   padding-top: 6px;
   height: 214px;
   width: 208px;
   background-image: url(./../images/player-portrait.png);
   background-repeat: no-repeat;
+}
+
+.player {
+  position: relative;
+}
+
+#blood25 {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#blood50 {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#blood75 {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 0;
 }
 
 .portrait {
