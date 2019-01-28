@@ -28,26 +28,29 @@ $(document).ready(function () {
 function updateInterface () {
   updateAll()
   var health = game.player.returnAttribute('health')
-
   var blood75 = document.getElementById('blood75')
+  var blood50 = document.getElementById('blood50')
+  var blood25 = document.getElementById('blood25')
+
   if (health < 76 && health > 50) {
     blood75.style.display = "block"
+    blood50.style.display = "none"
+    blood25.style.display = "none"
   }
 
-  var blood50 = document.getElementById('blood50')
   if (health < 51 && health > 25) {
     blood75.style.display = "none"
     blood50.style.display = "block"
+    blood25.style.display = "none"
   }
 
-  var blood25 = document.getElementById('blood25')
   if (health < 26) {
+    blood75.style.display = "none"
     blood50.style.display = "none"
     blood25.style.display = "block"
   }
 
-  if(health < 1) {
-
+  if (health < 1) {
     var modal = document.getElementById('loseModal')
     modal.style.display = 'block'
   }
@@ -70,7 +73,7 @@ function updateInterface () {
   }
 
   function updateAll () {
-    $("#monsterPortrait").attr("src",game.room.monsterInRoom('image'));
+    $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
     $('#playerName').text(game.player.returnAttribute('name'))
     $('#playerHealth').text(game.player.returnAttribute('health'))
     $('#playerArmour').text(game.player.returnAttribute('armor'))

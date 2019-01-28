@@ -52,6 +52,11 @@ describe('Readout', function () {
      readout.playerHealthPotion('health')
      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a health potion and gain 25 health<br>'])
    });
+   it('prints to readout if max health', function () {
+      readout.clearReadout()
+      readout.playerMaxHealth('health')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> reached your max health<br>'])
+    });
    it('doesnt print to readout if error', function () {
      readout.clearReadout()
      readout.playerPotion('asdf')

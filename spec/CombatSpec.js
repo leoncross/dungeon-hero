@@ -30,6 +30,7 @@ describe('Combat',function(){
       playerWins() {},
       playerLoses() {},
       playerHealthPotion() {},
+      playerMaxHealth() {},
       playerStrengthPotion() {},
       playerDexterityPotion() {},
       playerDamageCritical () {},
@@ -215,6 +216,12 @@ describe('Combat',function(){
      leonHurtPlayer['health'] = 90
      expect(combat.healthPotion()).toEqual('health potion consumed')
      expect(leonHurtPlayer['health']).toEqual(100)
+   })
+   it('doesnt take potions if health is 100', function() {
+     combat.attackSetup([hero, enemy])
+     hero['health'] = 100
+     expect(combat.healthPotion()).toEqual('you reached your max health')
+     expect(hero['health']).toEqual(100)
    })
  })
 

@@ -11,7 +11,7 @@ function Player () {
     weaponMax: 100000,
     strength: 2,
     dexterity: 1,
-    berserkMode: "off",
+    berserkMode: 'off',
     healthPotions: 2,
     strengthPotions: 2,
     dexterityPotions: 2,
