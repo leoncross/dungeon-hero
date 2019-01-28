@@ -27,9 +27,8 @@ $(document).ready(function () {
 
 function updateInterface () {
   updateAll()
-
   var health = game.player.returnAttribute('health')
-  
+
   var blood75 = document.getElementById('blood75')
   if (health < 76 && health > 50) {
     blood75.style.display = "block"
@@ -57,26 +56,8 @@ function updateInterface () {
     var modal = document.getElementById('winModal')
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
-    $('#easyRoom').click(function () {
-      game.room.monsterRoom('easy')
-      game.readout.clearReadout()
-      modal.style.display = 'none'
-      updateAll()
-    })
-    $('#mediumRoom').click(function () {
-      game.room.monsterRoom('medium')
-      game.readout.clearReadout()
-      modal.style.display = 'none'
-      updateAll()
-    })
-    $('#hardRoom').click(function () {
-      game.room.monsterRoom('hard')
-      game.readout.clearReadout()
-      modal.style.display = 'none'
-      updateAll()
-    })
-    $('#bossRoom').click(function () {
-      game.room.monsterRoom('boss', true)
+    $('#nextRoom').click(function () {
+      game.room.nextRoom()
       game.readout.clearReadout()
       modal.style.display = 'none'
       updateAll()

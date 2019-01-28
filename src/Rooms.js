@@ -4,6 +4,19 @@ function Rooms (player, monsters, combat, dice) {
   this.combat = combat // class
   this.dice = dice
   this.hero = this.player.returnHero()
+  this.roomJourney = [['easy', true], 'easy', 'medium', 'medium', 'easy', 'hard', ['boss', true]]
+
+}
+
+Rooms.prototype.nextRoom = function() {
+  this.monsters.resetMonsters()
+  room = this.roomJourney.shift()
+  if (room.length === 2) {
+    this.monsterRoom(room[0], room[1])
+  } else {
+    this.monsterRoom(room)
+  }
+  return room
 }
 
 Rooms.prototype.monsterRoom = function (difficulty, force = false) {
@@ -18,5 +31,7 @@ Rooms.prototype.monsterRoom = function (difficulty, force = false) {
 Rooms.prototype.monsterInRoom = function (attribute) {
   return this.enemy[attribute]
 }
+
+rooms = ['easy', 'medium', 'medium', 'easy', 'hard']
 
 module.exports = Rooms
