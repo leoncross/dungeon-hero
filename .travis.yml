@@ -2,3 +2,11 @@ language: node_js
 node_js:
   - "10"
 node: ">=4.0.0"
+before_install:
+  - npm install -g http-server
+install:
+  - npm install
+before_script:
+  - './start-server.sh'
+services:
+  - http-server
