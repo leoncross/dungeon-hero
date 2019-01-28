@@ -38,6 +38,7 @@ body {
   background-repeat: no-repeat;
   float: left;
   font-size: 18px;
+  overflow-y: auto;
 }
 
 .alignleft {

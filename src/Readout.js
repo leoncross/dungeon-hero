@@ -4,7 +4,7 @@ function Readout () {
 }
 
 Readout.prototype.addReadout = function (message) {
-  if (this.readoutArray.length === 20) this.readoutArray.shift()
+  if (this.readoutArray.length === 25) this.readoutArray.shift()
   let messageFormatted = message + '<br>'
   this.readoutArray.push(messageFormatted)
 }

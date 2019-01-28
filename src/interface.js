@@ -84,6 +84,7 @@ function updateInterface () {
   }
 
   function updateAll () {
+    $("#monsterPortrait").attr("src",game.room.monsterInRoom('image'));
     $('#playerName').text(game.player.returnAttribute('name'))
     $('#playerHealth').text(game.player.returnAttribute('health'))
     $('#playerArmour').text(game.player.returnAttribute('armor'))
