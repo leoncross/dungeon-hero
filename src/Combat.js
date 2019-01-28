@@ -31,10 +31,17 @@ Combat.prototype.attackSequence = function (playerModifierToDice, playerModifier
 Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDamage, playerAttackType) {
   let roll = this.dice.rollDice() + playerModifierToDice
   let minRoll = this.enemy['dexterity']
-  if (roll > minRoll && roll < 19) {
-    return this.standardDamage(playerModifierToDamage, playerAttackType);
-  } else if (roll > minRoll && roll >= 19) {
-    return this.criticalHitDamage(playerModifierToDamage, playerAttackType);
+  if (roll > minRoll) {
+    if (roll >= 19) {
+      var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage) * 2
+    } else {
+      var damage = (this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage
+    }
+    damage = parseInt(damage)
+    this.enemy['health'] -= damage
+    if (this.enemy['health'] < 1) this.enemy['health'] = 0
+    this.readout.playerDamage(damage, playerAttackType)
+    return damage
   } else {
     this.readout.playerMisses(playerAttackType)
     return 'miss'
