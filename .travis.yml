@@ -2,3 +2,11 @@ language: node_js
 node_js:
   - "10"
 node: ">=4.0.0"
+cache:
+  npm: true
+  directories:
+    - ~/.cache
+install:
+  - npm ci
+script:
+  - $(npm bin)/cypress run --record
