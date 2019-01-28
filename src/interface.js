@@ -29,22 +29,40 @@ function updateInterface () {
   updateAll()
 
   var health = game.player.returnAttribute('health')
-
   var blood75 = document.getElementById('blood75')
+  var blood50 = document.getElementById('blood50')
+  var blood25 = document.getElementById('blood25')
+
   if (health < 76 && health > 50) {
+<<<<<<< HEAD
     blood75.style.display = 'block'
+=======
+    blood75.style.display = "block"
+    blood50.style.display = "none"
+    blood25.style.display = "none"
+>>>>>>> e0ea11c7d20d8f9838452cb2be8708d0c82eaee6
   }
 
-  var blood50 = document.getElementById('blood50')
   if (health < 51 && health > 25) {
+<<<<<<< HEAD
     blood75.style.display = 'none'
     blood50.style.display = 'block'
+=======
+    blood75.style.display = "none"
+    blood50.style.display = "block"
+    blood25.style.display = "none"
+>>>>>>> e0ea11c7d20d8f9838452cb2be8708d0c82eaee6
   }
 
-  var blood25 = document.getElementById('blood25')
   if (health < 26) {
+<<<<<<< HEAD
     blood50.style.display = 'none'
     blood25.style.display = 'block'
+=======
+    blood75.style.display = "none"
+    blood50.style.display = "none"
+    blood25.style.display = "block"
+>>>>>>> e0ea11c7d20d8f9838452cb2be8708d0c82eaee6
   }
 
   if (health < 1) {
