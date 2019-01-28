@@ -59,6 +59,10 @@ Readout.prototype.playerHealthPotion = function (type) {
   if (type === 'health') this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
 }
 
+Readout.prototype.playerMaxHealth = function (type) {
+  if (type === 'health') this.addReadout('<span style="color: green;">You</span> reached your max health')
+}
+
 Readout.prototype.playerStrengthPotion = function (type) {
   if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 2 strength')
 }

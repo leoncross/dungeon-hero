@@ -72,7 +72,10 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
 
 Combat.prototype.healthPotion = function (playerAttackType) {
   if (this.hero['healthPotions'] > 0) {
-    if (this.hero['health'] + 25 >= 100) {
+    if (this.hero['health'] >= 100) {
+      this.readout.playerMaxHealth(playerAttackType)
+      return 'you reached your max health'
+    } else if (this.hero['health'] + 25 >= 100) {
       this.hero['health'] = 100
       this.hero['healthPotions'] -= 1
     } else {
