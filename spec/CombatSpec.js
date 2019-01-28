@@ -27,7 +27,9 @@ describe('Combat',function(){
       playerMisses() {},
       playerWins() {},
       playerLoses() {},
-      playerPotion() {},
+      playerHealthPotion() {},
+      playerStrengthPotion() {},
+      playerDexterityPotion() {},
       playerDamageCritical () {}
     };
 
@@ -38,9 +40,9 @@ describe('Combat',function(){
     dice = new DiceStub
     combat = new Combat(player, monster, dice, readout)
 
-    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
-    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2}
-    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
+    hero = {name: 'leon', health: 100, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
+    leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
+    leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
     leonAlmostDeadPlayer = {name: 'leon', health: 1, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, healthPotions:2 }
     enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
     almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
@@ -187,30 +189,70 @@ describe('Combat',function(){
   })
 
   describe("#healthPotion", function() {
-    it('restores 25 hp and reduces healh potions by 1', function() {
-      combat.attackSetup([leonHurtPlayer, enemy])
-      expect(leonHurtPlayer['healthPotions']).toEqual(2)
-      expect(leonHurtPlayer['health']).toEqual(47)
-      combat.healthPotion()
-      expect(leonHurtPlayer['healthPotions']).toEqual(1)
-      expect(leonHurtPlayer['health']).toEqual(72)
-      expect(combat.healthPotion()).toEqual('health potion consumed')
+   it('restores 25 hp and reduces healh potions by 1', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     expect(leonHurtPlayer['healthPotions']).toEqual(2)
+     expect(leonHurtPlayer['health']).toEqual(47)
+     combat.healthPotion()
+     expect(leonHurtPlayer['healthPotions']).toEqual(1)
+     expect(leonHurtPlayer['health']).toEqual(72)
+     expect(combat.healthPotion()).toEqual('health potion consumed')
 
-    })
-    it('doesnt consume potion if none left', function() {
-      combat.attackSetup([leonHurtPlayer, enemy])
-      leonHurtPlayer['healthPotions'] = 0
-      combat.healthPotion()
-      expect(combat.healthPotion()).toEqual('you ran out of potions')
-      expect(leonHurtPlayer['health']).toEqual(47)
-    })
-    it('maximum player health is 100', function() {
-      combat.attackSetup([leonHurtPlayer, enemy])
-      leonHurtPlayer['health'] = 90
-      expect(combat.healthPotion()).toEqual('health potion consumed')
-      expect(leonHurtPlayer['health']).toEqual(100)
-    })
-  })
+   })
+   it('doesnt consume health potion if none left', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     leonHurtPlayer['healthPotions'] = 0
+     combat.healthPotion()
+     expect(combat.healthPotion()).toEqual('you ran out of health potions')
+     expect(leonHurtPlayer['health']).toEqual(47)
+   })
+   it('maximum player health is 100', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     leonHurtPlayer['health'] = 90
+     expect(combat.healthPotion()).toEqual('health potion consumed')
+     expect(leonHurtPlayer['health']).toEqual(100)
+   })
+ })
+
+ describe("#strengthPotion", function() {
+   it('increases strengthBuff by 5 pts ', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     expect(leonHurtPlayer['strengthPotions']).toEqual(2)
+     expect(leonHurtPlayer['strengthBuff']).toEqual(0)
+     combat.strengthPotion()
+     expect(leonHurtPlayer['strengthPotions']).toEqual(1)
+     expect(leonHurtPlayer['strengthBuff']).toEqual(5)
+     expect(combat.strengthPotion()).toEqual('strength potion consumed')
+
+   })
+   it('doesnt consume strength potion if none left', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     leonHurtPlayer['strengthPotions'] = 0
+     combat.strengthPotion()
+     expect(combat.strengthPotion()).toEqual('you ran out of strength potions')
+     expect(leonHurtPlayer['strength']).toEqual(3)
+   })
+ })
+
+ describe("#dexterityPotion", function() {
+   it('increases dexterityBuff by 5 pts ', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     expect(leonHurtPlayer['dexterityPotions']).toEqual(2)
+     expect(leonHurtPlayer['dexterityBuff']).toEqual(0)
+     combat.dexterityPotion()
+     expect(leonHurtPlayer['dexterityPotions']).toEqual(1)
+     expect(leonHurtPlayer['dexterityBuff']).toEqual(5)
+     expect(combat.dexterityPotion()).toEqual('dexterity potion consumed')
+
+   })
+   it('doesnt consume dexterityBuff potion if none left', function() {
+     combat.attackSetup([leonHurtPlayer, enemy])
+     leonHurtPlayer['dexterityPotions'] = 0
+     combat.dexterityPotion()
+     expect(combat.dexterityPotion()).toEqual('you ran out of dexterity potions')
+     expect(leonHurtPlayer['dexterity']).toEqual(3)
+   })
+ })
 
   describe("#weaponDamage", function() {
     it("returns a number between the weaponDamage", function() {
