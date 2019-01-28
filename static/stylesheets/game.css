@@ -176,11 +176,18 @@ body {
   z-index: 1;
 }
 
-.room1 {
-  z-index: 3;
-  background-image: url(./../images/room-complete.png);
-  background-repeat: no-repeat;
+.textButton {
+ cursor: pointer;
 }
+/* .room1 {
+  margin-top: 165px;
+  margin-left: -550px;
+}
+
+.room2 {
+  margin-top: 170;
+  margin-left: 200;
+} */
 
 h1 {
   color: orange;

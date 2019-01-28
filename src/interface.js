@@ -56,6 +56,11 @@ function updateInterface () {
     var modal = document.getElementById('winModal')
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
+    game.loot.lootFinder()
+    $('#roomLoot').html(game.loot.displayLoot())
+    $('#takeLoot').click(function () {
+      game.loot.equipLoot()
+    })
     $('#nextRoom').click(function () {
       game.room.nextRoom()
       game.readout.clearReadout()

@@ -8,8 +8,8 @@ Game.prototype.initialize = function (playerName) {
   // var Combat
   // var Rooms
   // var Readout
-  this.loot = new Loot()
-  this.player = new Player(this.loot)
+  this.player = new Player()
+  this.loot = new Loot(this.player)
   this.player.changeName(playerName)
   this.hero = this.player.returnHero()
   this.monster = new Monster()

@@ -14,9 +14,9 @@ function Loot (player) {
     { name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4 },
     { name: 'plate', type: 'armor', armor: 15, rarity: 1, armorDamageReduction: 0.6 },
     { name: 'dragon scale', type: 'armor', armor: 20, rarity: 1, armorDamageReduction: 0.8 },
-    { name: 'health', type: 'healthPotion', rarity: 1 },
-    { name: 'dexterity', type: 'dexterityPotion', rarity: 1 },
-    { name: 'strength', type: 'strengthPotion', rarity: 1 }
+    { name: 'health', type: 'potion', rarity: 1 },
+    { name: 'dexterity', type: 'potion', rarity: 1 },
+    { name: 'strength', type: 'potion', rarity: 1 }
   ]
   this.rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
   this.foundItem = 0
@@ -36,6 +36,19 @@ Loot.prototype.lootFinder = function () {
 
 Loot.prototype.returnFoundItem = function () {
   return this.foundItem
+}
+
+Loot.prototype.displayLoot = function () {
+  if (this.foundItem['type'] === 'weapon') {
+    return 'you found a ' + this.foundItem['name'] + ' that does between ' + this.foundItem['weaponMin'] + '-' + this.foundItem['weaponMax'] + ' damage' + '<br>would you like to equipt this?'
+  }
+  if (this.foundItem['type'] === 'armor') {
+    return 'you found ' + this.foundItem['name'] + ' armor that has an armor rating of ' + this.foundItem['armor'] + '<br>would you like to equipt this?'
+  }
+  if (this.foundItem['type'] === 'potion') {
+    return 'you found a ' + this.foundItem['name'] + ' potion' + '<br>would you like to equipt this?'
+  }
+  if (this.foundItem === 0) return 'no loot found'
 }
 
 Loot.prototype.equipLoot = function () {

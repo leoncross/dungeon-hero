@@ -32,6 +32,4 @@ Rooms.prototype.monsterInRoom = function (attribute) {
   return this.enemy[attribute]
 }
 
-rooms = ['easy', 'medium', 'medium', 'easy', 'hard']
-
 module.exports = Rooms
