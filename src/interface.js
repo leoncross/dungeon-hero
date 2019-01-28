@@ -23,6 +23,16 @@ $(document).ready(function () {
     game.combat.attackSequence(0, 1, 0, 'health', 'health')
     updateInterface()
   })
+
+  $('#dexPotion').click(function () {
+    game.combat.attackSequence(0, 1, 0, 'dexterity', 'dexterity')
+    updateInterface()
+  })
+
+  $('#strPotion').click(function () {
+    game.combat.attackSequence(0, 1, 0, 'strength', 'strength')
+    updateInterface()
+  })
 })
 
 function updateInterface () {
