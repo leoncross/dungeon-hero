@@ -1,3 +1,2 @@
 #!/bin/bash
-http-server &
-sleep 3
+http-server

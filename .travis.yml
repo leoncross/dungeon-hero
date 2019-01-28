@@ -8,5 +8,6 @@ install:
   - npm install
 before_script:
   - './start-server.sh'
+  - sleep 25
 services:
   - http-server
