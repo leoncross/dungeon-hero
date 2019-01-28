@@ -68,6 +68,17 @@ describe('Rooms',function(){
       expect(room.monsterRoom('medium')).toEqual('trap')
     })
   })
+
+  describe('#nextRoom', function() {
+    it('points the player to the next room in the list', function() {
+      expect(room.nextRoom()).toEqual(['easy', true])
+      expect(room.nextRoom()).toEqual('easy')
+      expect(room.nextRoom()).toEqual('medium')
+      expect(room.nextRoom()).toEqual('medium')
+    })
+  })
+
+
   describe('#monsterInRoom', function() {
     it('returns the name of the monster in the room', function() {
       spyOn(player, "returnHero").and.returnValue(healthyHero);

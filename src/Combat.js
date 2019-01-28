@@ -70,6 +70,19 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   }
 }
 
+Combat.prototype.heroBerserkMode = function () {
+  if (this.hero['health'] <= 25 && this.hero['berserkMode'] === 'off') {
+    this.player.toggleBerserkMode('on')
+    this.readout.playerBerserActivated()
+    return 'activated'
+  }
+  if (this.hero['health'] > 25 && this.hero['berserkMode'] === 'on') {
+    this.player.toggleBerserkMode('off')
+    this.readout.playerBerserDisactivated()
+    return 'disactivated'
+  }
+}
+
 Combat.prototype.healthPotion = function (playerAttackType) {
   if (this.hero['healthPotions'] > 0) {
     if (this.hero['health'] >= 100) {
@@ -87,19 +100,6 @@ Combat.prototype.healthPotion = function (playerAttackType) {
     return 'health potion consumed'
   } else {
     return 'you ran out of health potions'
-  }
-}
-
-Combat.prototype.heroBerserkMode = function () {
-  if (this.hero['health'] <= 25 && this.hero['berserkMode'] === 'off') {
-    this.player.toggleBerserkMode('on')
-    this.readout.playerBerserActivated()
-    return 'activated'
-  }
-  if (this.hero['health'] > 25 && this.hero['berserkMode'] === 'on') {
-    this.player.toggleBerserkMode('off')
-    this.readout.playerBerserDisactivated()
-    return 'disactivated'
   }
 }
 

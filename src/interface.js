@@ -37,7 +37,6 @@ $(document).ready(function () {
 
 function updateInterface () {
   updateAll()
-
   var health = game.player.returnAttribute('health')
   var blood75 = document.getElementById('blood75')
   var blood50 = document.getElementById('blood50')
@@ -70,26 +69,14 @@ function updateInterface () {
     var modal = document.getElementById('winModal')
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
-    $('#easyRoom').click(function () {
-      game.room.monsterRoom('easy')
-      game.readout.clearReadout()
-      modal.style.display = 'none'
-      updateAll()
+    game.loot.lootFinder()
+    $('#roomLoot').html(game.loot.displayLoot())
+    $('#takeLoot').click(function () {
+      game.loot.equipLoot()
     })
-    $('#mediumRoom').click(function () {
-      game.room.monsterRoom('medium')
-      game.readout.clearReadout()
-      modal.style.display = 'none'
-      updateAll()
-    })
-    $('#hardRoom').click(function () {
-      game.room.monsterRoom('hard')
-      game.readout.clearReadout()
-      modal.style.display = 'none'
-      updateAll()
-    })
-    $('#bossRoom').click(function () {
-      game.room.monsterRoom('boss', true)
+    $('#nextRoom').click(function () {
+      console.log('1')
+      game.room.nextRoom()
       game.readout.clearReadout()
       modal.style.display = 'none'
       updateAll()
@@ -101,8 +88,22 @@ function updateInterface () {
     $('#playerName').text(game.player.returnAttribute('name'))
     $('#playerHealth').text(game.player.returnAttribute('health'))
     $('#playerArmour').text(game.player.returnAttribute('armor'))
-    $('#playerStrength').text(game.player.returnAttribute('strength'))
-    $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
+
+    if (game.player.returnAttribute('strengthBuff') > 0) {
+      $('#playerStrength').css('color', 'green');
+      $('#playerStrength').text(game.player.returnAttribute('strength') + game.player.returnAttribute('strengthBuff'))
+    } else {
+      $('#playerStrength').css('color', 'white');
+      $('#playerStrength').text(game.player.returnAttribute('strength'))
+    }
+    if (game.player.returnAttribute('dexterityBuff') > 0) {
+      $('#playerDexterity').css('color', 'green');
+      $('#playerDexterity').text(game.player.returnAttribute('dexterity') + game.player.returnAttribute('dexterityBuff'))
+    } else {
+      $('#playerDexterity').css('color', 'white');
+      $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
+    }
+    
     $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
     $('#armourType').text(game.player.returnAttribute('armorName'))
     $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())

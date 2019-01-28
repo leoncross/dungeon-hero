@@ -15,7 +15,7 @@ describe('Monster', function () {
 
     monsters = [
       { name: 'Zombie', difficulty: 'easy', health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7, image: './static/images/zombie.png' },
-      { name: 'Bat Swarm', difficulty: 'easy', health: 70, armor: 2, strength: 2, dexterity: 6, weaponMin: 1, weaponMax: 4, image: './static/images/batswarm.png' },
+      { name: 'Bat Swarm', difficulty: 'easy', health: 55, armor: 2, strength: 2, dexterity: 6, weaponMin: 1, weaponMax: 2, image: './static/images/batswarm.png' },
       { name: 'Skeleton', difficulty: 'medium', health: 50, armor: 1, strength: 4, dexterity: 2, weaponMin: 8, weaponMax: 11, image: './static/images/skeleton.png' },
       { name: 'Goblin', difficulty: 'medium', health: 55, armor: 5, strength: 5, dexterity: 4, weaponMin: 7, weaponMax: 9, image: './static/images/goblin.png' },
       { name: 'Gorgon', difficulty: 'hard', health: 90, armor: 6, strength: 4, dexterity: 6, weaponMin: 9, weaponMax: 15, image: './static/images/gorgon.png' },

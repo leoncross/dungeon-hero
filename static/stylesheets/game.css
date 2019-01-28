@@ -172,7 +172,22 @@ body {
   width: 1000px;
   height: 660px; /* Could be more or less, depending on screen size */
   font-size: 30px;
+  /* background-image: url(./../images/map.png); */
+  z-index: 1;
 }
+
+.textButton {
+ cursor: pointer;
+}
+/* .room1 {
+  margin-top: 165px;
+  margin-left: -550px;
+}
+
+.room2 {
+  margin-top: 170;
+  margin-left: 200;
+} */
 
 h1 {
   color: orange;
