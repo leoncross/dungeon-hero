@@ -46,6 +46,13 @@ describe('Game', function(){
       player.changeName('Guy')
       expect(hero.name).toEqual('Guy');
     });
+    it('checks the player\'s health', function(){
+      expect(player.status()).toEqual(true)
+    })
+    it('checks the player\'s health', function(){
+      hero.health = 0
+      expect(player.status()).toEqual(false)
+    })
   })
 
   describe('monster',function () {
