@@ -39,8 +39,8 @@ $(document).ready(function () {
     updateInterface()
   })
 
-  $('warCry').click(function () {
-    game.combat.attacksequence(0, 100, 0, 0, 'warcry')
+  $('#warCry').click(function () {
+    game.combat.attackSequence(0, 100, 0, 0, 'warcry')
     updateInterface()
   })
 })
