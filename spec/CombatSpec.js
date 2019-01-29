@@ -24,6 +24,7 @@ describe('Combat',function(){
     ReadoutStub.prototype = {
       addReadout() {},
       monsterDamage() {},
+      monsterSpecialAttack() {},
       monsterMisses() {},
       playerDamage() {},
       playerMisses() {},

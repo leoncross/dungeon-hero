@@ -43,7 +43,7 @@ $(document).ready(function () {
 function updateInterface () {
   updateAll()
   var health = game.player.returnAttribute('health')
-  if (health > 75 ) {
+  if (health > 75) {
     $('#playerImage').attr('src', './static/images/hero.png')
   }
 
@@ -100,17 +100,17 @@ function updateAll () {
   $('#playerArmour').text(game.player.returnAttribute('armor'))
 
   if (game.player.returnAttribute('strengthBuff') > 0) {
-    $('#playerStrength').css('color', 'green');
+    $('#playerStrength').css('color', 'green')
     $('#playerStrength').text(game.player.returnAttribute('strength') + game.player.returnAttribute('strengthBuff'))
   } else {
-    $('#playerStrength').css('color', 'white');
+    $('#playerStrength').css('color', 'white')
     $('#playerStrength').text(game.player.returnAttribute('strength'))
   }
   if (game.player.returnAttribute('dexterityBuff') > 0) {
-    $('#playerDexterity').css('color', 'green');
+    $('#playerDexterity').css('color', 'green')
     $('#playerDexterity').text(game.player.returnAttribute('dexterity') + game.player.returnAttribute('dexterityBuff'))
   } else {
-    $('#playerDexterity').css('color', 'white');
+    $('#playerDexterity').css('color', 'white')
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
   }
 
