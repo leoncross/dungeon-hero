@@ -231,6 +231,15 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">You have died</span><br>'])
     });
   });
+
+  describe('#playerWarCry', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerWarCry()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> emit a piecing War Cry, and gain 1 Strength and 1 Dexterity<br>'])
+    });
+  });
+
   describe('#playerBerserkActiated', function () {
     it('displays message for berserk mode', function () {
       readout.clearReadout()

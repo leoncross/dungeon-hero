@@ -40,8 +40,14 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
   var roll = this.dice.rollDice() + playerModifierToDice
   var minRoll = this.enemy['dexterity']
   this.heroBerserkMode()
-  if (roll > minRoll) return this.playerSuccessRoll(roll, playerModifierToDice, playerModifierToDamage, playerAttackType)
-  if (roll < minRoll) return this.readout.playerMisses(playerAttackType)
+  if (playerAttackType === 'warcry') {
+    this.hero['dexterityBuff'] += 1
+    this.hero['strengthBuff'] += 1
+    this.readout.playerWarCry()
+  } else {
+    if (roll > minRoll) return this.playerSuccessRoll(roll, playerModifierToDice, playerModifierToDamage, playerAttackType)
+    if (roll < minRoll) return this.readout.playerMisses(playerAttackType)
+  }
 }
 
 Combat.prototype.playerSuccessRoll = function (roll, playerModifierToDice, playerModifierToDamage, playerAttackType) {
