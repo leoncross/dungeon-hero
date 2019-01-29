@@ -72,11 +72,11 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
       return 'stunned'
     }
     return
-  } else if ((roll > minRoll) && (roll === 20)) {
+  } else if ((roll > minRoll) && (roll >= 19)) {
     let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy) + this.enemy['specialAttackDamage'])
     damage -= parseInt(damage * this.hero['armorDamageReduction'])
     this.hero['health'] -= damage
-    this.readout.monsterDamage(this.enemy['name'], damage)
+    this.readout.monsterSpecialAttack(this.enemy['name'], this.enemy['specialAttack'], damage)
     this.heroBerserkMode()
     return damage
   } else if ((roll > minRoll) && (roll < 20)) {

@@ -13,6 +13,10 @@ Readout.prototype.monsterDamage = function (monster, damage) {
   this.addReadout('<span style="color: red;">' + monster + '</span> attacks you for ' + damage + ' damage')
 }
 
+Readout.prototype.monsterSpecialAttack = function (monster, specialAttack, damage) {
+  this.addReadout('<span style="color: red;">' + monster + '</span> attacks you with its ' + specialAttack + ' for ' + damage + ' damage')
+}
+
 Readout.prototype.monsterMisses = function (monster) {
   this.addReadout('<span style="color: red;">' + monster + '</span> attack misses')
 }
