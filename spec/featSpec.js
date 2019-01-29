@@ -79,14 +79,6 @@ describe('Game', function(){
       expect(combat.readout).toBeDefined();
     });
 
-    // it('players attack sequence', function () {
-    //   spyOn(dice, "rollDice").and.returnValue(18);
-    //   spyOn(dice, "rollBetween").and.returnValue(5);
-    //   spyOn(player, "status").and.returnValue(true);
-    //   combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
-    //   combat.attackSequence(0, 1 ,0, 0)
-    //   expect(combat.monster.monsters[0]["health"]).toEqual(23)
-    // })
     describe('potions sequences', function() {
       // STRENGHTH
       it('players takes 1 str potion', function () {
@@ -235,6 +227,13 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(room.roomJourney).toBeDefined();
     });
+
+    describe('monsterRoom', function() {
+      // stub.returns(4)
+      // expect(dice.rollDice()).toBe(4);
+      // stub.resetBehavior();
+      // expect(room.monsterRoom('easy', false)).toEqual()
+    })
   })
 
   describe('game',function () {
