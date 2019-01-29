@@ -7,6 +7,7 @@
     "sinon": "^7.2.3"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.12.1",
     "eslint-config-standard": "^12.0.0",
@@ -15,14 +16,17 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.3.1"
+    "jasmine": "^3.3.1",
+    "zombie": "^6.1.4"
   },
   "scripts": {
-    "test": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "concurrently 'npm run server' 'npm run all'",
+    "all": "istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "coverage": "istanbul cover --include-all-sources jasmine",
     "lint": "npx eslint src;exit 0",
     "lintfix": "npx eslint src --fix;exit 0",
-    "jasmine": "jasmine"
+    "jasmine": "jasmine",
+    "server": "http-server"
   },
   "repository": {
     "type": "git",
