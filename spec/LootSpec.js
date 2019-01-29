@@ -65,9 +65,9 @@ describe('Loot', function() {
 
   describe('#returnFoundItem', function() {
     it('returns the most recently found item', function() {
-      stub.returns(8)
+      stub.returns(7)
       loot.lootFinder()
-      expect(loot.returnFoundItem()).toEqual({name: 'cloth', type: 'armor', armor: 1, rarity: 1, armorDamageReduction: (10/100)})
+      expect(loot.returnFoundItem()).toEqual({ name: 'hammer', type: 'weapon', weaponMin: 11, weaponMax: 12, rarity: 1 })
     })
   })
 
@@ -80,8 +80,7 @@ describe('Loot', function() {
     })
     it('calls displayFoundArmor if armor', function() {
       spyOn(readout, 'displayFoundArmor').and.returnValue('armor found')
-      stub.returns(8) // returns the 'armor'
-      loot.lootFinder()
+      loot.foundItem = { name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4 }
       expect(loot.displayLoot()).toEqual('armor found');
     })
     it('calls displayFoundPotion if potion', function() {
