@@ -117,8 +117,6 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(room.roomJourney).toBeDefined();
     });
-
-
   })
 
   describe('game',function () {
