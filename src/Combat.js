@@ -72,7 +72,7 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
       return 'stunned'
     }
     return
-  } else if ((roll > minRoll) && (roll >= 19)) {
+  } else if (roll >= 19) {
     let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy) + this.enemy['specialAttackDamage'])
     damage -= parseInt(damage * this.hero['armorDamageReduction'])
     this.hero['health'] -= damage

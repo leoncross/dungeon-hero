@@ -25,6 +25,7 @@ describe('Combat',function(){
       addReadout() {},
       monsterDamage() {},
       monsterMisses() {},
+      monsterSpecialAttack() {},
       playerDamage() {},
       playerMisses() {},
       playerWins() {},
@@ -40,6 +41,7 @@ describe('Combat',function(){
       monsterStunned () {},
       playerStuns() {},
       playerStunMisses () {}
+
     };
 
     var Combat = require('../src/Combat');
@@ -53,7 +55,7 @@ describe('Combat',function(){
     leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, berserkMode: "off", healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
     leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, berserkMode: "on", healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
     leonAlmostDeadPlayer = {name: 'leon', health: 1, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, berserkMode: "on", healthPotions:2 }
-    enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
+    enemy = {name: 'luca',  specialAttack: 'Deadly Kiss', specialAttackDamage: 3, health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
     almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
     deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
   });
@@ -118,6 +120,13 @@ describe('Combat',function(){
       combat.attackSetup([hero, enemy])
       expect(combat.monsterAttack(0)).toEqual(4)
       expect(combat.hero["health"]).toEqual(96)
+    });
+    it("monster attacks with its special attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(19);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      expect(combat.monsterAttack(1)).toEqual(5)
+      expect(combat.hero["health"]).toEqual(95)
     });
     it("normal monster attack miss", function() {
       spyOn(dice, "rollDice").and.returnValue(3);
