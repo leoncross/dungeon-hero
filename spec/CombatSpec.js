@@ -38,7 +38,8 @@ describe('Combat',function(){
       playerBerserDisactivated () {},
       monsterUnstunned () {},
       monsterStunned () {},
-
+      playerStuns() {},
+      playerStunMisses () {}
     };
 
     var Combat = require('../src/Combat');
