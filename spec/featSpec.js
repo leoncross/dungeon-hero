@@ -42,8 +42,9 @@ describe('Game', function(){
       expect(player).toBeDefined();
     });
     it('returns the hero object', function () {
-      player.changeName('Cazzettino')
-      expect(hero.name).toEqual('Cazzettino');
+      expect(hero.name).toEqual('Player');
+      player.changeName('Guy')
+      expect(hero.name).toEqual('Guy');
     });
   })
 
@@ -77,6 +78,86 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(combat.readout).toBeDefined();
     });
+
+    // it('players attack sequence', function () {
+    //   spyOn(dice, "rollDice").and.returnValue(18);
+    //   spyOn(dice, "rollBetween").and.returnValue(5);
+    //   spyOn(player, "status").and.returnValue(true);
+    //   combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+    //   combat.attackSequence(0, 1 ,0, 0)
+    //   expect(combat.monster.monsters[0]["health"]).toEqual(23)
+    // })
+    describe('potions sequences', function() {
+      // STRENGHTH
+      it('players takes 1 str potion', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.attackSequence(0, 1 ,0, 'strength')
+        expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(7)
+        expect(combat.player.hero["health"]).toEqual(100)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+      })
+      it('players takes 2 str potions', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.attackSequence(0, 1 ,0, 'strength')
+        expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(7)
+        combat.attackSequence(0, 1 ,0, 'strength')
+        expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(12)
+        expect(combat.player.hero["health"]).toEqual(100)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+      })
+      it('players tries to take 3 str potions', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.attackSequence(0, 1 ,0, 'strength')
+        expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(7)
+        combat.attackSequence(0, 1 ,0, 'strength')
+        expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(12)
+        expect(combat.attackSequence(0, 1 ,0, 'strength')).toEqual('you ran out of strength potions')
+      })
+
+      // DEXTERITY
+      it('players takes 1 dex potion', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.attackSequence(0, 1 ,0, 'dexterity')
+        expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(6)
+        expect(combat.player.hero["health"]).toEqual(100)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+      })
+      it('players takes 2 dex potions', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.attackSequence(0, 1 ,0, 'dexterity')
+        expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(6)
+        combat.attackSequence(0, 1 ,0, 'dexterity')
+        expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(11)
+        expect(combat.player.hero["health"]).toEqual(100)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+      })
+      it('players tries to take 3 dex potions', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.attackSequence(0, 1 ,0, 'dexterity')
+        expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(6)
+        combat.attackSequence(0, 1 ,0, 'dexterity')
+        expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(11)
+        expect(combat.attackSequence(0, 1 ,0, 'dexterity')).toEqual('you ran out of dexterity potions')
+      })
+    })
   })
 
   describe('dice',function () {
@@ -159,10 +240,8 @@ describe('Game', function(){
 
   describe('play', function(){
     it('expect to call zombie room', function(){
-      // console.log(game.initialize('hero'));
-      // game.play()
-      // // console.log(game);
-      // expect(game.room.nextRoom()).toHaveBeenCalled()
+      // console.log(hero.name);
+      // game.initialize('hero')
     });
   });
 

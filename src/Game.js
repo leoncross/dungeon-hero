@@ -1,13 +1,21 @@
+// var Player = require('../src/Player');
+// var Loot = require('../src/Loot');
+// var Monster = require('../src/Monster');
+// var Dice = require('../src/Dice');
+// var Combat = require('../src/Combat');
+// var Rooms = require('../src/Rooms');
+// var Readout = require('../src/Readout');
+
 function Game () {
+  // Player
+  // Monster
+  // Dice
+  // Combat
+  // Rooms
+  // Readout
 }
 
 Game.prototype.initialize = function (playerName) {
-  // var Player
-  // var Monster
-  // var Dice
-  // var Combat
-  // var Rooms
-  // var Readout
   this.player = new Player()
   this.readout = new Readout()
   this.loot = new Loot(this.player, this.readout)
