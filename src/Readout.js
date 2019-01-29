@@ -43,7 +43,6 @@ Readout.prototype.playerStuns = function () {
   this.addReadout('<span style="color: green;">You</span> stunned the enemy')
 }
 
-
 Readout.prototype.playerDamageCritical = function (damage, type) {
   if (type === 'normal') this.addReadout('<span style="color: green;">You</span> critical hit on your attack for ' + damage + ' damage')
   if (type === 'insane') this.addReadout('<span style="color: green;">You</span> critical hit on your strong attack for ' + damage + ' damage')
@@ -59,7 +58,6 @@ Readout.prototype.playerMisses = function (type) {
   if (type === 'insane') this.addReadout('<span style="color: green;">Your</span> strong attack misses')
   if (type === 'quick') this.addReadout('<span style="color: green;">Your</span> quick attack misses')
   if (type === 'stun') this.addReadout('<span style="color: green;">Your</span> stun attack misses')
-
 }
 
 Readout.prototype.playerWins = function () {

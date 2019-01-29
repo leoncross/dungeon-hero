@@ -71,7 +71,6 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
       this.readout.monsterStunned(this.enemy['name'])
       return 'stunned'
     }
-    return
   } else if (roll > minRoll) {
     let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
     damage -= parseInt(damage * this.hero['armorDamageReduction'])
