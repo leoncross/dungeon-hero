@@ -32,6 +32,7 @@ Combat.prototype.endOfCombat = function () {
   }
   if (this.enemy['health'] < 1) {
     this.readout.playerWins()
+    this.player.playerFindsGold()
     return 'the monster has died'
   }
 }

@@ -1,4 +1,3 @@
-'use strict'
 function Dice () {
   this._arrayOfNumbers = []
 }
