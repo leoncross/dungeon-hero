@@ -3,9 +3,17 @@ describe('Player', function () {
   var Player = require('../src/Player');
 
   var player;
+  var dice
 
   beforeEach(function () {
-    player = new Player();
+    function DiceStub() {}
+    DiceStub.prototype = {
+      rollDice() {},
+      rollBetween() {}
+    };
+
+    dice = new DiceStub()
+    player = new Player(dice);
 
     hero = {
       name: 'Player',
@@ -23,7 +31,8 @@ describe('Player', function () {
       strengthPotions: 2,
       dexterityPotions: 2,
       dexterityBuff: 0,
-      strengthBuff: 0
+      strengthBuff: 0,
+      gold: 0
     }
 
   });
@@ -108,6 +117,22 @@ describe('Player', function () {
       player.receiveDamage(110)
       expect(player.hero['health']).toEqual(0);
       expect(player.status()).toEqual(false)
+    })
+  })
+
+  describe('#playerFindsGold', function() {
+    it('increases the players gold', function() {
+      spyOn(dice, "rollBetween").and.returnValue(15)
+      expect(player.hero['gold']).toEqual(0)
+      player.playerFindsGold()
+      expect(player.hero['gold']).toEqual(15)
+    })
+  })
+
+  describe('#returnFoundGold', function() {
+    it('returns amount of gold found when called', function() {
+      spyOn(dice, "rollBetween").and.returnValue(15)
+      expect(player.playerFindsGold()).toEqual(15)
     })
   })
 

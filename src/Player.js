@@ -1,5 +1,6 @@
 
-function Player () {
+function Player (dice) {
+  this.dice = dice
   this.hero = {
     name: 'Player',
     health: 100,
@@ -16,7 +17,8 @@ function Player () {
     strengthPotions: 2,
     dexterityPotions: 2,
     dexterityBuff: 0,
-    strengthBuff: 0
+    strengthBuff: 0,
+    gold: 0
   }
 };
 
@@ -58,6 +60,16 @@ Player.prototype.receiveDamage = function (damage) {
 
 Player.prototype.toggleBerserkMode = function (value) {
   this.hero['berserkMode'] = value
+}
+
+Player.prototype.playerFindsGold = function () {
+  gold = this.dice.rollBetween(1, 100)
+  this.hero['gold'] += gold
+  return this.returnFoundGold(gold)
+}
+
+Player.prototype.returnFoundGold = function (gold) {
+  return gold
 }
 
 Player.prototype.equipLoot = function (item) {

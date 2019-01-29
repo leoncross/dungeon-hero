@@ -7,7 +7,8 @@ describe('Combat',function(){
       status() {},
       recieveDamage () {},
       returnAttribute () {},
-      toggleBerserkMode () {}
+      toggleBerserkMode () {},
+      playerFindsGold () {}
     }
 
     function MonsterStub() {}
