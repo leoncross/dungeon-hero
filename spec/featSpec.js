@@ -23,11 +23,11 @@ describe('Game', function(){
   beforeEach(function () {
     player = new Player();
     hero = player.returnHero()
-    loot = new Loot(player)
     monster = new Monster()
     dice = new Dice()
     stub = sinon.stub(Math, 'floor')
     readout = new Readout()
+    loot = new Loot(player, readout)
     combat = new Combat(player, monster, dice, readout)
     room = new Rooms(player, monster, combat, dice)
     game = new Game()
@@ -92,19 +92,29 @@ describe('Game', function(){
     });
 
     it('the object to exist', function(){
-      spyOn(loot,'returnFoundItem').and.returnValue(loot.table[1])
-      // console.log(loot.table[1]);
-      // console.log(loot.equipLoot());
+      expect(loot.readout).toBeDefined();
+    });
 
+    it('the object to exist', function(){
+      expect(loot.table).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(loot.rarityCalculator).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(loot.foundItem).toBe(0);
     });
   })
 
 
   describe('play', function(){
     it('expect to call zombie room', function(){
-      // console.log('hi');
+      // console.log(game.initialize('hero'));
       // game.play()
-
+      // // console.log(game);
+      // expect(game.room.nextRoom()).toHaveBeenCalled()
     });
   });
 
