@@ -30,14 +30,6 @@ describe('Readout', function () {
       readout.addReadout('test message')
       expect(readout.printReadout()).toEqual(['test message<br>'])
     });
-    // it('maximum readout of 20', function () {
-    //   readout.clearReadout()
-    //   readout.addReadout('test message')
-    //   readout.readoutArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-    //   expect(readout.readoutArray.length).toEqual(20)
-    //   readout.addReadout('test message')
-    //   expect(readout.readoutArray.length).toEqual(20)
-    // });
   });
   describe('#monsterDamage', function () {
     it('prints to readout', function () {
@@ -46,6 +38,28 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attacks you for 5 damage<br>'])
     });
   });
+  describe('#monsterMisses', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterMisses('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attack misses<br>'])
+    });
+  });
+  describe('#monsterUnstunned', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterUnstunned('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> breaks free from the stun and is preparing to attack<br>'])
+    });
+  });
+  describe('#monsterStunned', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterStunned('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> is still stunned<br>'])
+    });
+  });
+
   describe('#playerHealthPotion', function () {
    it('prints to readout', function () {
      readout.clearReadout()

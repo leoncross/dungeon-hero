@@ -17,6 +17,14 @@ Readout.prototype.monsterMisses = function (monster) {
   this.addReadout('<span style="color: red;">' + monster + '</span> attack misses')
 }
 
+Readout.prototype.monsterStunned = function (monster) {
+  this.addReadout('<span style="color: red;">' + monster + '</span> is still stunned')
+}
+
+Readout.prototype.monsterUnstunned = function (monster) {
+  this.addReadout('<span style="color: red;">' + monster + '</span> breaks free from the stun and is preparing to attack')
+}
+
 Readout.prototype.playerBerserActivated = function (monster) {
   this.addReadout('<span style="color: green;">You</span> enter Beserk mode!')
 }
@@ -30,6 +38,11 @@ Readout.prototype.playerDamage = function (damage, type) {
   if (type === 'insane') this.addReadout('<span style="color: green;">You</span> strong attack for ' + damage + ' damage')
   if (type === 'quick') this.addReadout('<span style="color: green;">You</span> quick attack for ' + damage + ' damage')
 }
+
+Readout.prototype.playerStuns = function () {
+  this.addReadout('<span style="color: green;">You</span> stunned the enemy')
+}
+
 
 Readout.prototype.playerDamageCritical = function (damage, type) {
   if (type === 'normal') this.addReadout('<span style="color: green;">You</span> critical hit on your attack for ' + damage + ' damage')
@@ -45,6 +58,8 @@ Readout.prototype.playerMisses = function (type) {
   if (type === 'normal') this.addReadout('<span style="color: green;">Your</span> attack misses')
   if (type === 'insane') this.addReadout('<span style="color: green;">Your</span> strong attack misses')
   if (type === 'quick') this.addReadout('<span style="color: green;">Your</span> quick attack misses')
+  if (type === 'stun') this.addReadout('<span style="color: green;">Your</span> stun attack misses')
+
 }
 
 Readout.prototype.playerWins = function () {

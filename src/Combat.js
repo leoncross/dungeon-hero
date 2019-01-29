@@ -41,10 +41,15 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
   let minRoll = this.enemy['dexterity']
   this.heroBerserkMode()
   if (roll > minRoll) {
+    if (playerAttackType === 'stun') {
+      this.readout.playerStuns()
+      this.enemy['stunStatus'] = true
+    }
     var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
     if (this.hero['berserkMode'] === 'on') damage *= 2
     if (roll >= 19) damage *= 2
-    this.enemy['health'] -= parseInt(damage)
+    damage = parseInt(damage)
+    this.enemy['health'] -= damage
     if (this.enemy['health'] < 1) this.enemy['health'] = 0
     this.readout.playerDamage(damage, playerAttackType)
     return damage
@@ -57,7 +62,17 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
 Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   let roll = this.dice.rollDice()
   let minRoll = (this.hero['dexterity'] + monsterModifierToDice)
-  if (roll > minRoll) {
+  if (this.enemy['stunStatus'] === true) {
+    if (roll > 10) {
+      this.enemy['stunStatus'] = false
+      this.readout.monsterUnstunned(this.enemy['name'])
+      return 'broke free'
+    } else {
+      this.readout.monsterStunned(this.enemy['name'])
+      return 'stunned'
+    }
+    return
+  } else if (roll > minRoll) {
     let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
     damage -= parseInt(damage * this.hero['armorDamageReduction'])
     this.hero['health'] -= damage

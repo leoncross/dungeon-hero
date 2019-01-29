@@ -35,7 +35,11 @@ describe('Combat',function(){
       playerDexterityPotion() {},
       playerDamageCritical () {},
       playerBerserActivated () {},
-      playerBerserDisactivated () {}
+      playerBerserDisactivated () {},
+      monsterUnstunned () {},
+      monsterStunned () {},
+      playerStuns() {},
+      playerStunMisses () {}
     };
 
     var Combat = require('../src/Combat');
@@ -49,9 +53,9 @@ describe('Combat',function(){
     leonHurtPlayer = {name: 'leon', health: 47, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, berserkMode: "off", healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
     leonDeadPlayer = {name: 'leon', health: 0, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, berserkMode: "on", healthPotions:2, strengthPotions: 2, dexterityPotions: 2, dexterityBuff: 0,strengthBuff: 0}
     leonAlmostDeadPlayer = {name: 'leon', health: 1, armor: 5, armorName: 'Plate', armorDamageReduction: (60/100), weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3, berserkMode: "on", healthPotions:2 }
-    enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
-    almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
-    deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4}
+    enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
+    almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
+    deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
   });
 
   describe("#attackSetup", function() {
@@ -73,22 +77,30 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 1)).toEqual(8)
+      expect(combat.heroAttack(0, 1, "normal")).toEqual(8)
       expect(combat.enemy["health"]).toEqual(92)
     });
     it("insane player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(3);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(-5, 0.5)).toEqual(12)
+      expect(combat.heroAttack(-5, 0.5, "strong")).toEqual(12)
       expect(combat.enemy["health"]).toEqual(88)
     });
     it("quick player attack", function() {
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 2)).toEqual(4)
+      expect(combat.heroAttack(0, 2, "quick")).toEqual(4)
       expect(combat.enemy["health"]).toEqual(96)
+    });
+    it("stuns the enemy", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      expect(combat.heroAttack(0, 100, "stun")).toEqual(0)
+      expect(combat.enemy["health"]).toEqual(100)
+      expect(combat.enemy["stunStatus"]).toEqual(true)
     });
     it("miss", function() {
       spyOn(dice, "rollDice").and.returnValue(0);
@@ -119,6 +131,24 @@ describe('Combat',function(){
       combat.attackSetup([hero, enemy])
       expect(combat.monsterAttack(5)).toEqual(4)
       expect(combat.hero["health"]).toEqual(96)
+    });
+    it("cannot attack if stunned", function() {
+      spyOn(dice, "rollDice").and.returnValue(5);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      combat.heroAttack(0, 100, "stun")
+      expect(combat.monsterAttack()).toEqual('stunned')
+      expect(combat.enemy["health"]).toEqual(100)
+      expect(combat.enemy["stunStatus"]).toEqual(true)
+    });
+    it("broke free from stun", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      combat.heroAttack(0, 100, "stun")
+      expect(combat.monsterAttack()).toEqual('broke free')
+      expect(combat.enemy["health"]).toEqual(100)
+      expect(combat.enemy["stunStatus"]).toEqual(false)
     });
   });
 

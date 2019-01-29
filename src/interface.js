@@ -19,6 +19,11 @@ $(document).ready(function () {
     updateInterface()
   })
 
+  $('#stunAttack').click(function () {
+   game.combat.attackSequence(0, 100, 0, 0, 'stun')
+   updateInterface()
+ })
+
   $('#healthPotion').click(function () {
     game.combat.attackSequence(0, 1, 0, 'health', 'health')
     updateInterface()
@@ -39,20 +44,24 @@ function updateInterface () {
   updateAll()
   var health = game.player.returnAttribute('health')
 
-  if (health > 75 ) {
+  if (health > 75) {
     $('#playerImage').attr('src', './static/images/hero.png')
+
   }
 
   if (health < 76 && health > 50) {
     $('#playerImage').attr('src', './static/images/hero75.png')
+
   }
 
   if (health < 51 && health > 25) {
     $('#playerImage').attr('src', './static/images/hero50.png')
+
   }
 
   if (health < 26) {
     $('#playerImage').attr('src', './static/images/hero25.png')
+    $('#playerHealth').css('color', 'red');
   }
 
   if (health < 1) {
@@ -62,11 +71,11 @@ function updateInterface () {
 
   if (game.room.monsterInRoom('health') < 1) {
     $('#takeLoot').show()
-    var modal = document.getElementById('winModal')
+    modal = document.getElementById('winModal')
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     game.loot.lootFinder()
-    
+
     if (game.loot.returnFoundItem() === 0) {
       $('#takeLoot').hide()
       $('#roomLoot').html(game.readout.noLootFound())
@@ -95,17 +104,17 @@ function updateAll () {
   $('#playerArmour').text(game.player.returnAttribute('armor'))
 
   if (game.player.returnAttribute('strengthBuff') > 0) {
-    $('#playerStrength').css('color', 'green');
+    $('#playerStrength').css('color', 'green')
     $('#playerStrength').text(game.player.returnAttribute('strength') + game.player.returnAttribute('strengthBuff'))
   } else {
-    $('#playerStrength').css('color', 'white');
+    $('#playerStrength').css('color', 'white')
     $('#playerStrength').text(game.player.returnAttribute('strength'))
   }
   if (game.player.returnAttribute('dexterityBuff') > 0) {
-    $('#playerDexterity').css('color', 'green');
+    $('#playerDexterity').css('color', 'green')
     $('#playerDexterity').text(game.player.returnAttribute('dexterity') + game.player.returnAttribute('dexterityBuff'))
   } else {
-    $('#playerDexterity').css('color', 'white');
+    $('#playerDexterity').css('color', 'white')
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
   }
 
