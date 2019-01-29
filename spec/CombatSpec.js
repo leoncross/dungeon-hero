@@ -107,6 +107,7 @@ describe('Combat',function(){
     it("miss", function() {
       spyOn(dice, "rollDice").and.returnValue(0);
       spyOn(dice, "rollBetween").and.returnValue(5);
+      spyOn(readout, "playerMisses").and.returnValue('miss');
       combat.attackSetup([hero, enemy])
       expect(combat.heroAttack(0, 2)).toEqual('miss')
       expect(combat.enemy["health"]).toEqual(100)
@@ -130,6 +131,7 @@ describe('Combat',function(){
     });
     it("normal monster attack miss", function() {
       spyOn(dice, "rollDice").and.returnValue(3);
+      spyOn(readout, "monsterMisses").and.returnValue('miss');
       combat.attackSetup([hero, enemy])
       expect(combat.monsterAttack(0)).toEqual("miss")
       expect(combat.hero["health"]).toEqual(100)
@@ -257,6 +259,7 @@ describe('Combat',function(){
      expect(leonHurtPlayer['health']).toEqual(100)
    })
    it('doesnt take potions if health is 100', function() {
+     spyOn(readout, "playerMaxHealth").and.returnValue('you reached your max health');
      combat.attackSetup([hero, enemy])
      hero['health'] = 100
      expect(combat.healthPotion()).toEqual('you reached your max health')
