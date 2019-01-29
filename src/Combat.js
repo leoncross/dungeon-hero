@@ -45,7 +45,10 @@ Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDa
 }
 
 Combat.prototype.playerSuccessRoll = function (roll, playerModifierToDice, playerModifierToDamage, playerAttackType) {
-  if (playerAttackType === 'stun') this.readout.playerStuns(), this.enemy['stunStatus'] = true
+  if (playerAttackType === 'stun') {
+    this.readout.playerStuns()
+    this.enemy['stunStatus'] = true
+  }
   var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
   if (this.hero['berserkMode'] === 'on') damage *= 2
   if (roll >= 19) damage *= 2
@@ -123,6 +126,7 @@ Combat.prototype.strengthPotion = function (playerAttackType) {
     return 'you ran out of strength potions'
   }
 }
+
 Combat.prototype.dexterityPotion = function (playerAttackType) {
   if (this.hero['dexterityPotions'] > 0) {
     this.hero['dexterityBuff'] += 5
