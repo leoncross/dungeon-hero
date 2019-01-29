@@ -157,6 +157,43 @@ describe('Game', function(){
         expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(11)
         expect(combat.attackSequence(0, 1 ,0, 'dexterity')).toEqual('you ran out of dexterity potions')
       })
+
+      // HEALTH
+      it('players takes 1 str potion', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.player.hero["health"] = 7
+        combat.attackSequence(0, 1 ,0, 'health')
+        expect(combat.player.hero["health"]).toEqual(32)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+      })
+      it('players takes 2 str potions', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.player.hero["health"] = 7
+        combat.attackSequence(0, 1 ,0, 'health')
+        expect(combat.player.hero["health"]).toEqual(32)
+        combat.attackSequence(0, 1 ,0, 'health')
+        expect(combat.player.hero["health"]).toEqual(57)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+      })
+      it('players tries to take 3 str potions', function () {
+        spyOn(dice, "rollDice").and.returnValue(18);
+        spyOn(dice, "rollBetween").and.returnValue(5);
+        spyOn(player, "status").and.returnValue(true);
+        combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
+        combat.player.hero["health"] = 7
+        combat.attackSequence(0, 1 ,0, 'health')
+        expect(combat.player.hero["health"]).toEqual(32)
+        combat.attackSequence(0, 1 ,0, 'health')
+        expect(combat.player.hero["health"]).toEqual(57)
+        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.attackSequence(0, 1 ,0, 'health')).toEqual('you ran out of health potions')
+      })
     })
   })
 
