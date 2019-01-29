@@ -38,6 +38,11 @@ $(document).ready(function () {
     game.combat.attackSequence(0, 1, 0, 'strength', 'strength')
     updateInterface()
   })
+
+  $('warCry').click(function () {
+    game.combat.attacksequence(0, 100, 0, 0, 'warcry')
+    updateInterface()
+  })
 })
 
 function updateInterface () {
