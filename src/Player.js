@@ -25,7 +25,7 @@ Player.prototype.returnHero = function () {
 }
 
 Player.prototype.status = function () {
-  return (this.hero['health'] > 0) ? true : false
+  return (this.hero['health'] > 0)
 }
 
 Player.prototype.returnAttribute = function (type) {
