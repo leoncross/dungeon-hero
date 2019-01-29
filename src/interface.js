@@ -19,6 +19,11 @@ $(document).ready(function () {
     updateInterface()
   })
 
+  $('#stunAttack').click(function () {
+   game.combat.attackSequence(0, 100, 0, 0, 'stun')
+   updateInterface()
+ })
+
   $('#healthPotion').click(function () {
     game.combat.attackSequence(0, 1, 0, 'health', 'health')
     updateInterface()
