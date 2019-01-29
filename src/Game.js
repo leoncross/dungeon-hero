@@ -1,5 +1,4 @@
-function Game () {
-}
+function Game () {}
 
 Game.prototype.initialize = function (playerName) {
   // var Player
