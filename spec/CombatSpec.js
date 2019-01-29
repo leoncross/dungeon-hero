@@ -97,7 +97,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 10, "stun")).toEqual(0)
+      expect(combat.heroAttack(0, 100, "stun")).toEqual(0)
       expect(combat.enemy["health"]).toEqual(100)
       expect(combat.enemy["stunStatus"]).toEqual(true)
     });
@@ -135,7 +135,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(5);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      combat.heroAttack(0, 10, "stun")
+      combat.heroAttack(0, 100, "stun")
       expect(combat.monsterAttack()).toEqual('stunned')
       expect(combat.enemy["health"]).toEqual(100)
       expect(combat.enemy["stunStatus"]).toEqual(true)
@@ -144,7 +144,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      combat.heroAttack(0, 10, "stun")
+      combat.heroAttack(0, 100, "stun")
       expect(combat.monsterAttack()).toEqual('broke free')
       expect(combat.enemy["health"]).toEqual(100)
       expect(combat.enemy["stunStatus"]).toEqual(false)
