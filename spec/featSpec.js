@@ -85,7 +85,7 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(combat.readout).toBeDefined();
     });
-    
+
 
     describe('heroAttack', function () {
       // it('players takes 1 str potion', function () {
@@ -107,7 +107,7 @@ describe('Game', function(){
         combat.attackSequence(0, 1 ,0, 'strength')
         expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(7)
         expect(combat.player.hero["health"]).toEqual(100)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
       })
       it('players takes 2 str potions', function () {
         spyOn(dice, "rollDice").and.returnValue(18);
@@ -119,7 +119,7 @@ describe('Game', function(){
         combat.attackSequence(0, 1 ,0, 'strength')
         expect(combat.player.hero["strength"] + combat.player.hero["strengthBuff"]).toEqual(12)
         expect(combat.player.hero["health"]).toEqual(100)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
       })
       it('players tries to take 3 str potions', function () {
         spyOn(dice, "rollDice").and.returnValue(18);
@@ -142,7 +142,7 @@ describe('Game', function(){
         combat.attackSequence(0, 1 ,0, 'dexterity')
         expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(6)
         expect(combat.player.hero["health"]).toEqual(100)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
       })
       it('players takes 2 dex potions', function () {
         spyOn(dice, "rollDice").and.returnValue(18);
@@ -154,7 +154,7 @@ describe('Game', function(){
         combat.attackSequence(0, 1 ,0, 'dexterity')
         expect(combat.player.hero["dexterity"] + combat.player.hero["dexterityBuff"]).toEqual(11)
         expect(combat.player.hero["health"]).toEqual(100)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
       })
       it('players tries to take 3 dex potions', function () {
         spyOn(dice, "rollDice").and.returnValue(18);
@@ -177,7 +177,7 @@ describe('Game', function(){
         combat.player.hero["health"] = 7
         combat.attackSequence(0, 1 ,0, 'health')
         expect(combat.player.hero["health"]).toEqual(32)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
       })
       it('players takes 2 str potions', function () {
         spyOn(dice, "rollDice").and.returnValue(18);
@@ -189,7 +189,7 @@ describe('Game', function(){
         expect(combat.player.hero["health"]).toEqual(32)
         combat.attackSequence(0, 1 ,0, 'health')
         expect(combat.player.hero["health"]).toEqual(57)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
       })
       it('players tries to take 3 str potions', function () {
         spyOn(dice, "rollDice").and.returnValue(18);
@@ -201,7 +201,7 @@ describe('Game', function(){
         expect(combat.player.hero["health"]).toEqual(32)
         combat.attackSequence(0, 1 ,0, 'health')
         expect(combat.player.hero["health"]).toEqual(57)
-        expect(combat.monster.monsters[0]["health"]).toEqual(30)
+        expect(combat.monster.monsters[0]["health"]).toEqual(35)
         expect(combat.attackSequence(0, 1 ,0, 'health')).toEqual('you ran out of health potions')
       })
     })
