@@ -229,10 +229,13 @@ describe('Game', function(){
     });
 
     describe('monsterRoom', function() {
-      // stub.returns(4)
-      // expect(dice.rollDice()).toBe(4);
-      // stub.resetBehavior();
-      // expect(room.monsterRoom('easy', false)).toEqual()
+      it('the object to exist', function(){
+        stub.returns(1)
+        expect(dice.rollDice()).toBe(1);
+        spyOn(monster, "randomizeMonster").and.returnValue(room.monsters.monsters[7]);
+        expect(room.monsterRoom('easy', false)).toEqual([room.hero, room.monsters.monsters[7]])
+        stub.resetBehavior();
+      });
     })
   })
 
