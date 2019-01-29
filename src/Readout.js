@@ -17,6 +17,14 @@ Readout.prototype.monsterMisses = function (monster) {
   this.addReadout('<span style="color: red;">' + monster + '</span> attack misses')
 }
 
+Readout.prototype.monsterUnstunned = function (monster) {
+  this.addReadout('<span style="color: red;">' + monster + '</span> fails to break free from their stun')
+}
+
+Readout.prototype.monsterStunned = function (monster) {
+  this.addReadout('<span style="color: red;">' + monster + '</span> breaks free from the stun and is preparing to attack')
+}
+
 Readout.prototype.playerBerserActivated = function (monster) {
   this.addReadout('<span style="color: green;">You</span> enter Beserk mode!')
 }
