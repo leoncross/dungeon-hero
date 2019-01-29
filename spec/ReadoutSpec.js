@@ -158,10 +158,40 @@ describe('Readout', function () {
     });
     it('doesnt print to readout if error', function () {
       readout.clearReadout()
-      readout.playerPotion('asdf')
+      readout.playerPotion('error')
       expect(readout.readoutArray).toEqual([])
     });
   });
+  describe('#playerHealthPotion', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerHealthPotion()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a health potion and gain 25 health<br>'])
+    });
+  });
+  describe('#playerMaxHealth', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerMaxHealth()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> reached your max health<br>'])
+    });
+  });
+  describe('#playerStrengthPotion', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerStrengthPotion()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 5 strength<br>'])
+    });
+  });
+
+  describe('#playerDexterityPotion', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.playerDexterityPotion()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity<br>'])
+    });
+  });
+
   describe('#playerMisses', function () {
     it('prints to readout - normal', function () {
       readout.clearReadout()
@@ -216,6 +246,10 @@ describe('Readout', function () {
     it('no loot', function () {
       expect(readout.noLootFound()).toEqual('no loot found')
     });
+    it('equipLoot', function () {
+      expect(readout.equipLoot()).toEqual('You equip the loot')
+
+    })
   });
 
 });
