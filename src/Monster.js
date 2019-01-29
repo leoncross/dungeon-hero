@@ -2,7 +2,7 @@
 function Monster () {
   this.monsters = [
     { name: 'Zombie', difficulty: 'easy', specialAttack: 'Deadly Kiss', health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7, stunStatus: false, image: './static/images/zombie.png' },
-    { name: 'Bat Swarm', difficulty: 'easy',c health: 55, armor: 2, strength: 2, dexterity: 6, weaponMin: 1, weaponMax: 2, stunStatus: false, image: './static/images/batswarm.png' },
+    { name: 'Bat Swarm', difficulty: 'easy', specialAttack: 'Flying Scourge', health: 55, armor: 2, strength: 2, dexterity: 6, weaponMin: 1, weaponMax: 2, stunStatus: false, image: './static/images/batswarm.png' },
     { name: 'Skeleton', difficulty: 'medium', specialAttack: 'Necromancer', health: 50, armor: 1, strength: 4, dexterity: 2, weaponMin: 8, weaponMax: 11, stunStatus: false, image: './static/images/skeleton.png' },
     { name: 'Goblin', difficulty: 'medium', specialAttack: 'Fatal Deception', health: 55, armor: 5, strength: 5, dexterity: 4, weaponMin: 7, weaponMax: 9, stunStatus: false, image: './static/images/goblin.png' },
     { name: 'Gorgon', difficulty: 'hard', specialAttack: 'Venomous Snakes', health: 90, armor: 6, strength: 4, dexterity: 6, weaponMin: 9, weaponMax: 15, stunStatus: false, image: './static/images/gorgon.png' },
