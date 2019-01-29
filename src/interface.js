@@ -38,26 +38,21 @@ $(document).ready(function () {
 function updateInterface () {
   updateAll()
   var health = game.player.returnAttribute('health')
-  var blood75 = document.getElementById('blood75')
-  var blood50 = document.getElementById('blood50')
-  var blood25 = document.getElementById('blood25')
+
+  if (health > 75 ) {
+    $('#playerImage').attr('src', './static/images/hero.png')
+  }
 
   if (health < 76 && health > 50) {
-    blood75.style.display = "block"
-    blood50.style.display = "none"
-    blood25.style.display = "none"
+    $('#playerImage').attr('src', './static/images/hero75.png')
   }
 
   if (health < 51 && health > 25) {
-    blood75.style.display = "none"
-    blood50.style.display = "block"
-    blood25.style.display = "none"
+    $('#playerImage').attr('src', './static/images/hero50.png')
   }
 
   if (health < 26) {
-    blood75.style.display = "none"
-    blood50.style.display = "none"
-    blood25.style.display = "block"
+    $('#playerImage').attr('src', './static/images/hero25.png')
   }
 
   if (health < 1) {
@@ -71,6 +66,7 @@ function updateInterface () {
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     game.loot.lootFinder()
+    
     if (game.loot.returnFoundItem() === 0) {
       $('#takeLoot').hide()
       $('#roomLoot').html(game.readout.noLootFound())
@@ -82,7 +78,6 @@ function updateInterface () {
         $('#takeLoot').hide()
       })
     }
-
     $('#nextRoom').click(function () {
       console.log('1')
       game.room.nextRoom()
@@ -91,36 +86,36 @@ function updateInterface () {
       updateAll()
     })
   }
+}
 
-  function updateAll () {
-    $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
-    $('#playerName').text(game.player.returnAttribute('name'))
-    $('#playerHealth').text(game.player.returnAttribute('health'))
-    $('#playerArmour').text(game.player.returnAttribute('armor'))
+function updateAll () {
+  $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
+  $('#playerName').text(game.player.returnAttribute('name'))
+  $('#playerHealth').text(game.player.returnAttribute('health'))
+  $('#playerArmour').text(game.player.returnAttribute('armor'))
 
-    if (game.player.returnAttribute('strengthBuff') > 0) {
-      $('#playerStrength').css('color', 'green');
-      $('#playerStrength').text(game.player.returnAttribute('strength') + game.player.returnAttribute('strengthBuff'))
-    } else {
-      $('#playerStrength').css('color', 'white');
-      $('#playerStrength').text(game.player.returnAttribute('strength'))
-    }
-    if (game.player.returnAttribute('dexterityBuff') > 0) {
-      $('#playerDexterity').css('color', 'green');
-      $('#playerDexterity').text(game.player.returnAttribute('dexterity') + game.player.returnAttribute('dexterityBuff'))
-    } else {
-      $('#playerDexterity').css('color', 'white');
-      $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
-    }
-
-    $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
-    $('#armourType').text(game.player.returnAttribute('armorName'))
-    $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())
-    $('#monsterHealth').text(game.room.monsterInRoom('health'))
-    $('#monsterArmor').text(game.room.monsterInRoom('armor'))
-    $('#output').html(game.readout.printReadout())
-    $('#healthQuantity').text(game.player.returnAttribute('healthPotions'))
-    $('#dexQuantity').text(game.player.returnAttribute('dexterityPotions'))
-    $('#strQuantity').text(game.player.returnAttribute('strengthPotions'))
+  if (game.player.returnAttribute('strengthBuff') > 0) {
+    $('#playerStrength').css('color', 'green');
+    $('#playerStrength').text(game.player.returnAttribute('strength') + game.player.returnAttribute('strengthBuff'))
+  } else {
+    $('#playerStrength').css('color', 'white');
+    $('#playerStrength').text(game.player.returnAttribute('strength'))
   }
+  if (game.player.returnAttribute('dexterityBuff') > 0) {
+    $('#playerDexterity').css('color', 'green');
+    $('#playerDexterity').text(game.player.returnAttribute('dexterity') + game.player.returnAttribute('dexterityBuff'))
+  } else {
+    $('#playerDexterity').css('color', 'white');
+    $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
+  }
+
+  $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
+  $('#armourType').text(game.player.returnAttribute('armorName'))
+  $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())
+  $('#monsterHealth').text(game.room.monsterInRoom('health'))
+  $('#monsterArmor').text(game.room.monsterInRoom('armor'))
+  $('#output').html(game.readout.printReadout())
+  $('#healthQuantity').text(game.player.returnAttribute('healthPotions'))
+  $('#dexQuantity').text(game.player.returnAttribute('dexterityPotions'))
+  $('#strQuantity').text(game.player.returnAttribute('strengthPotions'))
 }
