@@ -233,6 +233,23 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> enter Beserk mode!<br>'])
     });
   });
+
+  describe('#playerBerserkDisactiated', function () {
+    it('displays message for berserk mode', function () {
+      readout.clearReadout()
+      readout.playerBerserDisactivated()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> leave Beserk mode!<br>'])
+    });
+  });
+
+  describe('#playerStuns', function () {
+    it('displays message for berserk mode', function () {
+      readout.clearReadout()
+      readout.playerStuns()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> stunned the enemy<br>'])
+    });
+  });
+
   describe('#display loot', function () {
     it('displays weapon', function () {
       item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }

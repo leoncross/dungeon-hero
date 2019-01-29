@@ -85,6 +85,7 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(combat.readout).toBeDefined();
     });
+    
 
     describe('heroAttack', function () {
       // it('players takes 1 str potion', function () {
