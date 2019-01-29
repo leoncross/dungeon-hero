@@ -66,14 +66,23 @@ function updateInterface () {
   }
 
   if (game.room.monsterInRoom('health') < 1) {
+    $('#takeLoot').show()
     var modal = document.getElementById('winModal')
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     game.loot.lootFinder()
-    $('#roomLoot').html(game.loot.displayLoot())
-    $('#takeLoot').click(function () {
-      game.loot.equipLoot()
-    })
+    if (game.loot.returnFoundItem() === 0) {
+      $('#takeLoot').hide()
+      $('#roomLoot').html(game.readout.noLootFound())
+    } else {
+      $('#roomLoot').html(game.loot.displayLoot())
+      $('#takeLoot').click(function () {
+        game.loot.equipLoot()
+        $('#roomLoot').html(game.readout.equipLoot())
+        $('#takeLoot').hide()
+      })
+    }
+
     $('#nextRoom').click(function () {
       console.log('1')
       game.room.nextRoom()
@@ -103,7 +112,7 @@ function updateInterface () {
       $('#playerDexterity').css('color', 'white');
       $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
     }
-    
+
     $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
     $('#armourType').text(game.player.returnAttribute('armorName'))
     $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())

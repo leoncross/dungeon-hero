@@ -13,9 +13,19 @@ describe('Loot', function() {
       equipLoot() {}
     };
 
+    function ReadoutStub() {}
+    ReadoutStub.prototype = {
+      displayFoundWeapon() {},
+      displayFoundArmor() {},
+      displayFoundPotion() {},
+      noLootFound () {}
+
+    };
+
     player = new PlayerStub()
+    readout = new ReadoutStub()
     stub = sinon.stub(Math, 'floor')
-    loot = new Loot(player);
+    loot = new Loot(player, readout);
 
     rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
     table = [
@@ -55,15 +65,41 @@ describe('Loot', function() {
 
   describe('#returnFoundItem', function() {
     it('returns the most recently found item', function() {
-      stub.returns(8)
+      stub.returns(7)
       loot.lootFinder()
-      expect(loot.returnFoundItem()).toEqual({name: 'cloth', type: 'armor', armor: 1, rarity: 1, armorDamageReduction: (10/100)})
+      expect(loot.returnFoundItem()).toEqual({ name: 'hammer', type: 'weapon', weaponMin: 11, weaponMax: 12, rarity: 1 })
+    })
+  })
+
+  describe('#displayLoot', function() {
+    it('calls displayFoundWeapon if weapon', function() {
+      spyOn(readout, 'displayFoundWeapon').and.returnValue('weapon found')
+      stub.returns(7) // returns the 'hammer'
+      loot.lootFinder()
+      expect(loot.displayLoot()).toEqual('weapon found');
+    })
+    it('calls displayFoundArmor if armor', function() {
+      spyOn(readout, 'displayFoundArmor').and.returnValue('armor found')
+      loot.foundItem = { name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4 }
+      expect(loot.displayLoot()).toEqual('armor found');
+    })
+    it('calls displayFoundPotion if potion', function() {
+      spyOn(readout, 'displayFoundPotion').and.returnValue('potion found')
+      loot.foundItem = { name: 'strength', type: 'potion', rarity: 1 }
+      expect(loot.displayLoot()).toEqual('potion found');
+    })
+    it('calls displayFoundPotion if potion', function() {
+      spyOn(readout, 'noLootFound').and.returnValue('no loot found')
+      loot.foundItem = {}
+      expect(loot.displayLoot()).toEqual('no loot found');
     })
   })
 
   describe('#equipLoot', function() {
     it('calls on the player to equip the loot', function() {
       spyOn(player, "equipLoot").and.returnValue("equipped")
+      stub.returns(0) // returns the 'armor'
+      loot.lootFinder()
       expect(loot.equipLoot()).toEqual("equipped")
     })
   })
