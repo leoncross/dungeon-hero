@@ -21,6 +21,7 @@ describe('Game', function(){
   var readout
 
   beforeEach(function () {
+    game = new Game()
     player = new Player();
     hero = player.returnHero()
     monster = new Monster()
@@ -30,13 +31,11 @@ describe('Game', function(){
     loot = new Loot(player, readout)
     combat = new Combat(player, monster, dice, readout)
     room = new Rooms(player, monster, combat, dice)
-    game = new Game()
   });
 
   afterEach(function () {
     stub.restore()
   });
-;
 
   describe('player', function(){
     it('the object to exist', function(){
@@ -62,11 +61,31 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(combat).toBeDefined();
     });
+
+    it('the object to exist', function(){
+      expect(combat.player).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(combat.monster).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(combat.dice).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(combat.readout).toBeDefined();
+    });
   })
 
   describe('dice',function () {
     it('the object to exist', function(){
       expect(dice).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(dice._arrayOfNumbers).toEqual([]);
     });
   })
 
@@ -119,6 +138,10 @@ describe('Game', function(){
 
     it('the object to exist', function(){
       expect(loot.readout).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(loot.readout.readoutArray).toBeDefined();
     });
 
     it('the object to exist', function(){
