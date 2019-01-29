@@ -20,9 +20,9 @@ $(document).ready(function () {
   })
 
   $('#stunAttack').click(function () {
-   game.combat.attackSequence(0, 100, 0, 0, 'stun')
-   updateInterface()
- })
+    game.combat.attackSequence(0, 100, 0, 0, 'stun')
+    updateInterface()
+  })
 
   $('#healthPotion').click(function () {
     game.combat.attackSequence(0, 1, 0, 'health', 'health')
@@ -46,22 +46,19 @@ function updateInterface () {
 
   if (health > 75) {
     $('#playerImage').attr('src', './static/images/hero.png')
-
   }
 
   if (health < 76 && health > 50) {
     $('#playerImage').attr('src', './static/images/hero75.png')
-
   }
 
   if (health < 51 && health > 25) {
     $('#playerImage').attr('src', './static/images/hero50.png')
-
   }
 
   if (health < 26) {
     $('#playerImage').attr('src', './static/images/hero25.png')
-    $('#playerHealth').css('color', 'red');
+    $('#playerHealth').css('color', 'red')
   }
 
   if (health < 1) {
