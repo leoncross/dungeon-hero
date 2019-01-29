@@ -56,13 +56,13 @@ body {
   width: 205px;
   padding-left: 30px;
   padding-right: 30px;
-  font-size: 24px;
+  font-size: 20px;
   float: left;
 }
 
 .player-portrait {
   position: relative;
-  margin-top: 16px;
+  margin-top: 10px;
   padding-top: 6px;
   height: 214px;
   width: 208px;
@@ -102,7 +102,7 @@ body {
   padding-right: 20px;
   height: 22px;
   width: 238px;
-  font-size: 24px;
+  font-size: 20px;
   float: left;
 }
 
@@ -202,6 +202,22 @@ body {
 
 .textButton {
  cursor: pointer;
+}
+
+.goblin-pic {
+  float: left;
+  padding-right: 20px;
+  width: 150px;
+}
+
+.goblin-pic img {
+  width: 100%;
+  height: auto;
+}
+
+.shop-text {
+  text-align: left;
+  font-size: 21px;
 }
 /* .room1 {
   margin-top: 165px;
