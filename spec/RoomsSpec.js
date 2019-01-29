@@ -57,6 +57,18 @@ describe('Rooms',function(){
       spyOn(combat, "attackSetup").and.returnValue(healthyHero);
       expect(room.monsterRoom('easy')).toEqual(healthyHero)
     })
+    it('returns a medium monster (goblin)', function() {
+      spyOn(player, "returnHero").and.returnValue(healthyHero);
+      spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
+      spyOn(combat, "attackSetup").and.returnValue(healthyHero);
+      expect(room.monsterRoom('medium')).toEqual(healthyHero)
+    })
+    it('returns an hard monster (gorgon)', function() {
+      spyOn(player, "returnHero").and.returnValue(healthyHero);
+      spyOn(monsters, "randomizeMonster").and.returnValue(healthyMonster);
+      spyOn(combat, "attackSetup").and.returnValue(healthyHero);
+      expect(room.monsterRoom('hard')).toEqual(healthyHero)
+    })
     it('forces boss fight regardless of roll', function() {
       spyOn(dice, "rollDice").and.returnValue(1);
       spyOn(combat, "attackSetup").and.returnValue('boss');
@@ -65,7 +77,17 @@ describe('Rooms',function(){
     it('points to trapRoom if fails dice roll', function() {
       spyOn(dice, "rollDice").and.returnValue(5);
       spyOn(combat, "attackSetup").and.returnValue('trap');
+      expect(room.monsterRoom('easy')).toEqual('trap')
+    })
+    it('points to trapRoom if fails dice roll', function() {
+      spyOn(dice, "rollDice").and.returnValue(5);
+      spyOn(combat, "attackSetup").and.returnValue('trap');
       expect(room.monsterRoom('medium')).toEqual('trap')
+    })
+    it('points to trapRoom if fails dice roll', function() {
+      spyOn(dice, "rollDice").and.returnValue(5);
+      spyOn(combat, "attackSetup").and.returnValue('trap');
+      expect(room.monsterRoom('hard')).toEqual('trap')
     })
   })
 
