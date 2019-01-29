@@ -19,6 +19,11 @@ $(document).ready(function () {
     updateInterface()
   })
 
+  $('#stunAttack').click(function () {
+   game.combat.attackSequence(0, 100, 0, 0, 'stun')
+   updateInterface()
+ })
+
   $('#healthPotion').click(function () {
     game.combat.attackSequence(0, 1, 0, 'health', 'health')
     updateInterface()
@@ -66,7 +71,7 @@ function updateInterface () {
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     game.loot.lootFinder()
-    
+
     if (game.loot.returnFoundItem() === 0) {
       $('#takeLoot').hide()
       $('#roomLoot').html(game.readout.noLootFound())
