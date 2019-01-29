@@ -283,9 +283,7 @@ describe('Readout', function () {
     it('equipLoot', function () {
       expect(readout.equipLoot()).toEqual('You equip the loot')
 
-    })
+    });
   });
-
-
 
 });
