@@ -67,14 +67,14 @@ describe('Readout', function () {
    it('prints to readout', function () {
      readout.clearReadout()
      readout.playerStrengthPotion('strength')
-     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 2 strength<br>'])
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 5 strength<br>'])
    });
  });
  describe('#playerDexterityPotion', function () {
    it('prints to readout', function () {
      readout.clearReadout()
      readout.playerDexterityPotion('dexterity')
-     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity<br>'])
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity<br>'])
    });
  });
 

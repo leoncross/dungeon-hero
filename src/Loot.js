@@ -1,5 +1,6 @@
-function Loot (player) {
+function Loot (player, loot) {
   this.player = player
+  this.loot = loot
   this.table = [
     { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 },
     { name: 'sword', type: 'weapon', weaponMin: 5, weaponMax: 7, rarity: 1 },

@@ -64,11 +64,11 @@ Readout.prototype.playerMaxHealth = function (type) {
 }
 
 Readout.prototype.playerStrengthPotion = function (type) {
-  if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 2 strength')
+  if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 5 strength')
 }
 
 Readout.prototype.playerDexterityPotion = function (type) {
-  if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity')
+  if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity')
 }
 
 Readout.prototype.printReadout = function () {
