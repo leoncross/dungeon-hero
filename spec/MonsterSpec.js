@@ -32,27 +32,27 @@ describe('Monster', function () {
   describe('#returnEasyMonster', function () {
     it('selects a monster', function () {
       stub.returns(0)
-      expect(monster.randomizeMonster('easy')).toEqual({ name: 'Zombie', difficulty: 'easy', specialAttack: 'Deadly Kiss', health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7, stunStatus: false, image: './static/images/zombie.png' })
+      expect(monster.randomizeMonster('easy')).toEqual({ name: 'Zombie', difficulty: 'easy', specialAttack: 'Deadly Kiss', specialAttackDamage: 3, health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7, stunStatus: false, image: './static/images/zombie.png' })
     });
   });
 
   describe('#returnMediumMonster', function () {
     it('selects a monster', function () {
       stub.returns(0)
-      expect(monster.randomizeMonster('medium')).toEqual({ name: 'Skeleton', difficulty: 'medium', specialAttack: 'Necromancer', health: 50, armor: 1, strength: 4, dexterity: 2, weaponMin: 8, weaponMax: 11, stunStatus: false, image: './static/images/skeleton.png' })
+      expect(monster.randomizeMonster('medium')).toEqual({ name: 'Skeleton', difficulty: 'medium', specialAttack: 'Necromancer',  specialAttackDamage: 5, health: 50, armor: 1, strength: 4, dexterity: 2, weaponMin: 8, weaponMax: 11, stunStatus: false, image: './static/images/skeleton.png' })
     });
   });
 
   describe('#returnHardMonster', function () {
     it('selects a monster', function () {
       stub.returns(1)
-      expect(monster.randomizeMonster('hard')).toEqual({ name: 'Shadow Demon', difficulty: 'hard', specialAttack: 'Eternal Agony', health: 110, armor: 6, strength: 5, dexterity: 2, weaponMin: 8, weaponMax: 12, stunStatus: false, image: './static/images/shadowdemon.png' })
+      expect(monster.randomizeMonster('hard')).toEqual({ name: 'Shadow Demon', difficulty: 'hard', specialAttack: 'Eternal Agony', specialAttackDamage: 7, health: 110, armor: 6, strength: 5, dexterity: 2, weaponMin: 8, weaponMax: 12, stunStatus: false, image: './static/images/shadowdemon.png' })
     });
   });
 
   describe('#returnMonster', function () {
     it('returns a specific monster that is requested', function() {
-      expect(monster.returnMonster('Zombie')).toEqual({ name: 'Zombie', difficulty: 'easy', specialAttack: 'Deadly Kiss', health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7, stunStatus: false, image: './static/images/zombie.png' })
+      expect(monster.returnMonster('Zombie')).toEqual({ name: 'Zombie', difficulty: 'easy', specialAttack: 'Deadly Kiss', specialAttackDamage: 3, health: 30, armor: 3, strength: 3, dexterity: 2, weaponMin: 5, weaponMax: 7, stunStatus: false, image: './static/images/zombie.png' })
     })
   })
 
