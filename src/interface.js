@@ -43,6 +43,11 @@ $(document).ready(function () {
     game.combat.attackSequence(0, 100, 0, 0, 'warcry')
     updateInterface()
   })
+
+  $('#shopButton').click(function () {
+    var modal = document.getElementById('shopModal')
+    modal.style.display = 'block'
+  })
 })
 
 function updateInterface () {
@@ -118,12 +123,17 @@ function updateAll () {
     $('#playerDexterity').css('color', 'white');
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
   }
-
+  var heroDamage = (game.player.returnAttribute('weaponMin') + game.player.returnAttribute('strength')) + "-" +
+    (game.player.returnAttribute('weaponMax') + game.player.returnAttribute('strength'))
   $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
+  $('#playerDmg').text(heroDamage)
   $('#armourType').text(game.player.returnAttribute('armorName'))
   $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())
   $('#monsterHealth').text(game.room.monsterInRoom('health'))
   $('#monsterArmor').text(game.room.monsterInRoom('armor'))
+  var monsterDamage = ((game.room.monsterInRoom('weaponMin') + game.room.monsterInRoom('strength')) + "-" +
+    (game.room.monsterInRoom('weaponMax') + game.room.monsterInRoom('strength')))
+  $('#monsterDmg').text(monsterDamage)
   $('#output').html(game.readout.printReadout())
   $('#healthQuantity').text(game.player.returnAttribute('healthPotions'))
   $('#dexQuantity').text(game.player.returnAttribute('dexterityPotions'))
