@@ -23,6 +23,16 @@ describe('Readout', function () {
       readout.addReadout('test message')
       expect(readout.readoutArray).toEqual(['test message<br>', 'test message<br>'])
     });
+    it('returns what it is passed', function () {
+      readout.clearReadout()
+      for(var i = 1; i<= 25; i++){
+        readout.addReadout(i)
+      }
+      expect(readout.readoutArray[24]).toEqual('25<br>')
+      readout.addReadout('testing length')
+      expect(readout.readoutArray[0]).toEqual('2<br>')
+      expect(readout.readoutArray[24]).toEqual('testing length<br>')
+    });
   });
   describe('#printReadout', function () {
     it('prints to readout', function () {
@@ -201,6 +211,11 @@ describe('Readout', function () {
       readout.playerMisses('quick')
       expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> quick attack misses<br>'])
     });
+    it('prints to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerMisses('stun')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> stun attack misses<br>'])
+    });
   });
   describe('#playerWins', function () {
     it('prints to readout', function () {
@@ -232,6 +247,23 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> enter Beserk mode!<br>'])
     });
   });
+
+  describe('#playerBerserkDisactiated', function () {
+    it('displays message for berserk mode', function () {
+      readout.clearReadout()
+      readout.playerBerserDisactivated()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> leave Beserk mode!<br>'])
+    });
+  });
+
+  describe('#playerStuns', function () {
+    it('displays message for berserk mode', function () {
+      readout.clearReadout()
+      readout.playerStuns()
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> stunned the enemy<br>'])
+    });
+  });
+
   describe('#display loot', function () {
     it('displays weapon', function () {
       item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }

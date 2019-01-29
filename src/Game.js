@@ -1,12 +1,6 @@
 function Game () {}
 
 Game.prototype.initialize = function (playerName) {
-  // var Player
-  // var Monster
-  // var Dice
-  // var Combat
-  // var Rooms
-  // var Readout
   this.player = new Player()
   this.readout = new Readout()
   this.loot = new Loot(this.player, this.readout)
