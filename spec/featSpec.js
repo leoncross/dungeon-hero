@@ -74,6 +74,32 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(room).toBeDefined();
     });
+
+    it('the object to exist', function(){
+      expect(room.player).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(room.monsters).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(room.combat).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(room.dice).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(room.hero).toBeDefined();
+    });
+
+    it('the object to exist', function(){
+      expect(room.roomJourney).toBeDefined();
+    });
+
+
   })
 
   describe('game',function () {
@@ -106,6 +132,7 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(loot.foundItem).toBe(0);
     });
+
   })
 
 
