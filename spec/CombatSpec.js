@@ -39,7 +39,8 @@ describe('Combat',function(){
       monsterUnstunned () {},
       monsterStunned () {},
       playerStuns() {},
-      playerStunMisses () {}
+      playerStunMisses () {},
+      playerWarCry() {}
     };
 
     var Combat = require('../src/Combat');
@@ -101,6 +102,15 @@ describe('Combat',function(){
       expect(combat.heroAttack(0, 100, "stun")).toEqual(0)
       expect(combat.enemy["health"]).toEqual(100)
       expect(combat.enemy["stunStatus"]).toEqual(true)
+    });
+    it("does a war cry", function() {
+      spyOn(dice, "rollDice").and.returnValue(15);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, enemy])
+      combat.heroAttack(0, 100, "warcry")
+      expect(combat.hero['dexterityBuff']).toEqual(1)
+      expect(combat.hero['strengthBuff']).toEqual(1)
+      expect(combat.enemy["health"]).toEqual(100)
     });
     it("miss", function() {
       spyOn(dice, "rollDice").and.returnValue(0);
