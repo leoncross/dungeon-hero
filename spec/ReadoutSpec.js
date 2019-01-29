@@ -211,6 +211,11 @@ describe('Readout', function () {
       readout.playerMisses('quick')
       expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> quick attack misses<br>'])
     });
+    it('prints to readout - normal', function () {
+      readout.clearReadout()
+      readout.playerMisses('stun')
+      expect(readout.readoutArray).toEqual(['<span style="color: green;">Your</span> stun attack misses<br>'])
+    });
   });
   describe('#playerWins', function () {
     it('prints to readout', function () {
