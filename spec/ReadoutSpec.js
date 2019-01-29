@@ -49,14 +49,14 @@ describe('Readout', function () {
     it('prints to readout', function () {
       readout.clearReadout()
       readout.monsterUnstunned('zombie', 5)
-      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> fails to break free from their stun<br>'])
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> breaks free from the stun and is preparing to attack<br>'])
     });
   });
   describe('#monsterStunned', function () {
     it('prints to readout', function () {
       readout.clearReadout()
       readout.monsterStunned('zombie', 5)
-      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> breaks free from the stun and is preparing to attack<br>'])
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> is still stunned<br>'])
     });
   });
 
