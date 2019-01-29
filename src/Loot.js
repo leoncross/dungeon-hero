@@ -1,6 +1,6 @@
-function Loot (player, loot) {
+function Loot (player, readout) {
   this.player = player
-  this.loot = loot
+  this.readout = readout
   this.table = [
     { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 },
     { name: 'sword', type: 'weapon', weaponMin: 5, weaponMax: 7, rarity: 1 },
@@ -40,17 +40,22 @@ Loot.prototype.returnFoundItem = function () {
 }
 
 Loot.prototype.displayLoot = function () {
-  if (this.foundItem['type'] === 'weapon') {
-    return 'you found a ' + this.foundItem['name'] + ' that does between ' + this.foundItem['weaponMin'] + '-' + this.foundItem['weaponMax'] + ' damage' + '<br>would you like to equipt this?'
-  }
-  if (this.foundItem['type'] === 'armor') {
-    return 'you found ' + this.foundItem['name'] + ' armor that has an armor rating of ' + this.foundItem['armor'] + '<br>would you like to equipt this?'
-  }
-  if (this.foundItem['type'] === 'potion') {
-    return 'you found a ' + this.foundItem['name'] + ' potion' + '<br>would you like to equipt this?'
-  }
-  if (this.foundItem === 0) return 'no loot found'
+  if (this.foundItem['type'] === 'weapon') return this.readout.displayFoundWeapon(this.foundItem)
+  if (this.foundItem['type'] === 'armor') return this.readout.displayFoundArmor(this.foundItem)
+  if (this.foundItem['type'] === 'potion') return this.readout.displayFoundPotion(this.foundItem)
 }
+
+//   {
+//     return 'you found a ' + this.foundItem['name'] + ' that does between ' + this.foundItem['weaponMin'] + '-' + this.foundItem['weaponMax'] + ' damage' + '<br>would you like to equipt this?'
+//   }
+//   if (this.foundItem['type'] === 'armor') {
+//     return 'you found ' + this.foundItem['name'] + ' armor that has an armor rating of ' + this.foundItem['armor'] + '<br>would you like to equipt this?'
+//   }
+//   if (this.foundItem['type'] === 'potion') {
+//     return 'you found a ' + this.foundItem['name'] + ' potion' + '<br>would you like to equipt this?'
+//   }
+//   if (this.foundItem === 0) return 'no loot found'
+// }
 
 Loot.prototype.equipLoot = function () {
   return this.player.equipLoot(this.foundItem)

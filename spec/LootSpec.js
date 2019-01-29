@@ -13,9 +13,18 @@ describe('Loot', function() {
       equipLoot() {}
     };
 
+    function ReadoutStub() {}
+    ReadoutStub.prototype = {
+      displayFoundWeapon() {},
+      displayFoundArmor() {},
+      displayFoundPotion() {}
+
+    };
+
     player = new PlayerStub()
+    readout = new ReadoutStub()
     stub = sinon.stub(Math, 'floor')
-    loot = new Loot(player);
+    loot = new Loot(player, readout);
 
     rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
     table = [
@@ -58,6 +67,27 @@ describe('Loot', function() {
       stub.returns(8)
       loot.lootFinder()
       expect(loot.returnFoundItem()).toEqual({name: 'cloth', type: 'armor', armor: 1, rarity: 1, armorDamageReduction: (10/100)})
+    })
+  })
+
+  describe('#displayLoot', function() {
+    it('calls displayFoundWeapon if weapon', function() {
+      spyOn(readout, 'displayFoundWeapon').and.returnValue('weapon found')
+      stub.returns(7) // returns the 'hammer'
+      loot.lootFinder()
+      expect(loot.displayLoot()).toEqual('weapon found');
+    })
+    it('calls displayFoundArmor if armor', function() {
+      spyOn(readout, 'displayFoundArmor').and.returnValue('armor found')
+      stub.returns(8) // returns the 'cloth armor'
+      loot.lootFinder()
+      expect(loot.displayLoot()).toEqual('armor found');
+    })
+    it('calls displayFoundPotion if potion', function() {
+      spyOn(readout, 'displayFoundPotion').and.returnValue('potion found')
+      stub.returns(17) // returns the 'hammer'
+      loot.lootFinder()
+      expect(loot.displayLoot()).toEqual('potion found');
     })
   })
 
