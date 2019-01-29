@@ -64,11 +64,31 @@ Readout.prototype.playerMaxHealth = function (type) {
 }
 
 Readout.prototype.playerStrengthPotion = function (type) {
-  if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 2 strength')
+  if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 5 strength')
 }
 
 Readout.prototype.playerDexterityPotion = function (type) {
-  if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity')
+  if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity')
+}
+
+Readout.prototype.displayFoundWeapon = function (item) {
+  return 'you found a ' + item['name'] + ' that does between ' + item['weaponMin'] + '-' + item['weaponMax'] + ' damage' + '<br>would you like to equipt this?'
+}
+
+Readout.prototype.displayFoundArmor = function (item) {
+  return 'you found ' + item['name'] + ' armor that has an armor rating of ' + item['armor'] + '<br>would you like to equipt this?'
+}
+
+Readout.prototype.displayFoundPotion = function (item) {
+  return 'you found a ' + item['name'] + ' potion' + '<br>would you like to equipt this?'
+}
+
+Readout.prototype.equipLoot = function () {
+  return 'You equip the loot'
+}
+
+Readout.prototype.noLootFound = function () {
+  return 'no loot found'
 }
 
 Readout.prototype.printReadout = function () {
