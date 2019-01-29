@@ -1,53 +1,41 @@
+
 describe('Game', function(){
 
 
+  var Player = require('../src/Player');
+  var Loot = require('../src/Loot');
+  var Monster = require('../src/Monster');
+  var Dice = require('../src/Dice');
+  var Combat = require('../src/Combat');
+  var Rooms = require('../src/Rooms');
+  //
+  var Readout = require('../src/Readout');
+  // var sinon = require('sinon');
+  var Game = require('../src/Game');
+
   var player
+  // var playerName
+  var loot
   var monster
   var combat
   var dice
+  // var stub
   var room
-  var game
+  var readout
+  var game;
 
-
-  beforeEach(function() {
-    var Game = require('../src/Game');
-    // function DiceStub() {}
-    // DiceStub.prototype = {
-    // };
-    //
-    // function PlayerStub() {}
-    // PlayerStub.prototype = {
-    //   changeName(){}
-    // };
-    //
-    // function MonstersStub() {}
-    // MonstersStub.prototype = {
-    //   returnMonster(){}
-    // };
-    //
-    // function CombatStub() {}
-    // CombatStub.prototype = {
-    // };
-
-    // function RoomStub() {}
-    // RoomStub.prototype = {
-    //   roomSelect(){}
-    //   zombieRoom(){}
-    // };
-
-    // player = new PlayerStub()
-    // monster = new MonstersStub()
-    // combat = new CombatStub()
-    // dice = new DiceStub()
-    // room = new RoomStub()
-    loot = jasmine.createSpyObj('loot',['lootFinder']);
-    player = jasmine.createSpyObj('player',['changeName','returnHero']);
-    monster = jasmine.createSpyObj('monster',['returnMonster', 'randomizeMonster', 'resetMonsters', 'receiveDamage', 'returnAttribute']);
-    combat = jasmine.createSpyObj('combat',['attackSetup','attackSequence', 'endOfCombat', 'heroAttack']);
-    dice = jasmine.createSpyObj('dice',['rollDice','rollBetween']);
-    room = jasmine.createSpyObj('room',['monsterRoom','monsterinRoom']);
-    game = new Game('hero')
-
+  beforeEach(function () {
+    player = new Player();
+    // playerName = 'Player'
+    hero = player.returnHero()
+    monster = new Monster()
+    dice = new Dice()
+    // stub = sinon.stub(Math, 'floor')
+    readout = new Readout()
+    loot = new Loot(player, readout)
+    combat = new Combat(player, monster, dice, readout)
+    room = new Rooms(player, monster, combat, dice)
+    game = new Game();
   });
 
   describe('initialize', function(){
@@ -80,10 +68,10 @@ describe('Game', function(){
     });
 
     describe('play', function(){
-      it('expect to call zombie room', function(){
-        // game.play()
-        // expect(room.monsterRoom).toHaveBeenCalledWith('easy')
-      });
+      // it('expect to call next room', function(){
+      //   game.play()
+      //   expect(game.room.nextRoom()).toHaveBeenCalled()
+      // });
     });
 
   });

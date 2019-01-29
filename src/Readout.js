@@ -68,20 +68,20 @@ Readout.prototype.playerLoses = function () {
   this.addReadout('<span style="color: red;">You have died</span>')
 }
 
-Readout.prototype.playerHealthPotion = function (type) {
-  if (type === 'health') this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
+Readout.prototype.playerHealthPotion = function () {
+  this.addReadout('<span style="color: green;">You</span> drink a health potion and gain 25 health')
 }
 
-Readout.prototype.playerMaxHealth = function (type) {
-  if (type === 'health') this.addReadout('<span style="color: green;">You</span> reached your max health')
+Readout.prototype.playerMaxHealth = function () {
+  this.addReadout('<span style="color: green;">You</span> reached your max health')
 }
 
-Readout.prototype.playerStrengthPotion = function (type) {
-  if (type === 'strength') this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 5 strength')
+Readout.prototype.playerStrengthPotion = function () {
+  this.addReadout('<span style="color: green;">You</span> drink a strength potion and gain 5 strength')
 }
 
-Readout.prototype.playerDexterityPotion = function (type) {
-  if (type === 'dexterity') this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity')
+Readout.prototype.playerDexterityPotion = function () {
+  this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity')
 }
 
 Readout.prototype.displayFoundWeapon = function (item) {
