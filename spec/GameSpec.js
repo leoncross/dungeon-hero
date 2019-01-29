@@ -1,44 +1,41 @@
+
 describe('Game', function(){
 
-  var Game = require('../src/Game');
+
   var Player = require('../src/Player');
   var Loot = require('../src/Loot');
   var Monster = require('../src/Monster');
   var Dice = require('../src/Dice');
   var Combat = require('../src/Combat');
   var Rooms = require('../src/Rooms');
-
+  //
   var Readout = require('../src/Readout');
-  var sinon = require('sinon');
+  // var sinon = require('sinon');
+  var Game = require('../src/Game');
 
-  var game
   var player
-  var playerName
+  // var playerName
   var loot
   var monster
   var combat
   var dice
-  var stub
+  // var stub
   var room
-
   var readout
+  var game;
 
   beforeEach(function () {
-    game = new Game()
     player = new Player();
-    playerName = 'Player'
+    // playerName = 'Player'
     hero = player.returnHero()
     monster = new Monster()
     dice = new Dice()
-    stub = sinon.stub(Math, 'floor')
+    // stub = sinon.stub(Math, 'floor')
     readout = new Readout()
     loot = new Loot(player, readout)
     combat = new Combat(player, monster, dice, readout)
     room = new Rooms(player, monster, combat, dice)
-  });
-
-  afterEach(function () {
-    stub.restore()
+    game = new Game();
   });
 
   describe('initialize', function(){
