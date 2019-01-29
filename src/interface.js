@@ -72,7 +72,7 @@ function updateInterface () {
 
   if (game.room.monsterInRoom('health') < 1) {
     $('#takeLoot').show()
-    var modal = document.getElementById('winModal')
+    modal = document.getElementById('winModal')
     modal.style.display = 'block'
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     game.loot.lootFinder()

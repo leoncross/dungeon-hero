@@ -121,6 +121,3 @@ Readout.prototype.clearReadout = function () {
 }
 
 module.exports = Readout
-
-'<span style="color: red;">zombie</span> attacks you with its 8 for undefined damage<br>'
-'<span style="color: red;">zombie</span> attacks you with its<span style="color: purple;">Deadly Kiss</span> for 8 damage<br>'
