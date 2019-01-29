@@ -40,7 +40,7 @@ $(document).ready(function () {
   })
 
   $('warCry').click(function () {
-    game.combat.attacksequence(0, 100, 'warcry', 0, 'warcry')
+    game.combat.attacksequence(0, 100, 0, 0, 'warcry')
     updateInterface()
   })
 })
