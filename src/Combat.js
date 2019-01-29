@@ -37,52 +37,53 @@ Combat.prototype.endOfCombat = function () {
 }
 
 Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDamage, playerAttackType) {
-  let roll = this.dice.rollDice() + playerModifierToDice
-  let minRoll = this.enemy['dexterity']
+  var roll = this.dice.rollDice() + playerModifierToDice
+  var minRoll = this.enemy['dexterity']
   this.heroBerserkMode()
-  if (roll > minRoll) {
-    if (playerAttackType === 'stun') {
-      this.readout.playerStuns()
-      this.enemy['stunStatus'] = true
-    }
-    var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
-    if (this.hero['berserkMode'] === 'on') damage *= 2
-    if (roll >= 19) damage *= 2
-    damage = parseInt(damage)
-    this.enemy['health'] -= damage
-    if (this.enemy['health'] < 1) this.enemy['health'] = 0
-    this.readout.playerDamage(damage, playerAttackType)
-    return damage
-  } else {
-    this.readout.playerMisses(playerAttackType)
-    return 'miss'
-  }
+  if (roll > minRoll) return this.playerSuccessRoll(roll, playerModifierToDice, playerModifierToDamage, playerAttackType)
+  if (roll < minRoll) return this.readout.playerMisses(playerAttackType)
+}
+
+Combat.prototype.playerSuccessRoll = function (roll, playerModifierToDice, playerModifierToDamage, playerAttackType) {
+  if (playerAttackType === 'stun') this.readout.playerStuns(), this.enemy['stunStatus'] = true
+  var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
+  if (this.hero['berserkMode'] === 'on') damage *= 2
+  if (roll >= 19) damage *= 2
+  damage = parseInt(damage)
+  this.enemy['health'] -= damage
+  if (this.enemy['health'] < 1) this.enemy['health'] = 0
+  this.readout.playerDamage(damage, playerAttackType)
+  return damage
 }
 
 Combat.prototype.monsterAttack = function (monsterModifierToDice) {
-  let roll = this.dice.rollDice()
-  let minRoll = (this.hero['dexterity'] + monsterModifierToDice)
-  if (this.enemy['stunStatus'] === true) {
-    if (roll > 10) {
-      this.enemy['stunStatus'] = false
-      this.readout.monsterUnstunned(this.enemy['name'])
-      return 'broke free'
-    } else {
-      this.readout.monsterStunned(this.enemy['name'])
-      return 'stunned'
-    }
-  } else if (roll > minRoll) {
-    let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
-    damage -= parseInt(damage * this.hero['armorDamageReduction'])
-    this.hero['health'] -= damage
-    this.readout.monsterDamage(this.enemy['name'], damage)
-    this.heroBerserkMode()
-    return damage
+  var roll = this.dice.rollDice()
+  var minRoll = (this.hero['dexterity'] + monsterModifierToDice)
+  if (this.enemy['stunStatus'] === true) return this.monsterStunStatus(roll)
+  if (roll > minRoll) return this.monsterSuccessRoll(roll)
+  return this.readout.monsterMisses(this.enemy['name'])
+}
+
+Combat.prototype.monsterSuccessRoll = function (roll) {
+  let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
+  damage -= parseInt(damage * this.hero['armorDamageReduction'])
+  this.hero['health'] -= damage
+  this.readout.monsterDamage(this.enemy['name'], damage)
+  this.heroBerserkMode()
+  return damage
+}
+
+Combat.prototype.monsterStunStatus = function (roll) {
+  if (roll > 10) {
+    this.enemy['stunStatus'] = false
+    this.readout.monsterUnstunned(this.enemy['name'])
+    return 'broke free'
   } else {
-    this.readout.monsterMisses(this.enemy['name'])
-    return 'miss'
+    this.readout.monsterStunned(this.enemy['name'])
+    return 'stunned'
   }
 }
+
 
 Combat.prototype.heroBerserkMode = function () {
   if (this.hero['health'] <= 25 && this.hero['berserkMode'] === 'off') {
@@ -98,23 +99,18 @@ Combat.prototype.heroBerserkMode = function () {
 }
 
 Combat.prototype.healthPotion = function (playerAttackType) {
-  if (this.hero['healthPotions'] > 0) {
-    if (this.hero['health'] >= 100) {
-      this.readout.playerMaxHealth(playerAttackType)
-      return 'you reached your max health'
-    } else if (this.hero['health'] + 25 >= 100) {
-      this.hero['health'] = 100
-      this.hero['healthPotions'] -= 1
-    } else {
-      this.hero['health'] += 25
-      this.hero['healthPotions'] -= 1
-    }
-    this.readout.playerHealthPotion(playerAttackType)
-    this.heroBerserkMode()
-    return 'health potion consumed'
+  if (this.hero['healthPotions'] === 0) return 'you ran out of health potions'
+  if (this.hero['health'] >= 100) return this.readout.playerMaxHealth(playerAttackType)
+  if (this.hero['health'] + 25 >= 100) {
+    this.hero['health'] = 100
+    this.hero['healthPotions'] -= 1
   } else {
-    return 'you ran out of health potions'
+    this.hero['health'] += 25
+    this.hero['healthPotions'] -= 1
   }
+  this.readout.playerHealthPotion(playerAttackType)
+  this.heroBerserkMode()
+  return 'health potion consumed'
 }
 
 Combat.prototype.strengthPotion = function (playerAttackType) {
