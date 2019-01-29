@@ -162,7 +162,6 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">You have died</span><br>'])
     });
   });
-
   describe('#playerBerserkActiated', function () {
     it('displays message for berserk mode', function () {
       readout.clearReadout()
@@ -170,11 +169,24 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> enter Beserk mode!<br>'])
     });
   });
-  describe('#playerBerserDisactivated', function () {
-    it('displays message for berserk mode', function () {
-      readout.clearReadout()
-      readout.playerBerserDisactivated()
-      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> leave Beserk mode!<br>'])
+  describe('#display loot', function () {
+    it('displays weapon', function () {
+      item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }
+      expect(readout.displayFoundWeapon(item)).toEqual('you found a dagger that does between 2-4 damage<br>would you like to equipt this?')
+    });
+    it('displays armor', function () {
+      item = { name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25 }
+      expect(readout.displayFoundArmor(item)).toEqual('you found leather armor that has an armor rating of 5<br>would you like to equipt this?')
+    });
+    it('displays potion', function () {
+      item = { name: 'health', type: 'potion', rarity: 1 }
+      expect(readout.displayFoundPotion(item)).toEqual('you found a health potion<br>would you like to equipt this?')
+    });
+    it('no loot', function () {
+      expect(readout.noLootFound()).toEqual('no loot found')
     });
   });
+
+
+
 });

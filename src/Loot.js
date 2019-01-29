@@ -19,7 +19,7 @@ function Loot (player, readout) {
     { name: 'dexterity', type: 'potion', rarity: 1 },
     { name: 'strength', type: 'potion', rarity: 1 }
   ]
-  this.rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
+  this.rarityCalculator = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
   this.foundItem = 0
 }
 
@@ -43,19 +43,8 @@ Loot.prototype.displayLoot = function () {
   if (this.foundItem['type'] === 'weapon') return this.readout.displayFoundWeapon(this.foundItem)
   if (this.foundItem['type'] === 'armor') return this.readout.displayFoundArmor(this.foundItem)
   if (this.foundItem['type'] === 'potion') return this.readout.displayFoundPotion(this.foundItem)
+  return this.readout.noLootFound()
 }
-
-//   {
-//     return 'you found a ' + this.foundItem['name'] + ' that does between ' + this.foundItem['weaponMin'] + '-' + this.foundItem['weaponMax'] + ' damage' + '<br>would you like to equipt this?'
-//   }
-//   if (this.foundItem['type'] === 'armor') {
-//     return 'you found ' + this.foundItem['name'] + ' armor that has an armor rating of ' + this.foundItem['armor'] + '<br>would you like to equipt this?'
-//   }
-//   if (this.foundItem['type'] === 'potion') {
-//     return 'you found a ' + this.foundItem['name'] + ' potion' + '<br>would you like to equipt this?'
-//   }
-//   if (this.foundItem === 0) return 'no loot found'
-// }
 
 Loot.prototype.equipLoot = function () {
   return this.player.equipLoot(this.foundItem)
