@@ -127,5 +127,13 @@ describe('Player', function () {
       player.equipLoot({name: 'health', type: 'healthPotion', rarity: 1})
       expect(player.hero['healthPotions']).toEqual(3)
     })
+    it('equips a strength potion', function() {
+      player.equipLoot({name: 'strength', type: 'strengthPotion', rarity: 1})
+      expect(player.hero['strengthPotions']).toEqual(3)
+    })
+    it('equips a dexterity potion', function() {
+      player.equipLoot({name: 'dexterity', type: 'dexterityPotion', rarity: 1})
+      expect(player.hero['dexterityPotions']).toEqual(3)
+    })
   })
 });
