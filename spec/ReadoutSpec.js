@@ -23,6 +23,16 @@ describe('Readout', function () {
       readout.addReadout('test message')
       expect(readout.readoutArray).toEqual(['test message<br>', 'test message<br>'])
     });
+    it('returns what it is passed', function () {
+      readout.clearReadout()
+      for(var i = 1; i<= 25; i++){
+        readout.addReadout(i)
+      }
+      expect(readout.readoutArray[24]).toEqual('25<br>')
+      readout.addReadout('testing length')
+      expect(readout.readoutArray[0]).toEqual('2<br>')
+      expect(readout.readoutArray[24]).toEqual('testing length<br>')
+    });
   });
   describe('#printReadout', function () {
     it('prints to readout', function () {
