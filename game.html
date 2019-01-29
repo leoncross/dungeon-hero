@@ -46,14 +46,11 @@
           <span id='armourType' class='alignright'></span>
           <div style="clear: both;"></div>
           <div class="player-portrait">
-            <img class="player" src="./static/images/hero.png" alt="hero">
-            <img id="blood75" src="./static/images/blood-75.png">
-            <img id="blood50" src="./static/images/blood-50.png">
-            <img id="blood25" src="./static/images/blood-25.png">
+            <img id='playerImage' class="player" src="./static/images/hero.png" alt="hero">
           </div>
         </div>
         <div class="portrait">
-          <img id='monsterPortrait' src"./static/images/blank.png" alt="zombie">
+          <img id='monsterPortrait' src="./static/images/blank.png" alt="zombie">
         </div>
         <div class="monster-name">
           <span id='monsterName' ></span>
@@ -72,34 +69,41 @@
       <div class="action-bar">
         <div class="icon">
           <input type="image" id="playerAttack" src="./static/images/icon-attack-color.png">
+          <span class="tooltiptext">Normal Attack</span>
         </div>
         <div class="icon">
           <input type="image" id="insaneAttack" src="./static/images/insane-attack-color.png">
+          <span class="tooltiptext">Strong Attack</span>
         </div>
         <div class="icon">
           <input type="image" id="parryAttack" src="./static/images/parry-attack-color.png">
+          <span class="tooltiptext">Quick Attack</span>
+        </div>
+        <div class="icon">
+          <input type="image" id="stunAttack" src="./static/images/stun-attack-color.png">
+          <span class="tooltiptext">Stun Attack</span>
         </div>
         <div class="icon">
           <input type="image" id="healthPotion" src="./static/images/health-potion-color.png">
           <span id="healthQuantity" class="quantity"></span>
+          <span class="tooltiptext">Health Potion</span>
         </div>
         <div class="icon">
           <input type="image" id="dexPotion" src="./static/images/dex-potion-color.png">
           <span id="dexQuantity" class="quantity"></span>
+          <span class="tooltiptext">Dexterity Potion</span>
         </div>
         <div class="icon">
           <input type="image" id="strPotion" src="./static/images/str-potion-color.png">
           <span id="strQuantity" class="quantity"></span>
-        </div>
-        <div class="icon">
-          <input type="image" src="./static/images/icon-attack-color.png">
+          <span class="tooltiptext">Strength Potion</span>
         </div>
         <div class="icon">
           <input type="image" src="./static/images/insane-attack-color.png">
         </div>
       </div>
+
       <div id="winModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
           <h1>YOU WIN</h1>
           You killed the <span id='monsterName1'></span>

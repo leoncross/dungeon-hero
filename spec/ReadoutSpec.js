@@ -30,14 +30,6 @@ describe('Readout', function () {
       readout.addReadout('test message')
       expect(readout.printReadout()).toEqual(['test message<br>'])
     });
-    // it('maximum readout of 20', function () {
-    //   readout.clearReadout()
-    //   readout.addReadout('test message')
-    //   readout.readoutArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-    //   expect(readout.readoutArray.length).toEqual(20)
-    //   readout.addReadout('test message')
-    //   expect(readout.readoutArray.length).toEqual(20)
-    // });
   });
   describe('#monsterDamage', function () {
     it('prints to readout', function () {
@@ -46,6 +38,28 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attacks you for 5 damage<br>'])
     });
   });
+  describe('#monsterMisses', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterMisses('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attack misses<br>'])
+    });
+  });
+  describe('#monsterUnstunned', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterUnstunned('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> fails to break free from their stun<br>'])
+    });
+  });
+  describe('#monsterStunned', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterStunned('zombie', 5)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> breaks free from the stun and is preparing to attack<br>'])
+    });
+  });
+
   describe('#playerHealthPotion', function () {
    it('prints to readout', function () {
      readout.clearReadout()
@@ -67,7 +81,7 @@ describe('Readout', function () {
    it('prints to readout', function () {
      readout.clearReadout()
      readout.playerStrengthPotion('strength')
-     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 2 strength<br>'])
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a strength potion and gain 5 strength<br>'])
    });
    it('doesnt print to readout if error', function () {
      readout.clearReadout()
@@ -79,7 +93,7 @@ describe('Readout', function () {
    it('prints to readout', function () {
      readout.clearReadout()
      readout.playerDexterityPotion('dexterity')
-     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 2 dexterity<br>'])
+     expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity<br>'])
    });
    it('doesnt print to readout if error', function () {
      readout.clearReadout()
@@ -172,7 +186,6 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">You have died</span><br>'])
     });
   });
-
   describe('#playerBerserkActiated', function () {
     it('displays message for berserk mode', function () {
       readout.clearReadout()
@@ -180,11 +193,24 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> enter Beserk mode!<br>'])
     });
   });
-  describe('#playerBerserDisactivated', function () {
-    it('displays message for berserk mode', function () {
-      readout.clearReadout()
-      readout.playerBerserDisactivated()
-      expect(readout.readoutArray).toEqual(['<span style="color: green;">You</span> leave Beserk mode!<br>'])
+  describe('#display loot', function () {
+    it('displays weapon', function () {
+      item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }
+      expect(readout.displayFoundWeapon(item)).toEqual('you found a dagger that does between 2-4 damage<br>would you like to equipt this?')
+    });
+    it('displays armor', function () {
+      item = { name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25 }
+      expect(readout.displayFoundArmor(item)).toEqual('you found leather armor that has an armor rating of 5<br>would you like to equipt this?')
+    });
+    it('displays potion', function () {
+      item = { name: 'health', type: 'potion', rarity: 1 }
+      expect(readout.displayFoundPotion(item)).toEqual('you found a health potion<br>would you like to equipt this?')
+    });
+    it('no loot', function () {
+      expect(readout.noLootFound()).toEqual('no loot found')
     });
   });
+
+
+
 });
