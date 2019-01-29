@@ -48,6 +48,13 @@ describe('Readout', function () {
       expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attacks you for 5 damage<br>'])
     });
   });
+  describe('#monsterSpecialAttack', function () {
+    it('prints to readout', function () {
+      readout.clearReadout()
+      readout.monsterSpecialAttack('zombie', 'Deadly Kiss', 8)
+      expect(readout.readoutArray).toEqual(['<span style="color: red;">zombie</span> attacks you with its <span style="color: purple;">Deadly Kiss</span> for 8 damage<br>'])
+    });
+  });
   describe('#monsterMisses', function () {
     it('prints to readout', function () {
       readout.clearReadout()
@@ -285,7 +292,5 @@ describe('Readout', function () {
 
     })
   });
-
-
 
 });
