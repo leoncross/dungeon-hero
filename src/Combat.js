@@ -87,7 +87,6 @@ Combat.prototype.monsterStunStatus = function (roll) {
   }
 }
 
-
 Combat.prototype.heroBerserkMode = function () {
   if (this.hero['health'] <= 25 && this.hero['berserkMode'] === 'off') {
     this.player.toggleBerserkMode('on')
