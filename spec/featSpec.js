@@ -85,17 +85,6 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(combat.readout).toBeDefined();
     });
-    
-
-    describe('heroAttack', function () {
-      // it('players takes 1 str potion', function () {
-      //   // console.log(combat.monster.monsters[0]);
-      //   combat.monster.monsters[0].dexterity = 100
-      //   // console.log(combat.monster.monsters[0]);
-      //   combat.attackSetup([combat.player.hero, combat.monster.monsters[0]])
-      //   expect(combat.heroAttack(0, 0, 2)).toEqual('miss')
-      // })
-    })
 
     describe('potions sequences', function() {
       // STRENGHTH
@@ -293,13 +282,5 @@ describe('Game', function(){
     });
 
   })
-
-
-  describe('play', function(){
-    it('expect to call zombie room', function(){
-      // console.log(hero.name);
-      // game.initialize('hero')
-    });
-  });
 
 });
