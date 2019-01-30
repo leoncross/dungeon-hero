@@ -1,8 +1,8 @@
 ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo")
 
- ### RPG Adventure Game (with turn-based fights) set in a Dungeon
+ ### An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.
 
-[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Build](#build) | [Coverage](#coverage) | [Play](#play) | [Story](#story) | [Gameplay](#gameplay) | [Features](#features) | [Images](#images) |
+[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Build](#build) | [Coverage](#coverage) | [Play](#play) | [Story](#story) | [Controls](#controls) | [Features](#features) | [Images](#images) |
 
 
 ## Team
@@ -15,11 +15,11 @@
 
 ## Technologies
 
-* Around 85% of our code has been written in vanilla <a href="https://github.com/leoncross/">JavaScript</a> alongside some HTML5 and CSS for the GUI(graphic user interface).
-* We used <a href="https://jquery.com/">jQuery</a>(a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
-* To test our app we used <a href="https://jasmine.github.io/">Jasmine</a>(open source testing framework for JavaScript).
-* To check our test coverage we used <a href="https://istanbul.js.org/">Istanbul</a>(a Node.js module) and <a href="https://coveralls.io/">Coverall.io</a>(a website hosting GitHub repositories and checking for your coverage percentage after every merge).
-* We also used <a href="https://eslint.org/">ESlint</a> as linter(a tool to analyze your code to flag bugs and stylistic errors).
+* Around 85% of our code has been written in vanilla <a href="https://github.com/leoncross/">JavaScript</a> alongside with some HTML5 and CSS for the GUI(graphic user interface).
+* We used <a href="https://jquery.com/">jQuery</a> (a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
+* To test our app we used <a href="https://jasmine.github.io/">Jasmine</a> (open source testing framework for JavaScript).
+* To check our test coverage we used <a href="https://istanbul.js.org/">Istanbul</a> (a Node.js module) and <a href="https://coveralls.io/">Coverall.io</a> (a website hosting GitHub repositories and checking for your coverage percentage after every merge).
+* We also used <a href="https://eslint.org/">ESlint</a> as linter (a tool to analyze your code to flag bugs and stylistic errors).
 * To achieve continuous integration we used <a href="https://travis-ci.org/">Travis CI</a>, a hosted service used to build and test software projects hosted at GitHub. Its main purpose is to avoid untested and/or buggy branches to be merged into the Master branch.
 
 ## Setup
@@ -51,10 +51,12 @@ npm run test
 ```
 
 ## Build
+#### (tested with Travis CI)
 
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
 
 ## Coverage
+#### (tested with Istanbul)
 
 [![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
 
@@ -77,7 +79,17 @@ To help our protagonist in his quest we will have the chance to improve our armo
 But don't be deceived by this! Your journey will still be long and full of blood!!!
 <!-- In the first room is a monster. If the player successfully defeats this monster (with a turn-based, RPG style combat system), the player will move into the final room where they escape and win the game. -->
 
-## Gameplay
+## Controls
+
+![Alt text](/static/images/icon-attack-color.png?raw=true "icon-attack-color") Normal Attack <br>
+![Alt text](/static/images/insane-attack-color.png?raw=true "icon-attack-color")  Insane Attack <br>
+![Alt text](/static/images/parry-attack-color.png?raw=true "icon-attack-color")  Parry Attack <br>
+![Alt text](/static/images/stun-attack-color.png?raw=true "icon-attack-color")  Stun Attack <br>
+![Alt text](/static/images/health-potion-color.png?raw=true "icon-attack-color")  Health Potion <br>
+![Alt text](/static/images/dex-potion-color.png?raw=true "icon-attack-color")  Strength Potion <br>
+![Alt text](/static/images/str-potion-color.png?raw=true "icon-attack-color")  Dexterity Potion <br>
+![Alt text](/static/images/warcry-color.png?raw=true "icon-attack-color")  WarCry <br>
+
 
 ## Features
 
