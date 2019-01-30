@@ -21,12 +21,14 @@
 
 ## Technologies
 
-![Alt text](/static/images/js.png?raw=true "js")
+<img src="/static/images/js.png" width="120" height="60"><img src="/static/images/jquery.png" width="100" height="70"><img src="/static/images/jasmine.png" width="160" height="110"><img src="/static/images/istanbul.png" width="90" height="60"><img src="/static/images/eslint.png" width="160" height="90"><img src="/static/images/travis 2.png" width="120" height="80">
+
+<!-- ![Alt text](/static/images/js.png?raw=true "js")
 ![Alt text](/static/images/jquery.png?raw=true "js")
 ![Alt text](/static/images/jasmine.png?raw=true "js")
 ![Alt text](/static/images/istanbul.png?raw=true "js")
 ![Alt text](/static/images/eslint.png?raw=true "js")
-![Alt text](/static/images/travis.png?raw=true "js")
+![Alt text](/static/images/travis.png?raw=true "js") -->
 
 * Around 85% of our code has been written in vanilla <a href="https://www.javascript.com/">JavaScript</a> alongside with some HTML5 and CSS for the GUI(graphic user interface).
 * We used <a href="https://jquery.com/">jQuery</a> (a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
