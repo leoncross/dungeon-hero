@@ -1,8 +1,14 @@
 ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo")
 
+<hr>
+
+[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
+[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
+
+
  ### An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.
 
-[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Build](#build) | [Coverage](#coverage) | [Play](#play) | [Story](#story) | [Controls](#controls) | [Features](#features) | [Images](#images) |
+[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Story](#story) | [Controls](#controls) | [Features](#features) | [Images](#images) |
 
 
 ## Team
@@ -15,7 +21,9 @@
 
 ## Technologies
 
-* Around 85% of our code has been written in vanilla <a href="https://github.com/leoncross/">JavaScript</a> alongside with some HTML5 and CSS for the GUI(graphic user interface).
+![Alt text](/static/images/js.png?raw=true "js")
+
+* Around 85% of our code has been written in vanilla <a href="https://www.javascript.com/">JavaScript</a> alongside with some HTML5 and CSS for the GUI(graphic user interface).
 * We used <a href="https://jquery.com/">jQuery</a> (a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
 * To test our app we used <a href="https://jasmine.github.io/">Jasmine</a> (open source testing framework for JavaScript).
 * To check our test coverage we used <a href="https://istanbul.js.org/">Istanbul</a> (a Node.js module) and <a href="https://coveralls.io/">Coverall.io</a> (a website hosting GitHub repositories and checking for your coverage percentage after every merge).
@@ -24,12 +32,21 @@
 
 ## Setup
 #### How to get started with the project:
+
+* Inside your folder, type these commands in this order in the terminal:
+
 ```
-npm init
+git clone https://github.com/leoncross/team-rogue.git
+```
+(to clone the repository into your folder)
+```
 npm install
-npm install -g jasmine
-jasmine init
 ```
+(to install the node modules you need into your package.json file) <br>
+
+* After a successful installation, open Atom (or any other editor of your choice) and copy game.html full path.
+* Paste it in a browser in the address bar and start playing!
+
 
 ## Test
 #### How to run Jasmine:
@@ -50,22 +67,7 @@ In the terminal run:
 npm run test
 ```
 
-## Build
-#### (tested with Travis CI)
-
-[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
-
-## Coverage
-#### (tested with Istanbul)
-
-[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
-
-## Play
-#### How to run the game:
-
-clone the terminal
-type the following in your console:
-copy the game.html file and open it in your browser
+<hr>
 
 ## Story
 
