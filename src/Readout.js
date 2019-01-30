@@ -117,8 +117,8 @@ Readout.prototype.printReadout = function () {
 }
 
 Readout.prototype.displayItemInShop = function (item) {
-  if (item['type'] === 'armor') return item['name'] + ' | ' + item['armor'] + ' armor'
-  if (item['type'] === 'weapon') return item['name'] + ' | ' + item['weaponMin'] + '-' + item['weaponMax'] + ' damage'
+  if (item['type'] === 'armor') return item['name'] + ' (' + item['armor'] + ' armour)'
+  if (item['type'] === 'weapon') return item['name'] + ' (' + item['weaponMin'] + '-' + item['weaponMax'] + ' dmg)'
 }
 
 Readout.prototype.displayPriceOfItemInShop = function (item) {

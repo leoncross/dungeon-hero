@@ -2,6 +2,16 @@ let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {
+
+  console.log(game.room.monsterInRoom('name'))
+
+  if(game.room.monsterInRoom('name') === 'Shop') {
+    var modal = document.getElementById('shopModal')
+    modal.style.display = 'block'
+    shopInterface()
+    shopListeners()
+  }
+
   updateInterface()
 
   $('#playerAttack').click(function () {
@@ -44,23 +54,21 @@ $(document).ready(function () {
     updateInterface()
   })
 
-  $('#shopButton').click(function () {
-    var modal = document.getElementById('shopModal')
-    modal.style.display = 'block'
-    shopInterface()
-  })
+  // $('#shopButton').click(function () {
+  //   var modal = document.getElementById('shopModal')
+  //   modal.style.display = 'block'
+  //   shopInterface()
+  //   shopListeners()
+  // })
+
 })
-
-
 
 function shopInterface() {
   game.shop.findItemsInShop()
   $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
-
   $('#item1').html(game.shop.displayItemsInShop(0))
   $('#item2').html(game.shop.displayItemsInShop(1))
   $('#item3').html(game.shop.displayItemsInShop(2))
-
   $('#price1').html(game.shop.displayPriceOfItemInShop(0))
   $('#price2').html(game.shop.displayPriceOfItemInShop(1))
   $('#price3').html(game.shop.displayPriceOfItemInShop(2))
@@ -70,10 +78,45 @@ function shopInterface() {
 }
 
 // function for shop
+function shopListeners() {
+  $('#item1').click(function () {
+    game.shop.buyItemFromShop(0)
+    $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+
+  $('#item2').click(function () {
+    game.shop.buyItemFromShop(1)
+    $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+
+  $('#item3').click(function () {
+    game.shop.buyItemFromShop(2)
+    $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+
+  $('#item4').click(function () {
+    game.player.equipLoot({name: 'health'})
+    game.shop.payForPotion()
+    $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+
+  $('#item5').click(function () {
+    game.player.equipLoot({name: 'strength'})
+    game.shop.payForPotion()
+    $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+
+  $('#item6').click(function () {
+    game.player.equipLoot({name: 'dexterity'})
+    game.shop.payForPotion()
+    $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+}
 
 // function for update shop (after items bought / gold spent etc.)
 
 function updateInterface () {
+
   updateAll()
   var health = game.player.returnAttribute('health')
   if (health > 75) {
@@ -99,9 +142,9 @@ function updateInterface () {
   }
 
   if (game.room.monsterInRoom('health') < 1) {
-    $('#takeLoot').show()
-    modal = document.getElementById('winModal')
+    var modal = document.getElementById('winModal')
     modal.style.display = 'block'
+    $('#takeLoot').show()
     $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
     game.loot.lootFinder()
 
@@ -124,6 +167,7 @@ function updateInterface () {
       updateAll()
     })
   }
+
 }
 
 function updateAll () {
@@ -161,4 +205,5 @@ function updateAll () {
   $('#healthQuantity').text(game.player.returnAttribute('healthPotions'))
   $('#dexQuantity').text(game.player.returnAttribute('dexterityPotions'))
   $('#strQuantity').text(game.player.returnAttribute('strengthPotions'))
+  $('#playerGold').text(game.player.returnAttribute('gold'))
 }

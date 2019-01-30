@@ -52,4 +52,10 @@ Shop.prototype.returnPotionPrice = function (potion) {
   }
 }
 
+// leon - damn well fix my shit .... (thanks)
+Shop.prototype.payForPotion = function (potion) {
+  var hero = this.player.returnHero()
+  hero['gold'] -= 100
+};
+
 module.exports = Shop
