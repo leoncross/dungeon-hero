@@ -107,3 +107,10 @@ But don't be deceived by this! Your journey will still be long and full of blood
 <hr>
 
 ## Screenshoots
+
+![Alt text](/static/images/normal_attack.png?raw=true "Screenshot")
+![Alt text](/static/images/insane_attack.png?raw=true "Screenshot")
+![Alt text](/static/images/special_attack.png?raw=true "Screenshot")
+![Alt text](/static/images/gorgon_dex.png?raw=true "Screenshot")
+![Alt text](/static/images/win_screen.png?raw=true "Screenshot")
+![Alt text](/static/images/death_screen.png?raw=true "Screenshot")
