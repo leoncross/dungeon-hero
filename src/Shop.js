@@ -21,6 +21,7 @@ Shop.prototype.findItemsInShop = function () {
   for (var i = 0; i < 3; i++) {
     this.itemsInShop.push(this.shopItemRandomizer())
   }
+  this.itemsInShop.push({ name: 'health', type: 'potion', rarity: 1, price: 100 }, { name: 'dexterity', type: 'potion', rarity: 1, price: 100 }, { name: 'strength', type: 'potion', rarity: 1, price: 100 })
   return this.itemsInShop
 }
 
@@ -50,11 +51,5 @@ Shop.prototype.returnPotionPrice = function (potion) {
     if (table[i]['name'] === potion) return table[i]['price'] + ' gold'
   }
 }
-
-// leon - damn well fix my shit .... (thanks)
-Shop.prototype.payForPotion = function (potion) {
-  var hero = this.player.returnHero()
-  hero['gold'] -= 100
-};
 
 module.exports = Shop
