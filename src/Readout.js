@@ -116,6 +116,16 @@ Readout.prototype.printReadout = function () {
   return this.readoutArray
 }
 
+Readout.prototype.displayItemInShop = function (item) {
+  if (item['type'] === 'armor') return item['name'] + ' | ' + item['armor'] + ' armor'
+  if (item['type'] === 'weapon') return item['name'] + ' | ' + item['weaponMin'] + '-' + item['weaponMax'] + ' damage'
+}
+
+Readout.prototype.displayPriceOfItemInShop = function (item) {
+  return item['price'] + ' gold'
+}
+
+
 Readout.prototype.clearReadout = function () {
   this.readoutArray = []
 }
