@@ -46,10 +46,15 @@ Shop.prototype.buyItemFromShop = function (placeInArray) {
 
 Shop.prototype.returnPotionPrice = function (potion) {
   var table = this.loot.returnLootTable()
-  var possibleItems = []
   for (var i = 0; i < table.length; i++) {
     if (table[i]['name'] === potion) return table[i]['price'] + ' gold'
   }
 }
+
+// leon - damn well fix my shit .... (thanks)
+Shop.prototype.payForPotion = function (potion) {
+  var hero = this.player.returnHero()
+  hero['gold'] -= 100
+};
 
 module.exports = Shop

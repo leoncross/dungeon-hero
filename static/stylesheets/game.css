@@ -225,6 +225,15 @@ body {
   float: left;
   margin: 15px 50px;
   text-align: left;
+  font-size: 22px;
+}
+
+.shopItem {
+  cursor: pointer;
+}
+
+.shopItem:hover {
+  color: white;
 }
 /* .room1 {
   margin-top: 165px;

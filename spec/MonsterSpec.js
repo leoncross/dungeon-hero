@@ -21,7 +21,8 @@ describe('Monster', function () {
       { name: 'Gorgon', difficulty: 'hard', specialAttack: 'Venomous Snakes', specialAttackDamage: 6, health: 90, armor: 6, strength: 5, dexterity: 6, weaponMin: 7, weaponMax: 11, stunStatus: false, image: './static/images/gorgon.png' },
       { name: 'Shadow Demon', difficulty: 'hard', specialAttack: 'Eternal Agony', specialAttackDamage: 8, health: 120, armor: 6, strength: 6, dexterity: 4, weaponMin: 8, weaponMax: 13, stunStatus: false, image: './static/images/shadowdemon.png' },
       { name: 'Dragon', difficulty: 'boss', specialAttack: 'Black Flames', specialAttackDamage: 10, health: 180, armor: 8, strength: 8, dexterity: 8, weaponMin: 12, weaponMax: 18, stunStatus: false, image: './static/images/dragon.png' },
-      { name: 'Trap', difficulty: 'trap', health: 10, armor: 0, strength: 0, dexterity: 0, weaponMin: 25, weaponMax: 25, stunStatus: false, image: './static/images/trap.png' }
+      { name: 'Trap', difficulty: 'trap', health: 10, armor: 0, strength: 0, dexterity: 0, weaponMin: 25, weaponMax: 25, stunStatus: false, image: './static/images/trap.png' },
+      { name: 'Shop', difficulty: 'shop', specialAttack: false, specialAttackDamage: 0, health: 1000, armor: 0, strength: 0, dexterity: 0, weaponMin: 0, weaponMax: 0, stunStatus: false, image: './static/images/blank.png' }
     ]
   });
 

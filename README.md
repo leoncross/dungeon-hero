@@ -1,76 +1,78 @@
-[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
+![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo")
 
-# team-rogue
-
-
-MVP Description:
-
-A player (with improvable attributes), has to escape a two-room dungeon.
-In the first room is a monster. If the player successfully defeats this monster (with a turn-based, RPG style combat system), the player will move into the final room where they escape and win the game.
+[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Build](#build) | [Coverage](#coverage) | [Play](#play) | [Story](#story) | [Gameplay](#gameplay) | [Features](#features) | [Images](#images) |
 
 
+## Team
+#### Team Rogue Members:
 
-# How to run
+* Leon Cross        <a href="https://github.com/leoncross/">https://github.com/leoncross/</a>
+* Darryl Banks      <a href="https://github.com/zombie9">https://github.com/zombie9</a>
+* Luca Eto          <a href="https://github.com/lucafrancesc/">https://github.com/lucafrancesc/</a>
+* Cesare Camurani   <a href="https://github.com/cesarecamurani/">https://github.com/cesarecamurani/</a>
 
-clone the terminal
-type the following in your console:
+## Technologies
+
+* Around 85% of our code has been written in vanilla JavaScript alongside some HTML5 and CSS for the GUI(graphic user interface).
+* We used jQuery(a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
+* To test our app we used Jasmine(open source testing framework for JavaScript).
+* To check our test coverage we used Istanbul(a Node.js module) and Coverall.io(a website hosting GitHub repositories and checking for your coverage percentage after every merge).
+* We also used ESlint as linter(a tool to analyze your code to flag bugs and stylistic errors).
+
+## Setup
+#### How to get started with the project:
 ```
-npm install
-
-npm run test
-```
-
-copy the game.html file and open it in your browser
-
-
-
-# setup
 npm init
 npm install
 npm install -g jasmine
 jasmine init
-
-
-to get coverage
-```
-istanbul cover --include-all-sources jasmine
 ```
 
-- to push??
+## Test
+### How to run Jasmine:
 ```
-istanbul cover --include-all-sources jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+npm run jasmine
 ```
 
+### How to run Eslint:
+```
+npm run lint
+```
 
-Trap room - has a 20% chance of occuring (not including when you fight a boss; trap room will never replace a boss fight)
+### How to run Coverall:
+```
+npm run test
+```
 
-// normal attack: 0 modifiers
+## Build
 
-// insane attack:
-  // player:
-    // -5 to rollDice - ON PLAYER ATTACK SEQUENCE
-    // 50% damage increase - ON PLAYER ATTACK SEQUENCE
+[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
 
-// quick attack:
-  // player:
-    // 50% damage decrease - ON PLAYER ATTACK SEQUENCE
-  // monster:
-    // +5 to minimumRoll - ON MONSTER ATTACK SEQUENCE
+## Coverage
 
+[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
 
-// attack sequence always stays the same (you pass it the modifiers)
-// monster attack (accepts modifiers)
-// hero attack (accepts modifiers)
+## Play
+### How to run the game:
 
-normal attack = combat.attackSequence(0, 1 ,0, 0)
-insane attack = combat.attackSequence(-5, 0.5, 0, 0)
-quick attack = combat.heroAttack(0, 2, 5, 0)
-health potion = combat.attackSequence(0, 1 ,0, 'health')
+clone the terminal
+type the following in your console:
+copy the game.html file and open it in your browser
 
-missing:
-from combat, updater the player class with new player stats(health)
+## Story
 
-feature ideas:
-- special moves
-- loot table
-- longer fight goes on, more damage they do (i.e., bat swarm)
+![Alt text](/static/images/hero.png?raw=true "hero")
+
+'You wake up in a dark place. Your eyes slowly adjust, and you see a dagger next to you. While you're picking it up,
+you suddenly hear something coming from the darkness! You're still trying to understand what happened the night before when...'
+
+In this game the Hero has to escape a multiple room dungeon. But his skills will be hard tested by a series of fights along his journey towards the light!
+To help our protagonist in his quest we will have the chance to improve our armour and our weapons as well as our skills...
+But don't be deceived by this! Your journey will still be long and full of blood!!!
+<!-- In the first room is a monster. If the player successfully defeats this monster (with a turn-based, RPG style combat system), the player will move into the final room where they escape and win the game. -->
+
+## Gameplay
+
+## Features
+
+## Images
