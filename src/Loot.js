@@ -16,11 +16,12 @@ function Loot (player, readout, dice) {
     { name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4, inShop: true, price: 40 },
     { name: 'plate', type: 'armor', armor: 15, rarity: 1, armorDamageReduction: 0.6, inShop: true, price: 100 },
     { name: 'dragon scale', type: 'armor', armor: 20, rarity: 1, armorDamageReduction: 0.8, inShop: true, price: 100 },
-    { name: 'health', type: 'potion', rarity: 1, price: 100 },
-    { name: 'dexterity', type: 'potion', rarity: 1, price: 100 },
-    { name: 'strength', type: 'potion', rarity: 1, price: 100 }
+    { name: 'health', type: 'potion', rarity: 0, price: 100 },
+    { name: 'dexterity', type: 'potion', rarity: 0, price: 100 },
+    { name: 'strength', type: 'potion', rarity: 0, price: 100 }
   ]
-  this.rarityCalculator = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
+  // this.rarityCalculator = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
+  this.rarityCalculator = [0]
   this.foundItem = 0
 }
 
