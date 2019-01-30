@@ -123,7 +123,7 @@ function updateAll () {
     $('#playerDexterity').css('color', 'white')
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
   }
-  var heroDamage = (game.player.returnAttribute('weaponMin') + game.player.returnAttribute('strength')) + "-" +
+  var heroDamage = (game.player.returnAttribute('weaponMin') + game.player.returnAttribute('strength')) + '-' +
     (game.player.returnAttribute('weaponMax') + game.player.returnAttribute('strength'))
   $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
   $('#playerDmg').text(heroDamage)
@@ -131,7 +131,7 @@ function updateAll () {
   $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())
   $('#monsterHealth').text(game.room.monsterInRoom('health'))
   $('#monsterArmor').text(game.room.monsterInRoom('armor'))
-  var monsterDamage = ((game.room.monsterInRoom('weaponMin') + game.room.monsterInRoom('strength')) + "-" +
+  var monsterDamage = ((game.room.monsterInRoom('weaponMin') + game.room.monsterInRoom('strength')) + '-' +
     (game.room.monsterInRoom('weaponMax') + game.room.monsterInRoom('strength')))
   $('#monsterDmg').text(monsterDamage)
   $('#output').html(game.readout.printReadout())
