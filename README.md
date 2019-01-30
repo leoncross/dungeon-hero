@@ -1,16 +1,23 @@
-[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
+![Alt text](/static/images/dh-logo.png?raw=true "Screenshot")
 
-# team-rogue
+[Team](#team) | [Setup](#setup) | [Tests](#tests) | [Build](#build) | [Coverage](#coverage) | [Story](#story) | [Team](#team) | [Story](#story) |
 
 
-MVP Description:
+## Team
+
+* Leon Cross        <a href="https://github.com/leoncross/">https://github.com/leoncross/</a>
+* Darryl Banks      <a href="https://github.com/zombie9">https://github.com/zombie9</a>
+* Luca Eto          <a href="https://github.com/lucafrancesc/">https://github.com/lucafrancesc/</a>
+* Cesare Camurani   <a href="https://github.com/cesarecamurani/">https://github.com/cesarecamurani/</a>
+
+## Story
 
 A player (with improvable attributes), has to escape a two-room dungeon.
 In the first room is a monster. If the player successfully defeats this monster (with a turn-based, RPG style combat system), the player will move into the final room where they escape and win the game.
 
 
 
-# How to run
+## How to run
 
 clone the terminal
 type the following in your console:
@@ -22,14 +29,23 @@ npm run test
 
 copy the game.html file and open it in your browser
 
+## Build
 
+[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
 
-# setup
+## Coverage
+
+[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
+
+## Setup
+#### How to get started with the project
 npm init
 npm install
 npm install -g jasmine
 jasmine init
 
+## Tests
+#### How to test the project
 
 to get coverage
 ```
