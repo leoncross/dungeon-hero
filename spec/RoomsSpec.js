@@ -1,6 +1,8 @@
 describe('Rooms',function(){
 
   var Rooms = require('../src/Rooms');
+  var sinon = require('sinon');
+  var stub
   var room
   var monsters
   var combat
@@ -32,6 +34,8 @@ describe('Rooms',function(){
       rollBetween() {}
     };
 
+    stub = sinon.stub(Math, 'floor')
+
     player = new PlayerStub()
     monsters = new MonstersStub()
     combat = new CombatStub()
@@ -47,6 +51,26 @@ describe('Rooms',function(){
     deadHero = {name: 'hero', health: 0, armor: 5, armorName: 'Plate', weaponName: 'Dagger', weaponMin: 3, weaponMax: 5, strength: 3, dexterity: 3}
 
   });
+
+  afterEach(function () {
+    stub.restore()
+  });
+
+  describe('#setupRoomJourney', function() {
+    it('sets up a random room assortment for each game', function() {
+      stub.returns(1)
+      room.setupRoomJourney()
+      expect(room.roomJourney).toEqual([ [ 'easy', true ], 'medium', 'medium', 'medium', 'hard', 'hard', 'hard', [ 'shop', true ], [ 'boss', true ] ])
+    })
+  })
+
+  describe('#roomRandomizer', function() {
+    it('randomizes array given * 3', function() {
+      stub.returns(1)
+      room.roomRandomizer([1, 2])
+      expect(room.roomJourney).toEqual([['easy', true], 2, 2, 2])
+    })
+  })
 
   describe('#monsterRoom', function() {
     it('returns an easy monster (zombie)', function() {
@@ -91,13 +115,19 @@ describe('Rooms',function(){
 
   describe('#nextRoom', function() {
     it('points the player to the next room in the list', function() {
+      stub.returns(1)
+      room.setupRoomJourney()
       expect(room.nextRoom()).toEqual(['easy', true])
-      expect(room.nextRoom()).toEqual('easy')
       expect(room.nextRoom()).toEqual('medium')
-      expect(room.nextRoom()).toEqual('easy')
+      expect(room.nextRoom()).toEqual('medium')
+      expect(room.nextRoom()).toEqual('medium')
+      expect(room.nextRoom()).toEqual('hard')
+      expect(room.nextRoom()).toEqual('hard')
+      expect(room.nextRoom()).toEqual('hard')
+      expect(room.nextRoom()).toEqual(['shop', true])
+      expect(room.nextRoom()).toEqual(['boss', true])
     })
   })
-
 
   describe('#monsterInRoom', function() {
     it('returns the name of the monster in the room', function() {

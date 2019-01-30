@@ -16,6 +16,7 @@ Game.prototype.initialize = function (playerName) {
 }
 
 Game.prototype.play = function () {
+  this.room.setupRoomJourney()
   this.readout.displayFlavourText()
   return game.room.nextRoom()
 }
