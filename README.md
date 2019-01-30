@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
 [![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
 
-
- ### An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.
+### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
  <hr>
 
@@ -12,7 +11,7 @@
 
 <hr>
 
-## Team
+## *Team*
 #### Team Rogue Members:
 
 * Leon Cross:       <br><a href="https://github.com/leoncross/">https://github.com/leoncross/</a>
@@ -22,7 +21,7 @@
 
 <hr>
 
-## Technologies
+## *Technologies*
 
 <img src="/static/images/js.png" width="120" height="60"><img src="/static/images/jquery.png" width="100" height="70"><img src="/static/images/jasmine.png" width="160" height="110"><img src="/static/images/istanbul.png" width="90" height="60"><img src="/static/images/eslint.png" width="160" height="90"><img src="/static/images/travis 2.png" width="120" height="80">
 
@@ -35,7 +34,7 @@
 
 <hr>
 
-## Setup
+## *Setup*
 #### How to get started with the project:
 
 * Inside your folder, type these commands in this order in the terminal:
@@ -54,7 +53,7 @@ npm install
 
 <hr>
 
-## Tests
+## *Tests*
 #### How to run Jasmine:
 In the terminal run:
 ```
@@ -75,7 +74,7 @@ npm run test
 
 <hr>
 
-## Story
+## *Story*
 
 ![Alt text](/static/images/hero.png?raw=true "hero")
 
@@ -92,7 +91,7 @@ But don't be deceived by this! Your journey will still be long and full of blood
 
 <hr>
 
-## Controls
+## *Controls*
 #### Action Bar Buttons:
 
 ![Alt text](/static/images/icon-attack-color.png?raw=true "icon-attack-color") Normal Attack: <br> When pressed the player will hit the monster with a power based on his/her strength and weapon damage range <br><br>
@@ -106,11 +105,13 @@ But don't be deceived by this! Your journey will still be long and full of blood
 
 <hr>
 
-## Features
+## *Features*
+
+![Alt text](/static/images/gif_number_1.png?raw=true "Screenshot")
 
 <hr>
 
-## Screenshoots
+## *Screenshoots*
 
 ### Player uses a normal attack against the Bat Swarm:
 ![Alt text](/static/images/normal_attack.png?raw=true "Screenshot") <hr>
