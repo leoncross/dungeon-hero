@@ -77,18 +77,18 @@ you suddenly hear something coming from the darkness! You're still trying to und
 In this game the Hero has to escape a multiple room dungeon. But his skills will be hard tested by a series of fights along his journey towards the light!
 To help our protagonist in his quest we will have the chance to improve our armour and our weapons as well as our skills...
 But don't be deceived by this! Your journey will still be long and full of blood!!!
-<!-- In the first room is a monster. If the player successfully defeats this monster (with a turn-based, RPG style combat system), the player will move into the final room where they escape and win the game. -->
 
 ## Controls
+#### Action Bar Buttons:
 
-![Alt text](/static/images/icon-attack-color.png?raw=true "icon-attack-color") Normal Attack <br>
-![Alt text](/static/images/insane-attack-color.png?raw=true "icon-attack-color")  Insane Attack <br>
-![Alt text](/static/images/parry-attack-color.png?raw=true "icon-attack-color")  Parry Attack <br>
-![Alt text](/static/images/stun-attack-color.png?raw=true "icon-attack-color")  Stun Attack <br>
-![Alt text](/static/images/health-potion-color.png?raw=true "icon-attack-color")  Health Potion <br>
-![Alt text](/static/images/dex-potion-color.png?raw=true "icon-attack-color")  Strength Potion <br>
-![Alt text](/static/images/str-potion-color.png?raw=true "icon-attack-color")  Dexterity Potion <br>
-![Alt text](/static/images/warcry-color.png?raw=true "icon-attack-color")  WarCry <br>
+![Alt text](/static/images/icon-attack-color.png?raw=true "icon-attack-color") Normal Attack: <br> When pressed the player will hit the monster with a power based on his/her strength and weapon damage range <br><br>
+![Alt text](/static/images/insane-attack-color.png?raw=true "icon-attack-color")  Insane Attack: <br> When pressed the player can randomly hit the monster with double power or completely miss it <br><br>
+![Alt text](/static/images/parry-attack-color.png?raw=true "icon-attack-color")  Parry Attack: <br> When pressed the player increases his/her chances to block the monster's attack but his/her attack will be less effective  <br><br>
+![Alt text](/static/images/stun-attack-color.png?raw=true "icon-attack-color")  Stun Attack: <br> When the monster's dice roll for the current turn is below 10 the monster skips the turn <br><br>
+![Alt text](/static/images/health-potion-color.png?raw=true "icon-attack-color")  Health Potion: <br> Increases your health by 25 pts  <br><br>
+![Alt text](/static/images/dex-potion-color.png?raw=true "icon-attack-color")  Strength Potion: <br> Increases your strength by 5 pts <br><br>
+![Alt text](/static/images/str-potion-color.png?raw=true "icon-attack-color")  Dexterity Potion: <br> Increases your dexterity by 5 pts <br><br>
+![Alt text](/static/images/warcry-color.png?raw=true "icon-attack-color")  WarCry: <br> Upgrades your strength and your dexterity by 1 but you can't attack (you can still receive damage) <br>
 
 
 ## Features
