@@ -47,8 +47,31 @@ $(document).ready(function () {
   $('#shopButton').click(function () {
     var modal = document.getElementById('shopModal')
     modal.style.display = 'block'
+    shopInterface()
   })
 })
+
+
+
+function shopInterface() {
+  game.shop.findItemsInShop()
+  $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+
+  $('#item1').html(game.shop.displayItemsInShop(0))
+  $('#item2').html(game.shop.displayItemsInShop(1))
+  $('#item3').html(game.shop.displayItemsInShop(2))
+
+  $('#price1').html(game.shop.displayPriceOfItemInShop(0))
+  $('#price2').html(game.shop.displayPriceOfItemInShop(1))
+  $('#price3').html(game.shop.displayPriceOfItemInShop(2))
+  $('#price4').html(game.shop.returnPotionPrice('health'))
+  $('#price5').html(game.shop.returnPotionPrice('strength'))
+  $('#price6').html(game.shop.returnPotionPrice('dexterity'))
+}
+
+// function for shop
+
+// function for update shop (after items bought / gold spent etc.)
 
 function updateInterface () {
   updateAll()
