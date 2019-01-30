@@ -108,14 +108,13 @@ function updateInterface () {
       $('#roomLoot').html(game.readout.noLootFound())
     } else {
       $('#roomLoot').html(game.loot.displayLoot())
-      $('#takeLoot').click(function () {
+      $('#takeLoot').unbind().click(function () {
         game.loot.equipLoot()
         $('#roomLoot').html(game.readout.equipLoot())
         $('#takeLoot').hide()
       })
     }
-    $('#nextRoom').click(function () {
-      console.log('1')
+    $('#nextRoom').unbind().click(function () {
       game.room.nextRoom()
       game.readout.clearReadout()
       modal.style.display = 'none'
