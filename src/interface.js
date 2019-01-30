@@ -169,7 +169,6 @@ function updateInterface () {
 
 function updateAll () {
   if(game.room.monsterInRoom('name') === 'Shop') {
-    console.log('YES')
     var modal = document.getElementById('shopModal')
     modal.style.display = 'block'
     shopInterface()
