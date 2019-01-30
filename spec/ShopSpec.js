@@ -29,11 +29,18 @@ describe('Shop', function() {
       returnLootTable() {}
     }
 
+    function ReadoutStub() {}
+    ReadoutStub.prototype = {
+      displayItemInShop() {},
+      displayPriceOfItemInShop () {}
+    }
+
     stub = sinon.stub(Math, 'floor')
     player = new PlayerStub()
     dice = new DiceStub()
     loot = new LootStub()
-    shop = new Shop(player, dice, loot)
+    readout = new ReadoutStub()
+    shop = new Shop(player, dice, loot, readout)
 
   });
 
@@ -59,9 +66,10 @@ describe('Shop', function() {
   describe('#displayItemsInShop', function() {
     it("returns the item you specify in shop", function(){
       spyOn(loot, "returnLootTable").and.returnValue([{value: 1, inShop: true}, {value: 2, inShop: true}, {value: 3, inShop: true}])
+      spyOn(readout, "displayItemInShop").and.returnValue('returned item')
       stub.returns(2)
       shop.findItemsInShop()
-      expect(shop.displayItemsInShop(1)).toEqual({value: 3, inShop: true})
+      expect(shop.displayItemsInShop(1)).toEqual('returned item')
     })
   })
   describe('#buyItemFromShop', function() {
@@ -82,4 +90,25 @@ describe('Shop', function() {
       expect(shop.buyItemFromShop(0)).toEqual('not enough gold')
     })
   })
+
+  describe('#displayPriceOfItemInShop', function() {
+    it("returns an attribute of an item in the shop", function(){
+      spyOn(player, 'returnHero').and.returnValue({gold: 1000})
+      spyOn(player, 'equipLoot').and.returnValue('equiped item')
+      spyOn(loot, "returnLootTable").and.returnValue([{value: 1, inShop: true, price: 100}, {value: 2, inShop: true, price: 120}, {value: 3, inShop: true, price: 150}])
+      spyOn(readout, "displayPriceOfItemInShop").and.returnValue(100)
+      stub.returns(1)
+      shop.findItemsInShop()
+      expect(shop.displayPriceOfItemInShop(0)).toEqual(100)
+    })
+  })
+
+  describe('#returnPotionPrice', function() {
+    it("returns the price of potions", function(){
+      spyOn(loot, "returnLootTable").and.returnValue([{value: 1, name: 'health', inShop: true, price: 190}, {value: 2, inShop: true, price: 120}, {value: 3, inShop: true, price: 150}])
+      shop.findItemsInShop()
+      expect(shop.returnPotionPrice('health')).toEqual('190 gold')
+    })
+  })
+
 })
