@@ -4,7 +4,19 @@ function Rooms (player, monsters, combat, dice) {
   this.combat = combat // class
   this.dice = dice
   this.hero = this.player.returnHero()
-  this.roomJourney = [['easy', true], 'easy', 'medium', 'easy', 'hard', 'medium', 'hard', 'hard', ['shop', true],  ['boss', true]]
+  this.roomJourney = [['easy', true]]
+}
+
+Rooms.prototype.setupRoomJourney = function () {
+  this.roomRandomizer(['easy', 'medium'])
+  this.roomRandomizer(['medium', 'hard'])
+  this.roomJourney.push(['shop', true], ['boss', true])
+}
+
+Rooms.prototype.roomRandomizer = function (difficulty) {
+  for (i = 0; i < 3; i ++){
+    this.roomJourney.push(difficulty[Math.floor((Math.random() * difficulty.length))])
+  }
 }
 
 Rooms.prototype.nextRoom = function () {
