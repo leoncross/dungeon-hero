@@ -219,6 +219,13 @@ body {
   text-align: left;
   font-size: 21px;
 }
+
+.shop-list {
+  width: 300px;
+  float: left;
+  margin: 15px 50px;
+  text-align: left;
+}
 /* .room1 {
   margin-top: 165px;
   margin-left: -550px;
