@@ -51,9 +51,7 @@ $(document).ready(function () {
   })
 })
 
-
-
-function shopInterface() {
+function shopInterface () {
   game.shop.findItemsInShop()
   $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
 
