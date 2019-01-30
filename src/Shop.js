@@ -1,7 +1,8 @@
-function Shop (player, dice, loot) {
+function Shop (player, dice, loot, readout) {
   this.player = player
   this.dice = dice
   this.loot = loot
+  this.readout = readout
   this.itemsInShop = []
 }
 
@@ -24,7 +25,11 @@ Shop.prototype.findItemsInShop = function () {
 }
 
 Shop.prototype.displayItemsInShop = function (placeInArray) {
-  return this.itemsInShop[placeInArray]
+  return this.readout.displayItemInShop(this.itemsInShop[placeInArray])
+}
+
+Shop.prototype.displayPriceOfItemInShop = function (placeInArray) {
+  return this.readout.displayPriceOfItemInShop(this.itemsInShop[placeInArray])
 }
 
 Shop.prototype.buyItemFromShop = function (placeInArray) {
@@ -36,6 +41,13 @@ Shop.prototype.buyItemFromShop = function (placeInArray) {
     return item
   } else {
     return 'not enough gold'
+  }
+}
+
+Shop.prototype.returnPotionPrice = function (potion) {
+  var table = this.loot.returnLootTable()
+  for (var i = 0; i < table.length; i++) {
+    if (table[i]['name'] === potion) return table[i]['price'] + ' gold'
   }
 }
 

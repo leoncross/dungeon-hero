@@ -289,8 +289,22 @@ describe('Readout', function () {
     });
     it('equipLoot', function () {
       expect(readout.equipLoot()).toEqual('You equip the loot')
-
     });
   });
-
+  describe('#displayItemInShop', function () {
+    it('displays armor in the shop', function () {
+      item = { name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25 }
+      expect(readout.displayItemInShop(item)).toEqual('leather | 5 armor')
+    });
+    it('displays weapon in the shop', function () {
+      item = item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }
+      expect(readout.displayItemInShop(item)).toEqual('dagger | 2-4 damage')
+    });
+  });
+  describe('#displayAttributeOfItemInShop', function () {
+    it('displays armor in the shop', function () {
+      item = { name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25, price: 105 }
+      expect(readout.displayPriceOfItemInShop(item)).toEqual('105 gold')
+    });
+  });
 });

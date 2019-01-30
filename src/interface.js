@@ -47,8 +47,29 @@ $(document).ready(function () {
   $('#shopButton').click(function () {
     var modal = document.getElementById('shopModal')
     modal.style.display = 'block'
+    shopInterface()
   })
 })
+
+function shopInterface () {
+  game.shop.findItemsInShop()
+  $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+
+  $('#item1').html(game.shop.displayItemsInShop(0))
+  $('#item2').html(game.shop.displayItemsInShop(1))
+  $('#item3').html(game.shop.displayItemsInShop(2))
+
+  $('#price1').html(game.shop.displayPriceOfItemInShop(0))
+  $('#price2').html(game.shop.displayPriceOfItemInShop(1))
+  $('#price3').html(game.shop.displayPriceOfItemInShop(2))
+  $('#price4').html(game.shop.returnPotionPrice('health'))
+  $('#price5').html(game.shop.returnPotionPrice('strength'))
+  $('#price6').html(game.shop.returnPotionPrice('dexterity'))
+}
+
+// function for shop
+
+// function for update shop (after items bought / gold spent etc.)
 
 function updateInterface () {
   updateAll()
@@ -87,14 +108,13 @@ function updateInterface () {
       $('#roomLoot').html(game.readout.noLootFound())
     } else {
       $('#roomLoot').html(game.loot.displayLoot())
-      $('#takeLoot').click(function () {
+      $('#takeLoot').unbind().click(function () {
         game.loot.equipLoot()
         $('#roomLoot').html(game.readout.equipLoot())
         $('#takeLoot').hide()
       })
     }
-    $('#nextRoom').click(function () {
-      console.log('1')
+    $('#nextRoom').unbind().click(function () {
       game.room.nextRoom()
       game.readout.clearReadout()
       modal.style.display = 'none'
@@ -123,7 +143,7 @@ function updateAll () {
     $('#playerDexterity').css('color', 'white')
     $('#playerDexterity').text(game.player.returnAttribute('dexterity'))
   }
-  var heroDamage = (game.player.returnAttribute('weaponMin') + game.player.returnAttribute('strength')) + "-" +
+  var heroDamage = (game.player.returnAttribute('weaponMin') + game.player.returnAttribute('strength')) + '-' +
     (game.player.returnAttribute('weaponMax') + game.player.returnAttribute('strength'))
   $('#playerWeapon').text(game.player.returnAttribute('weaponName'))
   $('#playerDmg').text(heroDamage)
@@ -131,7 +151,7 @@ function updateAll () {
   $('#monsterName').text(game.room.monsterInRoom('name').toUpperCase())
   $('#monsterHealth').text(game.room.monsterInRoom('health'))
   $('#monsterArmor').text(game.room.monsterInRoom('armor'))
-  var monsterDamage = ((game.room.monsterInRoom('weaponMin') + game.room.monsterInRoom('strength')) + "-" +
+  var monsterDamage = ((game.room.monsterInRoom('weaponMin') + game.room.monsterInRoom('strength')) + '-' +
     (game.room.monsterInRoom('weaponMax') + game.room.monsterInRoom('strength')))
   $('#monsterDmg').text(monsterDamage)
   $('#output').html(game.readout.printReadout())
