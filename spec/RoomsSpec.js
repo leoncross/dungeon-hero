@@ -94,7 +94,7 @@ describe('Rooms',function(){
       expect(room.nextRoom()).toEqual(['easy', true])
       expect(room.nextRoom()).toEqual('easy')
       expect(room.nextRoom()).toEqual('medium')
-      expect(room.nextRoom()).toEqual('medium')
+      expect(room.nextRoom()).toEqual('easy')
     })
   })
 
