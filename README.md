@@ -1,23 +1,26 @@
 ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo")
 
+ ### RPG Adventure Game (with turn-based fights) set in a Dungeon
+
 [Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Build](#build) | [Coverage](#coverage) | [Play](#play) | [Story](#story) | [Gameplay](#gameplay) | [Features](#features) | [Images](#images) |
 
 
 ## Team
 #### Team Rogue Members:
 
-* Leon Cross        <a href="https://github.com/leoncross/">https://github.com/leoncross/</a>
-* Darryl Banks      <a href="https://github.com/zombie9">https://github.com/zombie9</a>
-* Luca Eto          <a href="https://github.com/lucafrancesc/">https://github.com/lucafrancesc/</a>
-* Cesare Camurani   <a href="https://github.com/cesarecamurani/">https://github.com/cesarecamurani/</a>
+* Leon Cross:       <br><a href="https://github.com/leoncross/">https://github.com/leoncross/</a>
+* Darryl Banks:     <br><a href="https://github.com/zombie9">https://github.com/zombie9</a>
+* Luca Eto:         <br><a href="https://github.com/lucafrancesc/">https://github.com/lucafrancesc/</a>
+* Cesare Camurani:  <br><a href="https://github.com/cesarecamurani/">https://github.com/cesarecamurani/</a>
 
 ## Technologies
 
-* Around 85% of our code has been written in vanilla JavaScript alongside some HTML5 and CSS for the GUI(graphic user interface).
-* We used jQuery(a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
-* To test our app we used Jasmine(open source testing framework for JavaScript).
-* To check our test coverage we used Istanbul(a Node.js module) and Coverall.io(a website hosting GitHub repositories and checking for your coverage percentage after every merge).
-* We also used ESlint as linter(a tool to analyze your code to flag bugs and stylistic errors).
+* Around 85% of our code has been written in vanilla <a href="https://github.com/leoncross/">JavaScript</a> alongside some HTML5 and CSS for the GUI(graphic user interface).
+* We used <a href="https://jquery.com/">jQuery</a>(a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
+* To test our app we used <a href="https://jasmine.github.io/">Jasmine</a>(open source testing framework for JavaScript).
+* To check our test coverage we used <a href="https://istanbul.js.org/">Istanbul</a>(a Node.js module) and <a href="https://coveralls.io/">Coverall.io</a>(a website hosting GitHub repositories and checking for your coverage percentage after every merge).
+* We also used <a href="https://eslint.org/">ESlint</a> as linter(a tool to analyze your code to flag bugs and stylistic errors).
+* To achieve continuous integration we used <a href="https://travis-ci.org/">Travis CI</a>, a hosted service used to build and test software projects hosted at GitHub. Its main purpose is to avoid untested and/or buggy branches to be merged into the Master branch.
 
 ## Setup
 #### How to get started with the project:
@@ -29,17 +32,20 @@ jasmine init
 ```
 
 ## Test
-### How to run Jasmine:
+#### How to run Jasmine:
+In the terminal run:
 ```
 npm run jasmine
 ```
 
-### How to run Eslint:
+#### How to run Eslint:
+In the terminal run:
 ```
 npm run lint
 ```
 
-### How to run Coverall:
+#### How to run Coverall:
+In the terminal run:
 ```
 npm run test
 ```
@@ -53,7 +59,7 @@ npm run test
 [![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
 
 ## Play
-### How to run the game:
+#### How to run the game:
 
 clone the terminal
 type the following in your console:
