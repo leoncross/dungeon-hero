@@ -5,13 +5,6 @@ $(document).ready(function () {
 
   console.log(game.room.monsterInRoom('name'))
 
-  if(game.room.monsterInRoom('name') === 'Shop') {
-    var modal = document.getElementById('shopModal')
-    modal.style.display = 'block'
-    shopInterface()
-    shopListeners()
-  }
-
   updateInterface()
 
   $('#playerAttack').click(function () {
@@ -54,12 +47,10 @@ $(document).ready(function () {
     updateInterface()
   })
 
-  // $('#shopButton').click(function () {
-  //   var modal = document.getElementById('shopModal')
-  //   modal.style.display = 'block'
-  //   shopInterface()
-  //   shopListeners()
-  // })
+  $('#winnerButton').click(function () {
+    var modal = document.getElementById('winnerModal')
+    modal.style.display = 'block'
+  })
 
 })
 
@@ -143,11 +134,18 @@ function updateInterface () {
   }
 
   if (game.room.monsterInRoom('health') < 1) {
-    var modal = document.getElementById('winModal')
-    modal.style.display = 'block'
-    $('#takeLoot').show()
-    $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
-    game.loot.lootFinder()
+
+    if (game.room.monsterInRoom('name') === 'Dragon') {
+      var modal = document.getElementById('winnerModal')
+      modal.style.display = 'block'
+    } else {
+      var modal = document.getElementById('winModal')
+      modal.style.display = 'block'
+      $('#takeLoot').show()
+      $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
+      game.loot.lootFinder()
+    }
+
 
     if (game.loot.returnFoundItem() === 0) {
       $('#takeLoot').hide()
@@ -171,6 +169,13 @@ function updateInterface () {
 }
 
 function updateAll () {
+  if(game.room.monsterInRoom('name') === 'Shop') {
+    var modal = document.getElementById('shopModal')
+    modal.style.display = 'block'
+    shopInterface()
+    shopListeners()
+  }
+  
   $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
   $('#playerName').text(game.player.returnAttribute('name'))
   $('#playerHealth').text(game.player.returnAttribute('health'))

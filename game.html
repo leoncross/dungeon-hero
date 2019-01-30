@@ -122,16 +122,9 @@
           <span id='roomLoot'></span><br><br>
           <span class='textButton' id='takeLoot'>[Take Loot]</span>
           <span class='textButton' id='nextRoom'>[Go to Next Room]</span>
-          <br>
-            <!-- <input class = room1 type="image" id="room1complete" src="./static/images/room-complete.png" disabled>
-            <input class = room2 type="image" id="room1complete" src="./static/images/room-complete.png" disabled>
-            <input class = room3 type="image" id="room1complete" src="./static/images/room-complete.png" disabled>
-            <input class = room4 type="image" id="room1complete" src="./static/images/room-complete.png" disabled>
-            <input class = room5 type="image" id="room1complete" src="./static/images/room-complete.png" disabled>
-            <input class = room6 type="image" id="room1complete" src="./static/images/room-complete.png" disabled>
-            <input class = room7 type="image" id="room1complete" src="./static/images/room-complete.png" disabled> -->
         </div>
       </div>
+
       <div id="loseModal" class="modal">
         <div class="modal-content">
           <h1>YOU DIED!</h1>
@@ -141,6 +134,22 @@
           </a>
         </div>
       </div>
+
+      <div id="winnerModal" class="modal">
+        <div class="modal-content">
+          <br><h1>YOU BEAT THE GAME!</h1>
+          <p>AGAINST ALL ODDS, YOU HAVE TRIUMPHED</p>
+          <p>Dungeon Hero has been proudly brought to you by:<br><br>
+            *** Cesare Camurani ***<br>
+            *** Darryl Banks ***<br>
+            *** Leon Cross ***<br>
+            *** Luca Francesco Eto ***<br><br></p>
+          <a href="game.html">
+            <input type="image" src="./static/images/play-again.png">
+          </a>
+        </div>
+      </div>
+
       <div id="shopModal" class="modal">
         <div class="modal-content">
           <h1>TREASURE GOBLIN!</h1>
@@ -177,7 +186,7 @@
           <span class='textButton' id='nextRoom'>[Proceed to Final Room]</span>
         </div>
       </div><br>
-      <!-- <button id="shopButton" type="button" name="button">shop</button> -->
+      <button id="winnerButton" type="button" name="button">winner</button>
     </div>
   </body>
 </html>
