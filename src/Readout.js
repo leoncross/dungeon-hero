@@ -125,7 +125,6 @@ Readout.prototype.displayPriceOfItemInShop = function (item) {
   return item['price'] + ' gold'
 }
 
-
 Readout.prototype.clearReadout = function () {
   this.readoutArray = []
 }
