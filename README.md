@@ -13,11 +13,11 @@
 
 ## Technologies
 
-* Around 85% of our code has been written in vanilla JavaScript alongside some HTML5 and CSS for the GUI(graphic user interface)
-* We used jQuery (a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI)
-* To test our app we used Jasmine (open source testing framework for JavaScript)
-* To check our coverage we used Coverall (a website hosting GitHub repositories and checking for your coverage percentage after every merge)
-* We also used ESlint as linter (a tool analyzing your code to flag bugs and stylistic errors)
+* Around 85% of our code has been written in vanilla JavaScript alongside some HTML5 and CSS for the GUI(graphic user interface).
+* We used jQuery(a JavaScript library) in order to make the game logic communicating with the user inputs(through the GUI).
+* To test our app we used Jasmine(open source testing framework for JavaScript).
+* To check our test coverage we used Istanbul(a Node.js module) and Coverall.io(a website hosting GitHub repositories and checking for your coverage percentage after every merge).
+* We also used ESlint as linter(a tool analyzing your code to flag bugs and stylistic errors).
 
 ## Setup
 #### How to get started with the project:
