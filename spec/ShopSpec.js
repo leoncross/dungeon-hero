@@ -60,7 +60,7 @@ describe('Shop', function() {
     it("puts items into shop", function(){
       spyOn(loot, "returnLootTable").and.returnValue([{value: 1, inShop: true}, {value: 2, inShop: true}, {value: 3, inShop: true}])
       stub.returns(1)
-      expect(shop.findItemsInShop()).toEqual([{value: 2, inShop: true}, {value: 2, inShop: true}, {value: 2, inShop: true}])
+      expect(shop.findItemsInShop()).toEqual([{value: 2, inShop: true}, {value: 2, inShop: true}, {value: 2, inShop: true}, { name: 'health', type: 'potion', rarity: 1, price: 100 }, { name: 'dexterity', type: 'potion', rarity: 1, price: 100 }, { name: 'strength', type: 'potion', rarity: 1, price: 100 }])
     })
   })
   describe('#displayItemsInShop', function() {

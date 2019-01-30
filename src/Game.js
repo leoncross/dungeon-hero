@@ -2,7 +2,8 @@ function Game () {}
 
 Game.prototype.initialize = function (playerName) {
   this.dice = new Dice()
-  this.readout = new Readout()
+  this.flavourText = new FlavourText()
+  this.readout = new Readout(this.flavourText)
   this.player = new Player(this.dice)
   this.loot = new Loot(this.player, this.readout, this.dice)
   this.player.changeName(playerName)
@@ -15,6 +16,7 @@ Game.prototype.initialize = function (playerName) {
 }
 
 Game.prototype.play = function () {
+  this.readout.displayFlavourText()
   return game.room.nextRoom()
 }
 

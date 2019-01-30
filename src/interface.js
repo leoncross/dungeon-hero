@@ -2,9 +2,7 @@ let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {
-
-  console.log(game.room.monsterInRoom('name'))
-
+  
   updateInterface()
 
   $('#playerAttack').click(function () {
@@ -87,21 +85,27 @@ function shopListeners() {
   })
 
   $('#item4').click(function () {
-    game.player.equipLoot({name: 'health'})
-    game.shop.payForPotion()
+    game.shop.buyItemFromShop(3)
     $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
   })
 
   $('#item5').click(function () {
-    game.player.equipLoot({name: 'strength'})
-    game.shop.payForPotion()
+    game.shop.buyItemFromShop(4)
     $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
   })
 
   $('#item6').click(function () {
-    game.player.equipLoot({name: 'dexterity'})
-    game.shop.payForPotion()
+    game.shop.buyItemFromShop(5)
     $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
+  })
+
+  $('#nextRoomFromShop').unbind().click(function () {
+    game.readout.clearReadout()
+    game.room.nextRoom()
+    game.readout.displayFlavourText()
+    var modal = document.getElementById('shopModal')
+    modal.style.display = 'none'
+    updateInterface()
   })
 }
 
@@ -159,8 +163,9 @@ function updateInterface () {
       })
     }
     $('#nextRoom').unbind().click(function () {
-      game.room.nextRoom()
       game.readout.clearReadout()
+      game.room.nextRoom()
+      game.readout.displayFlavourText()
       modal.style.display = 'none'
       updateAll()
     })
@@ -175,7 +180,7 @@ function updateAll () {
     shopInterface()
     shopListeners()
   }
-  
+
   $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
   $('#playerName').text(game.player.returnAttribute('name'))
   $('#playerHealth').text(game.player.returnAttribute('health'))
