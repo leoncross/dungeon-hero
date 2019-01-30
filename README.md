@@ -8,7 +8,7 @@
 
  <hr>
 
-[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Test](#test) | [Story](#story) | [Controls](#controls) | [Features](#features) | [Screenshoots](#screenshoots) |
+[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Tests](#tests) | [Story](#story) | [Controls](#controls) | [Features](#features) | [Screenshoots](#screenshoots) |
 
 <hr>
 
@@ -54,7 +54,7 @@ npm install
 
 <hr>
 
-## Test
+## Tests
 #### How to run Jasmine:
 In the terminal run:
 ```
@@ -79,12 +79,16 @@ npm run test
 
 ![Alt text](/static/images/hero.png?raw=true "hero")
 
+```
+
 'You wake up in a dark place. Your eyes slowly adjust, and you see a dagger next to you. While you're picking it up,
 you suddenly hear something coming from the darkness! You're still trying to understand what happened the night before when...'
 
 In this game the Hero has to escape a multiple room dungeon. But his skills will be hard tested by a series of fights along his journey towards the light!
 To help our protagonist in his quest we will have the chance to improve our armour and our weapons as well as our skills...
 But don't be deceived by this! Your journey will still be long and full of blood!!!
+
+```
 
 <hr>
 
@@ -108,9 +112,20 @@ But don't be deceived by this! Your journey will still be long and full of blood
 
 ## Screenshoots
 
-![Alt text](/static/images/normal_attack.png?raw=true "Screenshot")
-![Alt text](/static/images/insane_attack.png?raw=true "Screenshot")
-![Alt text](/static/images/special_attack.png?raw=true "Screenshot")
-![Alt text](/static/images/gorgon_dex.png?raw=true "Screenshot")
-![Alt text](/static/images/win_screen.png?raw=true "Screenshot")
-![Alt text](/static/images/death_screen.png?raw=true "Screenshot")
+### Player uses a normal attack against the Bat Swarm:
+![Alt text](/static/images/normal_attack.png?raw=true "Screenshot") <hr>
+
+### Player uses insane attack against the Zombie:
+![Alt text](/static/images/insane_attack.png?raw=true "Screenshot") <hr>
+
+### The Goblin uses its Fatal Deception special attack against you:
+![Alt text](/static/images/special_attack.png?raw=true "Screenshot") <hr>
+
+### Player uses the dexterity potion against the Gorgon:
+![Alt text](/static/images/gorgon_dex.png?raw=true "Screenshot") <hr>
+
+### Player won!
+![Alt text](/static/images/win_screen.png?raw=true "Screenshot") <hr>
+
+### Player died!
+![Alt text](/static/images/death_screen.png?raw=true "Screenshot") <hr>
