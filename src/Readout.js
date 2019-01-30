@@ -1,5 +1,5 @@
-function Readout () {
-  // 'You wake up in a dark dungeon. Your eyes slowly adjust, and you see a dagger next to you. You think think its a good idea to pick this up.<br>', 'Suddenly, you hear what looks like a zombie running towards you...<br>'
+function Readout (flavourText) {
+  this.flavourText = flavourText
   this.readoutArray = []
 }
 
@@ -90,6 +90,10 @@ Readout.prototype.playerStrengthPotion = function () {
 
 Readout.prototype.playerDexterityPotion = function () {
   this.addReadout('<span style="color: green;">You</span> drink a dexterity potion and gain 5 dexterity')
+}
+
+Readout.prototype.displayFlavourText = function () {
+  this.addReadout(this.flavourText.combined())
 }
 
 Readout.prototype.displayFoundWeapon = function (item) {

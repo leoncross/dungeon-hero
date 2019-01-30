@@ -117,9 +117,9 @@ function updateInterface () {
       })
     }
     $('#nextRoom').click(function () {
-      console.log('1')
-      game.room.nextRoom()
       game.readout.clearReadout()
+      game.room.nextRoom()
+      game.readout.displayFlavourText()
       modal.style.display = 'none'
       updateAll()
     })
