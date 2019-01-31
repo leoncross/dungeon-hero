@@ -59,6 +59,7 @@ describe('Combat',function(){
     enemy = {name: 'luca', health: 100, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
     almostDeadMonster = {name: 'luca', health: 4, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
     deadMonster = {name: 'luca', health: 0, armor: 4, armorName: 'Leather', weaponName: 'Long Sword', weaponMin: 5, weaponMax: 8, strength: 4, dexterity: 4, stunStatus: false}
+    zombie = { name: 'Zombie', difficulty: 'easy', specialAttack: 'Deadly Kiss', specialAttackDamage: 2, health: 35, armor: 3, strength: 3, dexterity: 2, weaponMin: 3, weaponMax: 6, stunStatus: false, image: './static/images/zombie.png' }
   });
 
   describe("#attackSetup", function() {
@@ -341,6 +342,22 @@ describe('Combat',function(){
       expect(combat.weaponDamage(hero)).toEqual(5)
     });
   });
+
+  describe('#monsterSpecialAttack', function() {
+    it("normal monster special attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, zombie])
+      expect(combat.monsterAttack()).toEqual(4)
+    });
+    it(" monster special attack success", function() {
+      spyOn(dice, "rollDice").and.returnValue(20); //roll over 19 -> special attack
+      spyOn(dice, "rollBetween").and.returnValue(5); //roll 5 min weaponDamage
+      combat.attackSetup([hero, zombie])
+      expect(combat.monsterSpecialAttack()).toEqual(4) //10- 60% damage red
+      expect(combat.hero["health"]).toEqual(96)
+    });
+  })
 
   describe('#trapSequence', function() {
     it('deals 25 damage to player if fails 50/50 roll', function() {

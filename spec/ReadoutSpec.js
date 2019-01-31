@@ -297,7 +297,7 @@ describe('Readout', function () {
       expect(readout.displayItemInShop(item)).toEqual('leather (5 armour)')
     });
     it('displays weapon in the shop', function () {
-      item = item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }
+      item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }
       expect(readout.displayItemInShop(item)).toEqual('dagger (2-4 dmg)')
     });
   });
