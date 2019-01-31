@@ -120,6 +120,11 @@ function shopListeners () {
 
 function trapInterface() {
   var modal = document.getElementById('trapModal')
+  game.trap.arrangeChest()
+  $('#chestLoot1').text(game.trap.returnLootChest(0))
+  $('#chestLoot2').text(game.trap.returnLootChest(1))
+  $('#chestLoot3').text(game.trap.returnLootChest(2))
+
   $('#skipChest').unbind().click(function () {
     game.readout.clearReadout()
     game.room.nextRoom()
