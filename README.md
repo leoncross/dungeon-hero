@@ -1,5 +1,12 @@
-<p align="center">
-</p>
+
+![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo"style=centerme)
+And CSS:
+
+img[src$="centerme"] {
+  display:block;
+  margin: 0 auto;
+}
+
 
 <p align="center">
   <img ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br> />
