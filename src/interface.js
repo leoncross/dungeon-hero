@@ -118,14 +118,85 @@ function shopListeners () {
   })
 }
 
-function trapInterface () {
+function trapInterface() {
+  var modal = document.getElementById('trapModal')
+  game.trap.arrangeChest()
+  $('#chestChoices').show();
+  $('#chestLoot').hide();
+  $('#chestTrap').hide();
+  $('#chestNext').hide();
+
   $('#skipChest').unbind().click(function () {
-    var modal = document.getElementById('trapModal')
     game.readout.clearReadout()
     game.room.nextRoom()
     game.readout.displayFlavourText()
     modal.style.display = 'none'
     updateAll()
+  })
+
+  $('#openChest').unbind().click(function () {
+    $('#chestChoices').hide();
+
+    if (game.trap.lootOrTrap() === 'loot') {
+      game.trap.arrangeChest()
+      $('#chestLoot').show();
+      $('#chestLoot1').show();
+      $('#chestLoot2').show();
+      $('#chestLoot3').show();
+      $('#equip1').show();
+      $('#equip2').show();
+      $('#equip3').show();
+      $('#chestLoot1').text(game.trap.returnLootChest(0))
+      $('#chestLoot2').text(game.trap.returnLootChest(1))
+      $('#chestLoot3').text(game.trap.returnLootChest(2))
+      //equip not working
+      $('#equip1').click(function () {
+        game.player.equipLoot(game.trap.chestLoot[0])
+        $('#chestLoot1').hide();
+        $('#equip1').hide();
+      })
+
+      $('#equip2').click(function () {
+        game.player.equipLoot(game.trap.chestLoot[1])
+        $('#chestLoot2').hide();
+        $('#equip2').hide();
+      })
+
+      $('#equip3').click(function () {
+        game.player.equipLoot(game.trap.chestLoot[2])
+        $('#chestLoot3').hide();
+        $('#equip3').hide();
+      })
+
+      $('#chestNext').show();
+      $('#chestNext').unbind().click(function () {
+        game.readout.clearReadout()
+        game.room.nextRoom()
+        game.readout.displayFlavourText()
+        modal.style.display = 'none'
+        updateAll()
+      })
+
+    } else {
+      // lose health - check for death
+      game.player.receiveDamage(25)
+      var health = game.player.returnAttribute('health')
+      if (health < 1) {
+        modal.style.display = 'none'
+        var modal1 = document.getElementById('loseModal')
+        modal1.style.display = 'block'
+      } else {
+        $('#chestTrap').show();
+        $('#chestNext').show();
+        $('#chestNext').unbind().click(function () {
+          game.readout.clearReadout()
+          game.room.nextRoom()
+          game.readout.displayFlavourText()
+          modal.style.display = 'none'
+          updateAll()
+        })
+      }
+    }
   })
 }
 
@@ -200,7 +271,7 @@ function updateAll () {
   if (game.room.monsterInRoom('name') === 'Trap') {
     modal = document.getElementById('trapModal')
     modal.style.display = 'block'
-    trapListeners()
+    trapInterface()
   }
 
   $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))

@@ -256,6 +256,29 @@ body {
   height: auto;
 }
 
+.chest-pic {
+  float: left;
+  padding-right: 20px;
+  width: 190px;
+}
+
+.chest-pic img {
+  width: 100%;
+  height: auto;
+}
+
+.chest-choices {
+
+}
+
+.chest-loot {
+
+}
+
+.chest-trap {
+  color: orange;
+}
+
 .shop-text {
   text-align: left;
   font-size: 21px;
