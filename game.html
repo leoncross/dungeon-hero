@@ -23,6 +23,9 @@
   <body>
     <div class="container">
       <div class="main">
+        <div id="helpButton" class="help-button">
+          <img src="./static/images/help-button.png" alt="help">
+        </div>
         <div id='output' class="readout"></div>
         <div class="character-sheet">
           <span class='alignleft'>NAME:</span>
@@ -116,6 +119,50 @@
         </div>
       </div>
 
+      <div id="helpModal" class="modal">
+        <div class="modal-content">
+          <div class="helpContent">
+            <div class="help-title">OBJECTIVE:</div>
+            <div>To succeed at Dungeon Hero, you must navigate through a series of rooms to reach the exit of the dungeon. Each room will
+            have either a monster to combat, or a potential trap to negotiate. Defeating the final 'boss' monster will earn your hero their
+            freedom! You will gather gold or equipment (loot) rewards after every room to upgrade your hero, and you may discover a way to
+            spend your gold and further increase your hero's power. Good luck (you'll need it)!</div>
+            <br>
+            <div class="help-title">COMBAT:</div>
+            <div>Dungeon Hero has a turn-based combat system where the player must select from a range of attacks, potions and abilities in
+              order to defeat the various monsters while trying to escape the dungeon. </div>
+            <br>
+            <div class="help-title">ACTIONS:</div>
+            <div class="small-icon"><img src="./static/images/icon-attack-color.png"> </div>
+            <span class="icon-help"> Normal Attack:</span> Strike with damage based on regular weapon range with strength modifier<br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/insane-attack-color.png"> </div>
+            <span class="icon-help"> Insane Attack:</span> More difficult to hit the monster, but with double the regular amount of damaget <br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/parry-attack-color.png"> </div>
+            <span class="icon-help"> Quick Attack:</span> Increases chance to block the monster, but own attack will be less effective<br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/stun-attack-color.png"> </div>
+            <span class="icon-help"> Stun Attack:</span> May cause the monster to be miss a turn but has a chance to break free each round<br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/health-potion-color.png"> </div>
+            <span class="icon-help"> Health Potion:</span> Magically treats wounds and increases current Health by 25 points<br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/str-potion-color.png"> </div>
+            <span class="icon-help"> Strength Potion:</span> Fills the hero with immense power and increases Strength by 5 points <br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/dex-potion-color.png"> </div>
+            <span class="icon-help"> Dexterity Potion:</span> Sharpens reflexes and speed to increase Dexterity by 5 points <br>
+            <div style="clear: both;"></div>
+            <div class="small-icon"><img src="./static/images/warcry-color.png"> </div>
+            <span class="icon-help"> WarCry:</span> Emit a bloodcurdling cry that upgrades Strength and Dexterity but delivers no damage<br>
+            <div style="clear: both;"></div>
+            <br>
+            <div id="helpReturn" class="returnButton"><span class="textButton">[Return to the Dungeon]</span></div>
+          </div>
+        </div>
+      </div>
+
       <div id="winModal" class="modal">
         <div class="modal-content">
           <h1>YOU WIN</h1>
@@ -134,6 +181,18 @@
           <a href="game.html">
             <input type="image" src="./static/images/play-again.png">
           </a>
+        </div>
+      </div>
+
+      <div id="trapModal" class="modal">
+        <div class="modal-content">
+          <h1>TRAP ROOM!</h1>
+          <p>You enter a room that is dominated by a large chest.<br>
+          It could hold loot, or it could be a trap!</P>
+          <p>What do you do?
+            <span class='textButton' id='openLoot'>[Open Chest]</span>
+            <span class='textButton' id='skipChest'>[Go to Next Room]</span>
+          </p>
         </div>
       </div>
 
@@ -188,7 +247,7 @@
           <span class='textButton' id='nextRoomFromShop'>[Proceed to Final Room]</span>
         </div>
       </div><br>
-      <button id="winnerButton" type="button" name="button">winner</button>
+      <button id="modalButton" type="button" name="button">modal</button>
     </div>
   </body>
 </html>

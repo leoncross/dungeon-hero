@@ -21,7 +21,7 @@ But don't be deceived by this! Your journey will still be long and full of blood
 
  <hr>
 
-[Team](#team) | [Technologies](#technologies) | [Setup](#setup) | [Tests](#tests) | [Story](#story) | [Controls](#controls) | [Features](#features) | [Screenshoots](#screenshoots) |
+[Team](#team) || [Technologies](#technologies) || [Setup](#setup) || [Tests](#tests) || [Controls](#controls) || [Gameplay](#gameplay) || [Screenshots](#screenshots) ||
 
 <hr>
 
@@ -69,19 +69,16 @@ npm install
 
 ## *Tests*
 #### How to run Jasmine:
-In the terminal run:
 ```
 npm run jasmine
 ```
 
 #### How to run Eslint:
-In the terminal run:
 ```
 npm run lint
 ```
 
 #### How to run Coverall:
-In the terminal run:
 ```
 npm run test
 ```
@@ -102,9 +99,9 @@ npm run test
 
 <hr>
 
-## *Features*
+## *Gameplay*
 
-![Alt text](/static/images/gif_number_1.gif?raw=true "Screenshot")
+![Alt text](/static/images/kapture.gif?raw=true "Screenshot")
 
 <hr>
 
