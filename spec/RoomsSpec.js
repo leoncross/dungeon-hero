@@ -60,7 +60,7 @@ describe('Rooms',function(){
     it('sets up a random room assortment for each game', function() {
       stub.returns(1)
       room.setupRoomJourney()
-      expect(room.roomJourney).toEqual([ [ 'easy', true ], 'medium', 'medium', 'medium', 'hard', 'hard', 'hard', [ 'shop', true ], [ 'boss', true ] ])
+      expect(room.roomJourney).toEqual([ [ 'easy', true ], 'medium', 'medium', 'hard', 'hard', 'hard', [ 'shop', true ], [ 'boss', true ] ])
     })
   })
 
@@ -118,7 +118,6 @@ describe('Rooms',function(){
       stub.returns(1)
       room.setupRoomJourney()
       expect(room.nextRoom()).toEqual(['easy', true])
-      expect(room.nextRoom()).toEqual('medium')
       expect(room.nextRoom()).toEqual('medium')
       expect(room.nextRoom()).toEqual('medium')
       expect(room.nextRoom()).toEqual('hard')
