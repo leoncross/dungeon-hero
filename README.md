@@ -1,27 +1,21 @@
-![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
+<!-- ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
 
-![Alt text](/static/images/hero.png?raw=true "hero")
+![Alt text](/static/images/hero.png?raw=true "hero") -->
+
+![Alt text](/static/images/help_screen.png?raw=true "help_screen") <br>
 
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
 [![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
 
 ### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
-<br>
+### Play it now! => <a href="https://leoncross.github.io/dungeon-hero/">Dungeon Hero</a>
 
-```
-'You wake up in a dark place. Your eyes slowly adjust, and you see a dagger next to you. While you're picking it up,
-you suddenly hear something coming from the darkness! You're still trying to understand what happened the night before when...'
+<!-- <br> -->
 
-In this game the Hero has to escape a multiple room dungeon. But his skills will be hard tested by a series of fights along his journey towards the light!
-To help our protagonist in his quest we will have the chance to improve our armour and our weapons as well as our skills...
-But don't be deceived by this! Your journey will still be long and full of blood!!!
-```
+<hr>
 
-
- <hr>
-
-[Team](#team) || [Technologies](#technologies) || [Setup](#setup) || [Tests](#tests) || [Controls](#controls) || [Gameplay](#gameplay) || [Screenshots](#screenshots) ||
+[Team](#team) || [Workflow](#workflow) || [Technologies](#technologies) || [Setup](#setup) || [Tests](#tests) || [Controls](#controls) || [Gameplay](#gameplay) || [Screenshots](#screenshots) ||
 
 <hr>
 
@@ -34,6 +28,10 @@ But don't be deceived by this! Your journey will still be long and full of blood
 * Cesare Camurani:  <br><a href="https://github.com/cesarecamurani/">https://github.com/cesarecamurani/</a>
 
 <hr>
+
+## *Workflow*
+
+![Alt text](/static/images/trello_board.png?raw=true "trello_board")
 
 ## *Technologies*
 
@@ -105,7 +103,7 @@ npm run test
 
 <hr>
 
-## *Screenshoots*
+## *Screenshots*
 
 ### Player uses a normal attack against the Bat Swarm:
 ![Alt text](/static/images/normal_attack.png?raw=true "Screenshot") <hr>
