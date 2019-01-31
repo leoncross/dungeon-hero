@@ -8,13 +8,13 @@ function Rooms (player, monsters, combat, dice) {
 }
 
 Rooms.prototype.setupRoomJourney = function () {
-  this.roomRandomizer(['easy', 'medium'], 2)
+  this.roomRandomizer(['easy', 'medium'])
   this.roomRandomizer(['medium', 'hard'])
   this.roomJourney.push(['shop', true], ['boss', true])
 }
 
-Rooms.prototype.roomRandomizer = function (difficulty, number = 3) {
-  for (i = 0; i < number; i ++){
+Rooms.prototype.roomRandomizer = function (difficulty) {
+  for (i = 0; i < 3; i ++){
     this.roomJourney.push(difficulty[Math.floor((Math.random() * difficulty.length))])
   }
 }
