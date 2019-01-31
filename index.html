@@ -14,8 +14,9 @@
     <script src="./src/Combat.js"></script>
     <script src="./src/Rooms.js"></script>
     <script src="./src/Shop.js"></script>
-    <script src="./src/FlavourText.js"></script>
     <script src="./src/Trap.js"></script>
+    <script src="./src/FlavourText.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
     </script>
     <script src="./src/interface.js"></script>
@@ -186,13 +187,28 @@
 
       <div id="trapModal" class="modal">
         <div class="modal-content">
-          <h1>TRAP ROOM!</h1>
-          <p>You enter a room that is dominated by a large chest.<br>
-          It could hold loot, or it could be a trap!</P>
-          <p>What do you do?
-            <span class='textButton' id='openLoot'>[Open Chest]</span>
+          <h1>TRAP ROOM?</h1>
+          <div class="chest-pic"><img src="./static/images/treasure-chest.png"></div>
+          <div class="shop-text">
+            <p>You enter a dark and dismal room that is dominated by a large chest sitting on a small plynth.<br>
+            You look over it and it is plain to see that the chest is clearly not locked. This troubles you ... it could contain loot, or it could be a trap!</P>
+            <p>What do you do?</p>
+          </div>
+          <div id="chestChoices" class="chest-choice">
+            <span class='textButton' id='openChest'>[Open Chest]</span>
             <span class='textButton' id='skipChest'>[Go to Next Room]</span>
-          </p>
+          </div>
+          <div id="chestLoot" class="chest-loot">
+            <p>The chest contains loot! Equip what you want:</p>
+            <span id="chestLoot1"></span><span id="equip1" class="textButton"> --- [equip]</span><br>
+            <span id="chestLoot2"></span><span id="equip2" class="textButton"> --- [equip]</span><br>
+            <span id="chestLoot3"></span><span id="equip3" class="textButton"> --- [equip]</span><br>
+          </div>
+          <div id="chestTrap" class="chest-trap">
+            <br><p>THE CHEST IS A TRAP AND IT EXPLODES WHEN YOU LIFT THE LID!</p>
+            <p style="color:white;">You take 25 Health in Damage!</p>
+          </div>
+          <p id="chestNext" class="textButton">[Move to Next Room]</p>
         </div>
       </div>
 
@@ -205,7 +221,7 @@
             *** Darryl Banks ***<br>
             *** Leon Cross ***<br>
             *** Luca Francesco Eto ***<br><br></p>
-          <a href="index.html">
+          <a href="game.html">
             <input type="image" src="./static/images/play-again.png">
           </a>
         </div>

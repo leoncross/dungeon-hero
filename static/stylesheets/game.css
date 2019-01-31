@@ -267,6 +267,18 @@ body {
   height: auto;
 }
 
+.chest-choices {
+
+}
+
+.chest-loot {
+
+}
+
+.chest-trap {
+  color: orange;
+}
+
 .shop-text {
   text-align: left;
   font-size: 21px;
