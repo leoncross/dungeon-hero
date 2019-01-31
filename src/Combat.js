@@ -84,10 +84,9 @@ Combat.prototype.monsterStunStatus = function (roll) {
     this.enemy['stunStatus'] = false
     this.readout.monsterUnstunned(this.enemy['name'])
     return 'broke free'
-  } else {
-    this.readout.monsterStunned(this.enemy['name'])
-    return 'stunned'
   }
+  this.readout.monsterStunned(this.enemy['name'])
+  return 'stunned'
 }
 
 Combat.prototype.heroBerserkMode = function () {
@@ -96,11 +95,9 @@ Combat.prototype.heroBerserkMode = function () {
     this.readout.playerBerserActivated()
     return 'activated'
   }
-  if (this.hero['health'] > 25 && this.hero['berserkMode'] === 'on') {
-    this.player.toggleBerserkMode('off')
-    this.readout.playerBerserDisactivated()
-    return 'disactivated'
-  }
+  this.player.toggleBerserkMode('off')
+  this.readout.playerBerserDisactivated()
+  return 'disactivated'
 }
 
 Combat.prototype.heroWarCry = function () {

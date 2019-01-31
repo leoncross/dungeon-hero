@@ -129,6 +129,12 @@ Readout.prototype.displayPriceOfItemInShop = function (item) {
   return item['price'] + ' gold'
 }
 
+Readout.prototype.displayItemFromChest = function (item) {
+  if (item['type'] === 'armor') return item['name'] + ' (' + item['armor'] + ' armour)'
+  if (item['type'] === 'weapon') return item['name'] + ' (' + item['weaponMin'] + '-' + item['weaponMax'] + ' dmg)'
+  if (item['type'] === 'potion') return item['name'] + ' ' + item['type']
+}
+
 Readout.prototype.clearReadout = function () {
   this.readoutArray = []
 }
