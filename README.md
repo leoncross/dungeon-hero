@@ -9,7 +9,7 @@
 
 ### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
-### Play it now! => <a href="https://leoncross.github.io/dungeon-hero/">Dungeon Hero</a>
+### *Play it now! => <a href="https://leoncross.github.io/dungeon-hero/">Dungeon Hero on GitHub Pages</a>*
 
 <!-- <br> -->
 
