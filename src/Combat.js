@@ -16,6 +16,7 @@ Combat.prototype.attackSetup = function (attackers) {
 }
 
 Combat.prototype.attackSequence = function (playerModifierToDice, playerModifierToDamage, monsterModifierToDice, potion, playerAttackType) {
+  this.heroBerserkMode()
   if (this.enemy['health'] < 1 || this.hero['health'] < 1) return 'dead'
   if (potion === 0) this.heroAttack(playerModifierToDice, playerModifierToDamage, playerAttackType)
   if (potion === 'health') return this.healthPotion(playerAttackType)
@@ -30,7 +31,6 @@ Combat.prototype.endOfCombat = function () {
 }
 
 Combat.prototype.heroAttack = function (playerModifierToDice, playerModifierToDamage, playerAttackType) {
-  this.heroBerserkMode()
   var roll = this.dice.rollDice() + playerModifierToDice
   var minRoll = this.enemy['dexterity']
   if (roll > minRoll) return this.playerSuccessRoll(roll, playerModifierToDice, playerModifierToDamage, playerAttackType)
@@ -68,6 +68,7 @@ Combat.prototype.monsterSuccessRoll = function () {
   damage -= parseInt(damage * this.hero['armorDamageReduction'])
   this.hero['health'] -= damage
   this.readout.monsterDamage(this.enemy['name'], damage)
+  this.heroBerserkMode()
   return damage
 }
 
@@ -76,6 +77,7 @@ Combat.prototype.monsterSpecialAttack = function () {
   damage -= parseInt(damage * this.hero['armorDamageReduction'])
   this.hero['health'] -= damage
   this.readout.monsterSpecialAttack(this.enemy['name'], this.enemy['specialAttack'], damage)
+  this.heroBerserkMode()
   return damage
 }
 
@@ -95,9 +97,11 @@ Combat.prototype.heroBerserkMode = function () {
     this.readout.playerBerserActivated()
     return 'activated'
   }
-  this.player.toggleBerserkMode('off')
-  this.readout.playerBerserDisactivated()
-  return 'disactivated'
+  if (this.hero['health'] > 25 && this.hero['berserkMode'] === 'on') {
+    this.player.toggleBerserkMode('off')
+    this.readout.playerBerserDisactivated()
+    return 'disactivated'
+  }
 }
 
 Combat.prototype.heroWarCry = function () {
