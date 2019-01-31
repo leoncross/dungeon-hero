@@ -1,7 +1,7 @@
 {
   "name": "team-rogue",
   "version": "1.0.0",
-  "description": "[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)",
+  "description": "[![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)[![Build Status](https://travis-ci.com/leoncross/dungeon-hero.svg?branch=master)](https://travis-ci.com/leoncross/dungeon-hero)",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leoncross/team-rogue.git"
+    "url": "git+https://github.com/leoncross/dungeon-hero.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/leoncross/team-rogue/issues"
+    "url": "https://github.com/leoncross/dungeon-hero/issues"
   },
-  "homepage": "https://github.com/leoncross/team-rogue#readme"
+  "homepage": "https://github.com/leoncross/dungeon-hero#readme"
 }
