@@ -1,5 +1,8 @@
 <p align="center">
-![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
+</p>
+
+<p align="center">
+  <img ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br> />
 </p>
 
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue) [![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)
