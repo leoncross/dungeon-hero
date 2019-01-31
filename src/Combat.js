@@ -126,37 +126,23 @@ Combat.prototype.healthPotion = function (playerAttackType) {
 }
 
 Combat.prototype.strengthPotion = function (playerAttackType) {
-  if (this.hero['strengthPotions'] > 0) {
-    this.hero['strengthBuff'] += 5
-    this.hero['strengthPotions'] -= 1
-    this.readout.playerStrengthPotion(playerAttackType)
-    return 'strength potion consumed'
-  } else {
-    return 'you ran out of strength potions'
-  }
+  if (this.hero['strengthPotions'] === 0) return 'you ran out of strength potions'
+  this.hero['strengthBuff'] += 5
+  this.hero['strengthPotions'] -= 1
+  this.readout.playerStrengthPotion(playerAttackType)
+  return 'strength potion consumed'
 }
 
 Combat.prototype.dexterityPotion = function (playerAttackType) {
-  if (this.hero['dexterityPotions'] > 0) {
-    this.hero['dexterityBuff'] += 5
-    this.hero['dexterityPotions'] -= 1
-    this.readout.playerDexterityPotion(playerAttackType)
-    return 'dexterity potion consumed'
-  } else {
-    return 'you ran out of dexterity potions'
-  }
+  if (this.hero['dexterityPotions'] === 0) return 'you ran out of dexterity potions'
+  this.hero['dexterityBuff'] += 5
+  this.hero['dexterityPotions'] -= 1
+  this.readout.playerDexterityPotion(playerAttackType)
+  return 'dexterity potion consumed'
 }
 
 Combat.prototype.weaponDamage = function (attacker) {
   return this.dice.rollBetween(attacker['weaponMin'], attacker['weaponMax'])
-}
-
-Combat.prototype.trapSequence = function () {
-  if (this.dice.rollDice() <= 10) {
-    this.player.recieveDamage(25)
-    return 'triggered'
-  }
-  return 'not triggered'
 }
 
 module.exports = Combat
