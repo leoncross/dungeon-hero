@@ -1,11 +1,8 @@
+<p align="center">
 ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
-
-![Alt text](/static/images/hero.png?raw=true "hero")
+</p>
 
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue) [![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)
-
-<a href='https://coveralls.io/github/leoncross/dungeon-hero?branch=master'><img src='https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master' alt='Coverage Status' /></a>
-
 
 ### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
