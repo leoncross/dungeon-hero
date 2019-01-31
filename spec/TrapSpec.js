@@ -9,15 +9,21 @@ describe('Trap', function(){
 
   beforeEach(function() {
 
+    function ReadoutStub() {}
+    ReadoutStub.prototype = {
+      displayItemFromChest() {}
+    }
+
     function LootStub() {}
     LootStub.prototype = {
-      returnLootTable() {}
+      returnLootTable() {},
     }
 
     stub = sinon.stub(Math, 'floor')
 
     loot = new LootStub()
-    trap = new Trap(loot);
+    readout = new ReadoutStub()
+    trap = new Trap(loot, readout);
 
     table = [
       { name: 'Sword', type: 'weapon', weaponMin: 5, weaponMax: 7, rarity: 1, inShop: true, price: 50 },
@@ -36,7 +42,6 @@ describe('Trap', function(){
       { name: 'Dexterity', type: 'potion', rarity: 1, price: 60 },
       { name: 'Strength', type: 'potion', rarity: 1, price: 60 }
       ]
-
   });
 
   afterEach(function () {
@@ -86,6 +91,7 @@ describe('Trap', function(){
   describe('#arrangeChest', function () {
     it('arranges chest to have 1 item, and 2 potions', function() {
       spyOn(loot, 'returnLootTable').and.returnValue([{rarity: 1}, {rarity: 2}, {rarity: 3}])
+      spyOn(readout, 'displayItemFromChest').and.returnValue({ rarity: 3 })
       stub.returns(1)
       trap.arrangeChest()
       expect(trap.returnLootChest(0)).toEqual({ rarity: 3 })

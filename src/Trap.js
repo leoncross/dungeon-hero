@@ -1,5 +1,6 @@
-function Trap (loot) {
+function Trap (loot, readout) {
   this.loot = loot
+  this.readout = readout
 }
 
 Trap.prototype.collectLoot = function () {
@@ -15,11 +16,11 @@ Trap.prototype.lootOrTrap = function () {
 Trap.prototype.findLoot = function () {
   this.rarityLoot = []
   for (i = 0; i < this.lootTable.length; i++) {
-    if (this.lootTable[i]['rarity'] === 2 || this.lootTable[i]['rarity'] === 3) {
+    if (this.lootTable[i]['rarity'] === 2 || this.lootTable[i]['rarity'] === 3 ) {
       this.rarityLoot.push(this.lootTable[i])
     }
   }
-  return this.rarityLoot
+ return this.rarityLoot
 }
 
 Trap.prototype.arrangeChest = function () {
@@ -40,7 +41,7 @@ Trap.prototype.potionsInLoot = function () {
 }
 
 Trap.prototype.returnLootChest = function (placeInArray) {
-  return this.chestLoot[placeInArray]
+  return this.readout.displayItemFromChest(this.chestLoot[placeInArray])
 }
 
 module.exports = Trap
