@@ -45,12 +45,14 @@ $(document).ready(function () {
   })
 
   $('#modalButton').click(function () {
-    var modal = document.getElementById('trapModal')
+    var modal = document.getElementById('shopModal')
     modal.style.display = 'block'
-    $('#helpReturn').click(function () {
-      modal.style.display = 'none'
-    })
-    trapInterface()
+    shopInterface()
+    shopListeners()
+    // $('#helpReturn').click(function () {
+    //   modal.style.display = 'none'
+    // })
+    // trapInterface()
   })
 
   $('#helpButton').click(function () {
@@ -71,9 +73,9 @@ function shopInterface () {
   $('#price1').html(game.shop.displayPriceOfItemInShop(0))
   $('#price2').html(game.shop.displayPriceOfItemInShop(1))
   $('#price3').html(game.shop.displayPriceOfItemInShop(2))
-  $('#price4').html(game.shop.returnPotionPrice('health'))
-  $('#price5').html(game.shop.returnPotionPrice('strength'))
-  $('#price6').html(game.shop.returnPotionPrice('dexterity'))
+  $('#price4').html(game.shop.displayPriceOfItemInShop(3))
+  $('#price5').html(game.shop.displayPriceOfItemInShop(4))
+  $('#price6').html(game.shop.displayPriceOfItemInShop(5))
 }
 
 // function for shop
