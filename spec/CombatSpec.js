@@ -102,7 +102,7 @@ describe('Combat',function(){
       spyOn(dice, "rollDice").and.returnValue(15);
       spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, enemy])
-      expect(combat.heroAttack(0, 100, "stun")).toEqual(0)
+      combat.heroAttack(0, 100, "stun")
       expect(combat.enemy["health"]).toEqual(100)
       expect(combat.enemy["stunStatus"]).toEqual(true)
     });
@@ -192,19 +192,13 @@ describe('Combat',function(){
       expect(combat.enemy["health"]).toEqual(92)
       expect(combat.hero["health"]).toEqual(96)
     });
-    it("player dies", function() {
-      spyOn(dice, "rollDice").and.returnValue(18);
-      spyOn(dice, "rollBetween").and.returnValue(5);
-      spyOn(player, "status").and.returnValue(false);
-      combat.attackSetup([hero, enemy])
-      expect(combat.attackSequence(0, 1 ,0, 0)).toEqual('you have died')
-    });
     it("monster dies", function() {
       spyOn(dice, "rollDice").and.returnValue(18);
       spyOn(dice, "rollBetween").and.returnValue(5);
       spyOn(player, "status").and.returnValue(true);
+      spyOn(player, "playerFindsGold").and.returnValue('gold found');
       combat.attackSetup([hero, almostDeadMonster])
-      expect(combat.attackSequence(0, 1 ,0, 0)).toEqual('the monster has died')
+      expect(combat.attackSequence(0, 1 ,0, 0)).toEqual('gold found')
     });
     it("player consumes potion", function() {
       spyOn(dice, "rollDice").and.returnValue(18);
@@ -238,6 +232,27 @@ describe('Combat',function(){
     });
   })
 
+  describe("#heroWarCry", function() {
+   it('buffs the hero', function() {
+     spyOn(readout, "playerWarCry").and.returnValue('does a war cry');
+     combat.attackSetup([hero, enemy])
+     expect(combat.hero['dexterityBuff']).toEqual(0)
+     expect(combat.hero['strengthBuff']).toEqual(0)
+     combat.heroWarCry()
+     expect(combat.hero['dexterityBuff']).toEqual(1)
+     expect(combat.hero['strengthBuff']).toEqual(1)
+   })
+ })
+
+  describe('#playerStuns', function() {
+    it('sets stun status to true', function () {
+      spyOn(readout, "playerStuns").and.returnValue('stunned');
+      combat.attackSetup([hero, enemy])
+      combat.playerStuns()
+      expect(combat.enemy['stunStatus']).toEqual(true)
+    })
+  })
+
   describe("#healthPotion", function() {
    it('restores 25 hp and reduces healh potions by 1', function() {
      combat.attackSetup([leonHurtPlayer, enemy])
@@ -247,7 +262,6 @@ describe('Combat',function(){
      expect(leonHurtPlayer['healthPotions']).toEqual(1)
      expect(leonHurtPlayer['health']).toEqual(72)
      expect(combat.healthPotion()).toEqual('health potion consumed')
-
    })
    it('doesnt consume health potion if none left', function() {
      combat.attackSetup([leonHurtPlayer, enemy])
@@ -351,24 +365,11 @@ describe('Combat',function(){
       expect(combat.monsterAttack()).toEqual(4)
     });
     it(" monster special attack success", function() {
-      spyOn(dice, "rollDice").and.returnValue(20); //roll over 19 -> special attack
-      spyOn(dice, "rollBetween").and.returnValue(5); //roll 5 min weaponDamage
+      spyOn(dice, "rollDice").and.returnValue(20);
+      spyOn(dice, "rollBetween").and.returnValue(5);
       combat.attackSetup([hero, zombie])
-      expect(combat.monsterSpecialAttack()).toEqual(4) //10- 60% damage red
+      expect(combat.monsterSpecialAttack()).toEqual(4)
       expect(combat.hero["health"]).toEqual(96)
     });
-  })
-
-  describe('#trapSequence', function() {
-    it('deals 25 damage to player if fails 50/50 roll', function() {
-      spyOn(dice, 'rollDice').and.returnValue(5)
-      spyOn(player, 'recieveDamage').and.returnValue(75)
-      expect(combat.trapSequence()).toEqual('triggered')
-    })
-    it('deals 0 damage to player if succeeds 50/50 roll', function() {
-      spyOn(dice, 'rollDice').and.returnValue(15)
-      spyOn(player, 'recieveDamage').and.returnValue(100)
-      expect(combat.trapSequence()).toEqual('not triggered')
-    })
   })
 });
