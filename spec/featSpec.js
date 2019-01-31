@@ -7,6 +7,7 @@ describe('Game', function(){
   var Combat = require('../src/Combat');
   var Rooms = require('../src/Rooms');
   var Game = require('../src/Game');
+  var FlavourText = require('../src/FlavourText');
   var Readout = require('../src/Readout');
   var sinon = require('sinon');
 
@@ -18,6 +19,7 @@ describe('Game', function(){
   var stub
   var room
   var game
+  var flavourText
   var readout
 
   beforeEach(function () {
@@ -27,7 +29,8 @@ describe('Game', function(){
     monster = new Monster()
     dice = new Dice()
     stub = sinon.stub(Math, 'floor')
-    readout = new Readout()
+    flavourText = new FlavourText()
+    readout = new Readout(flavourText)
     loot = new Loot(player, readout)
     combat = new Combat(player, monster, dice, readout)
     room = new Rooms(player, monster, combat, dice)
@@ -243,6 +246,18 @@ describe('Game', function(){
         expect(room.monsterRoom('easy', false)).toEqual([room.hero, room.monsters.monsters[7]])
         stub.resetBehavior();
       });
+    })
+  })
+
+  describe('flavourText',function () {
+    it('the object to exist', function(){
+      expect(flavourText).toBeDefined();
+    })
+  })
+
+  describe('readout',function () {
+    it('the object to exist', function(){
+      expect(readout).toBeDefined();
     })
   })
 

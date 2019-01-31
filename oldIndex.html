@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dungeon Hero</title>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./static/stylesheets/main.css">
+    <script src="./src/Game.js"></script>
+    <script src="./src/Player.js"></script>
+    <script src="./src/Monster.js"></script>
+    <script src="./src/Dice.js"></script>
+    <script src="./src/Combat.js"></script>
+    <script src="./src/Rooms.js"></script>
+    <script src="./src/Readout.js"></script>
+    <script src="./src/Trap.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="./src/start.js"></script>
+
+
+
+  </head>
+  <body>
+    <div class="header">
+      <img src="./static/images/dh-logo.png" alt="DUNGEON HERO">
+      <br><br><br>
+    </div>
+    <div class="enter">
+      <span>CHARACTER NAME:</span>
+      <form id="startGame" class="" action="./game.html" method="post">
+        <input id="playerName" type="text" name="playerName"><br><br>
+        <input id="start "type="image" src="./static/images/enter.png" alt="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

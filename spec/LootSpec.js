@@ -38,21 +38,21 @@ describe('Loot', function() {
 
     rarityCalculator = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3]
     table = [
-      { name: 'Sword', type: 'weapon', weaponMin: 5, weaponMax: 7, rarity: 1, inShop: true, price: 100 },
-      { name: 'Longsword', type: 'weapon', weaponMin: 5, weaponMax: 8, rarity: 1, inShop: true, price: 100 },
-      { name: 'Claymore', type: 'weapon', weaponMin: 12, weaponMax: 13, rarity: 1, inShop: true, price: 100 },
-      { name: 'Battle Axe', type: 'weapon', weaponMin: 9, weaponMax: 15, rarity: 1, inShop: true, price: 500 },
-      { name: 'Hatchet', type: 'weapon', weaponMin: 8, weaponMax: 12, rarity: 1, inShop: true, price: 60 },
-      { name: 'Mace', type: 'weapon', weaponMin: 8, weaponMax: 13, rarity: 1, inShop: true, price: 100 },
-      { name: 'Hammer', type: 'weapon', weaponMin: 11, weaponMax: 12, rarity: 1, inShop: true, price: 100 },
+      { name: 'Sword', type: 'weapon', weaponMin: 5, weaponMax: 7, rarity: 1, inShop: true, price: 50 },
+      { name: 'Longsword', type: 'weapon', weaponMin: 7, weaponMax: 8, rarity: 1, inShop: true, price: 65 },
+      { name: 'Claymore', type: 'weapon', weaponMin: 12, weaponMax: 13, rarity: 2, inShop: true, price: 145 },
+      { name: 'Battle Axe', type: 'weapon', weaponMin: 16, weaponMax: 19, rarity: 3, inShop: true, price: 320 },
+      { name: 'Hatchet', type: 'weapon', weaponMin: 8, weaponMax: 12, rarity: 2, inShop: true, price: 125 },
+      { name: 'Mace', type: 'weapon', weaponMin: 8, weaponMax: 13, rarity: 1, inShop: true, price: 125 },
+      { name: 'Warhammer', type: 'weapon', weaponMin: 13, weaponMax: 17, rarity: 2, inShop: true, price: 200 },
+      { name: 'Dragon Slayer', type: 'weapon', weaponMin: 23, weaponMax: 27, rarity: 3, inShop: true, price: 400 },
       { name: 'Leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25, inShop: true, price: 140 },
-      { name: 'Chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4, inShop: true, price: 40 },
-      { name: 'Plate', type: 'armor', armor: 15, rarity: 1, armorDamageReduction: 0.6, inShop: true, price: 100 },
-      { name: 'Dragon Scale', type: 'armor', armor: 20, rarity: 1, armorDamageReduction: 0.8, inShop: true, price: 100 },
-      { name: 'Health', type: 'potion', rarity: 1, price: 100 },
-      { name: 'Dexterity', type: 'potion', rarity: 1, price: 100 },
-      { name: 'Strength', type: 'potion', rarity: 1, price: 100 }
-    ]
+      { name: 'Chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4, inShop: true, price: 210 },
+      { name: 'Plate', type: 'armor', armor: 15, rarity: 2, armorDamageReduction: 0.6, inShop: true, price: 300 },
+      { name: 'Dragon Scale', type: 'armor', armor: 20, rarity: 3, armorDamageReduction: 0.8, inShop: true, price: 410 },
+      { name: 'Health', type: 'potion', rarity: 1, price: 75 },
+      { name: 'Dexterity', type: 'potion', rarity: 1, price: 60 },
+      { name: 'Strength', type: 'potion', rarity: 1, price: 60 }    ]
   });
 
   afterEach(function () {
@@ -61,8 +61,8 @@ describe('Loot', function() {
 
   describe('#lootFinder', function() {
     it("finds loot based on rarity", function(){
-      stub.returns(6)
-      expect(loot.lootFinder()).toEqual({ name: 'Hammer', type: 'weapon', weaponMin: 11, weaponMax: 12, rarity: 1, inShop: true, price: 100 })
+      stub.returns(7)
+      expect(loot.lootFinder()).toEqual({ name: 'Strength', type: 'potion', rarity: 1, price: 60 })
     })
     it("doesnt return loot", function(){
       stub.returns(0)
@@ -78,19 +78,13 @@ describe('Loot', function() {
 
   describe('#returnFoundItem', function() {
     it('returns the most recently found item', function() {
-      stub.returns(6)
+      stub.returns(7)
       loot.lootFinder()
-      expect(loot.returnFoundItem()).toEqual({ name: 'Hammer', type: 'weapon', weaponMin: 11, weaponMax: 12, rarity: 1, inShop: true, price: 100 })
+      expect(loot.returnFoundItem()).toEqual({ name: 'Strength', type: 'potion', rarity: 1, price: 60 })
     })
   })
 
   describe('#displayLoot', function() {
-    it('calls displayFoundWeapon if weapon', function() {
-      spyOn(readout, 'displayFoundWeapon').and.returnValue('weapon found')
-      stub.returns(6) // returns the 'hammer'
-      loot.lootFinder()
-      expect(loot.displayLoot()).toEqual('weapon found');
-    })
     it('calls displayFoundArmor if armor', function() {
       spyOn(readout, 'displayFoundArmor').and.returnValue('armor found')
       loot.foundItem = { name: 'chainmail', type: 'armor', armor: 10, rarity: 1, armorDamageReduction: 0.4, inShop: true, price: 100 }
