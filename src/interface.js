@@ -2,7 +2,6 @@ let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {
-
   updateInterface()
 
   $('#playerAttack').click(function () {
@@ -119,7 +118,7 @@ function shopListeners () {
   })
 }
 
-function trapInterface() {
+function trapInterface () {
   $('#skipChest').unbind().click(function () {
     var modal = document.getElementById('trapModal')
     game.readout.clearReadout()
@@ -132,8 +131,7 @@ function trapInterface() {
 
 // function for update shop (after items bought / gold spent etc.)
 
-
-function updateInterface() {
+function updateInterface () {
   updateAll()
   var health = game.player.returnAttribute('health')
   if (health > 75) {
@@ -199,8 +197,8 @@ function updateAll () {
     shopListeners()
   }
 
-  if(game.room.monsterInRoom('name') === 'Trap') {
-    var modal = document.getElementById('trapModal')
+  if (game.room.monsterInRoom('name') === 'Trap') {
+    modal = document.getElementById('trapModal')
     modal.style.display = 'block'
     trapListeners()
   }

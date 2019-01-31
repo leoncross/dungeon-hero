@@ -14,7 +14,8 @@ Rooms.prototype.setupRoomJourney = function () {
 }
 
 Rooms.prototype.roomRandomizer = function (difficulty, number = 3) {
-  for (i = 0; i < number; i ++){
+  var n = number
+  for (var i = 0; i < n; i++) {
     this.roomJourney.push(difficulty[Math.floor((Math.random() * difficulty.length))])
   }
 }

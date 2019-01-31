@@ -15,11 +15,11 @@ Trap.prototype.lootOrTrap = function () {
 Trap.prototype.findLoot = function () {
   this.rarityLoot = []
   for (i = 0; i < this.lootTable.length; i++) {
-    if (this.lootTable[i]['rarity'] === 2 || this.lootTable[i]['rarity'] === 3 ) {
+    if (this.lootTable[i]['rarity'] === 2 || this.lootTable[i]['rarity'] === 3) {
       this.rarityLoot.push(this.lootTable[i])
     }
   }
- return this.rarityLoot
+  return this.rarityLoot
 }
 
 Trap.prototype.arrangeChest = function () {
