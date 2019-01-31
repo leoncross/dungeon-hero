@@ -132,8 +132,8 @@ function trapInterface() {
 
 // function for update shop (after items bought / gold spent etc.)
 
-function updateInterface() {
 
+function updateInterface() {
   updateAll()
   var health = game.player.returnAttribute('health')
   if (health > 75) {

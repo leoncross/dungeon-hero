@@ -13,8 +13,8 @@ Rooms.prototype.setupRoomJourney = function () {
   this.roomJourney.push(['shop', true], ['boss', true])
 }
 
-Rooms.prototype.roomRandomizer = function (difficulty) {
-  for (i = 0; i < 3; i++) {
+Rooms.prototype.roomRandomizer = function (difficulty, number = 3) {
+  for (i = 0; i < number; i ++){
     this.roomJourney.push(difficulty[Math.floor((Math.random() * difficulty.length))])
   }
 }
