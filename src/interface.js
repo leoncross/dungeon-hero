@@ -44,16 +44,16 @@ $(document).ready(function () {
     updateInterface()
   })
 
-  $('#modalButton').click(function () {
-    var modal = document.getElementById('shopModal')
-    modal.style.display = 'block'
-    shopInterface()
-    shopListeners()
+  // $('#modalButton').click(function () {
+  //   var modal = document.getElementById('shopModal')
+  //   modal.style.display = 'block'
+  //   shopInterface()
+  //   shopListeners()
     // $('#helpReturn').click(function () {
     //   modal.style.display = 'none'
     // })
     // trapInterface()
-  })
+  // })
 
   $('#helpButton').click(function () {
     var modal = document.getElementById('helpModal')
@@ -213,10 +213,12 @@ function updateInterface () {
 
   if (health < 76 && health > 50) {
     $('#playerImage').attr('src', './static/images/hero75.png')
+    $('#playerHealth').css('color', 'white')
   }
 
   if (health < 51 && health > 25) {
     $('#playerImage').attr('src', './static/images/hero50.png')
+    $('#playerHealth').css('color', 'white')
   }
 
   if (health < 26) {
