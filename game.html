@@ -14,6 +14,7 @@
     <script src="./src/Combat.js"></script>
     <script src="./src/Rooms.js"></script>
     <script src="./src/Shop.js"></script>
+    <script src="./src/Trap.js"></script>
     <script src="./src/FlavourText.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
@@ -186,12 +187,21 @@
 
       <div id="trapModal" class="modal">
         <div class="modal-content">
-          <h1>TRAP ROOM!</h1>
-          <p>You enter a room that is dominated by a large chest.<br>
-          It could hold loot, or it could be a trap!</P>
-          <p>What do you do?
-            <span class='textButton' id='openLoot'>[Open Chest]</span>
+          <h1>TRAP ROOM?</h1>
+          <div class="chest-pic"><img src="./static/images/treasure-chest.png"></div>
+          <div class="shop-text">
+            <p>You enter a dark and dismal room that is dominated by a large chest sitting on a small plynth.<br>
+            You look over it and it is plain to see that the chest is clearly not locked. This troubles you ... it could contain loot, or it could be a trap!</P>
+            <p>What do you do?
+          </div>
+            <span class='textButton' id='openChest'>[Open Chest]</span>
             <span class='textButton' id='skipChest'>[Go to Next Room]</span>
+            <br><br>
+            <div id="chestLoot">
+              <span id="chestLoot1"></span><span id="equip1"> --- [equip]</span><br>
+              <span id="chestLoot1"></span><span id="equip2"> --- [equip]</span><br>
+              <span id="chestLoot1"></span><span id="equip3"> --- [equip]</span><br>
+            </div>
           </p>
         </div>
       </div>

@@ -122,13 +122,22 @@ function shopListeners() {
 }
 
 function trapInterface() {
+  var modal = document.getElementById('trapModal')
   $('#skipChest').unbind().click(function () {
-    var modal = document.getElementById('trapModal')
     game.readout.clearReadout()
     game.room.nextRoom()
     game.readout.displayFlavourText()
     modal.style.display = 'none'
     updateAll()
+  })
+
+  $('openChest').unbind().click(function () {
+    if (game.trap.lootOrTrap() === 'loot') {
+      game.trap.arrangeChest()
+      $('#chestLoot1').text(game.trap.returnLootChest[0])
+      $('#chestLoot2').text(game.trap.returnLootChest[1])
+      $('#chestLoot3').text(game.trap.returnLootChest[2])
+    }
   })
 }
 
@@ -207,7 +216,7 @@ function updateAll () {
   if(game.room.monsterInRoom('name') === 'Trap') {
     var modal = document.getElementById('trapModal')
     modal.style.display = 'block'
-    trapListeners()
+    trapInterface()
   }
 
   $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
