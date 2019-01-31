@@ -2,7 +2,6 @@ let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {
-  
   updateInterface()
 
   $('#playerAttack').click(function () {
@@ -49,11 +48,9 @@ $(document).ready(function () {
     var modal = document.getElementById('winnerModal')
     modal.style.display = 'block'
   })
-
 })
 
 function shopInterface () {
-
   game.shop.findItemsInShop()
   $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
   $('#item1').html(game.shop.displayItemsInShop(0))
@@ -68,7 +65,7 @@ function shopInterface () {
 }
 
 // function for shop
-function shopListeners() {
+function shopListeners () {
   $('#item1').click(function () {
     game.shop.buyItemFromShop(0)
     $('#goldCount').html(game.player.returnAttribute('gold') + ' GOLD')
@@ -112,7 +109,6 @@ function shopListeners() {
 // function for update shop (after items bought / gold spent etc.)
 
 function updateInterface () {
-
   updateAll()
   var health = game.player.returnAttribute('health')
   if (health > 75) {
@@ -138,18 +134,16 @@ function updateInterface () {
   }
 
   if (game.room.monsterInRoom('health') < 1) {
-
     if (game.room.monsterInRoom('name') === 'Dragon') {
-      var modal = document.getElementById('winnerModal')
+      modal = document.getElementById('winnerModal')
       modal.style.display = 'block'
     } else {
-      var modal = document.getElementById('winModal')
+      modal = document.getElementById('winModal')
       modal.style.display = 'block'
       $('#takeLoot').show()
       $('#monsterName1').text(game.room.monsterInRoom('name').toUpperCase())
       game.loot.lootFinder()
     }
-
 
     if (game.loot.returnFoundItem() === 0) {
       $('#takeLoot').hide()
@@ -170,11 +164,10 @@ function updateInterface () {
       updateAll()
     })
   }
-
 }
 
 function updateAll () {
-  if(game.room.monsterInRoom('name') === 'Shop') {
+  if (game.room.monsterInRoom('name') === 'Shop') {
     var modal = document.getElementById('shopModal')
     modal.style.display = 'block'
     shopInterface()
