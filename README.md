@@ -1,8 +1,6 @@
-<!-- ![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
+![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
 
-![Alt text](/static/images/hero.png?raw=true "hero") -->
-
-![Alt text](/static/images/help_screen.png?raw=true "help_screen") <br>
+![Alt text](/static/images/hero.png?raw=true "hero")
 
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
 [![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
