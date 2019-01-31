@@ -1,12 +1,6 @@
-
-![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo"style=centerme)
-And CSS:
-
 <p align="center"> 
 <img src="/static/images/dh-logo.png?raw=true">
 </p>
-
-![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo")
 
 [![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue) [![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)
 
