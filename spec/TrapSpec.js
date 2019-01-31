@@ -70,4 +70,11 @@ describe('Trap', function(){
     })
   })
 
+  describe('#potionsInLoot', function () {
+    it('adds two random potions to the loot array', function() {
+      stub.returns(0)
+      expect(trap.potionsInLoot()).toEqual({ name: 'Health', type: 'potion', rarity: 1, price: 75 })
+    })
+  })
+
 });
