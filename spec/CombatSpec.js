@@ -344,7 +344,14 @@ describe('Combat',function(){
   });
 
   describe('#monsterSpecialAttack', function() {
-    it("normal monster attack success", function() {
+    it("normal monster special attack", function() {
+      spyOn(dice, "rollDice").and.returnValue(20); 
+      spyOn(dice, "rollBetween").and.returnValue(5);
+      combat.attackSetup([hero, zombie])
+      console.log(zombie);
+      expect(combat.monsterAttack()).toEqual(4)
+    });
+    it(" monster special attack success", function() {
       spyOn(dice, "rollDice").and.returnValue(20); //roll over 19 -> special attack
       spyOn(dice, "rollBetween").and.returnValue(5); //roll 5 min weaponDamage
       combat.attackSetup([hero, zombie])
