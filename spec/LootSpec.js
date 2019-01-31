@@ -52,7 +52,8 @@ describe('Loot', function() {
       { name: 'Dragon Scale', type: 'armor', armor: 20, rarity: 3, armorDamageReduction: 0.8, inShop: true, price: 410 },
       { name: 'Health', type: 'potion', rarity: 1, price: 75 },
       { name: 'Dexterity', type: 'potion', rarity: 1, price: 60 },
-      { name: 'Strength', type: 'potion', rarity: 1, price: 60 }    ]
+      { name: 'Strength', type: 'potion', rarity: 1, price: 60 }
+     ]
   });
 
   afterEach(function () {

@@ -21,7 +21,8 @@ Shop.prototype.findItemsInShop = function () {
   for (var i = 0; i < 3; i++) {
     this.itemsInShop.push(this.shopItemRandomizer())
   }
-  this.itemsInShop.push({ name: 'health', type: 'potion', rarity: 1, price: 100 }, { name: 'dexterity', type: 'potion', rarity: 1, price: 100 }, { name: 'strength', type: 'potion', rarity: 1, price: 100 })
+
+  this.itemsInShop.push({ name: 'Health', type: 'potion', rarity: 1, price: 75 }, { name: 'Dexterity', type: 'potion', rarity: 1, price: 60 }, { name: 'Strength', type: 'potion', rarity: 1, price: 60 })
   return this.itemsInShop
 }
 
