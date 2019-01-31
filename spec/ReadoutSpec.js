@@ -310,11 +310,11 @@ describe('Readout', function () {
   describe('#displayItemFromChest', function () {
     it('displays armor in the chest', function () {
       item = { name: 'leather', type: 'armor', armor: 5, rarity: 1, armorDamageReduction: 0.25 }
-      expect(readout.displayItemInShop(item)).toEqual('leather (5 armour)')
+      expect(readout.displayItemFromChest(item)).toEqual('leather (5 armour)')
     });
     it('displays weapon in the chest', function () {
       item = { name: 'dagger', type: 'weapon', weaponMin: 2, weaponMax: 4, rarity: 1 }
-      expect(readout.displayItemInShop(item)).toEqual('dagger (2-4 dmg)')
+      expect(readout.displayItemFromChest(item)).toEqual('dagger (2-4 dmg)')
     });
     it('displays potion in the chest', function () {
       item = { name: 'Dexterity', type: 'potion', rarity: 1, price: 60 }
