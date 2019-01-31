@@ -12,6 +12,7 @@ Game.prototype.initialize = function (playerName) {
   this.combat = new Combat(this.player, this.monster, this.dice, this.readout)
   this.room = new Rooms(this.player, this.monster, this.combat, this.dice)
   this.shop = new Shop(this.player, this.dice, this.loot, this.readout)
+  this.trap = new Trap(this.loot)
   this.play()
 }
 
