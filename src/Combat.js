@@ -70,26 +70,24 @@ Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   var roll = this.dice.rollDice()
   var minRoll = (this.hero['dexterity'] + monsterModifierToDice)
   if (this.enemy['stunStatus'] === true) return this.monsterStunStatus(roll)
-  if (roll >= 19) return this.monsterSpecialAttack(roll)
-  if (roll > minRoll) return this.monsterSuccessRoll(roll)
+  if (roll >= 19) return this.monsterSpecialAttack()
+  if (roll > minRoll) return this.monsterSuccessRoll()
   return this.readout.monsterMisses(this.enemy['name'])
 }
 
-Combat.prototype.monsterSuccessRoll = function (roll) {
+Combat.prototype.monsterSuccessRoll = function () {
   let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy))
   damage -= parseInt(damage * this.hero['armorDamageReduction'])
   this.hero['health'] -= damage
   this.readout.monsterDamage(this.enemy['name'], damage)
-  this.heroBerserkMode()
   return damage
 }
 
-Combat.prototype.monsterSpecialAttack = function (roll) {
+Combat.prototype.monsterSpecialAttack = function () {
   let damage = (this.enemy['strength'] + this.weaponDamage(this.enemy) + this.enemy['specialAttackDamage'])
   damage -= parseInt(damage * this.hero['armorDamageReduction'])
   this.hero['health'] -= damage
   this.readout.monsterSpecialAttack(this.enemy['name'], this.enemy['specialAttack'], damage)
-  this.heroBerserkMode()
   return damage
 }
 
