@@ -2,7 +2,7 @@
 
 ![Alt text](/static/images/hero.png?raw=true "hero")
 
-[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
+[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue) [![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)
 
 ### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
