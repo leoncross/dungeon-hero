@@ -2,7 +2,7 @@ let game = new Game()
 game.initialize('ARAGORN')
 
 $(document).ready(function () {
-  
+
   updateInterface()
 
   $('#playerAttack').click(function () {
@@ -45,9 +45,21 @@ $(document).ready(function () {
     updateInterface()
   })
 
-  $('#winnerButton').click(function () {
-    var modal = document.getElementById('winnerModal')
+  $('#modalButton').click(function () {
+    var modal = document.getElementById('trapModal')
     modal.style.display = 'block'
+    $('#helpReturn').click(function () {
+      modal.style.display = 'none'
+    })
+    trapInterface()
+  })
+
+  $('#helpButton').click(function () {
+    var modal = document.getElementById('helpModal')
+    modal.style.display = 'block'
+    $('#helpReturn').click(function () {
+      modal.style.display = 'none'
+    })
   })
 
 })
@@ -109,9 +121,20 @@ function shopListeners() {
   })
 }
 
+function trapInterface() {
+  $('#skipChest').unbind().click(function () {
+    var modal = document.getElementById('trapModal')
+    game.readout.clearReadout()
+    game.room.nextRoom()
+    game.readout.displayFlavourText()
+    modal.style.display = 'none'
+    updateAll()
+  })
+}
+
 // function for update shop (after items bought / gold spent etc.)
 
-function updateInterface () {
+function updateInterface() {
 
   updateAll()
   var health = game.player.returnAttribute('health')
@@ -179,6 +202,12 @@ function updateAll () {
     modal.style.display = 'block'
     shopInterface()
     shopListeners()
+  }
+
+  if(game.room.monsterInRoom('name') === 'Trap') {
+    var modal = document.getElementById('trapModal')
+    modal.style.display = 'block'
+    trapListeners()
   }
 
   $('#monsterPortrait').attr('src', game.room.monsterInRoom('image'))
