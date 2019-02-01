@@ -3,7 +3,7 @@
 </p>
 
 [![Build Status](https://travis-ci.com/leoncross/dungeon-hero.svg?branch=master)](https://travis-ci.com/leoncross/dungeon-hero) https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master&kill_cache=1
-[![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master&kill_cache=1)]
 
 ### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
