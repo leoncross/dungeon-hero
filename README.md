@@ -1,9 +1,8 @@
-![Alt text](/static/images/dh-logo.png?raw=true "dungeon logo") <br>
+<p align="center"> 
+<img src="/static/images/dh-logo.png?raw=true">
+</p>
 
-![Alt text](/static/images/hero.png?raw=true "hero")
-
-[![Build Status](https://travis-ci.com/leoncross/team-rogue.svg?branch=master)](https://travis-ci.com/leoncross/team-rogue)
-[![Coverage Status](https://coveralls.io/repos/github/leoncross/team-rogue/badge.svg?branch=master)](https://coveralls.io/github/leoncross/team-rogue?branch=master)
+[![Build Status](https://travis-ci.com/leoncross/dungeon-hero.svg?branch=master)](https://travis-ci.com/leoncross/dungeon-hero) [![Coverage Status](https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master)](https://coveralls.io/github/leoncross/dungeon-hero?branch=master)
 
 ### *An Adventure Game (with a turn-based, RPG style combat system) set in a Dungeon.*
 
@@ -57,7 +56,7 @@
 * Inside your folder, type these commands in this order in the terminal:
 
 ```
-git clone https://github.com/leoncross/team-rogue.git
+git clone https://github.com/leoncross/dungeon-hero.git
 ```
 (to clone the repository into your folder)
 ```
@@ -71,19 +70,14 @@ npm install
 <hr>
 
 ## *Tests*
-#### How to run Jasmine:
+#### How to run Jasmine (tests) and Coveralls (coverage:
 ```
-npm run jasmine
+npm run test
 ```
 
 #### How to run ESLint:
 ```
 npm run lint
-```
-
-#### How to run Istanbul:
-```
-npm run test
 ```
 
 <hr>
