@@ -2,10 +2,7 @@
 <img src="/static/images/dh-logo.png?raw=true">
 </p>
 
-[![Build Status](https://travis-ci.com/leoncross/dungeon-hero.svg?branch=master)](https://travis-ci.com/leoncross/dungeon-hero) 
-
-
-<img src="https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master&kill_cache=1" />
+[![Build Status](https://travis-ci.com/leoncross/dungeon-hero.svg?branch=master)](https://travis-ci.com/leoncross/dungeon-hero) <img src="https://coveralls.io/repos/github/leoncross/dungeon-hero/badge.svg?branch=master&kill_cache=1" />
 
 
 
