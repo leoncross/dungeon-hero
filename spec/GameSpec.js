@@ -66,13 +66,5 @@ describe('Game', function(){
     it('the object to exist', function(){
       expect(game).toBeDefined();
     });
-
-    describe('play', function(){
-      // it('expect to call next room', function(){
-      //   game.play()
-      //   expect(game.room.nextRoom()).toHaveBeenCalled()
-      // });
-    });
-
   });
 });
