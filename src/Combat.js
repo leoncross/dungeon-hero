@@ -46,7 +46,7 @@ Combat.prototype.playerSuccessRoll = function (roll, playerModifierToDice, playe
 }
 
 Combat.prototype.playerDamageToEnemy = function (roll, playerModifierToDamage) {
-  var damage = ((this.hero['strength'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
+  var damage = ((this.hero['strength'] + this.hero['strengthBuff'] + this.weaponDamage(this.hero)) / playerModifierToDamage)
   if (this.hero['berserkMode'] === 'on') damage *= 2
   if (roll >= 19) damage *= 2
   this.enemy['health'] -= parseInt(damage)
@@ -56,7 +56,7 @@ Combat.prototype.playerDamageToEnemy = function (roll, playerModifierToDamage) {
 
 Combat.prototype.monsterAttack = function (monsterModifierToDice) {
   var roll = this.dice.rollDice()
-  var minRoll = (this.hero['dexterity'] + monsterModifierToDice)
+  var minRoll = (this.hero['dexterity'] + this.hero['dexterityBuff'] + monsterModifierToDice)
   if (this.enemy['stunStatus'] === true) return this.monsterStunStatus(roll)
   if (roll >= 19) return this.monsterSpecialAttack()
   if (roll > minRoll) return this.monsterSuccessRoll()
